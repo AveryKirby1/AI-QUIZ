@@ -1,4 +1,6 @@
+# Completing the script.js file to ensure all 10 questions have their emotions fully mapped and results logic is implemented
 
+script_js_complete = '''
 const quizData = [
   {
     question: "You’ve just found $500 on the ground. What’s the first thing you do?",
@@ -165,6 +167,94 @@ const emotionsMap = {
   }
 };
 
+const categories = {
+  Planner: {
+    description: "You are the master of practicality and preparation. You approach financial decisions with thoughtfulness, responsibility, and an eye toward long-term security.",
+    strengths: "Security, stability, and preparation.",
+    weaknesses: "May miss out on spontaneous opportunities.",
+    recommendations: [
+      "Key Active Saver® Account – A savings account designed for goal-oriented individuals.",
+      "Laurel Road Loan – A flexible loan option for managing expenses.",
+      "Key Secured Credit Card® – Ideal for building credit with low risk."
+    ]
+  },
+  Adventurer: {
+    description: "Life is a journey, and you are ready to explore every path it takes you on!",
+    strengths: "Embraces financial risk and seeks new opportunities.",
+    weaknesses: "Can lead to impulsive spending.",
+    recommendations: [
+      "Key Smart Checking® Account – No monthly maintenance fees.",
+      "Key Rewards Credit Card® – Earn points for everyday purchases.",
+      "KeyBank Loan – Flexible loan for funding adventures."
+    ]
+  },
+  Connector: {
+    description: "For you, money is about building relationships and making the world a better place.",
+    strengths: "Generosity and community-driven financial approach.",
+    weaknesses: "Needs to prioritize personal financial well-being.",
+    recommendations: [
+      "Key Family Checking® Account – Manage shared expenses.",
+      "Laurel Road Loyalty Savings – Rewards long-term savers.",
+      "Key Cashback Credit Card® – Earn cash-back rewards."
+    ]
+  },
+  Realist: {
+    description: "Grounded, cautious, and practical—you see the financial world as it is.",
+    strengths: "Risk management and security-focused approach.",
+    weaknesses: "May avoid taking financial opportunities.",
+    recommendations: [
+      "Key Safe Checking® Account – Built-in overdraft protection.",
+      "Laurel Road High Yield Savings – Steady returns with low risk.",
+      "Laurel Road Loan – Structured loan with predictable terms."
+    ]
+  }
+};
+
+function calculateResults() {
+  const emotionCount = {};
+
+  for (const [question, answer] of Object.entries(selectedAnswers)) {
+    const emotions = emotionsMap[question][answer];
+    emotions.forEach(emotion => {
+      emotionCount[emotion] = (emotionCount[emotion] || 0) + 1;
+    });
+  }
+
+  let maxCategory = "";
+  let maxCount = 0;
+
+  for (const [category, data] of Object.entries(categories)) {
+    const count = data.emotions.reduce((sum, emotion) => sum + (emotionCount[emotion] || 0), 0);
+    if (count > maxCount) {
+      maxCategory = category;
+      maxCount = count;
+    }
+  }
+
+  const resultsDiv = document.getElementById("results");
+  const category = categories[maxCategory];
+  const recommendations = category.recommendations.map(item => `<li>${item}</li>`).join("");
+
+  resultsDiv.innerHTML = `
+    <h2>You are: ${maxCategory}</h2>
+    <p>${category.description}</p>
+    <h3>Strengths</h3>
+    <p>${category.strengths}</p>
+    <h3>Weaknesses</h3>
+    <p>${category.weaknesses}</p>
+    <h3>Recommended Products</h3>
+    <ul>${recommendations}</ul>
+  `;
+}
+
 window.onload = () => {
   loadQuestion(0);
 };
+'''
+
+# Saving the corrected script.js file
+script_path = '/mnt/data/script.js'
+with open(script_path, 'w') as file:
+    file.write(script_js_complete)
+
+script_path
