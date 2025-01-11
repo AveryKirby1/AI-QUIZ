@@ -20,10 +20,90 @@ const quizData = [
     },
     name: "q2"
   },
-  // Add remaining questions here
+  {
+    question: "You walk into a store to buy toothpaste and leave with...",
+    options: {
+      A: "Nothing—it was overpriced.",
+      B: "Toothpaste and a backup tube.",
+      C: "Toothpaste, snacks, a magazine, and a cute mug.",
+      D: "Toothpaste and a donation to the charity box."
+    },
+    name: "q3"
+  },
+  {
+    question: "Your boss offers you a $10,000 raise. What’s your first thought?",
+    options: {
+      A: "Finally, I can pay off those bills.",
+      B: "Great! I’ll put it into retirement.",
+      C: "Time to plan that dream vacation!",
+      D: "Awesome—maybe I can help a family member."
+    },
+    name: "q4"
+  },
+  {
+    question: "A friend calls you crying about a $1,000 car repair bill. What do you do?",
+    options: {
+      A: "Sympathize but avoid offering help.",
+      B: "Offer budgeting advice and suggest a cheaper mechanic.",
+      C: "Venmo them $100 as a gift.",
+      D: "Lend them the money if you can, no strings attached."
+    },
+    name: "q5"
+  },
+  {
+    question: "Your dream vacation is calling, but you’re $2,000 short. How do you handle it?",
+    options: {
+      A: "Cancel the trip—better safe than sorry.",
+      B: "Delay and save until you have enough.",
+      C: "Book it anyway!",
+      D: "Ask friends or family to split costs."
+    },
+    name: "q6"
+  },
+  {
+    question: "Your favorite coffee shop just raised prices. Do you...",
+    options: {
+      A: "Stop going and switch to home coffee.",
+      B: "Go less often to keep costs in check.",
+      C: "Keep going and don’t think twice.",
+      D: "Still go, but treat someone else to coffee."
+    },
+    name: "q7"
+  },
+  {
+    question: "You’re at a party and someone mentions investing in cryptocurrency. What’s your reaction?",
+    options: {
+      A: "Sounds risky—I’ll stick to savings.",
+      B: "I’ll research it more before deciding.",
+      C: "I’ll throw in $100 and see what happens!",
+      D: "I’ll invest but also share my learnings."
+    },
+    name: "q8"
+  },
+  {
+    question: "You’re browsing online and see a limited edition gadget for $500. What do you do?",
+    options: {
+      A: "Skip it—you don’t need it.",
+      B: "Add it to your wishlist for later.",
+      C: "Buy it immediately before it sells out!",
+      D: "Suggest a group discount to your friends."
+    },
+    name: "q9"
+  },
+  {
+    question: "You’ve had a long week and need to relax. How do you treat yourself?",
+    options: {
+      A: "Go for a quiet walk—it’s free and refreshing.",
+      B: "Buy a new book or something small.",
+      C: "Plan a big night out with friends.",
+      D: "Cook dinner for friends or treat someone to a meal."
+    },
+    name: "q10"
+  }
 ];
 
 let currentQuestionIndex = 0;
+let answers = {};
 
 function loadQuestion(index) {
   const quizSteps = document.getElementById("quiz-steps");
@@ -67,6 +147,7 @@ document.getElementById("next-btn").addEventListener("click", () => {
   const selectedOption = currentQuestion.querySelector("input[type='radio']:checked");
 
   if (selectedOption) {
+    answers[quizData[currentQuestionIndex].name] = selectedOption.value;
     currentQuestionIndex++;
     if (currentQuestionIndex < quizData.length) {
       loadQuestion(currentQuestionIndex);
@@ -77,7 +158,8 @@ document.getElementById("next-btn").addEventListener("click", () => {
 });
 
 document.getElementById("see-results-btn").addEventListener("click", () => {
-  alert("Results calculation to be implemented.");
+  const results = document.getElementById("results");
+  results.innerHTML = "<h2>Results will be shown here</h2>"; // Placeholder for grading logic
 });
 
 // Load the first question on page load
