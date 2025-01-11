@@ -1,116 +1,86 @@
 
-const emotionsMap = {
-  q1: {
-    A: ["Anxiety", "Responsibility", "Morality", "Fear", "Compassion"],
-    B: ["Security", "Prudence", "Relief", "Satisfaction", "Calmness"],
-    C: ["Joy", "Excitement", "Impulsivity", "Satisfaction", "Contentment"],
-    D: ["Generosity", "Connection", "Gratitude", "Altruism", "Happiness"]
+const quizData = [
+  {
+    question: "You’ve just found $500 on the ground. What’s the first thing you do?",
+    options: {
+      A: "Panic and try to find its rightful owner.",
+      B: "Deposit it immediately into your savings account.",
+      C: "Treat yourself to that thing you’ve had your eye on.",
+      D: "Split it—some for you, some for charity or a friend."
+    },
+    name: "q1"
   },
-  q2: {
-    A: ["Discomfort", "Shame", "Guilt", "Avoidance", "Self-Sacrifice"],
-    B: ["Confidence", "Fairness", "Self-Respect", "Calmness", "Assertiveness"],
-    C: ["Carefreeness", "Generosity", "Joy", "Humor", "Acceptance"],
-    D: ["Altruism", "Connection", "Gratitude", "Happiness", "Fulfillment"]
+  {
+    question: "Your friend asks you to split a $400 dinner bill evenly, but you only had a salad. What’s your move?",
+    options: {
+      A: "Quietly pay the full amount to avoid conflict.",
+      B: "Politely explain the situation and ask to adjust the bill.",
+      C: "Laugh it off and pay the full amount anyway.",
+      D: "Pay the full amount and feel good knowing it made the group happy."
+    },
+    name: "q2"
   },
-  q3: {
-    A: ["Frustration", "Restraint", "Skepticism", "Disappointment", "Self-Control"],
-    B: ["Preparedness", "Practicality", "Contentment", "Security", "Satisfaction"],
-    C: ["Excitement", "Impulsivity", "Indulgence", "Curiosity", "Joy"],
-    D: ["Generosity", "Fulfillment", "Purpose", "Connection", "Kindness"]
-  },
-  q4: {
-    A: ["Relief", "Responsibility", "Hope", "Security", "Gratitude"],
-    B: ["Confidence", "Security", "Discipline", "Contentment", "Planning"],
-    C: ["Excitement", "Joy", "Ambition", "Optimism", "Anticipation"],
-    D: ["Compassion", "Gratitude", "Connection", "Altruism", "Happiness"]
-  },
-  q5: {
-    A: ["Concern", "Guilt", "Self-Preservation", "Discomfort", "Distance"],
-    B: ["Helpfulness", "Problem-Solving", "Responsibility", "Calmness", "Empathy"],
-    C: ["Kindness", "Generosity", "Empathy", "Connection", "Altruism"],
-    D: ["Trust", "Selflessness", "Connection", "Generosity", "Hope"]
-  },
-  q6: {
-    A: ["Caution", "Regret", "Practicality", "Disappointment", "Security"],
-    B: ["Patience", "Responsibility", "Determination", "Hope", "Calmness"],
-    C: ["Impulsivity", "Excitement", "Optimism", "Joy", "Adventure"],
-    D: ["Collaboration", "Connection", "Resourcefulness", "Optimism", "Gratitude"]
-  },
-  q7: {
-    A: ["Frustration", "Practicality", "Discipline", "Annoyance", "Self-Control"],
-    B: ["Balance", "Control", "Adaptation", "Calmness", "Contentment"],
-    C: ["Carefreeness", "Satisfaction", "Indulgence", "Joy", "Contentment"],
-    D: ["Generosity", "Connection", "Joy", "Fulfillment", "Kindness"]
-  },
-  q8: {
-    A: ["Skepticism", "Caution", "Prudence", "Security", "Anxiety"],
-    B: ["Curiosity", "Responsibility", "Diligence", "Caution", "Confidence"],
-    C: ["Excitement", "Impulsivity", "Curiosity", "Adventure", "Optimism"],
-    D: ["Collaboration", "Optimism", "Generosity", "Curiosity", "Confidence"]
-  },
-  q9: {
-    A: ["Restraint", "Discipline", "Contentment", "Practicality", "Calmness"],
-    B: ["Thoughtfulness", "Patience", "Anticipation", "Calmness", "Satisfaction"],
-    C: ["Excitement", "Urgency", "Satisfaction", "Impulsivity", "Joy"],
-    D: ["Creativity", "Collaboration", "Resourcefulness", "Generosity", "Joy"]
-  },
-  q10: {
-    A: ["Calmness", "Introspection", "Simplicity", "Contentment", "Relief"],
-    B: ["Contentment", "Indulgence", "Joy", "Curiosity", "Satisfaction"],
-    C: ["Excitement", "Social Energy", "Joy", "Connection", "Celebration"],
-    D: ["Connection", "Generosity", "Fulfillment", "Happiness", "Compassion"]
-  }
-};
+  // Add remaining questions here
+];
 
-const categories = {
-  Planner: {
-    description: "You are the master of practicality and preparation. You approach financial decisions with thoughtfulness, responsibility, and an eye toward long-term security.",
-    emotions: ["Anxiety", "Responsibility", "Security", "Prudence", "Relief", "Satisfaction", "Calmness", "Contentment", "Preparedness", "Practicality", "Purpose", "Discipline", "Planning", "Ambition", "Hope", "Determination", "Caution", "Patience", "Control", "Self-Control", "Skepticism", "Balance", "Diligence", "Thoughtfulness", "Self-Preservation", "Distance", "Regret", "Fairness", "Problem-Solving", "Helpfulness", "Simplicity", "Confidence"]
-  },
-  Adventurer: {
-    description: "Life is a journey, and you are ready to explore every path it takes you on!",
-    emotions: ["Joy", "Excitement", "Impulsivity", "Curiosity", "Adventure", "Optimism", "Anticipation", "Creativity", "Exploration", "Urgency", "Celebration", "Humor", "Enthusiasm", "Satisfaction", "Social Energy", "Selflessness", "Assertiveness", "Acceptance", "Confidence"]
-  },
-  Connector: {
-    description: "For you, money is about building relationships and making the world a better place.",
-    emotions: ["Generosity", "Connection", "Gratitude", "Altruism", "Happiness", "Kindness", "Empathy", "Trust", "Self-Respect", "Friendship", "Compassion", "Carefreeness", "Collaboration", "Resourcefulness", "Fulfillment", "Purpose", "Self-Sacrifice", "Fairness", "Problem-Solving"]
-  },
-  Realist: {
-    description: "Grounded, cautious, and practical—you see the financial world as it is.",
-    emotions: ["Morality", "Fear", "Concern", "Discomfort", "Shame", "Guilt", "Avoidance", "Frustration", "Restraint", "Disappointment", "Annoyance", "Adaptation", "Self-Control", "Skepticism", "Thoughtfulness", "Regret", "Helpfulness", "Acceptance", "Introspection"]
-  }
-};
+let currentQuestionIndex = 0;
 
-document.getElementById("submit-btn").addEventListener("click", function (event) {
-  event.preventDefault();
+function loadQuestion(index) {
+  const quizSteps = document.getElementById("quiz-steps");
+  quizSteps.innerHTML = "";
 
-  const formData = new FormData(document.getElementById("quiz-form"));
-  const emotionCount = {};
+  const questionData = quizData[index];
+  const questionDiv = document.createElement("div");
+  questionDiv.classList.add("question", "active");
 
-  for (let [question, answer] of formData.entries()) {
-    const emotions = emotionsMap[question][answer];
-    if (emotions) {
-      emotions.forEach(emotion => {
-        emotionCount[emotion] = (emotionCount[emotion] || 0) + 1;
-      });
-    }
+  const questionTitle = document.createElement("h2");
+  questionTitle.textContent = questionData.question;
+
+  questionDiv.appendChild(questionTitle);
+
+  for (const [key, value] of Object.entries(questionData.options)) {
+    const optionLabel = document.createElement("label");
+    optionLabel.innerHTML = `<input type="radio" name="${questionData.name}" value="${key}"> ${value}`;
+    questionDiv.appendChild(optionLabel);
   }
 
-  let maxCategory = "";
-  let maxCount = 0;
+  quizSteps.appendChild(questionDiv);
 
-  for (let [category, data] of Object.entries(categories)) {
-    const count = data.emotions.reduce((sum, emotion) => sum + (emotionCount[emotion] || 0), 0);
-    if (count > maxCount) {
-      maxCategory = category;
-      maxCount = count;
-    }
-  }
+  updateButtons();
+}
 
-  const results = document.getElementById("results");
-  if (maxCategory) {
-    results.innerHTML = `<h2>You are: ${maxCategory}</h2><p>${categories[maxCategory].description}</p>`;
+function updateButtons() {
+  const nextBtn = document.getElementById("next-btn");
+  const seeResultsBtn = document.getElementById("see-results-btn");
+
+  if (currentQuestionIndex < quizData.length - 1) {
+    nextBtn.classList.remove("hidden");
+    seeResultsBtn.classList.add("hidden");
   } else {
-    results.innerHTML = "<p>No results could be determined. Please complete all questions.</p>";
+    nextBtn.classList.add("hidden");
+    seeResultsBtn.classList.remove("hidden");
+  }
+}
+
+document.getElementById("next-btn").addEventListener("click", () => {
+  const currentQuestion = document.querySelector(".question.active");
+  const selectedOption = currentQuestion.querySelector("input[type='radio']:checked");
+
+  if (selectedOption) {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < quizData.length) {
+      loadQuestion(currentQuestionIndex);
+    }
+  } else {
+    alert("Please select an answer before proceeding.");
   }
 });
+
+document.getElementById("see-results-btn").addEventListener("click", () => {
+  alert("Results calculation to be implemented.");
+});
+
+// Load the first question on page load
+window.onload = () => {
+  loadQuestion(0);
+};

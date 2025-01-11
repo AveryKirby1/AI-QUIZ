@@ -10,98 +10,13 @@
 <body>
   <div class="quiz-container">
     <h1>Financial Emotional Attachment Quiz</h1>
-    <form id="quiz-form">
-      <!-- Question 1 -->
-      <div class="question">
-        <h2>1. You’ve just found $500 on the ground. What’s the first thing you do?</h2>
-        <label><input type="radio" name="q1" value="A"> Panic and try to find its rightful owner.</label>
-        <label><input type="radio" name="q1" value="B"> Deposit it immediately into your savings account.</label>
-        <label><input type="radio" name="q1" value="C"> Treat yourself to that thing you’ve had your eye on.</label>
-        <label><input type="radio" name="q1" value="D"> Split it—some for you, some for charity or a friend.</label>
-      </div>
-
-      <!-- Question 2 -->
-      <div class="question">
-        <h2>2. Your friend asks you to split a $400 dinner bill evenly, but you only had a salad. What’s your move?</h2>
-        <label><input type="radio" name="q2" value="A"> Quietly pay the full amount to avoid conflict.</label>
-        <label><input type="radio" name="q2" value="B"> Politely explain the situation and ask to adjust the bill.</label>
-        <label><input type="radio" name="q2" value="C"> Laugh it off and pay the full amount anyway.</label>
-        <label><input type="radio" name="q2" value="D"> Pay the full amount and feel good knowing it made the group happy.</label>
-      </div>
-
-      <!-- Question 3 -->
-      <div class="question">
-        <h2>3. You walk into a store to buy toothpaste and leave with...</h2>
-        <label><input type="radio" name="q3" value="A"> Nothing—it was overpriced.</label>
-        <label><input type="radio" name="q3" value="B"> Toothpaste and a backup tube.</label>
-        <label><input type="radio" name="q3" value="C"> Toothpaste, snacks, a magazine, and a cute mug.</label>
-        <label><input type="radio" name="q3" value="D"> Toothpaste and a donation to the charity box.</label>
-      </div>
-
-      <!-- Question 4 -->
-      <div class="question">
-        <h2>4. Your boss offers you a $10,000 raise. What’s your first thought?</h2>
-        <label><input type="radio" name="q4" value="A"> "Finally, I can pay off those bills."</label>
-        <label><input type="radio" name="q4" value="B"> "Great! I’ll put it into retirement."</label>
-        <label><input type="radio" name="q4" value="C"> "Time to plan that dream vacation!"</label>
-        <label><input type="radio" name="q4" value="D"> "Awesome—maybe I can help a family member."</label>
-      </div>
-
-      <!-- Question 5 -->
-      <div class="question">
-        <h2>5. A friend calls you crying about a $1,000 car repair bill. What do you do?</h2>
-        <label><input type="radio" name="q5" value="A"> Sympathize but avoid offering help.</label>
-        <label><input type="radio" name="q5" value="B"> Offer budgeting advice and suggest a cheaper mechanic.</label>
-        <label><input type="radio" name="q5" value="C"> Venmo them $100 as a gift.</label>
-        <label><input type="radio" name="q5" value="D"> Lend them the money if you can, no strings attached.</label>
-      </div>
-
-      <!-- Question 6 -->
-      <div class="question">
-        <h2>6. Your dream vacation is calling, but you’re $2,000 short. How do you handle it?</h2>
-        <label><input type="radio" name="q6" value="A"> Cancel the trip—better safe than sorry.</label>
-        <label><input type="radio" name="q6" value="B"> Delay and save until you have enough.</label>
-        <label><input type="radio" name="q6" value="C"> Book it anyway!</label>
-        <label><input type="radio" name="q6" value="D"> Ask friends or family to split costs.</label>
-      </div>
-
-      <!-- Question 7 -->
-      <div class="question">
-        <h2>7. Your favorite coffee shop just raised prices. Do you...</h2>
-        <label><input type="radio" name="q7" value="A"> Stop going and switch to home coffee.</label>
-        <label><input type="radio" name="q7" value="B"> Go less often to keep costs in check.</label>
-        <label><input type="radio" name="q7" value="C"> Keep going and don’t think twice.</label>
-        <label><input type="radio" name="q7" value="D"> Still go, but treat someone else to coffee.</label>
-      </div>
-
-      <!-- Question 8 -->
-      <div class="question">
-        <h2>8. You’re at a party and someone mentions investing in cryptocurrency. What’s your reaction?</h2>
-        <label><input type="radio" name="q8" value="A"> "Sounds risky—I’ll stick to savings."</label>
-        <label><input type="radio" name="q8" value="B"> "I’ll research it more before deciding."</label>
-        <label><input type="radio" name="q8" value="C"> "I’ll throw in $100 and see what happens!"</label>
-        <label><input type="radio" name="q8" value="D"> "I’ll invest but also share my learnings."</label>
-      </div>
-
-      <!-- Question 9 -->
-      <div class="question">
-        <h2>9. You’re browsing online and see a limited edition gadget for $500. What do you do?</h2>
-        <label><input type="radio" name="q9" value="A"> Skip it—you don’t need it.</label>
-        <label><input type="radio" name="q9" value="B"> Add it to your wishlist for later.</label>
-        <label><input type="radio" name="q9" value="C"> Buy it immediately before it sells out!</label>
-        <label><input type="radio" name="q9" value="D"> Suggest a group discount to your friends.</label>
-      </div>
-
-      <!-- Question 10 -->
-      <div class="question">
-        <h2>10. You’ve had a long week and need to relax. How do you treat yourself?</h2>
-        <label><input type="radio" name="q10" value="A"> Go for a quiet walk—it’s free and refreshing.</label>
-        <label><input type="radio" name="q10" value="B"> Buy a new book or something small.</label>
-        <label><input type="radio" name="q10" value="C"> Plan a big night out with friends.</label>
-        <label><input type="radio" name="q10" value="D"> Cook dinner for friends or treat someone to a meal.</label>
-      </div>
-    </form>
-    <button id="submit-btn">See Results</button>
+    <div id="quiz-steps">
+      <!-- Questions will be dynamically inserted here by script.js -->
+    </div>
+    <div id="navigation-buttons">
+      <button id="next-btn" class="hidden">Next</button>
+      <button id="see-results-btn" class="hidden">See Results</button>
+    </div>
     <div id="results"></div>
   </div>
   <script src="script.js"></script>
