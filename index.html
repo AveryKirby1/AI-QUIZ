@@ -1,24 +1,39 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Financial Emotional Attachment Quiz</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="quiz-container">
     <h1>Financial Emotional Attachment Quiz</h1>
-    <div id="quiz-steps">
-      <!-- Questions will be dynamically inserted here by script.js -->
+    <!-- Quiz Section -->
+    <div id="quiz-section">
+      <!-- Question Text -->
+      <div id="question-container">
+        <h2 id="question-text"></h2>
+      </div>
+
+      <!-- Answer Choices -->
+      <div id="answers-container"></div>
+
+      <!-- Navigation Buttons -->
+      <div class="buttons-container">
+        <button id="next-btn" class="quiz-btn" onclick="goToNextQuestion()">Next</button>
+        <button id="results-btn" class="quiz-btn" onclick="showResults()">See Results</button>
+      </div>
     </div>
-    <div id="navigation-buttons">
-      <button id="next-btn" class="hidden">Next</button>
-      <button id="see-results-btn" class="hidden">See Results</button>
+
+    <!-- Results Section (hidden by default) -->
+    <div id="results-section" class="hidden">
+      <h2 id="category-title"></h2>
+      <p id="category-description"></p>
+      <div id="product-recommendations"></div>
     </div>
-    <div id="results"></div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
