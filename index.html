@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Quiz 3.0 Prototype</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>AI Quiz 3.0 Prototype</h1>
+
+    <!-- QUIZ SECTION -->
+    <div id="quiz-section">
+      <div id="question-container">
+        <h2 id="question-text"></h2>
+      </div>
+      <div id="answers-container"></div>
+
+      <div class="buttons-container">
+        <!-- In-line container with NEXT & SEE RESULTS on the right,
+             and question tracker on the left. -->
+        <span id="question-tracker" class="question-tracker"></span>
+        <div>
+          <button id="next-btn" class="quiz-btn" onclick="goToNextQuestion()">Next</button>
+          <button id="results-btn" class="quiz-btn" onclick="showResults()">See Results</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTS SECTION (hidden by default) -->
+    <div id="results-section" class="hidden">
+      <div class="results-header">
+        <h2 id="results-title"></h2>
+        <h3 id="category-name"></h3>
+        <!-- Category tagline / description -->
+        <p id="category-description"></p>
+      </div>
+
+      <!-- Distribution chart area -->
+      <div class="distribution-container">
+        <h3>Your <span class="key-span">key</span> money signs:</h3>
+        <div id="category-bars"></div>
+      </div>
+
+      <!-- Where you excel / watch out for -->
+      <div class="insight-container">
+        <div class="insight-box" id="excel-box">
+          <h4>Where you excel...</h4>
+          <ul id="excel-list"></ul>
+        </div>
+        <div class="insight-box" id="watchout-box">
+          <h4>Watch out for...</h4>
+          <ul id="watchout-list"></ul>
+        </div>
+      </div>
+
+      <!-- Product recommendations -->
+      <h2 id="products-title" class="fuel-title"></h2>
+      <div class="product-recs-container" id="product-recommendations"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
