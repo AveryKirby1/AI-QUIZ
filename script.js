@@ -216,8 +216,7 @@ const questions = [
 
 /****************************************************
  * CATEGORY DEFINITIONS
- * The only change here: In the Planner category,
- * the MIDDLE product is now "Laurel Road Savings"
+ * Updated to include longer product descriptions
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -241,9 +240,9 @@ const categoriesData = {
       "Paralysis by Analysis – Don’t let too much planning stop you from taking action."
     ],
     products: [
-      "Key Active Saver® Account – A savings account with competitive rates.",
-      "Laurel Road Savings – A flexible high-yield savings for methodical planners.",
-      "Key Secured Credit Card® – Build credit without taking big risks."
+      "Key Active Saver® Account – Grow your savings steadily with competitive rates and automatic transfers, perfect for planners who want a hands-off way to achieve long-term goals.",
+      "Laurel Road Savings – Earn high interest without locking up your funds. This flexible account is ideal for methodical savers who value both security and accessibility.",
+      "Key Secured Credit Card® – Build credit responsibly with a secured card backed by your savings. Perfect for risk-averse planners who want controlled financial growth."
     ],
     emotions: [
       "Anxiety","Responsibility","Security","Prudence","Relief","Satisfaction",
@@ -273,9 +272,9 @@ const categoriesData = {
       "Impulse Spending – A set budget for “fun money” can help you stay in control."
     ],
     products: [
-      "Key Smart Checking® – Perfect for on-the-go, no monthly fees.",
-      "Key Rewards Credit Card® – Earn points on everyday purchases and experiences.",
-      "Laurel Road Savings – Higher-interest savings for your next big adventure."
+      "Key Smart Checking® – Stay ready for life’s next adventure with quick, fee-free access to your funds and easy mobile banking wherever you go.",
+      "Key Rewards Credit Card® – Turn everyday purchases into travel, dining, or experience rewards. Perfect for adventurers who want to make the most of their spending.",
+      "Laurel Road Savings – Keep your savings growing with high-interest returns and no monthly fees. Great for adventurers needing a solid financial base."
     ],
     emotions: [
       "Joy","Excitement","Impulsivity","Curiosity","Adventure","Optimism","Anticipation",
@@ -303,9 +302,9 @@ const categoriesData = {
       "Difficulty Saying No – You can’t help everyone all the time."
     ],
     products: [
-      "Key Family Checking® – Manage shared expenses with loved ones easily.",
-      "Laurel Road Loyalty Savings – Earn better rates for long-term savings goals.",
-      "Key Cashback Credit Card® – Earn cash-back to share or donate."
+      "Key Family Checking® – Support your loved ones and manage shared expenses easily. This account offers simple, secure tools to keep finances collaborative.",
+      "Laurel Road Loyalty Savings – Earn better rates the longer you save. A great way to achieve financial goals while staying ready to support others.",
+      "Key Cashback Credit Card® – Earn cash back on everyday purchases and use the rewards to give back to your community or loved ones."
     ],
     emotions: [
       "Generosity","Connection","Gratitude","Altruism","Happiness","Kindness","Empathy",
@@ -332,9 +331,9 @@ const categoriesData = {
       "Over-Caution – Growth can require stepping outside your comfort zone."
     ],
     products: [
-      "Key Safe Checking® – Overdraft protection and strong fraud prevention.",
-      "Laurel Road High Yield Savings – Steady returns with low risk.",
-      "Laurel Road Loan – Predictable terms for larger expenses."
+      "Key Safe Checking® – Protect your funds with overdraft protection and fraud prevention. Great for risk-conscious realists prioritizing secure money management.",
+      "Laurel Road High Yield Savings – Steady, reliable growth with competitive rates and no monthly fees. Ideal for cautious savers looking for predictable returns.",
+      "Laurel Road Loan – Structured, low-rate loans with clear terms. Perfect for realists seeking predictable solutions for big expenses without financial surprises."
     ],
     emotions: [
       "Morality","Fear","Concern","Discomfort","Shame","Guilt","Avoidance","Frustration",
@@ -528,6 +527,7 @@ function displayFinalResults(winner, sortedArray) {
     const card = document.createElement("div");
     card.className = "product-card";
 
+    // The text is in the format: "PRODUCT NAME – PRODUCT DESCRIPTION"
     const title = document.createElement("h5");
     title.textContent = prod.split("–")[0].trim();
 
