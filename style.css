@@ -48,15 +48,15 @@ body {
 
 /* Make radio circles bigger */
 #answers-container input[type="radio"] {
-  transform: scale(1.2);  /* make them bigger visually */
-  margin-right: 6px;      /* a little space before text */
+  transform: scale(1.2);
+  margin-right: 6px;
 }
 
-/* Buttons */
+/* Buttons + tracker */
 .buttons-container {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* ensures tracker is aligned well */
+  align-items: center; 
   margin-top: 20px;
 }
 
@@ -76,7 +76,7 @@ body {
   font-size: 0.95rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-left: 5px; /* small gap between Next and See Results if both show */
+  margin-left: 5px; 
 }
 
 .quiz-btn:hover {
@@ -191,7 +191,7 @@ body {
 .short-summary {
   display: none; /* hidden by default */
   padding: 6px 10px;
-  margin: 4px 0 10px 140px; /* align with label offset */
+  margin: 4px 0 10px 140px;
   background: #f0f8ff;
   border-left: 4px solid #007BFF;
   border-radius: 4px;
@@ -246,7 +246,7 @@ body {
   display: flex;            
   flex-direction: column;
   justify-content: space-between;
-  flex: 1 1 280px; /* slightly larger min width for bigger text area */
+  flex: 1 1 280px; 
   min-width: 280px;
   max-width: 280px;
   border: 1px solid #eee;
@@ -254,7 +254,7 @@ body {
   padding: 15px;
   background: #f9f9f9;
   text-align: center;
-  min-height: 240px; /* allow more vertical space for longer text */
+  min-height: 240px;
 }
 
 .product-card h5 {
