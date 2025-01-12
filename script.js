@@ -1,5 +1,5 @@
 /****************************************************
- * QUIZ DATA - 10 Questions, Each with 4 Answers
+ * QUIZ DATA - 10 Questions, 4 Answers each
  ****************************************************/
 const questions = [
   {
@@ -215,20 +215,16 @@ const questions = [
 ];
 
 /****************************************************
- * CATEGORIES + Summaries, so we can show the top category
- * We'll also add "excel" and "watchOut" arrays for bullet points
+ * CATEGORY DEFINITIONS
  ****************************************************/
 const categoriesData = {
   Planner: {
     name: "the planner",
-    tagline: "You’re all about strategy and preparation!",
     description: `
-      You are the master of practicality and preparation. 
+      You are the master of practicality and preparation.
       You approach financial decisions with thoughtfulness, responsibility, and an 
       eye toward long-term security. While your careful approach keeps you grounded, 
-      you might sometimes miss out on spontaneous opportunities. 
-      For you, financial peace of mind comes from knowing you’ve 
-      prepared for every contingency.
+      you might sometimes miss out on spontaneous opportunities.
     `,
     excel: [
       "Long-Term Strategist – Great at planning for the future.",
@@ -254,24 +250,19 @@ const categoriesData = {
   },
   Adventurer: {
     name: "the adventurer",
-    tagline: "Life is a journey, and you’re ready to explore!",
     description: `
       Financial decisions for you are often about excitement, curiosity, 
       and seizing new opportunities. You embrace risk with a positive mindset, 
       driven by optimism and the thrill of the unknown. 
-      While this adventurous spirit makes life fun, it can also lead to impulsive spending. 
-      You feel most fulfilled when you’re trying something new, exploring different 
-      investments, or planning a dream vacation. For you, money isn’t just a tool—
-      it’s a way to experience life to its fullest.
     `,
     excel: [
       "Bold Decision-Maker – Not afraid to jump on an opportunity.",
       "Curious and Open-Minded – Always looking for ways to grow.",
-      "Optimistic Risk-Taker – Trusting your instincts to guide you."
+      "Optimistic Risk-Taker – Trusting your instincts."
     ],
     watchOut: [
       "Balancing Fun with Long-Term Goals – Keep some practical savings in mind.",
-      "Impulse Spending – A set budget for “fun money” can keep you from feeling restricted."
+      "Impulse Spending – A set budget for “fun money” can help you stay in control."
     ],
     products: [
       "Key Smart Checking® – Perfect for on-the-go, no monthly fees.",
@@ -286,17 +277,14 @@ const categoriesData = {
   },
   Connector: {
     name: "the connector",
-    tagline: "Money is about building relationships and communities.",
     description: `
-      You view finances as a tool to support your community and bond with others. 
-      Whether it’s through generosity, sharing success, or lending a helping hand, 
-      you find emotional satisfaction in giving back. You thrive in group settings 
-      and prefer collaborative ventures. However, make sure you’re also prioritizing 
-      your own financial well-being.
+      You view finances as a tool to support your community and bond with others.
+      Whether it’s through generosity or lending a helping hand, 
+      you find emotional satisfaction in giving back.
     `,
     excel: [
       "Community-Focused – You care deeply about helping others.",
-      "Collaborative – You enjoy pooling resources and shared goals.",
+      "Collaborative – You enjoy pooling resources for shared goals.",
       "Generous Spirit – Giving is part of who you are."
     ],
     watchOut: [
@@ -306,7 +294,7 @@ const categoriesData = {
     products: [
       "Key Family Checking® – Manage shared expenses with loved ones easily.",
       "Laurel Road Loyalty Savings – Earn better rates for long-term savings goals.",
-      "Key Cashback Credit Card® – Earn cash-back to share with friends or donate."
+      "Key Cashback Credit Card® – Earn cash-back to share or donate."
     ],
     emotions: [
       "Generosity","Connection","Gratitude","Altruism","Happiness","Kindness","Empathy",
@@ -316,17 +304,14 @@ const categoriesData = {
   },
   Realist: {
     name: "the realist",
-    tagline: "Grounded, cautious, and practical—you see finance as it truly is.",
     description: `
-      You prioritize managing risk, avoiding unnecessary spending, and protecting your resources. 
-      While your approach may appear conservative, it helps you navigate challenges with confidence. 
-      You often approach new trends (like crypto) with a healthy dose of skepticism. 
-      Your mindset keeps you prepared for the highs and the lows of financial life.
+      You prioritize managing risk, avoiding unnecessary spending, and protecting resources. 
+      While your approach may appear conservative, it helps you navigate challenges with confidence.
     `,
     excel: [
       "Clear-Eyed Investor – You avoid hype and see the facts.",
       "Risk-Manager – You keep spending and investing decisions rational.",
-      "Level-Headed – Rarely impulsive, you consider the outcomes carefully."
+      "Level-Headed – Rarely impulsive, you consider outcomes carefully."
     ],
     watchOut: [
       "Missing Opportunities – Sometimes, a small risk pays off.",
@@ -335,7 +320,7 @@ const categoriesData = {
     products: [
       "Key Safe Checking® – Overdraft protection and strong fraud prevention.",
       "Laurel Road High Yield Savings – Steady returns with low risk.",
-      "Laurel Road Loan – Predictable terms to help manage large expenses safely."
+      "Laurel Road Loan – Predictable terms for larger expenses."
     ],
     emotions: [
       "Morality","Fear","Concern","Discomfort","Shame","Guilt","Avoidance","Frustration",
@@ -354,6 +339,7 @@ let chosenEmotions = [];
  * ON WINDOW LOAD
  ****************************************************/
 window.onload = function() {
+  console.log("Quiz Loaded. Displaying Question 1...");
   displayQuestion(currentQuestionIndex);
   document.getElementById("results-btn").style.display = "none";
 };
@@ -400,7 +386,7 @@ function displayQuestion(index) {
  * GO TO NEXT QUESTION
  ****************************************************/
 function goToNextQuestion() {
-  // Validate
+  // Validate selection
   const selectedOption = document.querySelector(
     `input[name="question_${currentQuestionIndex}"]:checked`
   );
@@ -413,6 +399,7 @@ function goToNextQuestion() {
   chosenEmotions.push(...questions[currentQuestionIndex].answers[ansIndex].emotions);
 
   currentQuestionIndex++;
+  console.log("Moving to Question:", currentQuestionIndex + 1);
   displayQuestion(currentQuestionIndex);
 }
 
@@ -437,10 +424,10 @@ function showResults() {
   document.getElementById("quiz-section").style.display = "none";
   document.getElementById("results-section").classList.remove("hidden");
 
-  // Calculate the final distribution + top category
+  // Calculate final distribution + top category
   const { scores, winner } = calculateCategoryScores(chosenEmotions);
 
-  // Fill out results screen
+  // Display final results
   displayFinalResults(winner, scores);
 }
 
@@ -448,6 +435,8 @@ function showResults() {
  * CALCULATE SCORES
  ****************************************************/
 function calculateCategoryScores(emotions) {
+  console.log("Final chosenEmotions:", emotions);
+
   // Tally each emotion
   const tally = {};
   emotions.forEach(em => {
@@ -455,28 +444,28 @@ function calculateCategoryScores(emotions) {
   });
 
   // Score each category
-  const categoryNames = Object.keys(categoriesData);
+  const catNames = Object.keys(categoriesData);
   const scores = {};
   let maxScore = 0;
 
-  categoryNames.forEach(cat => {
-    const catEmotions = categoriesData[cat].emotions;
+  catNames.forEach(cat => {
     let catScore = 0;
-    catEmotions.forEach(ce => {
-      if (tally[ce]) {
-        catScore += tally[ce];
-      }
+    categoriesData[cat].emotions.forEach(e => {
+      if (tally[e]) catScore += tally[e];
     });
     scores[cat] = catScore;
-    if (catScore > maxScore) maxScore = catScore;
+    if (catScore > maxScore) {
+      maxScore = catScore;
+    }
   });
 
   // Find winners (in case of tie)
-  let winners = categoryNames.filter(cat => scores[cat] === maxScore);
+  const winners = catNames.filter(cat => scores[cat] === maxScore);
   let winner = winners.length > 1
     ? winners[Math.floor(Math.random() * winners.length)]
     : winners[0];
 
+  console.log("Scores:", scores, "Winner:", winner);
   return { scores, winner };
 }
 
@@ -525,8 +514,11 @@ function displayFinalResults(winner, scores) {
 
     const title = document.createElement("h5");
     title.textContent = prod.split("–")[0].trim();
+
     const detail = document.createElement("p");
-    detail.textContent = prod.split("–")[1] ? prod.split("–")[1].trim() : "";
+    detail.textContent = prod.split("–")[1]
+      ? prod.split("–")[1].trim()
+      : "";
 
     const button = document.createElement("button");
     button.className = "product-btn";
@@ -548,7 +540,7 @@ function buildDistributionBars(scores) {
   const catBarContainer = document.getElementById("category-bars");
   catBarContainer.innerHTML = "";
 
-  // We want a bar for each category
+  // Create a bar for each category
   Object.keys(scores).forEach(cat => {
     const barRow = document.createElement("div");
     barRow.className = "category-bar";
@@ -558,7 +550,7 @@ function buildDistributionBars(scores) {
     label.className = "bar-label";
     label.textContent = cat.toUpperCase();
 
-    // Background
+    // BG
     const barBg = document.createElement("div");
     barBg.className = "bar-bg";
 
