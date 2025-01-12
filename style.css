@@ -1,59 +1,109 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f9;
   color: #333;
-  margin: 0;
-  padding: 0;
 }
 
+/* Container for the entire quiz */
 .quiz-container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
+  max-width: 700px;
+  margin: 40px auto;
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+/* Title */
+.quiz-container h1 {
   text-align: center;
+  margin-bottom: 20px;
   color: #007BFF;
 }
 
-.question {
-  display: none;
+/* Question text */
+#question-container {
+  margin-bottom: 20px;
 }
 
-.question.active {
+#question-text {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Answers */
+#answers-container label {
   display: block;
+  margin: 8px 0;
+  cursor: pointer;
 }
 
-button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
+/* Buttons */
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
   margin-top: 20px;
 }
 
-button.hidden {
-  display: none;
+.quiz-btn {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
+.quiz-btn:hover {
   background-color: #0056b3;
 }
 
-#results {
+/* Hide the results section by default */
+.hidden {
+  display: none;
+}
+
+/* Results Section */
+#results-section {
   margin-top: 20px;
-  padding: 20px;
+}
+
+#category-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #007BFF;
+  margin-bottom: 10px;
+}
+
+#category-description {
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+#product-recommendations {
+  margin-top: 10px;
+  padding: 10px;
   background: #e9f5ff;
   border: 1px solid #b3e5fc;
   border-radius: 5px;
+}
+
+#product-recommendations h3 {
+  margin-bottom: 5px;
+  color: #0056b3;
+}
+
+#product-recommendations ul {
+  list-style-type: disc;
+  margin-left: 20px;
 }
