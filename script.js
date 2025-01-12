@@ -216,7 +216,7 @@ const questions = [
 
 /****************************************************
  * CATEGORY DEFINITIONS
- * Updated to include longer product descriptions
+ * (Updated to include your longer product texts)
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -365,13 +365,13 @@ function displayQuestion(index) {
   const nextBtn = document.getElementById("next-btn");
   const resultsBtn = document.getElementById("results-btn");
 
-  // Clear previous content
+  // Clear previous answers
   answersEl.innerHTML = "";
 
   const qObj = questions[index];
   questionEl.textContent = qObj.question;
 
-  // Create radio options
+  // Radio options
   qObj.answers.forEach((ans, ansIdx) => {
     const label = document.createElement("label");
     const radio = document.createElement("input");
@@ -384,7 +384,7 @@ function displayQuestion(index) {
     answersEl.appendChild(label);
   });
 
-  // Show or hide buttons
+  // Show or hide the Next / Results buttons
   if (index < questions.length - 1) {
     nextBtn.style.display = "inline-block";
     resultsBtn.style.display = "none";
@@ -392,13 +392,24 @@ function displayQuestion(index) {
     nextBtn.style.display = "none";
     resultsBtn.style.display = "inline-block";
   }
+
+  // Update question tracker: e.g., "1 of 10"
+  updateQuestionTracker(index);
+}
+
+/****************************************************
+ * UPDATE QUESTION TRACKER
+ ****************************************************/
+function updateQuestionTracker(index) {
+  const trackerEl = document.getElementById("question-tracker");
+  const totalQ = questions.length;
+  trackerEl.textContent = `${index + 1} of ${totalQ}`;
 }
 
 /****************************************************
  * GO TO NEXT QUESTION
  ****************************************************/
 function goToNextQuestion() {
-  // Validate selection
   const selectedOption = document.querySelector(
     `input[name="question_${currentQuestionIndex}"]:checked`
   );
@@ -418,7 +429,6 @@ function goToNextQuestion() {
  * SHOW RESULTS
  ****************************************************/
 function showResults() {
-  // Validate last question
   const selectedOption = document.querySelector(
     `input[name="question_${currentQuestionIndex}"]:checked`
   );
@@ -427,7 +437,7 @@ function showResults() {
     return;
   }
 
-  // Add final question's emotions
+  // Final question’s emotions
   const ansIndex = parseInt(selectedOption.value);
   chosenEmotions.push(...questions[currentQuestionIndex].answers[ansIndex].emotions);
 
@@ -435,7 +445,7 @@ function showResults() {
   document.getElementById("quiz-section").style.display = "none";
   document.getElementById("results-section").classList.remove("hidden");
 
-  // Calculate distribution + top category
+  // Calculate final category & display
   const { sortedArray, winner } = calculateCategoryScores(chosenEmotions);
   displayFinalResults(winner, sortedArray);
 }
@@ -444,13 +454,11 @@ function showResults() {
  * CALCULATE & SORT SCORES
  ****************************************************/
 function calculateCategoryScores(emotions) {
-  // Tally each emotion
   const tally = {};
   emotions.forEach(em => {
     tally[em] = (tally[em] || 0) + 1;
   });
 
-  // Score each category
   const catNames = Object.keys(categoriesData);
   const scores = {};
   let maxScore = 0;
@@ -466,15 +474,14 @@ function calculateCategoryScores(emotions) {
     }
   });
 
-  // Find winner (handle tie by picking random among top scorers)
+  // If tie
   const winners = catNames.filter(cat => scores[cat] === maxScore);
   let winner = winners.length > 1
     ? winners[Math.floor(Math.random() * winners.length)]
     : winners[0];
 
-  // Sort from highest to lowest
+  // Sort high → low
   const sortedArray = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-
   return { sortedArray, winner };
 }
 
@@ -483,22 +490,15 @@ function calculateCategoryScores(emotions) {
  ****************************************************/
 function displayFinalResults(winner, sortedArray) {
   const catData = categoriesData[winner];
-
-  // 1) "You are a / an ____"
   const resultsTitle = document.getElementById("results-title");
   resultsTitle.textContent = `you are ${catData.article} `;
-
   const catNameEl = document.getElementById("category-name");
   catNameEl.textContent = catData.name;
-
-  // 2) Category description
   const catDescEl = document.getElementById("category-description");
   catDescEl.innerHTML = catData.description;
 
-  // 3) Build the distribution bars (sorted high → low)
   buildDistributionBars(sortedArray, winner);
 
-  // 4) Where you excel + watch out
   const excelList = document.getElementById("excel-list");
   const watchoutList = document.getElementById("watchout-list");
   excelList.innerHTML = "";
@@ -516,18 +516,17 @@ function displayFinalResults(winner, sortedArray) {
     watchoutList.appendChild(li);
   });
 
-  // 5) Product Recommendations Title
+  // Title for products
   const productsTitle = document.getElementById("products-title");
   productsTitle.textContent = catData.headingForProducts;
 
-  // 6) Product Recommendations
+  // Product cards
   const productContainer = document.getElementById("product-recommendations");
   productContainer.innerHTML = "";
   catData.products.forEach(prod => {
     const card = document.createElement("div");
     card.className = "product-card";
 
-    // The text is in the format: "PRODUCT NAME – PRODUCT DESCRIPTION"
     const title = document.createElement("h5");
     title.textContent = prod.split("–")[0].trim();
 
@@ -548,24 +547,21 @@ function displayFinalResults(winner, sortedArray) {
 }
 
 /****************************************************
- * BUILD DISTRIBUTION BARS (WITH EXPAND/COLLAPSE)
+ * BUILD DISTRIBUTION BARS
  ****************************************************/
 function buildDistributionBars(sortedArray, winner) {
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0);
   const catBarContainer = document.getElementById("category-bars");
   catBarContainer.innerHTML = "";
 
-  // For each [catKey, score] in sortedArray
   sortedArray.forEach(([cat, score]) => {
     const barRow = document.createElement("div");
     barRow.className = "category-bar";
 
-    // Label
     const label = document.createElement("div");
     label.className = "bar-label";
     label.textContent = cat.toUpperCase();
 
-    // If cat != winner, add a plus sign for toggling short summary
     if (cat !== winner) {
       const toggle = document.createElement("span");
       toggle.className = "expand-toggle";
@@ -574,15 +570,12 @@ function buildDistributionBars(sortedArray, winner) {
       label.appendChild(toggle);
     }
 
-    // Bar BG
     const barBg = document.createElement("div");
     barBg.className = "bar-bg";
 
-    // Bar Fill
     const fill = document.createElement("div");
     fill.className = "bar-fill";
 
-    // Percentage
     let pct = total === 0 ? 0 : Math.round((score / total) * 100);
     fill.style.width = pct + "%";
 
@@ -597,7 +590,7 @@ function buildDistributionBars(sortedArray, winner) {
 
     catBarContainer.appendChild(barRow);
 
-    // If cat != winner, create a short summary box below the bar
+    // Short summary for non-winners
     if (cat !== winner) {
       const shortBox = document.createElement("div");
       shortBox.id = `short-${cat}`;
@@ -616,11 +609,9 @@ function toggleShortSummary(cat, toggleSpan) {
   if (!summaryDiv) return;
 
   if (summaryDiv.style.display === "block") {
-    // Hide it
     summaryDiv.style.display = "none";
     toggleSpan.textContent = "+";
   } else {
-    // Show it
     summaryDiv.style.display = "block";
     toggleSpan.textContent = "−";
   }
