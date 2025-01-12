@@ -9,37 +9,36 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f9;
   color: #333;
+  line-height: 1.5;
 }
 
-/* Container for the entire quiz */
+/* Main Container */
 .quiz-container {
-  max-width: 700px;
-  margin: 40px auto;
+  max-width: 900px;
+  margin: 30px auto;
   background: #fff;
   padding: 20px 30px;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* Title */
 .quiz-container h1 {
   text-align: center;
+  color: #d10c1e; /* Slightly referencing "KeyBank" red */
   margin-bottom: 20px;
-  color: #007BFF;
 }
 
-/* Question text */
+/* Quiz Section */
 #question-container {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #question-text {
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: bold;
   margin-bottom: 15px;
 }
 
-/* Answers */
 #answers-container label {
   display: block;
   margin: 8px 0;
@@ -54,56 +53,201 @@ body {
 }
 
 .quiz-btn {
-  background-color: #007BFF;
+  background-color: #d10c1e;
   color: #fff;
   padding: 12px 18px;
   border: none;
   border-radius: 4px;
-  font-size: 15px;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .quiz-btn:hover {
-  background-color: #0056b3;
+  background-color: #9d0a16;
 }
 
-/* Hide the results section by default */
+/* Hide results by default */
 .hidden {
   display: none;
 }
 
 /* Results Section */
 #results-section {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
-#category-title {
-  font-size: 20px;
-  font-weight: bold;
-  color: #007BFF;
-  margin-bottom: 10px;
+/* Header in results */
+.results-header {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.keybank-logo {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 120px;
+  height: auto;
+}
+
+#results-title {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #999;
+}
+
+#category-name {
+  margin-top: 5px;
+  font-size: 1.8rem;
+  color: #d10c1e;
+  text-transform: lowercase;
 }
 
 #category-description {
-  margin-bottom: 15px;
-  line-height: 1.5;
+  margin: 10px auto;
+  max-width: 600px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333;
 }
 
-#product-recommendations {
-  margin-top: 10px;
-  padding: 10px;
-  background: #e9f5ff;
-  border: 1px solid #b3e5fc;
+/* Distribution bars */
+.distribution-container {
+  margin: 20px 0;
+}
+
+.distribution-container h3 {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.key-span {
+  color: #d10c1e;
+  font-weight: bold;
+}
+
+#category-bars {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.category-bar {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.category-bar .bar-label {
+  width: 100px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.category-bar .bar-bg {
+  flex: 1;
+  background: #ddd;
   border-radius: 5px;
+  height: 20px;
+  margin: 0 10px;
+  position: relative;
 }
 
-#product-recommendations h3 {
-  margin-bottom: 5px;
-  color: #0056b3;
+.category-bar .bar-fill {
+  background-color: #d10c1e;
+  height: 20px;
+  border-radius: 5px;
+  width: 0%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-#product-recommendations ul {
+.category-bar .bar-percent {
+  width: 40px;
+  text-align: right;
+  font-size: 0.8rem;
+}
+
+/* Insights */
+.insight-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px auto;
+  max-width: 750px;
+}
+
+.insight-box {
+  width: 45%;
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 10px 15px;
+}
+
+.insight-box h4 {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #d10c1e;
+}
+
+.insight-box ul {
+  padding-left: 20px;
   list-style-type: disc;
-  margin-left: 20px;
+  font-size: 0.9rem;
+}
+
+/* Product Recommendations */
+.fuel-title {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #d10c1e;
+  margin: 20px 0 10px;
+}
+
+.product-recs-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.product-card {
+  flex: 1 1 250px;
+  min-width: 250px;
+  max-width: 250px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding: 15px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.product-card h5 {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #d10c1e;
+}
+
+.product-card p {
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.product-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.product-btn:hover {
+  background-color: #0056b3;
 }
