@@ -216,9 +216,8 @@ const questions = [
 
 /****************************************************
  * CATEGORY DEFINITIONS
- * Note that each category now has:
- *   - article: "a" or "an"
- *   - headingForProducts: the slogan to show at the bottom
+ * The only change here: In the Planner category,
+ * the MIDDLE product is now "Laurel Road Savings"
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -243,7 +242,7 @@ const categoriesData = {
     ],
     products: [
       "Key Active Saver® Account – A savings account with competitive rates.",
-      "Laurel Road Loan – Flexible loan option to handle major expenses.",
+      "Laurel Road Savings – A flexible high-yield savings for methodical planners.",
       "Key Secured Credit Card® – Build credit without taking big risks."
     ],
     emotions: [
@@ -571,7 +570,6 @@ function buildDistributionBars(sortedArray, winner) {
       const toggle = document.createElement("span");
       toggle.className = "expand-toggle";
       toggle.textContent = "+";
-      // We'll pass the cat & the toggleSpan itself
       toggle.onclick = () => toggleShortSummary(cat, toggle);
       label.appendChild(toggle);
     }
