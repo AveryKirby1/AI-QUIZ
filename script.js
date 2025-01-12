@@ -216,21 +216,15 @@ const questions = [
 
 /****************************************************
  * CATEGORY DEFINITIONS
+ * Note that each category now has:
+ *   - article: "a" or "an"
+ *   - headingForProducts: the slogan to show at the bottom
  ****************************************************/
-
-/**
- * We added 'shortDescription' for each category to display
- * in the collapsible section for the "other three" categories
- * that are not the winner.
- * 
- * We also added 'article' to handle "a" vs. "an" for 
- * the final results heading. E.g., "You are an Adventurer"
- * vs. "You are a Planner".
- */
 const categoriesData = {
   Planner: {
     name: "Planner",
     article: "a",
+    headingForProducts: "Plan Your Next Steps",
     description: `
       You are the master of practicality and preparation.
       You approach financial decisions with thoughtfulness, responsibility, and an 
@@ -263,6 +257,7 @@ const categoriesData = {
   Adventurer: {
     name: "Adventurer",
     article: "an",
+    headingForProducts: "Fuel Your Next Adventure",
     description: `
       Financial decisions for you are often about excitement, curiosity, 
       and seizing new opportunities. You embrace risk with a positive mindset, 
@@ -292,6 +287,7 @@ const categoriesData = {
   Connector: {
     name: "Connector",
     article: "a",
+    headingForProducts: "Grow Your Community",
     description: `
       You view finances as a tool to support your community and bond with others.
       Whether it’s through generosity or lending a helping hand, 
@@ -321,6 +317,7 @@ const categoriesData = {
   Realist: {
     name: "Realist",
     article: "a",
+    headingForProducts: "Build A Solid Foundation",
     description: `
       You prioritize managing risk, avoiding unnecessary spending, and protecting resources. 
       While your approach may appear conservative, it helps you navigate challenges with confidence.
@@ -478,7 +475,6 @@ function calculateCategoryScores(emotions) {
     : winners[0];
 
   // Sort from highest to lowest
-  // We'll create an array of [category, score] pairs
   const sortedArray = Object.entries(scores).sort((a, b) => b[1] - a[1]);
 
   return { sortedArray, winner };
@@ -488,12 +484,10 @@ function calculateCategoryScores(emotions) {
  * DISPLAY FINAL RESULTS
  ****************************************************/
 function displayFinalResults(winner, sortedArray) {
-  // 1) "You are a / an ____" text
-  const resultsTitle = document.getElementById("results-title");
   const catData = categoriesData[winner];
 
-  // If article is "an" => "You are an Adventurer"
-  // If article is "a" => "You are a Planner"
+  // 1) "You are a / an ____"
+  const resultsTitle = document.getElementById("results-title");
   resultsTitle.textContent = `you are ${catData.article} `;
 
   const catNameEl = document.getElementById("category-name");
@@ -503,7 +497,7 @@ function displayFinalResults(winner, sortedArray) {
   const catDescEl = document.getElementById("category-description");
   catDescEl.innerHTML = catData.description;
 
-  // 3) Build the distribution bars (sorted)
+  // 3) Build the distribution bars (sorted high → low)
   buildDistributionBars(sortedArray, winner);
 
   // 4) Where you excel + watch out
@@ -524,7 +518,11 @@ function displayFinalResults(winner, sortedArray) {
     watchoutList.appendChild(li);
   });
 
-  // 5) Product Recommendations
+  // 5) Product Recommendations Title
+  const productsTitle = document.getElementById("products-title");
+  productsTitle.textContent = catData.headingForProducts;
+
+  // 6) Product Recommendations
   const productContainer = document.getElementById("product-recommendations");
   productContainer.innerHTML = "";
   catData.products.forEach(prod => {
@@ -535,7 +533,7 @@ function displayFinalResults(winner, sortedArray) {
     title.textContent = prod.split("–")[0].trim();
 
     const detail = document.createElement("p");
-    detail.textContent = prod.split("–")[1] 
+    detail.textContent = prod.split("–")[1]
       ? prod.split("–")[1].trim()
       : "";
 
@@ -573,7 +571,8 @@ function buildDistributionBars(sortedArray, winner) {
       const toggle = document.createElement("span");
       toggle.className = "expand-toggle";
       toggle.textContent = "+";
-      toggle.onclick = () => toggleShortSummary(cat);
+      // We'll pass the cat & the toggleSpan itself
+      toggle.onclick = () => toggleShortSummary(cat, toggle);
       label.appendChild(toggle);
     }
 
@@ -614,22 +613,9 @@ function buildDistributionBars(sortedArray, winner) {
 /****************************************************
  * TOGGLE SHORT SUMMARY
  ****************************************************/
-function toggleShortSummary(cat) {
+function toggleShortSummary(cat, toggleSpan) {
   const summaryDiv = document.getElementById(`short-${cat}`);
-  const labelDiv = document.querySelector(`.bar-label:contains(${cat.toUpperCase()})`);
-  // But :contains() is not a standard selector; let's do a simpler approach:
-  // We'll find the bar-label that matches cat.toUpperCase(), then find the .expand-toggle inside it.
-
-  // Instead, we can just re-query the DOM for the bar's label text
-  const allLabels = document.querySelectorAll(".bar-label");
-  let toggleSpan = null;
-  allLabels.forEach(lab => {
-    if (lab.textContent.startsWith(cat.toUpperCase())) {
-      toggleSpan = lab.querySelector(".expand-toggle");
-    }
-  });
-
-  if (!summaryDiv || !toggleSpan) return;
+  if (!summaryDiv) return;
 
   if (summaryDiv.style.display === "block") {
     // Hide it
