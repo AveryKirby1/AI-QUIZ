@@ -39,17 +39,32 @@ body {
   margin-bottom: 15px;
 }
 
+/* Increase spacing around each radio option */
 #answers-container label {
   display: block;
-  margin: 8px 0;
+  margin: 12px 0; /* was 8px, now a bit more */
   cursor: pointer;
+}
+
+/* Make radio circles bigger */
+#answers-container input[type="radio"] {
+  transform: scale(1.2);  /* make them bigger visually */
+  margin-right: 6px;      /* a little space before text */
 }
 
 /* Buttons */
 .buttons-container {
   display: flex;
   justify-content: space-between;
+  align-items: center; /* ensures tracker is aligned well */
   margin-top: 20px;
+}
+
+/* Question tracker styling (bottom left) */
+.question-tracker {
+  font-size: 0.9rem;
+  color: #666;
+  margin-left: 5px;
 }
 
 .quiz-btn {
@@ -61,6 +76,7 @@ body {
   font-size: 0.95rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-left: 5px; /* small gap between Next and See Results if both show */
 }
 
 .quiz-btn:hover {
