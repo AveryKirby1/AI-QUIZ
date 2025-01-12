@@ -230,14 +230,15 @@ body {
   display: flex;            
   flex-direction: column;
   justify-content: space-between;
-  flex: 1 1 250px;
-  min-width: 250px;
-  max-width: 250px;
+  flex: 1 1 280px; /* slightly larger min width for bigger text area */
+  min-width: 280px;
+  max-width: 280px;
   border: 1px solid #eee;
   border-radius: 5px;
   padding: 15px;
   background: #f9f9f9;
   text-align: center;
+  min-height: 240px; /* allow more vertical space for longer text */
 }
 
 .product-card h5 {
@@ -248,8 +249,9 @@ body {
 
 .product-card p {
   flex: 1 0 auto;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   margin-bottom: 10px;
+  line-height: 1.4;
 }
 
 .product-btn {
