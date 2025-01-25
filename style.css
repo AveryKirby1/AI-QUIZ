@@ -119,6 +119,15 @@ body {
   color: #333;
 }
 
+/* NEW: Callout styling */
+.results-callout {
+  border: 2px dashed #ccc;
+  background: #fafafa;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+
 /* Distribution bars */
 .distribution-container {
   margin: 20px 0;
