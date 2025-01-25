@@ -187,9 +187,9 @@ body {
   font-size: 0.8rem;
 }
 
-/* The short summary box for each category's expand/collapse */
+/* Short summary below each bar for non-winning categories */
 .short-summary {
-  display: none; /* hidden by default */
+  display: none; 
   padding: 6px 10px;
   margin: 4px 0 10px 140px;
   background: #f0f8ff;
@@ -199,9 +199,9 @@ body {
   line-height: 1.4;
 }
 
-/* New callout below distribution container */
+/* The new callout below the chart */
 .plus-callout {
-  margin: 20px auto 10px;
+  margin: 15px auto;
   padding: 10px 15px;
   max-width: 600px;
   border: 1px solid #eee;
@@ -210,11 +210,21 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  font-size: 0.85rem; 
+  justify-content: center; 
+  text-align: center;
 }
 
 .plus-callout .help-icon {
-  font-size: 1.2rem;
-  color: #007BFF;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  background-color: #007BFF;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  text-align: center;
 }
 
 /* Insights */
