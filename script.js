@@ -1,6 +1,5 @@
 /****************************************************
  * QUIZ DATA - 10 Questions, 4 Answers Each
- * (Keeping question text the same, but updated answer wording & emotions)
  ****************************************************/
 const questions = [
   {
@@ -11,10 +10,10 @@ const questions = [
         text: "A: Panic about legal implications and search for the owner.",
         emotions: ["Apprehension", "Duty", "Caution", "Skepticism", "Reserved"]
       },
-      // Planner
+      // Planner (Changed one emotion: replaced 'Calculated' with 'Responsibility')
       {
         text: "B: Immediately deposit it into savings to boost your safety net.",
-        emotions: ["Prudence", "Security", "Forward-thinking", "Calculated", "Organization"]
+        emotions: ["Prudence", "Security", "Forward-thinking", "Responsibility", "Organization"]
       },
       // Adventurer
       {
@@ -44,7 +43,7 @@ const questions = [
       // Adventurer
       {
         text: "C: Laugh it off and cover the full share—it's an entertaining story.",
-        emotions: ["Spontaneity", "Joy", "Impulse", "Excitement", "Passion"]
+        emotions: ["Spontaneity", "Joy", "Impulsivity", "Excitement", "Passion"]
       },
       // Connector
       {
@@ -94,7 +93,7 @@ const questions = [
       // Adventurer
       {
         text: "C: Perfect opportunity to plan a dream trip or major splurge.",
-        emotions: ["Excitement", "Impulse", "Thrill", "Spontaneity", "Joy"]
+        emotions: ["Excitement", "Impulsivity", "Thrill", "Spontaneity", "Joy"]
       },
       // Connector
       {
@@ -119,7 +118,7 @@ const questions = [
       // Adventurer
       {
         text: "C: Chip in spontaneously—maybe $100—for an immediate lift.",
-        emotions: ["Spontaneity", "Impulse", "Thrill", "Joy", "Passion"]
+        emotions: ["Spontaneity", "Impulsivity", "Thrill", "Joy", "Passion"]
       },
       // Connector
       {
@@ -169,7 +168,7 @@ const questions = [
       // Adventurer
       {
         text: "C: Keep going—coffee is your daily indulgence and joy.",
-        emotions: ["Thrill", "Indulgence", "Spontaneity", "Joy", "Impulse"]
+        emotions: ["Thrill", "Indulgence", "Spontaneity", "Joy", "Impulsivity"]
       },
       // Connector
       {
@@ -194,7 +193,7 @@ const questions = [
       // Adventurer
       {
         text: "C: It’s exciting—I’ll jump in with a small gamble!",
-        emotions: ["Curiosity", "Risk-taking", "Thrill", "Passion", "Spontaneity"]
+        emotions: ["Curiosity", "Risk-taking", "Thrill", "Passion", "Impulsivity"]
       },
       // Connector
       {
@@ -219,7 +218,7 @@ const questions = [
       // Adventurer
       {
         text: "C: Buy it immediately—life is about seizing the moment!",
-        emotions: ["Impulse", "Excitement", "Joy", "Spontaneity", "Indulgence"]
+        emotions: ["Impulsivity", "Excitement", "Joy", "Spontaneity", "Indulgence"]
       },
       // Connector
       {
@@ -257,8 +256,7 @@ const questions = [
 
 /****************************************************
  * CATEGORY DEFINITIONS
- * - Each emotion is assigned to the category(s) it best represents.
- * - Minimally overlapping for better clarity.
+ * Planner now has 10 emotions, adding "Responsibility"
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -284,10 +282,10 @@ const categoriesData = {
       "Laurel Road Savings – A reliable place for your money with competitive interest.",
       "Key Secured Credit Card® – Build credit responsibly in a measured way."
     ],
+    // Now 10 emotions total
     emotions: [
       "Prudence","Security","Forward-thinking","Calculated","Organization",
-      "Structure","Stability","Methodical","Preparedness"
-      // Include any repeated ones:
+      "Structure","Stability","Methodical","Preparedness","Responsibility"
     ]
   },
   Adventurer: {
@@ -313,9 +311,10 @@ const categoriesData = {
       "Key Rewards Credit Card® – Earn rewards on daily purchases to fuel your passions.",
       "Laurel Road Savings – Keep an easy safety net growing while you explore new ventures."
     ],
+    // 10 emotions
     emotions: [
       "Thrill","Indulgence","Excitement","Spontaneity","Joy",
-      "Impulse","Exploration","Passion","Risk-taking","Curiosity"
+      "Impulsivity","Exploration","Passion","Risk-taking","Curiosity"
     ]
   },
   Connector: {
@@ -341,6 +340,7 @@ const categoriesData = {
       "Laurel Road Loyalty Savings – Earn steadily while staying ready to help others.",
       "Key Cashback Credit Card® – Put your rewards to good use in your community."
     ],
+    // 10 emotions
     emotions: [
       "Generosity","Altruism","Warmth","Compassion","Connection",
       "Harmony","Collaboration","Sharing","Empathy","Community"
@@ -369,6 +369,7 @@ const categoriesData = {
       "Laurel Road High Yield Savings – Steady, reliable growth with minimal surprises.",
       "Laurel Road Loan – Clear terms, predictable rates—ideal for risk-averse planning."
     ],
+    // 10 emotions
     emotions: [
       "Apprehension","Duty","Caution","Skepticism","Reserved",
       "Logic","Restraint","Practical","Realism","Grounded"
