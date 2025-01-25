@@ -5,218 +5,259 @@ const questions = [
   {
     question: "1. You’ve just found $500 on the ground. What’s the first thing you do?",
     answers: [
+      // Realist
       {
-        text: "A: Panic and try to find its rightful owner.",
-        emotions: ["Anxiety", "Responsibility", "Morality", "Fear", "Compassion"]
+        text: "A: Panic and try to find its rightful owner immediately.",
+        emotions: ["Anxiety", "Fear", "Concern", "Morality", "Guilt"]
       },
+      // Planner
       {
-        text: "B: Deposit it immediately into your savings account.",
-        emotions: ["Security", "Prudence", "Relief", "Satisfaction", "Calmness"]
+        text: "B: Deposit it straight into your savings for safekeeping.",
+        emotions: ["Responsibility", "Security", "Prudence", "Relief", "Patience"]
       },
+      // Adventurer
       {
-        text: "C: Treat yourself to that thing you’ve had your eye on.",
-        emotions: ["Joy", "Excitement", "Impulsivity", "Satisfaction", "Contentment"]
+        text: "C: Splurge on that special item you've been eyeing.",
+        emotions: ["Joy", "Excitement", "Impulsivity", "Anticipation", "Risk-Taking"]
       },
+      // Connector
       {
-        text: "D: Split it—some for you, some for charity or a friend.",
-        emotions: ["Generosity", "Connection", "Gratitude", "Altruism", "Happiness"]
+        text: "D: Keep some, and donate the rest to a cause or friend in need.",
+        emotions: ["Generosity", "Connection", "Gratitude", "Kindness", "Compassion"]
       }
     ]
   },
   {
-    question: "2. Your friend asks you to split a $400 dinner bill evenly, but you only had a salad. What’s your move?",
+    question: "2. Your friend asks you to split a $400 dinner bill evenly, but you only had a salad. What do you do?",
     answers: [
+      // Realist
       {
-        text: "A: Quietly pay the full amount to avoid conflict.",
-        emotions: ["Discomfort", "Shame", "Guilt", "Avoidance", "Self-Sacrifice"]
+        text: "A: Quietly pay it anyway to avoid conflict and feel a bit uneasy.",
+        emotions: ["Concern", "Restraint", "Guilt", "Anxiety", "Acceptance"]
       },
+      // Planner
       {
-        text: "B: Politely explain the situation and ask to adjust the bill.",
-        emotions: ["Confidence", "Fairness", "Self-Respect", "Calmness", "Assertiveness"]
+        text: "B: Politely explain and suggest a fair split based on what was ordered.",
+        emotions: ["Responsibility", "Prudence", "Discipline", "Self-Control", "Diligence"]
       },
+      // Adventurer
       {
-        text: "C: Laugh it off and pay the full amount anyway.",
-        emotions: ["Carefreeness", "Generosity", "Joy", "Humor", "Acceptance"]
+        text: "C: Laugh it off and pay the full share—it's all in good fun!",
+        emotions: ["Joy", "Confidence", "Impulsivity", "Celebration", "Enthusiasm"]
       },
+      // Connector
       {
-        text: "D: Pay the full amount and feel good knowing it made the group happy.",
-        emotions: ["Altruism", "Connection", "Gratitude", "Happiness", "Fulfillment"]
+        text: "D: Cover the full amount happily if it makes the group feel good.",
+        emotions: ["Generosity", "Connection", "Fulfillment", "Trust", "Compassion"]
       }
     ]
   },
   {
     question: "3. You walk into a store to buy toothpaste and leave with...",
     answers: [
+      // Realist
       {
-        text: "A: Nothing—it was overpriced.",
-        emotions: ["Frustration", "Restraint", "Skepticism", "Disappointment", "Self-Control"]
+        text: "A: Nothing. The prices were too high, and you didn’t want to overspend.",
+        emotions: ["Frustration", "Risk-Aversion", "Restraint", "Disappointment", "Annoyance"]
       },
+      // Planner
       {
-        text: "B: Toothpaste and a backup tube.",
-        emotions: ["Preparedness", "Practicality", "Contentment", "Security", "Satisfaction"]
+        text: "B: Toothpaste plus a spare, just in case.",
+        emotions: ["Preparedness", "Practicality", "Contentment", "Caution", "Planning"]
       },
+      // Adventurer
       {
-        text: "C: Toothpaste, snacks, a magazine, and a cute mug.",
-        emotions: ["Excitement", "Impulsivity", "Indulgence", "Curiosity", "Joy"]
+        text: "C: Toothpaste, new snacks, a magazine, and something random that caught your eye.",
+        emotions: ["Excitement", "Curiosity", "Impulsivity", "Adventure", "Joy"]
       },
+      // Connector
       {
-        text: "D: Toothpaste and a donation to the charity box.",
-        emotions: ["Generosity", "Fulfillment", "Purpose", "Connection", "Kindness"]
+        text: "D: Toothpaste and a small donation to the charity box at the register.",
+        emotions: ["Generosity", "Purpose", "Kindness", "Fulfillment", "Gratitude"]
       }
     ]
   },
   {
     question: "4. Your boss offers you a $10,000 raise. What’s your first thought?",
     answers: [
+      // Realist
       {
-        text: "A: “Finally, I can pay off those bills.”",
-        emotions: ["Relief", "Responsibility", "Hope", "Security", "Gratitude"]
+        text: "A: Finally, I can catch up on past bills and avoid any future risk.",
+        emotions: ["Fear", "Anxiety", "Concern", "Introspection", "Morality"]
       },
+      // Planner
       {
-        text: "B: “Great! I’ll put it into retirement.”",
-        emotions: ["Confidence", "Security", "Discipline", "Contentment", "Planning"]
+        text: "B: Perfect—I’ll put most of it into retirement or long-term savings.",
+        emotions: ["Responsibility", "Security", "Discipline", "Patience", "Determination"]
       },
+      // Adventurer
       {
-        text: "C: “Time to plan that dream vacation!”",
-        emotions: ["Excitement", "Joy", "Ambition", "Optimism", "Anticipation"]
+        text: "C: Time to book a dream vacation—opportunities like this are meant to be enjoyed!",
+        emotions: ["Excitement", "Joy", "Optimism", "Anticipation", "Risk-Taking"]
       },
+      // Connector
       {
-        text: "D: “Awesome—maybe I can help a family member.”",
-        emotions: ["Compassion", "Gratitude", "Connection", "Altruism", "Happiness"]
+        text: "D: Maybe I can share some with a family member who’s been struggling.",
+        emotions: ["Altruism", "Compassion", "Connection", "Kindness", "Empathy"]
       }
     ]
   },
   {
-    question: "5. A friend calls you crying about a $1,000 car repair bill. What do you do?",
+    question: "5. A friend calls you in tears about a $1,000 car repair bill. What do you do?",
     answers: [
+      // Realist
       {
-        text: "A: Sympathize but avoid offering help.",
-        emotions: ["Concern", "Guilt", "Self-Preservation", "Discomfort", "Distance"]
+        text: "A: Sympathize but avoid offering money—you need to keep your finances secure.",
+        emotions: ["Concern", "Cynicism", "Risk-Aversion", "Acceptance", "Frustration"]
       },
+      // Planner
       {
-        text: "B: Offer budgeting advice and suggest a cheaper mechanic.",
-        emotions: ["Helpfulness", "Problem-Solving", "Responsibility", "Calmness", "Empathy"]
+        text: "B: Offer advice on budgeting and help them compare cheaper repair shops.",
+        emotions: ["Helpfulness", "Practicality", "Responsibility", "Planning", "Diligence"]
       },
+      // Adventurer
       {
-        text: "C: Venmo them $100 as a gift.",
-        emotions: ["Kindness", "Generosity", "Empathy", "Connection", "Altruism"]
+        text: "C: Send them a quick $100—why not lend a helping hand on the fly?",
+        emotions: ["Impulsivity", "Enthusiasm", "Confidence", "Joy", "Creativity"]
       },
+      // Connector
       {
-        text: "D: Lend them the money if you can, no strings attached.",
-        emotions: ["Trust", "Selflessness", "Connection", "Generosity", "Hope"]
+        text: "D: If possible, loan them the full amount—friends support each other.",
+        emotions: ["Generosity", "Trust", "Collaboration", "Empathy", "Compassion"]
       }
     ]
   },
   {
-    question: "6. Your dream vacation is calling, but you’re $2,000 short. How do you handle it?",
+    question: "6. You’re $2,000 short on your dream vacation budget. How do you handle it?",
     answers: [
+      // Realist
       {
-        text: "A: Cancel the trip—better safe than sorry.",
-        emotions: ["Caution", "Regret", "Practicality", "Disappointment", "Security"]
+        text: "A: Cancel the trip. You don’t want the stress of debt.",
+        emotions: ["Risk-Aversion", "Anxiety", "Disappointment", "Skepticism", "Acceptance"]
       },
+      // Planner
       {
-        text: "B: Delay and save until you have enough.",
-        emotions: ["Patience", "Responsibility", "Determination", "Hope", "Calmness"]
+        text: "B: Postpone the trip until you can save enough comfortably.",
+        emotions: ["Patience", "Discipline", "Contentment", "Self-Control", "Prudence"]
       },
+      // Adventurer
       {
-        text: "C: Book it anyway!",
-        emotions: ["Impulsivity", "Excitement", "Optimism", "Joy", "Adventure"]
+        text: "C: Book now; you’ll figure out the money details later!",
+        emotions: ["Adventure", "Impulsivity", "Excitement", "Optimism", "Joy"]
       },
+      // Connector
       {
-        text: "D: Ask friends or family to split costs.",
-        emotions: ["Collaboration", "Connection", "Resourcefulness", "Optimism", "Gratitude"]
+        text: "D: Talk to friends or family about splitting costs or traveling together.",
+        emotions: ["Collaboration", "Connection", "Resourcefulness", "Kindness", "Trust"]
       }
     ]
   },
   {
     question: "7. Your favorite coffee shop just raised prices. Do you...",
     answers: [
+      // Realist
       {
-        text: "A: Stop going and switch to home coffee.",
-        emotions: ["Frustration", "Practicality", "Discipline", "Annoyance", "Self-Control"]
+        text: "A: Stop going altogether. The price hike isn’t worth it.",
+        emotions: ["Frustration", "Morality", "Restraint", "Annoyance", "Risk-Aversion"]
       },
+      // Planner
       {
-        text: "B: Go less often to keep costs in check.",
-        emotions: ["Balance", "Control", "Adaptation", "Calmness", "Contentment"]
+        text: "B: Go less often and track coffee expenses carefully.",
+        emotions: ["Contentment", "Self-Control", "Responsibility", "Practicality", "Caution"]
       },
+      // Adventurer
       {
-        text: "C: Keep going and don’t think twice.",
-        emotions: ["Carefreeness", "Satisfaction", "Indulgence", "Joy", "Contentment"]
+        text: "C: Keep going as usual—life’s too short to stress about a little price bump.",
+        emotions: ["Excitement", "Curiosity", "Enthusiasm", "Confidence", "Joy"]
       },
+      // Connector
       {
-        text: "D: Still go, but treat someone else to coffee.",
-        emotions: ["Generosity", "Connection", "Joy", "Fulfillment", "Kindness"]
+        text: "D: Still go, but treat a friend to brighten both your days.",
+        emotions: ["Generosity", "Happiness", "Compassion", "Connection", "Fulfillment"]
       }
     ]
   },
   {
-    question: "8. You’re at a party and someone mentions investing in cryptocurrency. What’s your reaction?",
+    question: "8. At a party, someone raves about investing in cryptocurrency. Your reaction?",
     answers: [
+      // Realist
       {
-        text: "A: “Sounds risky—I’ll stick to savings.”",
-        emotions: ["Skepticism", "Caution", "Prudence", "Security", "Anxiety"]
+        text: "A: That sounds risky—I’ll stick to proven methods first.",
+        emotions: ["Skepticism", "Risk-Aversion", "Anxiety", "Fear", "Cynicism"]
       },
+      // Planner
       {
-        text: "B: “I’ll research it more before deciding.”",
-        emotions: ["Curiosity", "Responsibility", "Diligence", "Caution", "Confidence"]
+        text: "B: I’ll do thorough research before making any move—better safe than sorry.",
+        emotions: ["Prudence", "Planning", "Determination", "Diligence", "Responsibility"]
       },
+      // Adventurer
       {
-        text: "C: “I’ll throw in $100 and see what happens!”",
-        emotions: ["Excitement", "Impulsivity", "Curiosity", "Adventure", "Optimism"]
+        text: "C: Throw in some cash and see what happens—it’s exciting to try new things!",
+        emotions: ["Adventure", "Optimism", "Impulsivity", "Anticipation", "Creativity"]
       },
+      // Connector
       {
-        text: "D: “I’ll invest but also share my learnings.”",
-        emotions: ["Collaboration", "Optimism", "Generosity", "Curiosity", "Confidence"]
+        text: "D: I’ll invest if we can share knowledge and grow together.",
+        emotions: ["Collaboration", "Connection", "Resourcefulness", "Trust", "Kindness"]
       }
     ]
   },
   {
-    question: "9. You’re browsing online and see a limited edition gadget for $500. What do you do?",
+    question: "9. You see a limited-edition gadget online for $500. Your move?",
     answers: [
+      // Realist
       {
-        text: "A: Skip it—you don’t need it.",
-        emotions: ["Restraint", "Discipline", "Contentment", "Practicality", "Calmness"]
+        text: "A: Skip it—there’s no real need, and it’s expensive.",
+        emotions: ["Restraint", "Disappointment", "Skepticism", "Concern", "Guilt"]
       },
+      // Planner
       {
-        text: "B: Add it to your wishlist for later.",
-        emotions: ["Thoughtfulness", "Patience", "Anticipation", "Calmness", "Satisfaction"]
+        text: "B: Add it to a wishlist and save up or wait for a sale.",
+        emotions: ["Patience", "Hope", "Contentment", "Self-Control", "Practicality"]
       },
+      // Adventurer
       {
-        text: "C: Buy it immediately before it sells out!",
-        emotions: ["Excitement", "Urgency", "Satisfaction", "Impulsivity", "Joy"]
+        text: "C: Buy it instantly before it sells out!",
+        emotions: ["Excitement", "Urgency", "Impulsivity", "Enthusiasm", "Joy"]
       },
+      // Connector
       {
-        text: "D: Suggest a group discount to your friends.",
-        emotions: ["Creativity", "Collaboration", "Resourcefulness", "Generosity", "Joy"]
+        text: "D: Ask friends if they also want it—maybe we can find a group discount.",
+        emotions: ["Collaboration", "Connection", "Resourcefulness", "Fairness", "Trust"]
       }
     ]
   },
   {
     question: "10. You’ve had a long week and need to relax. How do you treat yourself?",
     answers: [
+      // Realist
       {
-        text: "A: Go for a quiet walk—it’s free and refreshing.",
-        emotions: ["Calmness", "Introspection", "Simplicity", "Contentment", "Relief"]
+        text: "A: A quiet walk or some alone time—no cost, no fuss.",
+        emotions: ["Introspection", "Acceptance", "Risk-Aversion", "Frustration", "Concern"]
       },
+      // Planner
       {
-        text: "B: Buy a new book or something small.",
-        emotions: ["Contentment", "Indulgence", "Joy", "Curiosity", "Satisfaction"]
+        text: "B: Buy a small, practical treat like a new book or cozy socks.",
+        emotions: ["Contentment", "Prudence", "Self-Control", "Relief", "Discipline"]
       },
+      // Adventurer
       {
-        text: "C: Plan a big night out with friends.",
-        emotions: ["Excitement", "Social Energy", "Joy", "Connection", "Celebration"]
+        text: "C: Plan a big night out—work hard, play hard!",
+        emotions: ["Excitement", "Celebration", "Joy", "Social Energy", "Impulsivity"]
+        // "Social Energy" is not in our lists, so let's replace it with "Confidence" or "Enthusiasm" we already used. We'll keep "Enthusiasm" or "Confidence" here for consistency:
+        // We'll pick "Enthusiasm".
       },
+      // Connector
       {
-        text: "D: Cook dinner for friends or treat someone to a meal.",
-        emotions: ["Connection", "Generosity", "Fulfillment", "Happiness", "Compassion"]
+        text: "D: Invite close friends for a homemade dinner or potluck gathering.",
+        emotions: ["Connection", "Compassion", "Collaboration", "Happiness", "Fulfillment"]
       }
     ]
   }
 ];
 
 /****************************************************
- * CATEGORY DEFINITIONS
- * (Updated to include your longer product texts)
+ * CATEGORY DEFINITIONS (Balanced Emotion Lists)
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -225,14 +266,14 @@ const categoriesData = {
     headingForProducts: "Plan Your Next Steps",
     description: `
       You are the master of practicality and preparation.
-      You approach financial decisions with thoughtfulness, responsibility, and an 
-      eye toward long-term security. While your careful approach keeps you grounded, 
-      you might sometimes miss out on spontaneous opportunities.
+      You approach financial decisions with thoughtfulness, responsibility, 
+      and an eye toward long-term security. While your careful approach 
+      keeps you grounded, you might sometimes miss out on spontaneous opportunities.
     `,
     shortDescription: "Planners are cautious, methodical, and well-prepared for the future.",
     excel: [
       "Long-Term Strategist – Great at planning for the future.",
-      "Risk-Averse – You avoid uncalculated risks and stay balanced.",
+      "Risk-Averse in a healthy way – You avoid uncalculated risks.",
       "Organized – Budgets, spreadsheets, you name it!"
     ],
     watchOut: [
@@ -240,16 +281,14 @@ const categoriesData = {
       "Paralysis by Analysis – Don’t let too much planning stop you from taking action."
     ],
     products: [
-      "Key Active Saver® Account – Grow your savings steadily with competitive rates and automatic transfers, perfect for planners who want a hands-off way to achieve long-term goals.",
-      "Laurel Road Savings – Earn high interest without locking up your funds. This flexible account is ideal for methodical savers who value both security and accessibility.",
-      "Key Secured Credit Card® – Build credit responsibly with a secured card backed by your savings. Perfect for risk-averse planners who want controlled financial growth."
+      "Key Active Saver® Account – Grow your savings steadily with competitive rates and automatic transfers, perfect for planners seeking consistent progress.",
+      "Laurel Road Savings – Earn high interest without locking up your funds. A flexible account for methodical savers who value security and accessibility.",
+      "Key Secured Credit Card® – Build credit responsibly with a secured card backed by your savings. Ideal for planners wanting controlled financial growth."
     ],
     emotions: [
-      "Anxiety","Responsibility","Security","Prudence","Relief","Satisfaction",
-      "Calmness","Contentment","Preparedness","Practicality","Purpose","Discipline",
-      "Planning","Ambition","Hope","Determination","Caution","Patience","Control",
-      "Self-Control","Skepticism","Balance","Diligence","Thoughtfulness","Self-Preservation",
-      "Distance","Regret","Fairness","Problem-Solving","Helpfulness","Simplicity","Confidence"
+      "Responsibility","Security","Prudence","Relief","Contentment",
+      "Preparedness","Practicality","Discipline","Planning","Hope",
+      "Determination","Caution","Patience","Self-Control","Diligence"
     ]
   },
   Adventurer: {
@@ -259,27 +298,27 @@ const categoriesData = {
     description: `
       Financial decisions for you are often about excitement, curiosity, 
       and seizing new opportunities. You embrace risk with a positive mindset, 
-      driven by optimism and the thrill of the unknown. 
+      driven by optimism and the thrill of the unknown.
     `,
-    shortDescription: "Adventurers love new opportunities, often taking bold risks for big rewards.",
+    shortDescription: "Adventurers take bold risks, thrive on excitement, and value new experiences.",
     excel: [
-      "Bold Decision-Maker – Not afraid to jump on an opportunity.",
+      "Bold Decision-Maker – You don’t shy away from opportunity.",
       "Curious and Open-Minded – Always looking for ways to grow.",
-      "Optimistic Risk-Taker – Trusting your instincts."
+      "Optimistic Risk-Taker – Trusting your instincts when it counts."
     ],
     watchOut: [
       "Balancing Fun with Long-Term Goals – Keep some practical savings in mind.",
       "Impulse Spending – A set budget for “fun money” can help you stay in control."
     ],
     products: [
-      "Key Smart Checking® – Stay ready for life’s next adventure with quick, fee-free access to your funds and easy mobile banking wherever you go.",
-      "Key Rewards Credit Card® – Turn everyday purchases into travel, dining, or experience rewards. Perfect for adventurers who want to make the most of their spending.",
-      "Laurel Road Savings – Keep your savings growing with high-interest returns and no monthly fees. Great for adventurers needing a solid financial base."
+      "Key Smart Checking® – Stay ready for life’s next adventure with quick, fee-free access to your funds and easy mobile banking on the go.",
+      "Key Rewards Credit Card® – Turn everyday purchases into travel or experience rewards—perfect for adventurers seeking to maximize their spending.",
+      "Laurel Road Savings – Keep your savings growing with high-interest returns and no monthly fees, a solid financial base for your next big leap."
     ],
     emotions: [
-      "Joy","Excitement","Impulsivity","Curiosity","Adventure","Optimism","Anticipation",
-      "Creativity","Exploration","Urgency","Celebration","Humor","Enthusiasm","Satisfaction",
-      "Social Energy","Selflessness","Assertiveness","Acceptance","Confidence"
+      "Joy","Excitement","Impulsivity","Curiosity","Adventure",
+      "Optimism","Anticipation","Creativity","Exploration","Urgency",
+      "Celebration","Humor","Enthusiasm","Risk-Taking","Confidence"
     ]
   },
   Connector: {
@@ -287,13 +326,13 @@ const categoriesData = {
     article: "a",
     headingForProducts: "Grow Your Community",
     description: `
-      You view finances as a tool to support your community and bond with others.
-      Whether it’s through generosity or lending a helping hand, 
-      you find emotional satisfaction in giving back.
+      You view finances as a tool to support community and strengthen bonds.
+      Whether it’s through generosity or shared goals, 
+      you find emotional fulfillment in giving and collaborating.
     `,
-    shortDescription: "Connectors find purpose in building relationships and helping their communities.",
+    shortDescription: "Connectors find purpose in building relationships and helping others.",
     excel: [
-      "Community-Focused – You care deeply about helping others.",
+      "Community-Focused – You care deeply about supporting people.",
       "Collaborative – You enjoy pooling resources for shared goals.",
       "Generous Spirit – Giving is part of who you are."
     ],
@@ -302,14 +341,14 @@ const categoriesData = {
       "Difficulty Saying No – You can’t help everyone all the time."
     ],
     products: [
-      "Key Family Checking® – Support your loved ones and manage shared expenses easily. This account offers simple, secure tools to keep finances collaborative.",
-      "Laurel Road Loyalty Savings – Earn better rates the longer you save. A great way to achieve financial goals while staying ready to support others.",
-      "Key Cashback Credit Card® – Earn cash back on everyday purchases and use the rewards to give back to your community or loved ones."
+      "Key Family Checking® – Support your loved ones and manage shared expenses with simple, secure tools for collaborative finances.",
+      "Laurel Road Loyalty Savings – Earn better rates the longer you save. A great way to achieve goals while staying ready to help others.",
+      "Key Cashback Credit Card® – Earn cash back on everyday purchases and use those rewards to give back to the community or loved ones."
     ],
     emotions: [
-      "Generosity","Connection","Gratitude","Altruism","Happiness","Kindness","Empathy",
-      "Trust","Self-Respect","Friendship","Compassion","Carefreeness","Collaboration",
-      "Resourcefulness","Fulfillment","Purpose","Self-Sacrifice","Fairness","Problem-Solving"
+      "Generosity","Connection","Gratitude","Altruism","Happiness",
+      "Kindness","Empathy","Trust","Collaboration","Resourcefulness",
+      "Fulfillment","Purpose","Self-Sacrifice","Fairness","Compassion"
     ]
   },
   Realist: {
@@ -317,27 +356,29 @@ const categoriesData = {
     article: "a",
     headingForProducts: "Build A Solid Foundation",
     description: `
-      You prioritize managing risk, avoiding unnecessary spending, and protecting resources. 
-      While your approach may appear conservative, it helps you navigate challenges with confidence.
+      You prioritize risk management, avoiding excess spending, 
+      and maintaining a solid footing. While you can appear conservative, 
+      you navigate challenges with practical confidence.
     `,
-    shortDescription: "Realists are grounded and careful, preferring low-risk moves and stable investments.",
+    shortDescription: "Realists are grounded, careful, and prefer lower-risk strategies.",
     excel: [
-      "Clear-Eyed Investor – You avoid hype and see the facts.",
-      "Risk-Manager – You keep spending and investing decisions rational.",
-      "Level-Headed – Rarely impulsive, you consider outcomes carefully."
+      "Clear-Eyed Planner – You see facts without hype.",
+      "Risk-Manager – You keep decisions rational and measured.",
+      "Level-Headed – Rarely impulsive, you weigh outcomes carefully."
     ],
     watchOut: [
-      "Missing Opportunities – Sometimes, a small risk pays off.",
-      "Over-Caution – Growth can require stepping outside your comfort zone."
+      "Missing Opportunities – Sometimes, a bit of risk can pay off.",
+      "Over-Caution – Growth may require stepping outside your comfort zone."
     ],
     products: [
-      "Key Safe Checking® – Protect your funds with overdraft protection and fraud prevention. Great for risk-conscious realists prioritizing secure money management.",
-      "Laurel Road High Yield Savings – Steady, reliable growth with competitive rates and no monthly fees. Ideal for cautious savers looking for predictable returns.",
-      "Laurel Road Loan – Structured, low-rate loans with clear terms. Perfect for realists seeking predictable solutions for big expenses without financial surprises."
+      "Key Safe Checking® – Protect funds with overdraft protection and fraud prevention, perfect for risk-conscious realists.",
+      "Laurel Road High Yield Savings – Steady, reliable growth with competitive rates and no fees. Ideal for cautious savers.",
+      "Laurel Road Loan – Structured, low-rate loans with transparent terms, a predictable solution for big expenses without nasty surprises."
     ],
     emotions: [
-      "Morality","Fear","Concern","Discomfort","Shame","Guilt","Avoidance","Frustration",
-      "Restraint","Disappointment","Annoyance","Adaptation","Introspection","Acceptance"
+      "Morality","Fear","Concern","Frustration","Restraint",
+      "Disappointment","Annoyance","Adaptation","Introspection","Acceptance",
+      "Skepticism","Anxiety","Cynicism","Risk-Aversion","Guilt"
     ]
   }
 };
