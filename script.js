@@ -1,6 +1,5 @@
 /****************************************************
- * QUIZ DATA - 10 Questions, each with 4 answers,
- * and categoriesData with 10 emotions each
+ * QUIZ DATA - Full 10 Questions
  ****************************************************/
 const questions = [
   {
@@ -32,7 +31,7 @@ const questions = [
         emotions: ["Reserved", "Apprehension", "Logic", "Restraint", "Duty"]
       },
       {
-        text: "B: Propose a fair split based on actual consumption.",
+        text: "B: Propose a fair split based on what was actually ordered.",
         emotions: ["Structure", "Prudence", "Security", "Stability", "Calculated"]
       },
       {
@@ -215,6 +214,9 @@ const questions = [
   }
 ];
 
+/****************************************************
+ * CATEGORY DEFINITIONS - 10 Emotions Each
+ ****************************************************/
 const categoriesData = {
   Planner: {
     name: "Planner",
@@ -334,19 +336,15 @@ const categoriesData = {
  * GLOBAL STATE
  ****************************************************/
 let currentQuestionIndex = 0;
-let selectedAnswers = new Array(questions.length).fill(null); // Each element is the chosen answer index for that question
+let selectedAnswers = new Array(questions.length).fill(null); // track chosen answers by question index
 
 /****************************************************
  * ON WINDOW LOAD
  ****************************************************/
 window.onload = function() {
   displayQuestion(currentQuestionIndex);
-
-  // Hide 'See Results' button initially
   document.getElementById("results-btn").style.display = "none";
-
-  // Hide 'Previous' button if we’re on question 0
-  document.getElementById("prev-btn").style.display = "none";
+  document.getElementById("prev-btn").style.display = "none"; // hide 'Previous' if first Q
 };
 
 /****************************************************
@@ -359,13 +357,13 @@ function displayQuestion(index) {
   const resultsBtn = document.getElementById("results-btn");
   const prevBtn = document.getElementById("prev-btn");
 
-  // Clear previous answers
+  // Clear old answers
   answersEl.innerHTML = "";
 
   const qObj = questions[index];
   questionEl.textContent = qObj.question;
 
-  // Radio options
+  // Create radio options
   qObj.answers.forEach((ans, ansIdx) => {
     const label = document.createElement("label");
     const radio = document.createElement("input");
@@ -373,7 +371,7 @@ function displayQuestion(index) {
     radio.name = `question_${index}`;
     radio.value = ansIdx;
 
-    // If user previously picked an answer for this question, re-check it
+    // If user previously selected an answer, re-check it
     if (selectedAnswers[index] === ansIdx) {
       radio.checked = true;
     }
@@ -383,14 +381,14 @@ function displayQuestion(index) {
     answersEl.appendChild(label);
   });
 
-  // If we’re on the first question, hide the 'Previous' button
+  // If first question, hide Prev
   if (index === 0) {
     prevBtn.style.display = "none";
   } else {
     prevBtn.style.display = "inline-block";
   }
 
-  // On the last question, hide 'Next' & show 'See Results'; else vice versa
+  // If last question, hide Next, show Results
   if (index < questions.length - 1) {
     nextBtn.style.display = "inline-block";
     resultsBtn.style.display = "none";
@@ -399,7 +397,6 @@ function displayQuestion(index) {
     resultsBtn.style.display = "inline-block";
   }
 
-  // Update question tracker
   updateQuestionTracker(index);
 }
 
@@ -408,8 +405,7 @@ function displayQuestion(index) {
  ****************************************************/
 function updateQuestionTracker(index) {
   const trackerEl = document.getElementById("question-tracker");
-  const totalQ = questions.length;
-  trackerEl.textContent = `${index + 1} of ${totalQ}`;
+  trackerEl.textContent = `${index + 1} of ${questions.length}`;
 }
 
 /****************************************************
@@ -417,13 +413,10 @@ function updateQuestionTracker(index) {
  ****************************************************/
 function goToNextQuestion() {
   saveCurrentAnswer();
-
-  // Enforce selecting an answer
   if (selectedAnswers[currentQuestionIndex] === null) {
     alert("Please select an answer before proceeding.");
     return;
   }
-
   currentQuestionIndex++;
   displayQuestion(currentQuestionIndex);
 }
@@ -433,7 +426,6 @@ function goToNextQuestion() {
  ****************************************************/
 function goToPreviousQuestion() {
   saveCurrentAnswer();
-
   if (currentQuestionIndex > 0) {
     currentQuestionIndex--;
     displayQuestion(currentQuestionIndex);
@@ -456,16 +448,13 @@ function saveCurrentAnswer() {
  * SHOW RESULTS
  ****************************************************/
 function showResults() {
-  // Save the final question's selection
   saveCurrentAnswer();
-
-  // Check if user answered the last question
   if (selectedAnswers[currentQuestionIndex] === null) {
     alert("Please select an answer before seeing results.");
     return;
   }
 
-  // Build the chosenEmotions array from the final set of selected answers
+  // Build chosenEmotions from final chosen answers
   let chosenEmotions = [];
   for (let i = 0; i < questions.length; i++) {
     const ansIdx = selectedAnswers[i];
@@ -474,17 +463,17 @@ function showResults() {
     }
   }
 
-  // Hide quiz, show results
+  // Hide quiz
   document.getElementById("quiz-section").style.display = "none";
   document.getElementById("results-section").classList.remove("hidden");
 
-  // Calculate final category & display
+  // Calculate final category
   const { sortedArray, winner } = calculateCategoryScores(chosenEmotions);
   displayFinalResults(winner, sortedArray);
 }
 
 /****************************************************
- * CALCULATE CATEGORY SCORES
+ * CALCULATE & SORT SCORES
  ****************************************************/
 function calculateCategoryScores(emotions) {
   const tally = {};
@@ -493,15 +482,13 @@ function calculateCategoryScores(emotions) {
   });
 
   const catNames = Object.keys(categoriesData);
-  const scores = {};
   let maxScore = 0;
+  const scores = {};
 
   catNames.forEach(cat => {
     let catScore = 0;
     categoriesData[cat].emotions.forEach(e => {
-      if (tally[e]) {
-        catScore += tally[e];
-      }
+      if (tally[e]) catScore += tally[e];
     });
     scores[cat] = catScore;
     if (catScore > maxScore) {
@@ -509,15 +496,14 @@ function calculateCategoryScores(emotions) {
     }
   });
 
-  // If tie, pick one at random
+  // handle tie
   const winners = catNames.filter(cat => scores[cat] === maxScore);
   let winner = winners.length > 1
     ? winners[Math.floor(Math.random() * winners.length)]
     : winners[0];
 
-  // Sort categories high → low (for the bar chart)
+  // sort for bar chart descending
   const sortedArray = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-
   return { sortedArray, winner };
 }
 
@@ -526,50 +512,46 @@ function calculateCategoryScores(emotions) {
  ****************************************************/
 function displayFinalResults(winner, sortedArray) {
   const catData = categoriesData[winner];
-// Intro paragraph
-const introParagraphEl = document.getElementById("intro-paragraph");
-introParagraphEl.textContent =
-  "Finances touch our lives in personal ways and can often feel overwhelming. " +
-  "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
-  "so we can help you thrive in your financial life.";
 
-// Second line: "With your responses in mind..."
-const introSecondLineEl = document.getElementById("intro-second-line");
-introSecondLineEl.textContent =
-  `With your responses in mind, we think you are a ${catData.article} `;
+  // 1) Intro Paragraph
+  const introParagraphEl = document.getElementById("intro-paragraph");
+  introParagraphEl.textContent =
+    "Finances touch our lives in personal ways and can often feel overwhelming. " +
+    "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
+    "so we can help you thrive in your financial life.";
 
-  // Title
-  const resultsTitle = document.getElementById("results-title");
+  // 2) Second line: "With your responses in mind..."
+  const introSecondLineEl = document.getElementById("intro-second-line");
+  introSecondLineEl.textContent = `With your responses in mind, we think you are a ${catData.article} `;
 
-  // Category name
+  // 3) Category Name + Description
   const catNameEl = document.getElementById("category-name");
   catNameEl.textContent = catData.name;
 
-  // Description
   const catDescEl = document.getElementById("category-description");
   catDescEl.innerHTML = catData.description;
 
-  // Build distribution bars
+  // 4) Build bars
   buildDistributionBars(sortedArray, winner);
 
-  // Where you excel / watch out
+  // 5) Insights
   const excelList = document.getElementById("excel-list");
   excelList.innerHTML = "";
-  catData.excel.forEach(pt => {
+  catData.excel.forEach(point => {
     const li = document.createElement("li");
-    li.textContent = pt;
+    li.textContent = point;
     excelList.appendChild(li);
   });
 
   const watchoutList = document.getElementById("watchout-list");
   watchoutList.innerHTML = "";
-  catData.watchOut.forEach(pt => {
+  catData.watchOut.forEach(point => {
     const li = document.createElement("li");
-    li.textContent = pt;
+    li.textContent = point;
     watchoutList.appendChild(li);
   });
 
-  // Product recommendations
+  // 6) Product Recommendations
   const productsTitle = document.getElementById("products-title");
   productsTitle.textContent = catData.headingForProducts;
 
@@ -606,7 +588,6 @@ function buildDistributionBars(sortedArray, winner) {
   const catBarContainer = document.getElementById("category-bars");
   catBarContainer.innerHTML = "";
 
-  // Already sorted high → low
   sortedArray.forEach(([cat, score]) => {
     const barRow = document.createElement("div");
     barRow.className = "category-bar";
@@ -615,7 +596,7 @@ function buildDistributionBars(sortedArray, winner) {
     label.className = "bar-label";
     label.textContent = cat.toUpperCase();
 
-    // Expand/collapse only for non-winners
+    // only add + toggle for non-winners
     if (cat !== winner) {
       const toggle = document.createElement("span");
       toggle.className = "expand-toggle";
@@ -629,7 +610,6 @@ function buildDistributionBars(sortedArray, winner) {
 
     const fill = document.createElement("div");
     fill.className = "bar-fill";
-
     let pct = total === 0 ? 0 : Math.round((score / total) * 100);
     fill.style.width = pct + "%";
 
@@ -644,7 +624,7 @@ function buildDistributionBars(sortedArray, winner) {
 
     catBarContainer.appendChild(barRow);
 
-    // Short summary for non-winners
+    // short summary for non-winners
     if (cat !== winner) {
       const shortBox = document.createElement("div");
       shortBox.id = `short-${cat}`;
