@@ -39,14 +39,12 @@ body {
   margin-bottom: 15px;
 }
 
-/* Increase spacing around each radio option */
 #answers-container label {
   display: block;
   margin: 12px 0;
   cursor: pointer;
 }
 
-/* Make radio circles bigger */
 #answers-container input[type="radio"] {
   transform: scale(1.2);
   margin-right: 6px;
@@ -98,16 +96,16 @@ body {
 }
 
 /* Intro Paragraphs */
-.intro-paragraph, .intro-second-line {
+.intro-paragraph,
+.intro-second-line {
   margin: 0 auto;
-  max-width: 700px; /* Leaves space for potential images on the sides */
+  max-width: 700px; /* enough space left/right for images, if needed */
   text-align: center;
 }
 
-/* The second line styled similarly to original "you are a" look */
 .intro-second-line {
-  color: #999;        /* matching old color #999 */
-  font-size: 1.2rem;  /* bigger text like old heading */
+  color: #999; /* same color as old "you are a" text */
+  font-size: 1.2rem;
   margin-top: 15px;
   margin-bottom: 5px;
 }
@@ -205,7 +203,7 @@ body {
   line-height: 1.4;
 }
 
-/* Callout below the chart */
+/* The callout below the chart */
 .plus-callout {
   margin: 15px auto;
   padding: 10px 15px;
