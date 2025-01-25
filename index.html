@@ -22,7 +22,7 @@
              and question tracker on the left. -->
         <span id="question-tracker" class="question-tracker"></span>
         <div>
-          <!-- NEW: Prev button -->
+          <!-- Prev button (hidden on Q#1 / index 0) -->
           <button id="prev-btn" class="quiz-btn" onclick="goToPreviousQuestion()">Previous</button>
           <button id="next-btn" class="quiz-btn" onclick="goToNextQuestion()">Next</button>
           <button id="results-btn" class="quiz-btn" onclick="showResults()">See Results</button>
@@ -32,12 +32,6 @@
 
     <!-- RESULTS SECTION (hidden by default) -->
     <div id="results-section" class="hidden">
-
-      <!-- NEW: A visual callout encouraging the user to check the + icons -->
-      <div class="results-callout">
-        <p>Tip: Select the plus signs to see more details about other categories.</p>
-      </div>
-
       <div class="results-header">
         <h2 id="results-title"></h2>
         <h3 id="category-name"></h3>
@@ -49,6 +43,12 @@
       <div class="distribution-container">
         <h3>Your <span class="key-span">key</span> money signs:</h3>
         <div id="category-bars"></div>
+      </div>
+
+      <!-- Callout about the + icons -->
+      <div class="plus-callout">
+        <span class="help-icon">ℹ</span>
+        <p>Click the plus icons to view details on other categories.</p>
       </div>
 
       <!-- Where you excel / watch out for -->
