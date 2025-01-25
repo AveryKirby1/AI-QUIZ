@@ -1,5 +1,5 @@
 /****************************************************
- * QUIZ DATA - Full 10 Questions
+ * QUIZ DATA - 10 Questions, each with 4 answers
  ****************************************************/
 const questions = [
   {
@@ -215,7 +215,7 @@ const questions = [
 ];
 
 /****************************************************
- * CATEGORY DEFINITIONS - 10 Emotions Each
+ * CATEGORY DEFINITIONS
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -336,7 +336,7 @@ const categoriesData = {
  * GLOBAL STATE
  ****************************************************/
 let currentQuestionIndex = 0;
-let selectedAnswers = new Array(questions.length).fill(null); // track chosen answers by question index
+let selectedAnswers = new Array(questions.length).fill(null);
 
 /****************************************************
  * ON WINDOW LOAD
@@ -344,7 +344,7 @@ let selectedAnswers = new Array(questions.length).fill(null); // track chosen an
 window.onload = function() {
   displayQuestion(currentQuestionIndex);
   document.getElementById("results-btn").style.display = "none";
-  document.getElementById("prev-btn").style.display = "none"; // hide 'Previous' if first Q
+  document.getElementById("prev-btn").style.display = "none";
 };
 
 /****************************************************
@@ -363,7 +363,6 @@ function displayQuestion(index) {
   const qObj = questions[index];
   questionEl.textContent = qObj.question;
 
-  // Create radio options
   qObj.answers.forEach((ans, ansIdx) => {
     const label = document.createElement("label");
     const radio = document.createElement("input");
@@ -371,7 +370,6 @@ function displayQuestion(index) {
     radio.name = `question_${index}`;
     radio.value = ansIdx;
 
-    // If user previously selected an answer, re-check it
     if (selectedAnswers[index] === ansIdx) {
       radio.checked = true;
     }
@@ -381,14 +379,14 @@ function displayQuestion(index) {
     answersEl.appendChild(label);
   });
 
-  // If first question, hide Prev
+  // Prev button logic
   if (index === 0) {
     prevBtn.style.display = "none";
   } else {
     prevBtn.style.display = "inline-block";
   }
 
-  // If last question, hide Next, show Results
+  // Next / Results logic
   if (index < questions.length - 1) {
     nextBtn.style.display = "inline-block";
     resultsBtn.style.display = "none";
@@ -404,8 +402,8 @@ function displayQuestion(index) {
  * UPDATE QUESTION TRACKER
  ****************************************************/
 function updateQuestionTracker(index) {
-  const trackerEl = document.getElementById("question-tracker");
-  trackerEl.textContent = `${index + 1} of ${questions.length}`;
+  document.getElementById("question-tracker")
+    .textContent = `${index + 1} of ${questions.length}`;
 }
 
 /****************************************************
@@ -454,7 +452,7 @@ function showResults() {
     return;
   }
 
-  // Build chosenEmotions from final chosen answers
+  // Build chosenEmotions from final answers
   let chosenEmotions = [];
   for (let i = 0; i < questions.length; i++) {
     const ansIdx = selectedAnswers[i];
@@ -463,7 +461,7 @@ function showResults() {
     }
   }
 
-  // Hide quiz
+  // Hide quiz, show results
   document.getElementById("quiz-section").style.display = "none";
   document.getElementById("results-section").classList.remove("hidden");
 
@@ -482,13 +480,15 @@ function calculateCategoryScores(emotions) {
   });
 
   const catNames = Object.keys(categoriesData);
-  let maxScore = 0;
   const scores = {};
+  let maxScore = 0;
 
   catNames.forEach(cat => {
     let catScore = 0;
     categoriesData[cat].emotions.forEach(e => {
-      if (tally[e]) catScore += tally[e];
+      if (tally[e]) {
+        catScore += tally[e];
+      }
     });
     scores[cat] = catScore;
     if (catScore > maxScore) {
@@ -496,13 +496,13 @@ function calculateCategoryScores(emotions) {
     }
   });
 
-  // handle tie
+  // Tie logic
   const winners = catNames.filter(cat => scores[cat] === maxScore);
   let winner = winners.length > 1
     ? winners[Math.floor(Math.random() * winners.length)]
     : winners[0];
 
-  // sort for bar chart descending
+  // Sort desc
   const sortedArray = Object.entries(scores).sort((a, b) => b[1] - a[1]);
   return { sortedArray, winner };
 }
@@ -513,45 +513,42 @@ function calculateCategoryScores(emotions) {
 function displayFinalResults(winner, sortedArray) {
   const catData = categoriesData[winner];
 
-  // 1) Intro Paragraph
+  // Intro Paragraph
   const introParagraphEl = document.getElementById("intro-paragraph");
   introParagraphEl.textContent =
     "Finances touch our lives in personal ways and can often feel overwhelming. " +
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
 
-  // 2) Second line: "With your responses in mind..."
+  // Second line
   const introSecondLineEl = document.getElementById("intro-second-line");
   introSecondLineEl.textContent = `With your responses in mind, we think you are a ${catData.article} `;
 
-  // 3) Category Name + Description
-  const catNameEl = document.getElementById("category-name");
-  catNameEl.textContent = catData.name;
+  // Category Name / Desc
+  document.getElementById("category-name").textContent = catData.name;
+  document.getElementById("category-description").innerHTML = catData.description;
 
-  const catDescEl = document.getElementById("category-description");
-  catDescEl.innerHTML = catData.description;
-
-  // 4) Build bars
+  // Distribution bars
   buildDistributionBars(sortedArray, winner);
 
-  // 5) Insights
+  // Excel / Watchout
   const excelList = document.getElementById("excel-list");
   excelList.innerHTML = "";
-  catData.excel.forEach(point => {
+  catData.excel.forEach(item => {
     const li = document.createElement("li");
-    li.textContent = point;
+    li.textContent = item;
     excelList.appendChild(li);
   });
 
   const watchoutList = document.getElementById("watchout-list");
   watchoutList.innerHTML = "";
-  catData.watchOut.forEach(point => {
+  catData.watchOut.forEach(item => {
     const li = document.createElement("li");
-    li.textContent = point;
+    li.textContent = item;
     watchoutList.appendChild(li);
   });
 
-  // 6) Product Recommendations
+  // Products
   const productsTitle = document.getElementById("products-title");
   productsTitle.textContent = catData.headingForProducts;
 
@@ -596,7 +593,7 @@ function buildDistributionBars(sortedArray, winner) {
     label.className = "bar-label";
     label.textContent = cat.toUpperCase();
 
-    // only add + toggle for non-winners
+    // expand/collapse only for non-winners
     if (cat !== winner) {
       const toggle = document.createElement("span");
       toggle.className = "expand-toggle";
@@ -607,9 +604,9 @@ function buildDistributionBars(sortedArray, winner) {
 
     const barBg = document.createElement("div");
     barBg.className = "bar-bg";
-
     const fill = document.createElement("div");
     fill.className = "bar-fill";
+
     let pct = total === 0 ? 0 : Math.round((score / total) * 100);
     fill.style.width = pct + "%";
 
@@ -624,7 +621,7 @@ function buildDistributionBars(sortedArray, winner) {
 
     catBarContainer.appendChild(barRow);
 
-    // short summary for non-winners
+    // short summary if not winner
     if (cat !== winner) {
       const shortBox = document.createElement("div");
       shortBox.id = `short-${cat}`;
