@@ -60,7 +60,6 @@ body {
   margin-top: 20px;
 }
 
-/* Question tracker styling (bottom left) */
 .question-tracker {
   font-size: 0.9rem;
   color: #666;
@@ -96,6 +95,21 @@ body {
 .results-header {
   text-align: center;
   margin-bottom: 20px;
+}
+
+/* Intro Paragraphs */
+.intro-paragraph, .intro-second-line {
+  margin: 0 auto;
+  max-width: 700px; /* Leaves space for potential images on the sides */
+  text-align: center;
+}
+
+/* The second line styled similarly to original "you are a" look */
+.intro-second-line {
+  color: #999;        /* matching old color #999 */
+  font-size: 1.2rem;  /* bigger text like old heading */
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
 
 #category-name {
@@ -147,7 +161,6 @@ body {
   font-size: 0.8rem;
 }
 
-/* Expand/Collapse icon in the bar label (for non-winner categories) */
 .expand-toggle {
   margin-left: 5px;
   color: #007BFF;
@@ -180,7 +193,7 @@ body {
   font-size: 0.8rem;
 }
 
-/* Short summary below each bar for non-winners */
+/* Short summary below each bar */
 .short-summary {
   display: none;
   padding: 6px 10px;
@@ -192,7 +205,7 @@ body {
   line-height: 1.4;
 }
 
-/* The callout below the chart */
+/* Callout below the chart */
 .plus-callout {
   margin: 15px auto;
   padding: 10px 15px;
