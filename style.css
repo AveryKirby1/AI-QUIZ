@@ -99,12 +99,12 @@ body {
 .intro-paragraph,
 .intro-second-line {
   margin: 0 auto;
-  max-width: 700px; /* enough space left/right for images, if needed */
+  max-width: 700px;
   text-align: center;
 }
 
 .intro-second-line {
-  color: #999; /* same color as old "you are a" text */
+  color: #999;
   font-size: 1.2rem;
   margin-top: 15px;
   margin-bottom: 5px;
