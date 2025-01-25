@@ -217,7 +217,8 @@ const questions = [
 ];
 
 /****************************************************
- * CATEGORY DEFINITIONS (Updated Summaries + Short Descriptions)
+ * CATEGORY DEFINITIONS 
+ * (Now using "strengths" and "weaknesses" arrays)
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -232,21 +233,21 @@ const categoriesData = {
       avoid surprises. By setting clear goals and budgets, you gain peace of mind and a 
       sense of accomplishment.
     `,
-    // This shortDescription is displayed for non-winners if user clicks '+'
     shortDescription: `
       Planners focus on structured routines and detailed goal-setting to ensure 
       financial stability, excelling at avoiding costly surprises. While a tendency to 
       overthink can slow decisions, this disciplined approach provides peace of mind 
       and fosters steady, long-term security.
     `,
-    excel: [
-      "Long-Term Strategist – Great at planning for the future.",
-      "Risk-Averse – You avoid uncalculated risks and stay balanced.",
-      "Organized – Budgets, spreadsheets, you name it!"
+    strengths: [
+      "As a Planner, you excel at Long-Term Strategizing—budgets and schedules are your superpower.",
+      "Being a Planner helps you stay Risk-Averse—you’d rather carefully analyze than leap blindly into decisions.",
+      "Because you’re a Planner, you maintain an Organized approach—spreadsheets, lists, and well-defined goals keep you on track."
     ],
-    watchOut: [
-      "Overthinking – Sometimes it’s okay to be spontaneous.",
-      "Paralysis by Analysis – Don’t let too much planning stop you from taking action."
+    weaknesses: [
+      "Because you’re a Planner, Overthinking can hold you back—sometimes it’s okay to act on impulse.",
+      "Being a Planner can lead to Paralysis by Analysis—too much planning can stall your forward progress.",
+      "As a Planner, Limited Adaptability can be an issue—last-minute changes or surprises may feel uncomfortable."
     ],
     products: [
       "Key Active Saver® Account – Help grow your savings with methodical transfers.",
@@ -276,14 +277,15 @@ const categoriesData = {
       may arise, balancing spontaneity with prudent planning sustains momentum 
       and protects against the downsides of taking bold risks.
     `,
-    excel: [
-      "Bold Decision-Maker – Not afraid to jump on an opportunity.",
-      "Curious and Open-Minded – Always looking for ways to grow.",
-      "Optimistic Risk-Taker – Trusting your instincts."
+    strengths: [
+      "As an Adventurer, you’re a Bold Decision-Maker—you jump on opportunities before they slip away.",
+      "Being an Adventurer means you’re Curious and Open-Minded—always seeking new ways to grow.",
+      "Because you’re an Adventurer, you’re an Optimistic Risk-Taker—trusting your instincts even when stepping into the unknown."
     ],
-    watchOut: [
-      "Balancing Fun with Long-Term Goals – Keep some practical savings in mind.",
-      "Impulse Spending – A set budget for 'fun money' can help you stay in control."
+    weaknesses: [
+      "Because you’re an Adventurer, Balancing Fun with Goals can be tricky—it’s still important to save for the future.",
+      "Being an Adventurer can lead to Impulse Spending—a set “fun money” budget can help you stay in control.",
+      "As an Adventurer, FOMO-Fueled Choices may arise—fear of missing out can rush your decisions."
     ],
     products: [
       "Key Smart Checking® – Quick, mobile-friendly banking for on-the-go lifestyles.",
@@ -313,14 +315,15 @@ const categoriesData = {
       can lead to overextension, but mindful boundaries preserve both personal 
       well-being and the desire to uplift others.
     `,
-    excel: [
-      "Community-Focused – You care deeply about helping others.",
-      "Collaborative – You enjoy pooling resources for shared goals.",
-      "Generous Spirit – Giving is part of who you are."
+    strengths: [
+      "As a Connector, you’re Community-Focused—caring deeply about helping others succeed.",
+      "Being a Connector keeps you Collaborative—pooling resources and sharing wins is your ideal approach.",
+      "Because you’re a Connector, a Generous Spirit guides your choices—giving is part of who you are."
     ],
-    watchOut: [
-      "Overextending Yourself – Remember to protect your own finances too.",
-      "Difficulty Saying No – You can’t help everyone all the time."
+    weaknesses: [
+      "Because you’re a Connector, Overextending Yourself can become a problem—your finances need protection too.",
+      "Being a Connector leads to Difficulty Saying No—it’s impossible to help everyone all the time.",
+      "As a Connector, you might prefer Conflict Avoidance—preserving harmony can overshadow tough but necessary conversations."
     ],
     products: [
       "Key Family Checking® – Manage shared expenses or household needs cooperatively.",
@@ -349,14 +352,15 @@ const categoriesData = {
       risk can uncover worthwhile gains, ensuring security without sacrificing every chance 
       for growth.
     `,
-    excel: [
-      "Clear-Eyed Investor – You avoid hype and see the facts.",
-      "Risk-Manager – You keep spending and investing decisions rational.",
-      "Level-Headed – Rarely impulsive, you consider outcomes carefully."
+    strengths: [
+      "As a Realist, you’re a Clear-Eyed Investor—you see facts over hype and follow what works.",
+      "Being a Realist means you’re an expert Risk-Manager—you keep spending and investing decisions grounded.",
+      "Because you’re a Realist, you maintain a Level-Headed approach—rarely impulsive, you weigh outcomes before acting."
     ],
-    watchOut: [
-      "Missing Opportunities – Sometimes, a small risk pays off.",
-      "Over-Caution – Growth can require stepping outside your comfort zone."
+    weaknesses: [
+      "Because you’re a Realist, Missing Opportunities can happen—a small risk might sometimes pay off.",
+      "Being a Realist can lead to Over-Caution—progress often requires stepping out of your comfort zone.",
+      "As a Realist, you might adopt a Rigid Mindset—preferring only proven methods can limit innovative solutions."
     ],
     products: [
       "Key Safe Checking® – Overdraft protection and fraud prevention for peace of mind.",
@@ -532,7 +536,7 @@ function calculateCategoryScores(emotions) {
     }
   });
 
-  // handle tie
+  // handle tie scenario for the "winner"
   const winners = catNames.filter(cat => scores[cat] === maxScore);
   let winner = winners.length > 1
     ? winners[Math.floor(Math.random() * winners.length)]
@@ -575,24 +579,33 @@ function displayFinalResults(winner, sortedArray) {
   // 4) Distribution bars
   buildDistributionBars(sortedArray, winner);
 
-  // 5) Insights
+  // 5) Dynamic Strengths & Weaknesses
+  // Figure out which categories are "top" until we reach or exceed 80%,
+  // unless there's a special scenario: if all 4 are tied or top cat >=80%, etc.
+  const topCats = determineTopCategories(sortedArray);
+
+  // Build the final sets of strengths and weaknesses from those top categories
+  const finalStrengths = selectStrengths(topCats, sortedArray);
+  const finalWeaknesses = selectWeaknesses(topCats, sortedArray);
+
+  // Clear the old lists
   const excelList = document.getElementById("excel-list");
   excelList.innerHTML = "";
-  catData.excel.forEach(point => {
+  finalStrengths.forEach(str => {
     const li = document.createElement("li");
-    li.textContent = point;
+    li.textContent = str;
     excelList.appendChild(li);
   });
 
   const watchoutList = document.getElementById("watchout-list");
   watchoutList.innerHTML = "";
-  catData.watchOut.forEach(point => {
+  finalWeaknesses.forEach(wk => {
     const li = document.createElement("li");
-    li.textContent = point;
+    li.textContent = wk;
     watchoutList.appendChild(li);
   });
 
-  // 6) Products
+  // 6) Products (based on the single "winner" category)
   const productsTitle = document.getElementById("products-title");
   productsTitle.textContent = catData.headingForProducts;
 
@@ -620,10 +633,135 @@ function displayFinalResults(winner, sortedArray) {
 }
 
 /****************************************************
+ * DETERMINE THE TOP CATEGORIES TO REACH >=80%
+ * Special cases:
+ *  - If top cat >= 80%, only that cat
+ *  - If all are tied, show all (1 strength each, etc.)
+ *  - Else accumulate categories until sum >= 80
+ ****************************************************/
+function determineTopCategories(sortedArray) {
+  // Check if total is zero to avoid division by zero
+  const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
+
+  // If all are tied (and none are zero)
+  const allTied = sortedArray.every(([_, score]) => score === sortedArray[0][1]) && sortedArray[0][1] > 0;
+  if (allTied && sortedArray.length === 4) {
+    // All 4 categories are tied and have nonzero score
+    return sortedArray.map(([cat]) => cat);
+  }
+
+  const topCatPct = (sortedArray[0][1] / total) * 100;
+  if (topCatPct >= 80) {
+    // Only the top category if it's 80% or more
+    return [sortedArray[0][0]];
+  }
+
+  // Otherwise accumulate until sum >= 80
+  let runningPct = 0;
+  let resultCats = [];
+  for (let i = 0; i < sortedArray.length; i++) {
+    const [cat, score] = sortedArray[i];
+    let pct = (score / total) * 100;
+    runningPct += pct;
+    resultCats.push(cat);
+    if (runningPct >= 80) break;
+  }
+
+  return resultCats;
+}
+
+/****************************************************
+ * SELECT STRENGTHS (Max 3 total, or 4 if all are tied).
+ * E.g. if topCats = [Realist, Connector], we might show 2 from Realist, 1 from Connector.
+ * If we have 3 or 4 cats, we spread them. If all 4 are tied => show 4 total (1 each).
+ ****************************************************/
+function selectStrengths(topCats, sortedArray) {
+  // If we have 4 cats and they're all tied, the user wants 1 from each.
+  if (topCats.length === 4) {
+    // 1 from each category
+    return topCats.map(cat => categoriesData[cat].strengths[0]);
+  }
+
+  // Otherwise we aim for 3 total
+  return distributeItems(topCats, sortedArray, "strengths", 3);
+}
+
+/****************************************************
+ * SELECT WEAKNESSES (Same logic as strengths)
+ ****************************************************/
+function selectWeaknesses(topCats, sortedArray) {
+  if (topCats.length === 4) {
+    // 1 from each category
+    return topCats.map(cat => categoriesData[cat].weaknesses[0]);
+  }
+  return distributeItems(topCats, sortedArray, "weaknesses", 3);
+}
+
+/****************************************************
+ * DISTRIBUTE items among top cats, up to a totalCount (3).
+ * Example:
+ *   If we have topCats = [Realist, Connector] with scores 50% and 30%,
+ *   that sums to 80%. We'll show 2 from Realist, 1 from Connector.
+ ****************************************************/
+function distributeItems(topCats, sortedArray, keyName, totalCount) {
+  // Build a map of cat -> score
+  let total = 0;
+  const catScoreMap = {};
+  sortedArray.forEach(([cat, score]) => {
+    if (topCats.includes(cat)) {
+      catScoreMap[cat] = score;
+      total += score;
+    }
+  });
+
+  // If total is 0, just bail out
+  if (!total) {
+    // Possibly user never answered?
+    // Return an empty array or default
+    return [];
+  }
+
+  // We'll allocate [0, totalCount] items across topCats based on proportion
+  let distribution = {};
+  let leftover = totalCount;
+
+  // First pass: floor distribution
+  topCats.forEach(cat => {
+    const catPct = catScoreMap[cat] / total;
+    const rawCount = Math.floor(totalCount * catPct);
+    distribution[cat] = rawCount;
+    leftover -= rawCount;
+  });
+
+  // Second pass: allocate leftover to categories with highest score first
+  // so e.g. if Realist is bigger portion, it gets leftover first
+  const sortedByScore = topCats.slice().sort((a, b) => catScoreMap[b] - catScoreMap[a]);
+  for (let cat of sortedByScore) {
+    if (leftover > 0) {
+      distribution[cat]++;
+      leftover--;
+    }
+  }
+
+  // Construct final list from each category in priority
+  const finalList = [];
+  topCats.forEach(cat => {
+    const count = distribution[cat];
+    // e.g. categoriesData[cat].strengths or .weaknesses
+    const arr = categoriesData[cat][keyName];
+    // slice the top priority items
+    const subset = arr.slice(0, count);
+    finalList.push(...subset);
+  });
+
+  return finalList;
+}
+
+/****************************************************
  * BUILD DISTRIBUTION BARS
  ****************************************************/
 function buildDistributionBars(sortedArray, winner) {
-  const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0);
+  const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
   const catBarContainer = document.getElementById("category-bars");
   catBarContainer.innerHTML = "";
 
@@ -650,7 +788,7 @@ function buildDistributionBars(sortedArray, winner) {
     const fill = document.createElement("div");
     fill.className = "bar-fill";
 
-    let pct = total === 0 ? 0 : Math.round((score / total) * 100);
+    let pct = Math.round((score / total) * 100);
     fill.style.width = pct + "%";
 
     const barPercent = document.createElement("div");
