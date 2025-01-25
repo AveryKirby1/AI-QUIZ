@@ -526,10 +526,20 @@ function calculateCategoryScores(emotions) {
  ****************************************************/
 function displayFinalResults(winner, sortedArray) {
   const catData = categoriesData[winner];
+// Intro paragraph
+const introParagraphEl = document.getElementById("intro-paragraph");
+introParagraphEl.textContent =
+  "Finances touch our lives in personal ways and can often feel overwhelming. " +
+  "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
+  "so we can help you thrive in your financial life.";
+
+// Second line: "With your responses in mind..."
+const introSecondLineEl = document.getElementById("intro-second-line");
+introSecondLineEl.textContent =
+  `With your responses in mind, we think you are a ${catData.article} `;
 
   // Title
   const resultsTitle = document.getElementById("results-title");
-  resultsTitle.textContent = `you are ${catData.article} `;
 
   // Category name
   const catNameEl = document.getElementById("category-name");
