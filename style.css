@@ -93,6 +93,14 @@ body {
   margin-top: 10px;
 }
 
+.results-callout {
+  border: 2px dashed #ccc;
+  background: #fafafa;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+}
+
 .results-header {
   text-align: center;
   margin-bottom: 20px;
@@ -117,15 +125,6 @@ body {
   font-size: 0.95rem;
   line-height: 1.6;
   color: #333;
-}
-
-/* NEW: Callout styling */
-.results-callout {
-  border: 2px dashed #ccc;
-  background: #fafafa;
-  padding: 10px 15px;
-  margin-bottom: 20px;
-  border-radius: 6px;
 }
 
 /* Distribution bars */
