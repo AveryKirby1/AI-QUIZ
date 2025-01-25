@@ -217,8 +217,7 @@ const questions = [
 ];
 
 /****************************************************
- * CATEGORY DEFINITIONS 
- * (Now using "strengths" and "weaknesses" arrays)
+ * CATEGORY DEFINITIONS (with new Strengths & Weaknesses)
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -413,7 +412,6 @@ function displayQuestion(index) {
     radio.name = `question_${index}`;
     radio.value = ansIdx;
 
-    // If user had previously selected this answer
     if (selectedAnswers[index] === ansIdx) {
       radio.checked = true;
     }
@@ -561,34 +559,32 @@ function calculateCategoryScores(emotions) {
 function displayFinalResults(winner, sortedArray) {
   const catData = categoriesData[winner];
 
-  // 1) Intro paragraph
+  // Intro paragraph
   const introParagraphEl = document.getElementById("intro-paragraph");
   introParagraphEl.textContent =
     "Finances touch our lives in personal ways and can often feel overwhelming. " +
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
 
-  // 2) "With your responses in mind, we think you are a/an"
+  // e.g. "With your responses in mind, we think you are a/an..."
   const introSecondLineEl = document.getElementById("intro-second-line");
   introSecondLineEl.textContent = `With your responses in mind, we think you are ${catData.article}`;
 
-  // 3) Category name and description
+  // winner category name/description
   document.getElementById("category-name").textContent = catData.name;
   document.getElementById("category-description").innerHTML = catData.description;
 
-  // 4) Distribution bars
+  // Build distribution bars
   buildDistributionBars(sortedArray, winner);
 
-  // 5) Dynamic Strengths & Weaknesses
-  // Figure out which categories are "top" until we reach or exceed 80%,
-  // unless there's a special scenario: if all 4 are tied or top cat >=80%, etc.
-  const topCats = determineTopCategories(sortedArray);
+  // Now handle dynamic strengths/weaknesses
+  const topCats = determineTopCats(sortedArray);
+  const pctMap = buildPctMap(sortedArray);
 
-  // Build the final sets of strengths and weaknesses from those top categories
-  const finalStrengths = selectStrengths(topCats, sortedArray);
-  const finalWeaknesses = selectWeaknesses(topCats, sortedArray);
+  const finalStrengths = buildOutputItems(topCats, pctMap, "strengths");
+  const finalWeaknesses = buildOutputItems(topCats, pctMap, "weaknesses");
 
-  // Clear the old lists
+  // Clear and fill strengths
   const excelList = document.getElementById("excel-list");
   excelList.innerHTML = "";
   finalStrengths.forEach(str => {
@@ -597,6 +593,7 @@ function displayFinalResults(winner, sortedArray) {
     excelList.appendChild(li);
   });
 
+  // Clear and fill weaknesses
   const watchoutList = document.getElementById("watchout-list");
   watchoutList.innerHTML = "";
   finalWeaknesses.forEach(wk => {
@@ -605,7 +602,7 @@ function displayFinalResults(winner, sortedArray) {
     watchoutList.appendChild(li);
   });
 
-  // 6) Products (based on the single "winner" category)
+  // Products from single winner category
   const productsTitle = document.getElementById("products-title");
   productsTitle.textContent = catData.headingForProducts;
 
@@ -633,131 +630,6 @@ function displayFinalResults(winner, sortedArray) {
 }
 
 /****************************************************
- * DETERMINE THE TOP CATEGORIES TO REACH >=80%
- * Special cases:
- *  - If top cat >= 80%, only that cat
- *  - If all are tied, show all (1 strength each, etc.)
- *  - Else accumulate categories until sum >= 80
- ****************************************************/
-function determineTopCategories(sortedArray) {
-  // Check if total is zero to avoid division by zero
-  const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
-
-  // If all are tied (and none are zero)
-  const allTied = sortedArray.every(([_, score]) => score === sortedArray[0][1]) && sortedArray[0][1] > 0;
-  if (allTied && sortedArray.length === 4) {
-    // All 4 categories are tied and have nonzero score
-    return sortedArray.map(([cat]) => cat);
-  }
-
-  const topCatPct = (sortedArray[0][1] / total) * 100;
-  if (topCatPct >= 80) {
-    // Only the top category if it's 80% or more
-    return [sortedArray[0][0]];
-  }
-
-  // Otherwise accumulate until sum >= 80
-  let runningPct = 0;
-  let resultCats = [];
-  for (let i = 0; i < sortedArray.length; i++) {
-    const [cat, score] = sortedArray[i];
-    let pct = (score / total) * 100;
-    runningPct += pct;
-    resultCats.push(cat);
-    if (runningPct >= 80) break;
-  }
-
-  return resultCats;
-}
-
-/****************************************************
- * SELECT STRENGTHS (Max 3 total, or 4 if all are tied).
- * E.g. if topCats = [Realist, Connector], we might show 2 from Realist, 1 from Connector.
- * If we have 3 or 4 cats, we spread them. If all 4 are tied => show 4 total (1 each).
- ****************************************************/
-function selectStrengths(topCats, sortedArray) {
-  // If we have 4 cats and they're all tied, the user wants 1 from each.
-  if (topCats.length === 4) {
-    // 1 from each category
-    return topCats.map(cat => categoriesData[cat].strengths[0]);
-  }
-
-  // Otherwise we aim for 3 total
-  return distributeItems(topCats, sortedArray, "strengths", 3);
-}
-
-/****************************************************
- * SELECT WEAKNESSES (Same logic as strengths)
- ****************************************************/
-function selectWeaknesses(topCats, sortedArray) {
-  if (topCats.length === 4) {
-    // 1 from each category
-    return topCats.map(cat => categoriesData[cat].weaknesses[0]);
-  }
-  return distributeItems(topCats, sortedArray, "weaknesses", 3);
-}
-
-/****************************************************
- * DISTRIBUTE items among top cats, up to a totalCount (3).
- * Example:
- *   If we have topCats = [Realist, Connector] with scores 50% and 30%,
- *   that sums to 80%. We'll show 2 from Realist, 1 from Connector.
- ****************************************************/
-function distributeItems(topCats, sortedArray, keyName, totalCount) {
-  // Build a map of cat -> score
-  let total = 0;
-  const catScoreMap = {};
-  sortedArray.forEach(([cat, score]) => {
-    if (topCats.includes(cat)) {
-      catScoreMap[cat] = score;
-      total += score;
-    }
-  });
-
-  // If total is 0, just bail out
-  if (!total) {
-    // Possibly user never answered?
-    // Return an empty array or default
-    return [];
-  }
-
-  // We'll allocate [0, totalCount] items across topCats based on proportion
-  let distribution = {};
-  let leftover = totalCount;
-
-  // First pass: floor distribution
-  topCats.forEach(cat => {
-    const catPct = catScoreMap[cat] / total;
-    const rawCount = Math.floor(totalCount * catPct);
-    distribution[cat] = rawCount;
-    leftover -= rawCount;
-  });
-
-  // Second pass: allocate leftover to categories with highest score first
-  // so e.g. if Realist is bigger portion, it gets leftover first
-  const sortedByScore = topCats.slice().sort((a, b) => catScoreMap[b] - catScoreMap[a]);
-  for (let cat of sortedByScore) {
-    if (leftover > 0) {
-      distribution[cat]++;
-      leftover--;
-    }
-  }
-
-  // Construct final list from each category in priority
-  const finalList = [];
-  topCats.forEach(cat => {
-    const count = distribution[cat];
-    // e.g. categoriesData[cat].strengths or .weaknesses
-    const arr = categoriesData[cat][keyName];
-    // slice the top priority items
-    const subset = arr.slice(0, count);
-    finalList.push(...subset);
-  });
-
-  return finalList;
-}
-
-/****************************************************
  * BUILD DISTRIBUTION BARS
  ****************************************************/
 function buildDistributionBars(sortedArray, winner) {
@@ -765,7 +637,6 @@ function buildDistributionBars(sortedArray, winner) {
   const catBarContainer = document.getElementById("category-bars");
   catBarContainer.innerHTML = "";
 
-  // index 0 is the winner
   sortedArray.forEach(([cat, score], idx) => {
     const barRow = document.createElement("div");
     barRow.className = "category-bar";
@@ -774,7 +645,7 @@ function buildDistributionBars(sortedArray, winner) {
     label.className = "bar-label";
     label.textContent = cat.toUpperCase();
 
-    // only show expand toggle for non-winners
+    // Only show expand toggle for non-winners
     if (idx !== 0) {
       const toggle = document.createElement("span");
       toggle.className = "expand-toggle";
@@ -814,12 +685,148 @@ function buildDistributionBars(sortedArray, winner) {
 }
 
 /****************************************************
+ * DETERMINE TOP CATS TO SHOW FOR STRENGTHS/WEAKNESSES
+ *
+ * Based on clarifications:
+ * 1) If the top category is >= 80%, only that category
+ * 2) If all 4 are tied, we use all 4 (the only scenario for 4 strengths/weaknesses)
+ * 3) Otherwise accumulate from top down until we reach >=80:
+ *    - If it ends with 1 cat => 3 items from that cat
+ *    - If it ends with 2 cats => 2 from top cat, 1 from second
+ *    - If it ends with 3 cats => 1 from each
+ *    - If 4 cats needed but not all tied => we only keep top 3 (we show 1 from each)
+ ****************************************************/
+function determineTopCats(sortedArray) {
+  // total for percentages
+  const total = sortedArray.reduce((acc, [_, score]) => acc + score, 0) || 1;
+
+  // Check if top cat >= 80
+  const topCatScore = sortedArray[0][1];
+  if ((topCatScore / total) * 100 >= 80) {
+    return [sortedArray[0][0]]; // single cat
+  }
+
+  // Check if all 4 are tied and non-zero
+  const allTied = (sortedArray.length === 4 &&
+    sortedArray[0][1] > 0 &&
+    sortedArray.every(([, s]) => s === sortedArray[0][1])
+  );
+  if (allTied) {
+    // All 4 categories are tied
+    return sortedArray.map(([cat]) => cat);
+  }
+
+  // Accumulate from top until >=80
+  let runningPct = 0;
+  let result = [];
+  for (let i = 0; i < sortedArray.length; i++) {
+    const [cat, score] = sortedArray[i];
+    runningPct += (score / total) * 100;
+    result.push(cat);
+    if (runningPct >= 80) break;
+  }
+
+  // If we ended up with 4 cats but they're not all tied, per instructions, 
+  // we keep only top 3. (We won't show 4 unless truly all are tied.)
+  if (result.length === 4) {
+    // remove the last cat
+    result.pop(); 
+  }
+
+  return result;
+}
+
+/****************************************************
+ * BUILD A MAP: category -> percentage (integer 0-100)
+ ****************************************************/
+function buildPctMap(sortedArray) {
+  const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
+  const map = {};
+  sortedArray.forEach(([cat, score]) => {
+    const pct = Math.round((score / total) * 100);
+    map[cat] = pct;
+  });
+  return map;
+}
+
+/****************************************************
+ * BUILD OUTPUT ITEMS (STRENGTHS OR WEAKNESSES)
+ * Clarifications:
+ *  - If 4 cats, each cat => 1 item (4 total)
+ *  - If 3 cats, each => 1 item (3 total)
+ *  - If 2 cats, top => 2 items, next => 1 item (3 total)
+ *  - If 1 cat, => 3 items from that cat
+ *
+ * We'll also transform the text to:
+ * "Because you are [X]% of [Category], [rest of line in lower-case after first comma]"
+ ****************************************************/
+function buildOutputItems(topCats, pctMap, keyName) {
+  // how many cats do we have?
+  const len = topCats.length;
+  if (len === 4) {
+    // all are tied -> 1 each
+    return topCats.map(cat => transformLine(cat, pctMap[cat], categoriesData[cat][keyName][0]));
+  } else if (len === 3) {
+    // 1 from each
+    const lines = [];
+    for (let i = 0; i < len; i++) {
+      const cat = topCats[i];
+      const line = categoriesData[cat][keyName][0];
+      lines.push(transformLine(cat, pctMap[cat], line));
+    }
+    return lines;
+  } else if (len === 2) {
+    // top cat => 2 lines, second cat => 1 line
+    const [cat1, cat2] = topCats;
+    const cat1Lines = categoriesData[cat1][keyName];
+    const cat2Lines = categoriesData[cat2][keyName];
+
+    const finalArr = [];
+    // take first 2 from cat1
+    finalArr.push(transformLine(cat1, pctMap[cat1], cat1Lines[0]));
+    finalArr.push(transformLine(cat1, pctMap[cat1], cat1Lines[1]));
+    // take first 1 from cat2
+    finalArr.push(transformLine(cat2, pctMap[cat2], cat2Lines[0]));
+    return finalArr;
+  } else {
+    // 1 cat
+    const cat = topCats[0];
+    const lines = categoriesData[cat][keyName];
+    // take first 3
+    return [
+      transformLine(cat, pctMap[cat], lines[0]),
+      transformLine(cat, pctMap[cat], lines[1]),
+      transformLine(cat, pctMap[cat], lines[2])
+    ];
+  }
+}
+
+/****************************************************
+ * TRANSFORM LINE TO:
+ * "Because you are [pct]% of [Category], <trimmed rest>"
+ * We'll remove the initial prefix like "As a Realist," or 
+ * "Because you’re a Realist," etc. up to the first comma.
+ ****************************************************/
+function transformLine(cat, pct, originalLine) {
+  // find the first comma
+  let idx = originalLine.indexOf(",");
+  let afterComma = (idx >= 0) ? originalLine.substring(idx + 1).trim() : originalLine;
+
+  // Make first letter lower-case for a more natural read
+  if (afterComma.length > 0) {
+    afterComma = afterComma[0].toLowerCase() + afterComma.substring(1);
+  }
+
+  // e.g. "Because you are 45% of Realist, missing opportunities can happen..."
+  return `Because you are ${pct}% of ${cat}, ${afterComma}`;
+}
+ 
+/****************************************************
  * TOGGLE SHORT SUMMARY
  ****************************************************/
 function toggleShortSummary(cat, toggleSpan) {
   const summaryDiv = document.getElementById(`short-${cat}`);
   if (!summaryDiv) return;
-
   if (summaryDiv.style.display === "block") {
     summaryDiv.style.display = "none";
     toggleSpan.textContent = "+";
