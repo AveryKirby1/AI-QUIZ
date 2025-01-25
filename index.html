@@ -22,7 +22,6 @@
              and question tracker on the left. -->
         <span id="question-tracker" class="question-tracker"></span>
         <div>
-          <!-- Prev button (hidden on Q#1 / index 0) -->
           <button id="prev-btn" class="quiz-btn" onclick="goToPreviousQuestion()">Previous</button>
           <button id="next-btn" class="quiz-btn" onclick="goToNextQuestion()">Next</button>
           <button id="results-btn" class="quiz-btn" onclick="showResults()">See Results</button>
@@ -32,17 +31,17 @@
 
     <!-- RESULTS SECTION (hidden by default) -->
     <div id="results-section" class="hidden">
-  <div class="results-header">
+      <div class="results-header">
+        <!-- Intro Paragraph for everyone -->
+        <p id="intro-paragraph" class="intro-paragraph"></p>
 
-    <p id="intro-paragraph" class="intro-paragraph"></p>
-    <p id="intro-second-line" class="intro-second-line"></p>
+        <!-- Second line "With your responses in mind..." -->
+        <p id="intro-second-line" class="intro-second-line"></p>
 
-    <h3 id="category-name"></h3>
-    <p id="category-description"></p>
-    ...
-  </div>
-  ...
-</div>
+        <!-- Category name + description -->
+        <h3 id="category-name"></h3>
+        <p id="category-description"></p>
+      </div>
 
       <!-- Distribution chart area -->
       <div class="distribution-container">
