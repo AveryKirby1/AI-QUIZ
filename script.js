@@ -217,7 +217,7 @@ const questions = [
 ];
 
 /****************************************************
- * CATEGORY DEFINITIONS (with new Strengths & Weaknesses)
+ * CATEGORY DEFINITIONS
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -686,37 +686,33 @@ function buildDistributionBars(sortedArray, winner) {
 
 /****************************************************
  * DETERMINE TOP CATS TO SHOW FOR STRENGTHS/WEAKNESSES
- *
- * Based on clarifications:
+ * 
+ * The logic:
  * 1) If the top category is >= 80%, only that category
- * 2) If all 4 are tied, we use all 4 (the only scenario for 4 strengths/weaknesses)
- * 3) Otherwise accumulate from top down until we reach >=80:
- *    - If it ends with 1 cat => 3 items from that cat
- *    - If it ends with 2 cats => 2 from top cat, 1 from second
- *    - If it ends with 3 cats => 1 from each
- *    - If 4 cats needed but not all tied => we only keep top 3 (we show 1 from each)
+ * 2) If all 4 are tied (and non-zero), we use all 4
+ * 3) Otherwise accumulate from top down until >=80
+ *    and if that ends at 4 cats but not all tied, 
+ *    keep top 3 only.
  ****************************************************/
 function determineTopCats(sortedArray) {
-  // total for percentages
   const total = sortedArray.reduce((acc, [_, score]) => acc + score, 0) || 1;
 
-  // Check if top cat >= 80
+  // if top cat >= 80%
   const topCatScore = sortedArray[0][1];
   if ((topCatScore / total) * 100 >= 80) {
-    return [sortedArray[0][0]]; // single cat
+    return [sortedArray[0][0]];
   }
 
-  // Check if all 4 are tied and non-zero
+  // check if all 4 tied & non-zero
   const allTied = (sortedArray.length === 4 &&
     sortedArray[0][1] > 0 &&
     sortedArray.every(([, s]) => s === sortedArray[0][1])
   );
   if (allTied) {
-    // All 4 categories are tied
     return sortedArray.map(([cat]) => cat);
   }
 
-  // Accumulate from top until >=80
+  // accumulate from top
   let runningPct = 0;
   let result = [];
   for (let i = 0; i < sortedArray.length; i++) {
@@ -726,18 +722,15 @@ function determineTopCats(sortedArray) {
     if (runningPct >= 80) break;
   }
 
-  // If we ended up with 4 cats but they're not all tied, per instructions, 
-  // we keep only top 3. (We won't show 4 unless truly all are tied.)
+  // if we ended with 4 cats but not all tied, keep top 3
   if (result.length === 4) {
-    // remove the last cat
-    result.pop(); 
+    result.pop();
   }
-
   return result;
 }
 
 /****************************************************
- * BUILD A MAP: category -> percentage (integer 0-100)
+ * BUILD A MAP: category -> integer percentage
  ****************************************************/
 function buildPctMap(sortedArray) {
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
@@ -750,83 +743,87 @@ function buildPctMap(sortedArray) {
 }
 
 /****************************************************
- * BUILD OUTPUT ITEMS (STRENGTHS OR WEAKNESSES)
- * Clarifications:
- *  - If 4 cats, each cat => 1 item (4 total)
- *  - If 3 cats, each => 1 item (3 total)
- *  - If 2 cats, top => 2 items, next => 1 item (3 total)
- *  - If 1 cat, => 3 items from that cat
- *
- * We'll also transform the text to:
- * "Because you are [X]% of [Category], [rest of line in lower-case after first comma]"
+ * MAX NUMBER OF LINES => 3 (or 4 if 4 cats are tied)
+ *  
+ * If 4 cats => 1 line each
+ * If 3 cats => 1 line each
+ * If 2 cats => top cat gets 2 lines, second cat gets 1
+ * If 1 cat => 3 lines from that single cat
  ****************************************************/
 function buildOutputItems(topCats, pctMap, keyName) {
-  // how many cats do we have?
   const len = topCats.length;
   if (len === 4) {
-    // all are tied -> 1 each
-    return topCats.map(cat => transformLine(cat, pctMap[cat], categoriesData[cat][keyName][0]));
+    // all are tied => 4 total (one each)
+    return topCats.map((cat, idx) => transformLine(cat, pctMap[cat], categoriesData[cat][keyName][0], idx));
   } else if (len === 3) {
-    // 1 from each
-    const lines = [];
-    for (let i = 0; i < len; i++) {
-      const cat = topCats[i];
-      const line = categoriesData[cat][keyName][0];
-      lines.push(transformLine(cat, pctMap[cat], line));
-    }
-    return lines;
+    // 1 from each => 3 total
+    return topCats.map((cat, idx) => transformLine(cat, pctMap[cat], categoriesData[cat][keyName][0], idx));
   } else if (len === 2) {
-    // top cat => 2 lines, second cat => 1 line
+    // cat1 => 2 lines, cat2 => 1 line
     const [cat1, cat2] = topCats;
-    const cat1Lines = categoriesData[cat1][keyName];
-    const cat2Lines = categoriesData[cat2][keyName];
+    const arr1 = categoriesData[cat1][keyName];
+    const arr2 = categoriesData[cat2][keyName];
 
-    const finalArr = [];
-    // take first 2 from cat1
-    finalArr.push(transformLine(cat1, pctMap[cat1], cat1Lines[0]));
-    finalArr.push(transformLine(cat1, pctMap[cat1], cat1Lines[1]));
-    // take first 1 from cat2
-    finalArr.push(transformLine(cat2, pctMap[cat2], cat2Lines[0]));
-    return finalArr;
-  } else {
-    // 1 cat
-    const cat = topCats[0];
-    const lines = categoriesData[cat][keyName];
-    // take first 3
     return [
-      transformLine(cat, pctMap[cat], lines[0]),
-      transformLine(cat, pctMap[cat], lines[1]),
-      transformLine(cat, pctMap[cat], lines[2])
+      transformLine(cat1, pctMap[cat1], arr1[0], 0),
+      transformLine(cat1, pctMap[cat1], arr1[1], 1),
+      transformLine(cat2, pctMap[cat2], arr2[0], 2),
+    ];
+  } else {
+    // only 1 cat
+    const cat = topCats[0];
+    const arr = categoriesData[cat][keyName];
+    // first 3 lines
+    return [
+      transformLine(cat, pctMap[cat], arr[0], 0),
+      transformLine(cat, pctMap[cat], arr[1], 1),
+      transformLine(cat, pctMap[cat], arr[2], 2),
     ];
   }
 }
 
 /****************************************************
- * TRANSFORM LINE TO:
- * "Because you are [pct]% of [Category], <trimmed rest>"
- * We'll remove the initial prefix like "As a Realist," or 
- * "Because you’re a Realist," etc. up to the first comma.
+ * ROTATE THROUGH SEVERAL INTRO PHRASES
+ * to avoid repeating "Because you are..."
  ****************************************************/
-function transformLine(cat, pct, originalLine) {
-  // find the first comma
-  let idx = originalLine.indexOf(",");
-  let afterComma = (idx >= 0) ? originalLine.substring(idx + 1).trim() : originalLine;
+const prefixTemplates = [
+  "Because you're",
+  "Since you're",
+  "It looks like you're",
+  "You appear to be"
+];
+let prefixIndex = 0;
 
-  // Make first letter lower-case for a more natural read
+/****************************************************
+ * TRANSFORM LINE
+ * 1) Strip the initial phrase (like "As a Planner," etc) up to first comma
+ * 2) Insert "[Prefix] XX% [Category], [remaining text]"
+ ****************************************************/
+function transformLine(cat, pct, originalLine, indexForPrefix) {
+  // remove leading clause up to first comma
+  const idxComma = originalLine.indexOf(",");
+  let afterComma = idxComma >= 0 ? originalLine.substring(idxComma + 1).trim() : originalLine;
+
+  // Lowercase the first letter of afterComma for a smoother read
   if (afterComma.length > 0) {
     afterComma = afterComma[0].toLowerCase() + afterComma.substring(1);
   }
 
-  // e.g. "Because you are 45% of Realist, missing opportunities can happen..."
-  return `Because you are ${pct}% of ${cat}, ${afterComma}`;
+  // pick an intro phrase from prefixTemplates in a rotating manner
+  const p = prefixTemplates[prefixIndex % prefixTemplates.length];
+  prefixIndex++;
+
+  // e.g. "Because you're 70% Planner, overthinking can hold you back..."
+  return `${p} ${pct}% ${cat}, ${afterComma}`;
 }
- 
+
 /****************************************************
  * TOGGLE SHORT SUMMARY
  ****************************************************/
 function toggleShortSummary(cat, toggleSpan) {
   const summaryDiv = document.getElementById(`short-${cat}`);
   if (!summaryDiv) return;
+
   if (summaryDiv.style.display === "block") {
     summaryDiv.style.display = "none";
     toggleSpan.textContent = "+";
