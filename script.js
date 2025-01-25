@@ -1,5 +1,5 @@
 /****************************************************
- * QUIZ DATA - 10 Questions, each with 4 answers
+ * QUIZ DATA - 10 Questions
  ****************************************************/
 const questions = [
   {
@@ -215,7 +215,7 @@ const questions = [
 ];
 
 /****************************************************
- * CATEGORY DEFINITIONS
+ * CATEGORY DEFINITIONS - 4 categories
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -357,7 +357,6 @@ function displayQuestion(index) {
   const resultsBtn = document.getElementById("results-btn");
   const prevBtn = document.getElementById("prev-btn");
 
-  // Clear old answers
   answersEl.innerHTML = "";
 
   const qObj = questions[index];
@@ -379,14 +378,12 @@ function displayQuestion(index) {
     answersEl.appendChild(label);
   });
 
-  // Prev button logic
   if (index === 0) {
     prevBtn.style.display = "none";
   } else {
     prevBtn.style.display = "inline-block";
   }
 
-  // Next / Results logic
   if (index < questions.length - 1) {
     nextBtn.style.display = "inline-block";
     resultsBtn.style.display = "none";
@@ -452,7 +449,7 @@ function showResults() {
     return;
   }
 
-  // Build chosenEmotions from final answers
+  // build chosenEmotions
   let chosenEmotions = [];
   for (let i = 0; i < questions.length; i++) {
     const ansIdx = selectedAnswers[i];
@@ -461,11 +458,11 @@ function showResults() {
     }
   }
 
-  // Hide quiz, show results
+  // hide quiz, show results
   document.getElementById("quiz-section").style.display = "none";
   document.getElementById("results-section").classList.remove("hidden");
 
-  // Calculate final category
+  // calculate final category
   const { sortedArray, winner } = calculateCategoryScores(chosenEmotions);
   displayFinalResults(winner, sortedArray);
 }
@@ -486,9 +483,7 @@ function calculateCategoryScores(emotions) {
   catNames.forEach(cat => {
     let catScore = 0;
     categoriesData[cat].emotions.forEach(e => {
-      if (tally[e]) {
-        catScore += tally[e];
-      }
+      if (tally[e]) catScore += tally[e];
     });
     scores[cat] = catScore;
     if (catScore > maxScore) {
@@ -496,14 +491,22 @@ function calculateCategoryScores(emotions) {
     }
   });
 
-  // Tie logic
+  // If tie, pick random among top scorers => 'winner'
   const winners = catNames.filter(cat => scores[cat] === maxScore);
   let winner = winners.length > 1
     ? winners[Math.floor(Math.random() * winners.length)]
     : winners[0];
 
-  // Sort desc
-  const sortedArray = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+  // Sort high → low
+  let sortedArray = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+
+  // ensure 'winner' is at the top even if tie
+  const winnerIndex = sortedArray.findIndex(([cat]) => cat === winner);
+  if (winnerIndex > 0) {
+    const [wKey, wScore] = sortedArray.splice(winnerIndex, 1)[0];
+    sortedArray.unshift([wKey, wScore]);
+  }
+
   return { sortedArray, winner };
 }
 
@@ -513,25 +516,25 @@ function calculateCategoryScores(emotions) {
 function displayFinalResults(winner, sortedArray) {
   const catData = categoriesData[winner];
 
-  // Intro Paragraph
+  // Intro paragraph
   const introParagraphEl = document.getElementById("intro-paragraph");
   introParagraphEl.textContent =
     "Finances touch our lives in personal ways and can often feel overwhelming. " +
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
 
-  // Second line
+  // Second line => "With your responses in mind, we think you are a/an Adventurer"
   const introSecondLineEl = document.getElementById("intro-second-line");
-  introSecondLineEl.textContent = `With your responses in mind, we think you are a ${catData.article} `;
+  introSecondLineEl.textContent = `With your responses in mind, we think you are ${catData.article} ${catData.name}`;
 
   // Category Name / Desc
   document.getElementById("category-name").textContent = catData.name;
   document.getElementById("category-description").innerHTML = catData.description;
 
-  // Distribution bars
+  // build distribution bars
   buildDistributionBars(sortedArray, winner);
 
-  // Excel / Watchout
+  // Where you excel / watch out
   const excelList = document.getElementById("excel-list");
   excelList.innerHTML = "";
   catData.excel.forEach(item => {
@@ -548,7 +551,7 @@ function displayFinalResults(winner, sortedArray) {
     watchoutList.appendChild(li);
   });
 
-  // Products
+  // Product recommendations
   const productsTitle = document.getElementById("products-title");
   productsTitle.textContent = catData.headingForProducts;
 
@@ -585,7 +588,8 @@ function buildDistributionBars(sortedArray, winner) {
   const catBarContainer = document.getElementById("category-bars");
   catBarContainer.innerHTML = "";
 
-  sortedArray.forEach(([cat, score]) => {
+  // winner is guaranteed to be index 0 after we reorder
+  sortedArray.forEach(([cat, score], idx) => {
     const barRow = document.createElement("div");
     barRow.className = "category-bar";
 
@@ -594,7 +598,7 @@ function buildDistributionBars(sortedArray, winner) {
     label.textContent = cat.toUpperCase();
 
     // expand/collapse only for non-winners
-    if (cat !== winner) {
+    if (idx !== 0) {
       const toggle = document.createElement("span");
       toggle.className = "expand-toggle";
       toggle.textContent = "+";
@@ -622,7 +626,7 @@ function buildDistributionBars(sortedArray, winner) {
     catBarContainer.appendChild(barRow);
 
     // short summary if not winner
-    if (cat !== winner) {
+    if (idx !== 0) {
       const shortBox = document.createElement("div");
       shortBox.id = `short-${cat}`;
       shortBox.className = "short-summary";
