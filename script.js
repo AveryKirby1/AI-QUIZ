@@ -217,14 +217,13 @@ const questions = [
 ];
 
 /****************************************************
- * CATEGORY DEFINITIONS (Updated Summaries)
+ * CATEGORY DEFINITIONS (Updated Summaries + Short Descriptions)
  ****************************************************/
 const categoriesData = {
   Planner: {
     name: "Planner",
     article: "a",
     headingForProducts: "Plan Your Next Steps",
-    // Updated description
     description: `
       You are the master of practicality and preparation. You approach financial decisions 
       with thoughtfulness, responsibility, and an eye toward long-term security. While your 
@@ -233,15 +232,18 @@ const categoriesData = {
       avoid surprises. By setting clear goals and budgets, you gain peace of mind and a 
       sense of accomplishment.
     `,
-    // Keep shortDescription for distribution bar pop-ups (if desired)
-    shortDescription: "Planners prefer methodical, secure, and well-thought-out approaches to money.",
-    // Updated "Where you excel" (Strengths)
+    // This shortDescription is displayed for non-winners if user clicks '+'
+    shortDescription: `
+      Planners focus on structured routines and detailed goal-setting to ensure 
+      financial stability, excelling at avoiding costly surprises. While a tendency to 
+      overthink can slow decisions, this disciplined approach provides peace of mind 
+      and fosters steady, long-term security.
+    `,
     excel: [
       "Long-Term Strategist – Great at planning for the future.",
       "Risk-Averse – You avoid uncalculated risks and stay balanced.",
       "Organized – Budgets, spreadsheets, you name it!"
     ],
-    // Updated "Watch out for" (Weaknesses)
     watchOut: [
       "Overthinking – Sometimes it’s okay to be spontaneous.",
       "Paralysis by Analysis – Don’t let too much planning stop you from taking action."
@@ -260,7 +262,6 @@ const categoriesData = {
     name: "Adventurer",
     article: "an",
     headingForProducts: "Fuel Your Next Adventure",
-    // Updated description
     description: `
       Financial decisions for you are often about excitement, curiosity, 
       and seizing new opportunities. You embrace risk with a positive mindset, 
@@ -269,14 +270,17 @@ const categoriesData = {
       trying something new. You see setbacks as growth opportunities, fueling 
       your eagerness to keep pushing boundaries.
     `,
-    shortDescription: "Adventurers embrace spontaneity, risk-taking, and bold moves to chase new experiences.",
-    // Updated "Where you excel" (Strengths)
+    shortDescription: `
+      Adventurers thrive on excitement and are quick to explore new financial 
+      possibilities, guided by an optimistic spirit. Though impulsive choices 
+      may arise, balancing spontaneity with prudent planning sustains momentum 
+      and protects against the downsides of taking bold risks.
+    `,
     excel: [
       "Bold Decision-Maker – Not afraid to jump on an opportunity.",
       "Curious and Open-Minded – Always looking for ways to grow.",
       "Optimistic Risk-Taker – Trusting your instincts."
     ],
-    // Updated "Watch out for" (Weaknesses)
     watchOut: [
       "Balancing Fun with Long-Term Goals – Keep some practical savings in mind.",
       "Impulse Spending – A set budget for 'fun money' can help you stay in control."
@@ -295,7 +299,6 @@ const categoriesData = {
     name: "Connector",
     article: "a",
     headingForProducts: "Grow Your Community",
-    // Updated description
     description: `
       You view finances as a tool to support your community and bond with others. 
       Whether it’s through generosity or lending a helping hand, you find emotional 
@@ -304,14 +307,17 @@ const categoriesData = {
       money only has true value when it’s used to strengthen relationships and 
       foster goodwill.
     `,
-    shortDescription: "Connectors find fulfillment in generosity, harmony, and shared experiences with others.",
-    // Updated "Where you excel" (Strengths)
+    shortDescription: `
+      Connectors treat finances as a means to strengthen bonds and nurture communal 
+      goals, emphasizing generosity and shared victories. A highly giving nature 
+      can lead to overextension, but mindful boundaries preserve both personal 
+      well-being and the desire to uplift others.
+    `,
     excel: [
       "Community-Focused – You care deeply about helping others.",
       "Collaborative – You enjoy pooling resources for shared goals.",
       "Generous Spirit – Giving is part of who you are."
     ],
-    // Updated "Watch out for" (Weaknesses)
     watchOut: [
       "Overextending Yourself – Remember to protect your own finances too.",
       "Difficulty Saying No – You can’t help everyone all the time."
@@ -330,7 +336,6 @@ const categoriesData = {
     name: "Realist",
     article: "a",
     headingForProducts: "Build A Solid Foundation",
-    // Updated description
     description: `
       You prioritize managing risk, avoiding unnecessary spending, and protecting resources. 
       While your approach may appear conservative, it helps you navigate challenges with 
@@ -338,14 +343,17 @@ const categoriesData = {
       data and proven methods. This mindset keeps you prepared, ensuring you can handle both 
       the ups and downs of your financial journey.
     `,
-    shortDescription: "Realists are practical, skeptical of hype, and prefer keeping a solid grip on financial moves.",
-    // Updated "Where you excel" (Strengths)
+    shortDescription: `
+      Realists favor low-risk, dependable strategies to protect resources, guided by caution 
+      and clear data. While they may pass up certain prospects, measured openness to calculated 
+      risk can uncover worthwhile gains, ensuring security without sacrificing every chance 
+      for growth.
+    `,
     excel: [
       "Clear-Eyed Investor – You avoid hype and see the facts.",
       "Risk-Manager – You keep spending and investing decisions rational.",
       "Level-Headed – Rarely impulsive, you consider outcomes carefully."
     ],
-    // Updated "Watch out for" (Weaknesses)
     watchOut: [
       "Missing Opportunities – Sometimes, a small risk pays off.",
       "Over-Caution – Growth can require stepping outside your comfort zone."
@@ -661,7 +669,7 @@ function buildDistributionBars(sortedArray, winner) {
       const shortBox = document.createElement("div");
       shortBox.id = `short-${cat}`;
       shortBox.className = "short-summary";
-      shortBox.textContent = categoriesData[cat].shortDescription;
+      shortBox.textContent = categoriesData[cat].shortDescription.trim();
       catBarContainer.appendChild(shortBox);
     }
   });
