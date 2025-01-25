@@ -42,7 +42,7 @@ body {
 /* Increase spacing around each radio option */
 #answers-container label {
   display: block;
-  margin: 12px 0; /* was 8px, now a bit more */
+  margin: 12px 0;
   cursor: pointer;
 }
 
@@ -96,13 +96,6 @@ body {
 .results-header {
   text-align: center;
   margin-bottom: 20px;
-}
-
-#results-title {
-  font-size: 1.2rem;
-  font-weight: normal;
-  color: #999;
-  margin-bottom: 5px;
 }
 
 #category-name {
