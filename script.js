@@ -1,7 +1,7 @@
 /****************************************************
- * QUIZ DATA (Same Questions & Categories)
+ * QUIZ DATA - 10 Questions, each with 4 answers,
+ * and categoriesData with 10 emotions each
  ****************************************************/
-
 const questions = [
   {
     question: "1. You’ve just found $500 on the ground. What’s the first thing you do?",
@@ -334,10 +334,7 @@ const categoriesData = {
  * GLOBAL STATE
  ****************************************************/
 let currentQuestionIndex = 0;
-
-// Array to store which answer was selected for each question
-// (e.g., selectedAnswers[0] = 2 means question 1 had answer index 2 chosen)
-let selectedAnswers = new Array(questions.length).fill(null);
+let selectedAnswers = new Array(questions.length).fill(null); // Each element is the chosen answer index for that question
 
 /****************************************************
  * ON WINDOW LOAD
@@ -348,7 +345,7 @@ window.onload = function() {
   // Hide 'See Results' button initially
   document.getElementById("results-btn").style.display = "none";
 
-  // Hide 'Previous' button initially if we're on question 0
+  // Hide 'Previous' button if we’re on question 0
   document.getElementById("prev-btn").style.display = "none";
 };
 
@@ -368,7 +365,7 @@ function displayQuestion(index) {
   const qObj = questions[index];
   questionEl.textContent = qObj.question;
 
-  // Create radio options
+  // Radio options
   qObj.answers.forEach((ans, ansIdx) => {
     const label = document.createElement("label");
     const radio = document.createElement("input");
@@ -376,8 +373,7 @@ function displayQuestion(index) {
     radio.name = `question_${index}`;
     radio.value = ansIdx;
 
-    // If user had previously selected an answer for this question,
-    // re-check it to reflect saved choice
+    // If user previously picked an answer for this question, re-check it
     if (selectedAnswers[index] === ansIdx) {
       radio.checked = true;
     }
@@ -387,24 +383,23 @@ function displayQuestion(index) {
     answersEl.appendChild(label);
   });
 
-  // Show or hide the 'Previous' button
+  // If we’re on the first question, hide the 'Previous' button
   if (index === 0) {
     prevBtn.style.display = "none";
   } else {
     prevBtn.style.display = "inline-block";
   }
 
-  // If not on the last question, show Next; hide Results
+  // On the last question, hide 'Next' & show 'See Results'; else vice versa
   if (index < questions.length - 1) {
     nextBtn.style.display = "inline-block";
     resultsBtn.style.display = "none";
   } else {
-    // On the last question, hide Next; show Results
     nextBtn.style.display = "none";
     resultsBtn.style.display = "inline-block";
   }
 
-  // Update question tracker: e.g., "1 of 10"
+  // Update question tracker
   updateQuestionTracker(index);
 }
 
@@ -423,7 +418,7 @@ function updateQuestionTracker(index) {
 function goToNextQuestion() {
   saveCurrentAnswer();
 
-  // Move forward only if an answer is chosen
+  // Enforce selecting an answer
   if (selectedAnswers[currentQuestionIndex] === null) {
     alert("Please select an answer before proceeding.");
     return;
@@ -439,7 +434,6 @@ function goToNextQuestion() {
 function goToPreviousQuestion() {
   saveCurrentAnswer();
 
-  // Move backward if not already at index 0
   if (currentQuestionIndex > 0) {
     currentQuestionIndex--;
     displayQuestion(currentQuestionIndex);
@@ -448,16 +442,12 @@ function goToPreviousQuestion() {
 
 /****************************************************
  * SAVE CURRENT ANSWER
- * (Stores the user's selection for the current Q)
  ****************************************************/
 function saveCurrentAnswer() {
-  // Check if a radio option is selected
   const selectedOption = document.querySelector(
     `input[name="question_${currentQuestionIndex}"]:checked`
   );
-
   if (selectedOption) {
-    // Save the index of the chosen answer
     selectedAnswers[currentQuestionIndex] = parseInt(selectedOption.value);
   }
 }
@@ -466,25 +456,25 @@ function saveCurrentAnswer() {
  * SHOW RESULTS
  ****************************************************/
 function showResults() {
-  // Make sure we save the final question's selection
+  // Save the final question's selection
   saveCurrentAnswer();
 
-  // Check if user answered last question
+  // Check if user answered the last question
   if (selectedAnswers[currentQuestionIndex] === null) {
     alert("Please select an answer before seeing results.");
     return;
   }
 
-  // Build the user's chosenEmotions array from final selections
+  // Build the chosenEmotions array from the final set of selected answers
   let chosenEmotions = [];
   for (let i = 0; i < questions.length; i++) {
-    const ansIndex = selectedAnswers[i];
-    if (ansIndex !== null) {
-      chosenEmotions.push(...questions[i].answers[ansIndex].emotions);
+    const ansIdx = selectedAnswers[i];
+    if (ansIdx !== null) {
+      chosenEmotions.push(...questions[i].answers[ansIdx].emotions);
     }
   }
 
-  // Hide quiz, show results section
+  // Hide quiz, show results
   document.getElementById("quiz-section").style.display = "none";
   document.getElementById("results-section").classList.remove("hidden");
 
@@ -494,16 +484,14 @@ function showResults() {
 }
 
 /****************************************************
- * CALCULATE & SORT SCORES
+ * CALCULATE CATEGORY SCORES
  ****************************************************/
 function calculateCategoryScores(emotions) {
-  // Tally how many times each emotion appears
   const tally = {};
   emotions.forEach(em => {
     tally[em] = (tally[em] || 0) + 1;
   });
 
-  // For each category, sum up the relevant emotions
   const catNames = Object.keys(categoriesData);
   const scores = {};
   let maxScore = 0;
@@ -521,14 +509,15 @@ function calculateCategoryScores(emotions) {
     }
   });
 
-  // Tie-break
+  // If tie, pick one at random
   const winners = catNames.filter(cat => scores[cat] === maxScore);
   let winner = winners.length > 1
     ? winners[Math.floor(Math.random() * winners.length)]
     : winners[0];
 
-  // Sort high → low
+  // Sort categories high → low (for the bar chart)
   const sortedArray = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+
   return { sortedArray, winner };
 }
 
@@ -550,21 +539,20 @@ function displayFinalResults(winner, sortedArray) {
   const catDescEl = document.getElementById("category-description");
   catDescEl.innerHTML = catData.description;
 
-  // Distribution bars
+  // Build distribution bars
   buildDistributionBars(sortedArray, winner);
 
-  // Where you excel / watch out for
+  // Where you excel / watch out
   const excelList = document.getElementById("excel-list");
-  const watchoutList = document.getElementById("watchout-list");
   excelList.innerHTML = "";
-  watchoutList.innerHTML = "";
-
   catData.excel.forEach(pt => {
     const li = document.createElement("li");
     li.textContent = pt;
     excelList.appendChild(li);
   });
 
+  const watchoutList = document.getElementById("watchout-list");
+  watchoutList.innerHTML = "";
   catData.watchOut.forEach(pt => {
     const li = document.createElement("li");
     li.textContent = pt;
@@ -608,6 +596,7 @@ function buildDistributionBars(sortedArray, winner) {
   const catBarContainer = document.getElementById("category-bars");
   catBarContainer.innerHTML = "";
 
+  // Already sorted high → low
   sortedArray.forEach(([cat, score]) => {
     const barRow = document.createElement("div");
     barRow.className = "category-bar";
@@ -616,6 +605,7 @@ function buildDistributionBars(sortedArray, winner) {
     label.className = "bar-label";
     label.textContent = cat.toUpperCase();
 
+    // Expand/collapse only for non-winners
     if (cat !== winner) {
       const toggle = document.createElement("span");
       toggle.className = "expand-toggle";
