@@ -1,7 +1,7 @@
 // script.js
 
 /****************************************************
- * QUIZ DATA - 10 Questions (final with tie-handling logic)
+ * QUIZ DATA - 10 Questions (tie-handling logic)
  ****************************************************/
 const questions = [
   {
@@ -375,7 +375,6 @@ const categoriesData = {
 
 /****************************************************
  * TIE DEFINITIONS (2-cat, 3-cat, 4-cat) 
- * Combined name + 4-sentence desc. (UPDATED WORDING)
  ****************************************************/
 const tieData = {
   // Two-Way
@@ -734,8 +733,8 @@ function displayFinalResults(tiedCats, sortedArray) {
   document.getElementById("category-name").textContent = name;
   document.getElementById("category-description").innerHTML = description;
 
-  // distribution bars
-  buildDistributionBars(sortedArray);
+  // build the distribution bars
+  buildDistributionBars(sortedArray, tiedCats);
 
   // dynamic heading for chart
   const distributionContainer = document.getElementById("distribution-container");
@@ -817,12 +816,16 @@ function displayFinalResults(tiedCats, sortedArray) {
 }
 
 /****************************************************
- * BUILD DISTRIBUTION BARS (no single winner param)
+ * BUILD DISTRIBUTION BARS
  ****************************************************/
-function buildDistributionBars(sortedArray) {
+function buildDistributionBars(sortedArray, tiedCats) {
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
   const catBarContainer = document.getElementById("category-bars");
   catBarContainer.innerHTML = "";
+
+  // 'tiedCats' are all cats with the top score
+  // so they should NOT have a "+" for short summary toggling
+  // Everyone else (i.e., if not in 'tiedCats') can have the plus sign
 
   sortedArray.forEach(([cat, score], idx) => {
     const barRow = document.createElement("div");
@@ -832,7 +835,10 @@ function buildDistributionBars(sortedArray) {
     label.className = "bar-label";
     label.textContent = cat.toUpperCase();
 
-    if (idx !== 0) {
+    let pct = Math.round((score / total) * 100);
+
+    // If cat is NOT in tiedCats, it's non-winner => show plus
+    if (!tiedCats.includes(cat)) {
       const toggle = document.createElement("span");
       toggle.className = "expand-toggle";
       toggle.textContent = "+";
@@ -844,8 +850,6 @@ function buildDistributionBars(sortedArray) {
     barBg.className = "bar-bg";
     const fill = document.createElement("div");
     fill.className = "bar-fill";
-
-    let pct = Math.round((score / total) * 100);
     fill.style.width = pct + "%";
 
     const barPercent = document.createElement("div");
@@ -859,8 +863,8 @@ function buildDistributionBars(sortedArray) {
 
     catBarContainer.appendChild(barRow);
 
-    // short summary for non-top cats
-    if (idx !== 0) {
+    // short summary for non-winners only
+    if (!tiedCats.includes(cat)) {
       const shortBox = document.createElement("div");
       shortBox.id = `short-${cat}`;
       shortBox.className = "short-summary";
