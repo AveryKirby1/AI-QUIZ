@@ -1,14 +1,15 @@
 // script.js
 
 /****************************************************
- * QUIZ DATA - 10 Questions in Full
+ * QUIZ DATA - 10 Questions in Full (with requested revisions)
  ****************************************************/
 const questions = [
   {
     question: "1. You’ve just found $500 on the ground. What’s the first thing you do?",
     answers: [
       {
-        text: "A: Panic about legal implications and search for the owner.",
+        // Replaced old "Panic about legal implications..." with a new scenario
+        text: "A: Try to find the rightful owner; if you can’t, well, finders keepers.",
         emotions: ["Apprehension", "Duty", "Caution", "Skepticism", "Reserved"]
       },
       {
@@ -41,13 +42,15 @@ const questions = [
         emotions: ["Spontaneity", "Joy", "Impulsivity", "Excitement", "Passion"]
       },
       {
-        text: "D: Happily pay the entire bill to keep everyone’s spirits high.",
+        // Revised to mention paying full amount hoping next time is on them
+        text: "D: Pay the full amount now, trusting they’ll pick up the tab next time.",
         emotions: ["Harmony", "Collaboration", "Warmth", "Connection", "Sharing"]
       }
     ]
   },
   {
     question: "3. You walk into a store to buy toothpaste and leave with...",
+    // No edits needed
     answers: [
       {
         text: "A: Nothing—prices were too high, so you held off.",
@@ -69,6 +72,7 @@ const questions = [
   },
   {
     question: "4. Your boss offers you a $10,000 raise. What’s your first thought?",
+    // No edits needed
     answers: [
       {
         text: "A: Pay off debts and maintain a practical buffer.",
@@ -92,7 +96,8 @@ const questions = [
     question: "5. A friend calls you crying about a $1,000 car repair bill. What do you do?",
     answers: [
       {
-        text: "A: Offer moral support but keep your finances separate.",
+        // Replaced old "Offer moral support but keep finances separate" with "reluctantly offer to help"
+        text: "A: Reluctantly offer financial help if they explicitly ask, staying cautious.",
         emotions: ["Reserved", "Caution", "Duty", "Apprehension", "Logic"]
       },
       {
@@ -121,7 +126,8 @@ const questions = [
         emotions: ["Prudence", "Preparedness", "Security", "Forward-thinking", "Methodical"]
       },
       {
-        text: "C: Book it anyway—life is short, and you’ll figure out the cost later.",
+        // Incorporate a credit card mention
+        text: "C: Book it anyway—just put it on a credit card and figure it out later.",
         emotions: ["Risk-taking", "Spontaneity", "Excitement", "Indulgence", "Passion"]
       },
       {
@@ -146,7 +152,8 @@ const questions = [
         emotions: ["Thrill", "Indulgence", "Spontaneity", "Joy", "Impulsivity"]
       },
       {
-        text: "D: Still visit, but occasionally treat a friend too.",
+        // Replaced old D with a new text for generosity
+        text: "D: Still swing by, but buy an occasional drink for someone who needs a pick-me-up.",
         emotions: ["Generosity", "Harmony", "Warmth", "Compassion", "Sharing"]
       }
     ]
@@ -163,7 +170,8 @@ const questions = [
         emotions: ["Methodical", "Prudence", "Calculated", "Forward-thinking", "Security"]
       },
       {
-        text: "C: It’s exciting—I’ll jump in with a small gamble!",
+        // Replacing original C with "I'm all in" approach
+        text: "C: I’m all in—no hesitation here, I’ve already got a big stake!",
         emotions: ["Curiosity", "Risk-taking", "Thrill", "Passion", "Impulsivity"]
       },
       {
@@ -188,7 +196,8 @@ const questions = [
         emotions: ["Impulsivity", "Excitement", "Joy", "Spontaneity", "Indulgence"]
       },
       {
-        text: "D: Ask friends if they want one too—maybe find a group discount.",
+        // Replacing D with a new text but keep Collaboration/Community emotions
+        text: "D: Rally your friends who also want it—share the cost so everyone can try it.",
         emotions: ["Collaboration", "Community", "Sharing", "Connection", "Warmth"]
       }
     ]
@@ -209,7 +218,8 @@ const questions = [
         emotions: ["Thrill", "Excitement", "Spontaneity", "Joy", "Passion"]
       },
       {
-        text: "D: Invite friends over for a cozy hangout or potluck.",
+        // "All of the above" approach but keep the community vibe
+        text: "D: It’s an everything day—grab a treat, go out, AND invite friends later!",
         emotions: ["Community", "Connection", "Collaboration", "Warmth", "Compassion"]
       }
     ]
@@ -218,6 +228,7 @@ const questions = [
 
 /****************************************************
  * CATEGORY DEFINITIONS
+ * (Unchanged from previous versions)
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -511,7 +522,7 @@ function showResults() {
 }
 
 /****************************************************
- * CALCULATE CATEGORY SCORES (Tie-Break Logic)
+ * CALCULATE CATEGORY SCORES
  ****************************************************/
 function calculateCategoryScores(emotions) {
   const tally = {};
@@ -566,7 +577,7 @@ function displayFinalResults(winner, sortedArray) {
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
 
-  // "With your responses in mind, we think you are a/an..."
+  // e.g. "With your responses in mind, we think you are a/an..."
   const introSecondLineEl = document.getElementById("intro-second-line");
   introSecondLineEl.textContent = `With your responses in mind, we think you are ${catData.article}`;
 
@@ -685,7 +696,7 @@ function buildDistributionBars(sortedArray, winner) {
 }
 
 /****************************************************
- * DETERMINE TOP CATS TO SHOW (1 cat if >=80, or accumulate until >=80)
+ * DETERMINE TOP CATS
  ****************************************************/
 function determineTopCats(sortedArray) {
   const total = sortedArray.reduce((acc, [_, score]) => acc + score, 0) || 1;
@@ -723,7 +734,7 @@ function determineTopCats(sortedArray) {
 }
 
 /****************************************************
- * BUILD A MAP: category -> integer percentage
+ * BUILD A MAP: category -> percentage
  ****************************************************/
 function buildPctMap(sortedArray) {
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
@@ -736,16 +747,16 @@ function buildPctMap(sortedArray) {
 }
 
 /****************************************************
- * MAX NUMBER OF LINES => 3 (or 4 if 4 cats are tied)
+ * SELECT OUTPUT ITEMS (strengths or weaknesses)
  ****************************************************/
 function buildOutputItems(topCats, pctMap, keyName) {
   const len = topCats.length;
   if (len === 4) {
     // all are tied => 4 total
-    return topCats.map((cat, idx) => craftLine(cat, pctMap[cat], categoriesData[cat][keyName][0], idx));
+    return topCats.map((cat, idx) => craftLine(cat, pctMap[cat], categoriesData[cat][keyName][0]));
   } else if (len === 3) {
     // 1 from each => 3 total
-    return topCats.map((cat, idx) => craftLine(cat, pctMap[cat], categoriesData[cat][keyName][0], idx));
+    return topCats.map((cat, idx) => craftLine(cat, pctMap[cat], categoriesData[cat][keyName][0]));
   } else if (len === 2) {
     // cat1 => 2 lines, cat2 => 1 line
     const [cat1, cat2] = topCats;
@@ -753,31 +764,31 @@ function buildOutputItems(topCats, pctMap, keyName) {
     const arr2 = categoriesData[cat2][keyName];
 
     return [
-      craftLine(cat1, pctMap[cat1], arr1[0], 0),
-      craftLine(cat1, pctMap[cat1], arr1[1], 1),
-      craftLine(cat2, pctMap[cat2], arr2[0], 2),
+      craftLine(cat1, pctMap[cat1], arr1[0]),
+      craftLine(cat1, pctMap[cat1], arr1[1]),
+      craftLine(cat2, pctMap[cat2], arr2[0])
     ];
   } else {
     // single cat => 3 lines
     const cat = topCats[0];
     const arr = categoriesData[cat][keyName];
     return [
-      craftLine(cat, pctMap[cat], arr[0], 0),
-      craftLine(cat, pctMap[cat], arr[1], 1),
-      craftLine(cat, pctMap[cat], arr[2], 2),
+      craftLine(cat, pctMap[cat], arr[0]),
+      craftLine(cat, pctMap[cat], arr[1]),
+      craftLine(cat, pctMap[cat], arr[2])
     ];
   }
 }
 
 /****************************************************
- * TEMPLATES FOR DIVERSITY
+ * BULLET WORDING TEMPLATES
  ****************************************************/
 const bulletOpeners = [
   "Looks like you're about",
   "It seems you're roughly",
   "We see you're around",
   "You're approximately",
-  "From these answers, you're around",
+  "From these answers, you're about",
   "We noticed you're about"
 ];
 const bulletTransitions = [
@@ -788,18 +799,16 @@ const bulletTransitions = [
   "and that suggests:",
   "and this implies:"
 ];
-let bulletIndex = 0; // rotates through the above arrays
+let bulletIndex = 0; 
 
 /****************************************************
- * craftLine - modifies each bullet item to mention the % 
- * in a more natural way, removing "As a Realist," etc.
+ * craftLine
  ****************************************************/
-function craftLine(cat, pct, originalLine, bulletNumber) {
+function craftLine(cat, pct, originalLine) {
   // remove the initial phrase from the category data (ex: "As a Planner, ...")
   const commaIdx = originalLine.indexOf(",");
   let remainder = commaIdx >= 0 ? originalLine.substring(commaIdx + 1).trim() : originalLine;
 
-  // lowerCase the first letter of that remainder
   if (remainder.length > 0) {
     remainder = remainder[0].toLowerCase() + remainder.substring(1);
   }
@@ -809,8 +818,7 @@ function craftLine(cat, pct, originalLine, bulletNumber) {
   const transition = bulletTransitions[bulletIndex % bulletTransitions.length];
   bulletIndex++;
 
-  // example: "Looks like you're about 30% Adventurer so keep in mind: you’re an Optimistic Risk-Taker..."
-  // combine them in a natural-sounding way
+  // produce a more natural-sounding line
   return `${opener} ${pct}% ${cat} ${transition} ${remainder}`;
 }
 
