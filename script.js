@@ -1,14 +1,13 @@
 // script.js
 
 /****************************************************
- * QUIZ DATA - 10 Questions in Full (with requested revisions)
+ * QUIZ DATA - 10 Questions in Full (with requested final revisions)
  ****************************************************/
 const questions = [
   {
     question: "1. You’ve just found $500 on the ground. What’s the first thing you do?",
     answers: [
       {
-        // Replaced old "Panic about legal implications..." with a new scenario
         text: "A: Try to find the rightful owner; if you can’t, well, finders keepers.",
         emotions: ["Apprehension", "Duty", "Caution", "Skepticism", "Reserved"]
       },
@@ -42,7 +41,6 @@ const questions = [
         emotions: ["Spontaneity", "Joy", "Impulsivity", "Excitement", "Passion"]
       },
       {
-        // Revised to mention paying full amount hoping next time is on them
         text: "D: Pay the full amount now, trusting they’ll pick up the tab next time.",
         emotions: ["Harmony", "Collaboration", "Warmth", "Connection", "Sharing"]
       }
@@ -50,7 +48,6 @@ const questions = [
   },
   {
     question: "3. You walk into a store to buy toothpaste and leave with...",
-    // No edits needed
     answers: [
       {
         text: "A: Nothing—prices were too high, so you held off.",
@@ -72,7 +69,6 @@ const questions = [
   },
   {
     question: "4. Your boss offers you a $10,000 raise. What’s your first thought?",
-    // No edits needed
     answers: [
       {
         text: "A: Pay off debts and maintain a practical buffer.",
@@ -96,7 +92,6 @@ const questions = [
     question: "5. A friend calls you crying about a $1,000 car repair bill. What do you do?",
     answers: [
       {
-        // Replaced old "Offer moral support but keep finances separate" with "reluctantly offer to help"
         text: "A: Reluctantly offer financial help if they explicitly ask, staying cautious.",
         emotions: ["Reserved", "Caution", "Duty", "Apprehension", "Logic"]
       },
@@ -126,7 +121,6 @@ const questions = [
         emotions: ["Prudence", "Preparedness", "Security", "Forward-thinking", "Methodical"]
       },
       {
-        // Incorporate a credit card mention
         text: "C: Book it anyway—just put it on a credit card and figure it out later.",
         emotions: ["Risk-taking", "Spontaneity", "Excitement", "Indulgence", "Passion"]
       },
@@ -152,8 +146,8 @@ const questions = [
         emotions: ["Thrill", "Indulgence", "Spontaneity", "Joy", "Impulsivity"]
       },
       {
-        // Replaced old D with a new text for generosity
-        text: "D: Still swing by, but buy an occasional drink for someone who needs a pick-me-up.",
+        // Replacing "buy coffee for a friend" with something else
+        text: "D: Start brewing my own and only treat myself at the shop on weekends.",
         emotions: ["Generosity", "Harmony", "Warmth", "Compassion", "Sharing"]
       }
     ]
@@ -170,7 +164,6 @@ const questions = [
         emotions: ["Methodical", "Prudence", "Calculated", "Forward-thinking", "Security"]
       },
       {
-        // Replacing original C with "I'm all in" approach
         text: "C: I’m all in—no hesitation here, I’ve already got a big stake!",
         emotions: ["Curiosity", "Risk-taking", "Thrill", "Passion", "Impulsivity"]
       },
@@ -196,7 +189,6 @@ const questions = [
         emotions: ["Impulsivity", "Excitement", "Joy", "Spontaneity", "Indulgence"]
       },
       {
-        // Replacing D with a new text but keep Collaboration/Community emotions
         text: "D: Rally your friends who also want it—share the cost so everyone can try it.",
         emotions: ["Collaboration", "Community", "Sharing", "Connection", "Warmth"]
       }
@@ -218,7 +210,6 @@ const questions = [
         emotions: ["Thrill", "Excitement", "Spontaneity", "Joy", "Passion"]
       },
       {
-        // "All of the above" approach but keep the community vibe
         text: "D: It’s an everything day—grab a treat, go out, AND invite friends later!",
         emotions: ["Community", "Connection", "Collaboration", "Warmth", "Compassion"]
       }
@@ -228,7 +219,6 @@ const questions = [
 
 /****************************************************
  * CATEGORY DEFINITIONS
- * (Unchanged from previous versions)
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -522,7 +512,7 @@ function showResults() {
 }
 
 /****************************************************
- * CALCULATE CATEGORY SCORES
+ * CALCULATE CATEGORY SCORES (Tie-Break Logic)
  ****************************************************/
 function calculateCategoryScores(emotions) {
   const tally = {};
@@ -577,7 +567,7 @@ function displayFinalResults(winner, sortedArray) {
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
 
-  // e.g. "With your responses in mind, we think you are a/an..."
+  // "With your responses in mind, we think you are a/an..."
   const introSecondLineEl = document.getElementById("intro-second-line");
   introSecondLineEl.textContent = `With your responses in mind, we think you are ${catData.article}`;
 
@@ -588,7 +578,33 @@ function displayFinalResults(winner, sortedArray) {
   // distribution bars
   buildDistributionBars(sortedArray, winner);
 
-  // dynamic strengths/weaknesses
+  // dynamic heading for chart
+  const distributionContainer = document.getElementById("distribution-container");
+  // check if top cat is 100%
+  const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
+  const topPct = Math.round((sortedArray[0][1] / total) * 100);
+
+  // We'll insert a heading or text
+  const distributionTitle = document.createElement("h3");
+
+  if (topPct === 100) {
+    distributionTitle.innerHTML = `Your <span class="key-span">key</span> money signs:`;
+  } else {
+    distributionTitle.innerHTML = `
+      While your primary money sign may not capture everything about you, 
+      we notice traits from other money signs that also resonate with your financial personality:
+    `;
+  }
+  // Insert the new heading at the top
+  distributionContainer.insertBefore(distributionTitle, document.getElementById("category-bars"));
+
+  // Next, place a smaller callout about clicking the + icons
+  const plusCallout = document.createElement("p");
+  plusCallout.className = "plus-callout-small";
+  plusCallout.textContent = `Click the “+” icons to view more about each non-winning category.`;
+  distributionContainer.insertBefore(plusCallout, document.getElementById("category-bars"));
+
+  // Now handle dynamic strengths/weaknesses
   const topCats = determineTopCats(sortedArray);
   const pctMap = buildPctMap(sortedArray);
 
@@ -734,7 +750,7 @@ function determineTopCats(sortedArray) {
 }
 
 /****************************************************
- * BUILD A MAP: category -> percentage
+ * BUILD A MAP: category -> integer percentage
  ****************************************************/
 function buildPctMap(sortedArray) {
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
@@ -747,18 +763,15 @@ function buildPctMap(sortedArray) {
 }
 
 /****************************************************
- * SELECT OUTPUT ITEMS (strengths or weaknesses)
+ * MAX # LINES => 3 (or 4 if all cats tied)
  ****************************************************/
 function buildOutputItems(topCats, pctMap, keyName) {
   const len = topCats.length;
   if (len === 4) {
-    // all are tied => 4 total
-    return topCats.map((cat, idx) => craftLine(cat, pctMap[cat], categoriesData[cat][keyName][0]));
+    return topCats.map((cat) => craftLine(cat, pctMap[cat], categoriesData[cat][keyName][0]));
   } else if (len === 3) {
-    // 1 from each => 3 total
-    return topCats.map((cat, idx) => craftLine(cat, pctMap[cat], categoriesData[cat][keyName][0]));
+    return topCats.map((cat) => craftLine(cat, pctMap[cat], categoriesData[cat][keyName][0]));
   } else if (len === 2) {
-    // cat1 => 2 lines, cat2 => 1 line
     const [cat1, cat2] = topCats;
     const arr1 = categoriesData[cat1][keyName];
     const arr2 = categoriesData[cat2][keyName];
@@ -769,7 +782,6 @@ function buildOutputItems(topCats, pctMap, keyName) {
       craftLine(cat2, pctMap[cat2], arr2[0])
     ];
   } else {
-    // single cat => 3 lines
     const cat = topCats[0];
     const arr = categoriesData[cat][keyName];
     return [
@@ -781,7 +793,7 @@ function buildOutputItems(topCats, pctMap, keyName) {
 }
 
 /****************************************************
- * BULLET WORDING TEMPLATES
+ * TEMPLATES FOR BULLETS
  ****************************************************/
 const bulletOpeners = [
   "Looks like you're about",
@@ -799,13 +811,12 @@ const bulletTransitions = [
   "and that suggests:",
   "and this implies:"
 ];
-let bulletIndex = 0; 
+let bulletIndex = 0;
 
 /****************************************************
- * craftLine
+ * craftLine to incorporate the % 
  ****************************************************/
 function craftLine(cat, pct, originalLine) {
-  // remove the initial phrase from the category data (ex: "As a Planner, ...")
   const commaIdx = originalLine.indexOf(",");
   let remainder = commaIdx >= 0 ? originalLine.substring(commaIdx + 1).trim() : originalLine;
 
@@ -813,12 +824,10 @@ function craftLine(cat, pct, originalLine) {
     remainder = remainder[0].toLowerCase() + remainder.substring(1);
   }
 
-  // pick openers from bulletOpeners & bulletTransitions in round-robin
   const opener = bulletOpeners[bulletIndex % bulletOpeners.length];
   const transition = bulletTransitions[bulletIndex % bulletTransitions.length];
   bulletIndex++;
 
-  // produce a more natural-sounding line
   return `${opener} ${pct}% ${cat} ${transition} ${remainder}`;
 }
 
