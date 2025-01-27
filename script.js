@@ -566,7 +566,7 @@ function displayFinalResults(winner, sortedArray) {
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
 
-  // e.g. "With your responses in mind, we think you are a/an..."
+  // "With your responses in mind, we think you are a/an..."
   const introSecondLineEl = document.getElementById("intro-second-line");
   introSecondLineEl.textContent = `With your responses in mind, we think you are ${catData.article}`;
 
@@ -574,10 +574,10 @@ function displayFinalResults(winner, sortedArray) {
   document.getElementById("category-name").textContent = catData.name;
   document.getElementById("category-description").innerHTML = catData.description;
 
-  // Build distribution bars
+  // distribution bars
   buildDistributionBars(sortedArray, winner);
 
-  // Now handle dynamic strengths/weaknesses
+  // dynamic strengths/weaknesses
   const topCats = determineTopCats(sortedArray);
   const pctMap = buildPctMap(sortedArray);
 
@@ -685,14 +685,7 @@ function buildDistributionBars(sortedArray, winner) {
 }
 
 /****************************************************
- * DETERMINE TOP CATS TO SHOW FOR STRENGTHS/WEAKNESSES
- * 
- * The logic:
- * 1) If the top category is >= 80%, only that category
- * 2) If all 4 are tied (and non-zero), we use all 4
- * 3) Otherwise accumulate from top down until >=80
- *    and if that ends at 4 cats but not all tied, 
- *    keep top 3 only.
+ * DETERMINE TOP CATS TO SHOW (1 cat if >=80, or accumulate until >=80)
  ****************************************************/
 function determineTopCats(sortedArray) {
   const total = sortedArray.reduce((acc, [_, score]) => acc + score, 0) || 1;
@@ -744,20 +737,15 @@ function buildPctMap(sortedArray) {
 
 /****************************************************
  * MAX NUMBER OF LINES => 3 (or 4 if 4 cats are tied)
- *  
- * If 4 cats => 1 line each
- * If 3 cats => 1 line each
- * If 2 cats => top cat gets 2 lines, second cat gets 1
- * If 1 cat => 3 lines from that single cat
  ****************************************************/
 function buildOutputItems(topCats, pctMap, keyName) {
   const len = topCats.length;
   if (len === 4) {
-    // all are tied => 4 total (one each)
-    return topCats.map((cat, idx) => transformLine(cat, pctMap[cat], categoriesData[cat][keyName][0], idx));
+    // all are tied => 4 total
+    return topCats.map((cat, idx) => craftLine(cat, pctMap[cat], categoriesData[cat][keyName][0], idx));
   } else if (len === 3) {
     // 1 from each => 3 total
-    return topCats.map((cat, idx) => transformLine(cat, pctMap[cat], categoriesData[cat][keyName][0], idx));
+    return topCats.map((cat, idx) => craftLine(cat, pctMap[cat], categoriesData[cat][keyName][0], idx));
   } else if (len === 2) {
     // cat1 => 2 lines, cat2 => 1 line
     const [cat1, cat2] = topCats;
@@ -765,56 +753,65 @@ function buildOutputItems(topCats, pctMap, keyName) {
     const arr2 = categoriesData[cat2][keyName];
 
     return [
-      transformLine(cat1, pctMap[cat1], arr1[0], 0),
-      transformLine(cat1, pctMap[cat1], arr1[1], 1),
-      transformLine(cat2, pctMap[cat2], arr2[0], 2),
+      craftLine(cat1, pctMap[cat1], arr1[0], 0),
+      craftLine(cat1, pctMap[cat1], arr1[1], 1),
+      craftLine(cat2, pctMap[cat2], arr2[0], 2),
     ];
   } else {
-    // only 1 cat
+    // single cat => 3 lines
     const cat = topCats[0];
     const arr = categoriesData[cat][keyName];
-    // first 3 lines
     return [
-      transformLine(cat, pctMap[cat], arr[0], 0),
-      transformLine(cat, pctMap[cat], arr[1], 1),
-      transformLine(cat, pctMap[cat], arr[2], 2),
+      craftLine(cat, pctMap[cat], arr[0], 0),
+      craftLine(cat, pctMap[cat], arr[1], 1),
+      craftLine(cat, pctMap[cat], arr[2], 2),
     ];
   }
 }
 
 /****************************************************
- * ROTATE THROUGH SEVERAL INTRO PHRASES
- * to avoid repeating "Because you are..."
+ * TEMPLATES FOR DIVERSITY
  ****************************************************/
-const prefixTemplates = [
-  "Because you're",
-  "Since you're",
-  "It looks like you're",
-  "You appear to be"
+const bulletOpeners = [
+  "Looks like you're about",
+  "It seems you're roughly",
+  "We see you're around",
+  "You're approximately",
+  "From these answers, you're around",
+  "We noticed you're about"
 ];
-let prefixIndex = 0;
+const bulletTransitions = [
+  "so here’s something to consider:",
+  "which means:",
+  "so keep in mind:",
+  "so check this out:",
+  "and that suggests:",
+  "and this implies:"
+];
+let bulletIndex = 0; // rotates through the above arrays
 
 /****************************************************
- * TRANSFORM LINE
- * 1) Strip the initial phrase (like "As a Planner," etc) up to first comma
- * 2) Insert "[Prefix] XX% [Category], [remaining text]"
+ * craftLine - modifies each bullet item to mention the % 
+ * in a more natural way, removing "As a Realist," etc.
  ****************************************************/
-function transformLine(cat, pct, originalLine, indexForPrefix) {
-  // remove leading clause up to first comma
-  const idxComma = originalLine.indexOf(",");
-  let afterComma = idxComma >= 0 ? originalLine.substring(idxComma + 1).trim() : originalLine;
+function craftLine(cat, pct, originalLine, bulletNumber) {
+  // remove the initial phrase from the category data (ex: "As a Planner, ...")
+  const commaIdx = originalLine.indexOf(",");
+  let remainder = commaIdx >= 0 ? originalLine.substring(commaIdx + 1).trim() : originalLine;
 
-  // Lowercase the first letter of afterComma for a smoother read
-  if (afterComma.length > 0) {
-    afterComma = afterComma[0].toLowerCase() + afterComma.substring(1);
+  // lowerCase the first letter of that remainder
+  if (remainder.length > 0) {
+    remainder = remainder[0].toLowerCase() + remainder.substring(1);
   }
 
-  // pick an intro phrase from prefixTemplates in a rotating manner
-  const p = prefixTemplates[prefixIndex % prefixTemplates.length];
-  prefixIndex++;
+  // pick openers from bulletOpeners & bulletTransitions in round-robin
+  const opener = bulletOpeners[bulletIndex % bulletOpeners.length];
+  const transition = bulletTransitions[bulletIndex % bulletTransitions.length];
+  bulletIndex++;
 
-  // e.g. "Because you're 70% Planner, overthinking can hold you back..."
-  return `${p} ${pct}% ${cat}, ${afterComma}`;
+  // example: "Looks like you're about 30% Adventurer so keep in mind: you’re an Optimistic Risk-Taker..."
+  // combine them in a natural-sounding way
+  return `${opener} ${pct}% ${cat} ${transition} ${remainder}`;
 }
 
 /****************************************************
