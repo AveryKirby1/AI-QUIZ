@@ -205,31 +205,11 @@ body {
   line-height: 1.4;
 }
 
-/* The callout below the chart */
-.plus-callout {
-  margin: 15px auto;
-  padding: 10px 15px;
-  max-width: 600px;
-  border: 1px solid #eee;
-  background: #f9f9f9;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.85rem;
-  justify-content: center;
-  text-align: center;
-}
-
-.plus-callout .help-icon {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
-  background-color: #007BFF;
-  color: #fff;
-  border-radius: 50%;
-  font-size: 0.9rem;
+/* plus-callout text (moved dynamically) */
+.plus-callout-small {
+  font-size: 0.75rem;
+  color: #777;
+  margin: 6px 0;
   text-align: center;
 }
 
