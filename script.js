@@ -1,7 +1,7 @@
 // script.js
 
 /****************************************************
- * QUIZ DATA - 10 Questions in Full (with requested final revisions)
+ * QUIZ DATA - 10 Questions (final with tie-handling logic)
  ****************************************************/
 const questions = [
   {
@@ -146,7 +146,6 @@ const questions = [
         emotions: ["Thrill", "Indulgence", "Spontaneity", "Joy", "Impulsivity"]
       },
       {
-        // Replacing "buy coffee for a friend" with something else
         text: "D: Start brewing my own and only treat myself at the shop on weekends.",
         emotions: ["Generosity", "Harmony", "Warmth", "Compassion", "Sharing"]
       }
@@ -375,6 +374,134 @@ const categoriesData = {
 };
 
 /****************************************************
+ * TIE DEFINITIONS (2-cat, 3-cat, 4-cat) 
+ * Combined name + 4-sentence desc. (UPDATED WORDING)
+ ****************************************************/
+const tieData = {
+  // Two-Way
+  "Adventurer+Planner": {
+    combinedName: "Adventurous Planner",
+    description: `
+      An optimistic approach to new possibilities merges seamlessly with meticulous 
+      planning and goal-setting, striking a balance between excitement and long-term security. 
+      Fresh ideas stay grounded in structured strategies, ensuring you can dream big without 
+      losing stability. Confidence comes from thorough research, yet there’s still room 
+      for spontaneity. It’s an outlook that lets you relish life’s thrills while steadily 
+      building toward future ambitions.
+    `
+  },
+  "Adventurer+Connector": {
+    combinedName: "Adventurous Connector",
+    description: `
+      An eagerness for bold experiences joins forces with a caring, collaborative mindset, 
+      fueling both personal growth and communal uplift. Daring choices become more meaningful 
+      when they also serve friends, family, or a broader network. Forward momentum comes from 
+      embracing new opportunities, all the while celebrating shared wins. Together, it forms 
+      a synergy where excitement and social responsibility flourish side by side.
+    `
+  },
+  "Adventurer+Realist": {
+    combinedName: "Adventurous Realist",
+    description: `
+      Creative exploration blends with a fact-driven, cautious perspective, maintaining a 
+      healthy tension between passion and pragmatism. Bold moves never lose sight of stable 
+      outcomes, ensuring enthusiasm doesn’t overshadow sound judgment. Forward motion is 
+      fueled by curiosity, yet guided by measured analysis. The result is a mindset that 
+      welcomes new ventures but insists on level-headed planning to keep risks in check.
+    `
+  },
+  "Planner+Connector": {
+    combinedName: "Connected Planner",
+    description: `
+      Practical, long-term strategies align with a genuine desire to see others thrive, 
+      weaving personal security and communal benefit into one roadmap. Methodical budgeting 
+      and goal-setting not only stabilize your finances but also create pathways for 
+      collaborative success. Discipline in planning doesn’t preclude caring deeply about 
+      shared outcomes. Ultimately, it’s an approach that merges structure and empathy, 
+      leaving room for both prosperity and heartfelt connection.
+    `
+  },
+  "Planner+Realist": {
+    combinedName: "Realistic Planner",
+    description: `
+      Careful goal-setting pairs with a guarded, data-driven stance on risk, building a 
+      foundation of consistent and reliable progress. Impulsive choices rarely gain ground 
+      here, as every idea is vetted through proven methods. An orderly framework provides 
+      the structure needed to avoid unpleasant surprises. In this environment, measured 
+      action leads to steady financial stability, free from unnecessary gambles.
+    `
+  },
+  "Connector+Realist": {
+    combinedName: "Realistic Connector",
+    description: `
+      A strong sense of generosity and collaboration is tempered by cautious financial 
+      management, ensuring supportive efforts don’t compromise security. Thoughtful teamwork 
+      can empower everyone, yet careful analysis remains a guiding principle. Balancing 
+      empathy with level-headedness helps avoid overextending resources in the name of kindness. 
+      It’s an approach that keeps group goals in sight while protecting everyone’s interests.
+    `
+  },
+
+  // Three-Way
+  "Adventurer+Connector+Planner": {
+    combinedName: "Adventurous, Connected Planner",
+    description: `
+      Excitement for new possibilities meets structured planning and a caring heart for 
+      collective success. Bold ideas thrive when carefully mapped out and shared with 
+      those around you, letting optimism and discipline work hand in hand. Rather than 
+      rushing headlong, there’s a mindful effort to keep progress beneficial for all involved. 
+      This synergy nurtures both personal ambition and the well-being of friends or 
+      community members.
+    `
+  },
+  "Adventurer+Connector+Realist": {
+    combinedName: "Adventurous, Connected Realist",
+    description: `
+      A drive for discovery blends with generous intentions and a no-nonsense eye on risk, 
+      creating an outlook that values bold moves but remains firmly grounded. Ventures that 
+      benefit others are pursued if they fit within sensible guidelines, helping everyone flourish. 
+      Growth is fueled by curiosity and collaboration, yet governed by prudent decision-making. 
+      It’s a path where excitement, social awareness, and practical strategy maintain equilibrium.
+    `
+  },
+  "Adventurer+Planner+Realist": {
+    combinedName: "Adventurous, Realistic Planner",
+    description: `
+      An appetite for new adventures runs alongside detailed planning and pragmatic caution. 
+      Breakthrough ideas feel invigorating, but each step is backed by reliable methods 
+      that preserve financial stability. There’s room for spontaneity and fresh perspectives, 
+      yet an underlying framework keeps risk in check. This mix shapes an approach that 
+      strives for innovative progress without losing sight of security or discipline.
+    `
+  },
+  "Connector+Planner+Realist": {
+    combinedName: "Connected, Realistic Planner",
+    description: `
+      Community-focused values intersect with thorough organization and a conservative 
+      approach to risk, forming a calm yet people-centric vision. Collaborative efforts 
+      can blossom under systematic goals, ensuring that everyone moves forward together. 
+      Each decision is researched, reducing the likelihood of mistakes or unexpected challenges. 
+      The result is a measured but caring style that safeguards resources while 
+      nurturing shared triumphs.
+    `
+  },
+
+  // Four-Way
+  "Adventurer+Connector+Planner+Realist": {
+    combinedName: "Adventurous, Connected, Realistic Planner",
+    description: `
+      A love of fresh experiences, a generous spirit, structured direction, and factual 
+      risk assessment all converge here, weaving excitement and caution into one strategy. 
+      Bold ideas are considered through careful planning and validated against collective 
+      well-being, so each move feels both thrilling and responsible. Research and collaboration 
+      guide your decisions, balancing personal goals with communal benefit. This all-encompassing 
+      blend aims to harmonize exploration, empathy, security, and practicality in every 
+      financial choice.
+    `
+  }
+};
+
+/****************************************************
  * GLOBAL STATE
  ****************************************************/
 let currentQuestionIndex = 0;
@@ -507,12 +634,16 @@ function showResults() {
   document.getElementById("quiz-section").style.display = "none";
   document.getElementById("results-section").classList.remove("hidden");
 
-  const { sortedArray, winner } = calculateCategoryScores(chosenEmotions);
-  displayFinalResults(winner, sortedArray);
+  const { sortedArray } = calculateCategoryScores(chosenEmotions);
+  // Identify top categories sharing the same top score
+  const topScore = sortedArray[0][1];
+  const tiedCats = sortedArray.filter(([,score]) => score === topScore).map(([cat]) => cat);
+
+  displayFinalResults(tiedCats, sortedArray);
 }
 
 /****************************************************
- * CALCULATE CATEGORY SCORES (Tie-Break Logic)
+ * CALCULATE CATEGORY SCORES
  ****************************************************/
 function calculateCategoryScores(emotions) {
   const tally = {};
@@ -535,30 +666,58 @@ function calculateCategoryScores(emotions) {
     }
   });
 
-  // handle tie scenario for the "winner"
-  const winners = catNames.filter(cat => scores[cat] === maxScore);
-  let winner = winners.length > 1
-    ? winners[Math.floor(Math.random() * winners.length)]
-    : winners[0];
-
   // sort descending for distribution bars
   let sortedArray = Object.entries(scores).sort((a, b) => b[1] - a[1]);
 
-  // ensure chosen winner is top of the chart
-  const winnerIndex = sortedArray.findIndex(([cat]) => cat === winner);
-  if (winnerIndex > 0) {
-    const [wKey, wScore] = sortedArray.splice(winnerIndex, 1)[0];
-    sortedArray.unshift([wKey, wScore]);
-  }
-
-  return { sortedArray, winner };
+  return { sortedArray };
 }
 
 /****************************************************
- * DISPLAY FINAL RESULTS
+ * DETERMINE 'RESULTS' NAME + DESC (Tie or Single)
  ****************************************************/
-function displayFinalResults(winner, sortedArray) {
-  const catData = categoriesData[winner];
+function getCombinedNameAndDesc(tiedCats) {
+  // if only 1 cat
+  if (tiedCats.length === 1) {
+    const cat = tiedCats[0];
+    return {
+      name: categoriesData[cat].name,
+      article: categoriesData[cat].article,
+      description: categoriesData[cat].description
+    };
+  }
+
+  // otherwise, form a key
+  const sortedTied = [...tiedCats].sort((a, b) => a.localeCompare(b));
+  const tieKey = sortedTied.join("+");
+
+  if (tieData[tieKey]) {
+    let comboName = tieData[tieKey].combinedName;
+    let comboDesc = tieData[tieKey].description;
+
+    const article = isVowel(comboName[0]) ? "an" : "a";
+    return {
+      name: comboName,
+      article,
+      description: comboDesc
+    };
+  } else {
+    return {
+      name: "Mixed",
+      article: "a",
+      description: "You have a unique blend of multiple categories."
+    };
+  }
+}
+
+function isVowel(ch) {
+  return ["A","E","I","O","U"].includes(ch.toUpperCase());
+}
+
+/****************************************************
+ * DISPLAY FINAL RESULTS (handling ties)
+ ****************************************************/
+function displayFinalResults(tiedCats, sortedArray) {
+  const {name, article, description} = getCombinedNameAndDesc(tiedCats);
 
   // Intro paragraph
   const introParagraphEl = document.getElementById("intro-paragraph");
@@ -567,27 +726,25 @@ function displayFinalResults(winner, sortedArray) {
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
 
-  // "With your responses in mind, we think you are a/an..."
+  // e.g. "With your responses in mind, we think you are a/an..."
   const introSecondLineEl = document.getElementById("intro-second-line");
-  introSecondLineEl.textContent = `With your responses in mind, we think you are ${catData.article}`;
+  introSecondLineEl.textContent = `With your responses in mind, we think you are ${article}`;
 
-  // winner category name/description
-  document.getElementById("category-name").textContent = catData.name;
-  document.getElementById("category-description").innerHTML = catData.description;
+  // category name / tie name
+  document.getElementById("category-name").textContent = name;
+  document.getElementById("category-description").innerHTML = description;
 
   // distribution bars
-  buildDistributionBars(sortedArray, winner);
+  buildDistributionBars(sortedArray);
 
   // dynamic heading for chart
   const distributionContainer = document.getElementById("distribution-container");
-  // check if top cat is 100%
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
   const topPct = Math.round((sortedArray[0][1] / total) * 100);
 
-  // We'll insert a heading or text
+  // Insert heading or text
   const distributionTitle = document.createElement("h3");
-
-  if (topPct === 100) {
+  if (topPct === 100 && tiedCats.length === 1) {
     distributionTitle.innerHTML = `Your <span class="key-span">key</span> money signs:`;
   } else {
     distributionTitle.innerHTML = `
@@ -595,23 +752,22 @@ function displayFinalResults(winner, sortedArray) {
       we notice traits from other money signs that also resonate with your financial personality:
     `;
   }
-  // Insert the new heading at the top
   distributionContainer.insertBefore(distributionTitle, document.getElementById("category-bars"));
 
-  // Next, place a smaller callout about clicking the + icons
+  // place a smaller callout about clicking the + icons
   const plusCallout = document.createElement("p");
   plusCallout.className = "plus-callout-small";
   plusCallout.textContent = `Click the “+” icons to view more about each non-winning category.`;
   distributionContainer.insertBefore(plusCallout, document.getElementById("category-bars"));
 
-  // Now handle dynamic strengths/weaknesses
-  const topCats = determineTopCats(sortedArray);
+  // figure out topCats for strengths/weaknesses
+  const finalTopCats = determineTopCats(sortedArray);
   const pctMap = buildPctMap(sortedArray);
 
-  const finalStrengths = buildOutputItems(topCats, pctMap, "strengths");
-  const finalWeaknesses = buildOutputItems(topCats, pctMap, "weaknesses");
+  const finalStrengths = buildOutputItems(finalTopCats, pctMap, "strengths");
+  const finalWeaknesses = buildOutputItems(finalTopCats, pctMap, "weaknesses");
 
-  // Clear and fill strengths
+  // fill strengths
   const excelList = document.getElementById("excel-list");
   excelList.innerHTML = "";
   finalStrengths.forEach(str => {
@@ -620,7 +776,7 @@ function displayFinalResults(winner, sortedArray) {
     excelList.appendChild(li);
   });
 
-  // Clear and fill weaknesses
+  // fill weaknesses
   const watchoutList = document.getElementById("watchout-list");
   watchoutList.innerHTML = "";
   finalWeaknesses.forEach(wk => {
@@ -629,13 +785,17 @@ function displayFinalResults(winner, sortedArray) {
     watchoutList.appendChild(li);
   });
 
-  // Products from single winner category
+  // If there's more than 1 cat in tie, pick the first (alphabetically) for products
+  let mainCatForProducts = (tiedCats.length > 1)
+    ? [...tiedCats].sort((a,b)=>a.localeCompare(b))[0]
+    : tiedCats[0];
+
   const productsTitle = document.getElementById("products-title");
-  productsTitle.textContent = catData.headingForProducts;
+  productsTitle.textContent = categoriesData[mainCatForProducts].headingForProducts;
 
   const productContainer = document.getElementById("product-recommendations");
   productContainer.innerHTML = "";
-  catData.products.forEach(prod => {
+  categoriesData[mainCatForProducts].products.forEach(prod => {
     const card = document.createElement("div");
     card.className = "product-card";
 
@@ -657,9 +817,9 @@ function displayFinalResults(winner, sortedArray) {
 }
 
 /****************************************************
- * BUILD DISTRIBUTION BARS
+ * BUILD DISTRIBUTION BARS (no single winner param)
  ****************************************************/
-function buildDistributionBars(sortedArray, winner) {
+function buildDistributionBars(sortedArray) {
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
   const catBarContainer = document.getElementById("category-bars");
   catBarContainer.innerHTML = "";
@@ -672,7 +832,6 @@ function buildDistributionBars(sortedArray, winner) {
     label.className = "bar-label";
     label.textContent = cat.toUpperCase();
 
-    // Only show expand toggle for non-winners
     if (idx !== 0) {
       const toggle = document.createElement("span");
       toggle.className = "expand-toggle";
@@ -700,7 +859,7 @@ function buildDistributionBars(sortedArray, winner) {
 
     catBarContainer.appendChild(barRow);
 
-    // short summary for non-winners only
+    // short summary for non-top cats
     if (idx !== 0) {
       const shortBox = document.createElement("div");
       shortBox.id = `short-${cat}`;
@@ -712,12 +871,12 @@ function buildDistributionBars(sortedArray, winner) {
 }
 
 /****************************************************
- * DETERMINE TOP CATS
+ * DETERMINE TOP CATS UNTIL >= 80 (for strengths)
  ****************************************************/
 function determineTopCats(sortedArray) {
   const total = sortedArray.reduce((acc, [_, score]) => acc + score, 0) || 1;
 
-  // if top cat >= 80%
+  // if top cat >= 80
   const topCatScore = sortedArray[0][1];
   if ((topCatScore / total) * 100 >= 80) {
     return [sortedArray[0][0]];
@@ -782,6 +941,7 @@ function buildOutputItems(topCats, pctMap, keyName) {
       craftLine(cat2, pctMap[cat2], arr2[0])
     ];
   } else {
+    // single cat
     const cat = topCats[0];
     const arr = categoriesData[cat][keyName];
     return [
@@ -814,7 +974,7 @@ const bulletTransitions = [
 let bulletIndex = 0;
 
 /****************************************************
- * craftLine to incorporate the % 
+ * craftLine to incorporate the %
  ****************************************************/
 function craftLine(cat, pct, originalLine) {
   const commaIdx = originalLine.indexOf(",");
