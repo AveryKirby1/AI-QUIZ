@@ -1,7 +1,8 @@
 // script.js
 
 /****************************************************
- * QUESTIONS ARRAY (10 full questions, multiple selections)
+ * QUESTIONS ARRAY (Full 10 with multiple selections, 
+ * each with 4 answers, as per prior instructions)
  ****************************************************/
 const questions = [
   {
@@ -47,7 +48,7 @@ const questions = [
     ]
   },
   {
-    question: "3. You walk into a store to buy toothpaste and leave with... (Select all that apply)",
+    question: "3. You walk into a store to buy toothpaste and leave with...",
     answers: [
       {
         text: "Nothing—prices were too high, so you held off.",
@@ -217,7 +218,7 @@ const questions = [
 ];
 
 /****************************************************
- * categoriesData
+ * categoriesData (unchanged)
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -374,7 +375,7 @@ const categoriesData = {
 };
 
 /****************************************************
- * tieData - all combos
+ * tieData
  ****************************************************/
 const tieData = {
   "Adventurer+Planner": {
@@ -499,6 +500,7 @@ const tieData = {
  * GLOBAL STATE
  ****************************************************/
 let currentQuestionIndex = 0;
+// multiple answers possible => array of indices per question
 let selectedAnswers = new Array(questions.length).fill([]);
 
 /****************************************************
@@ -511,7 +513,7 @@ window.onload = function() {
 };
 
 /****************************************************
- * DISPLAY A QUESTION (horizontal answer-cards)
+ * DISPLAY A QUESTION
  ****************************************************/
 function displayQuestion(index) {
   const questionEl = document.getElementById("question-text");
@@ -521,18 +523,14 @@ function displayQuestion(index) {
   const resultsBtn = document.getElementById("results-btn");
   const prevBtn = document.getElementById("prev-btn");
 
-  // Clear old answers
   answersEl.innerHTML = "";
 
+  // set question text
   const qObj = questions[index];
-
-  // We'll apply a small subtext to indicate "Select all that apply"
+  questionEl.textContent = qObj.question;
   selectInstrEl.textContent = "(Select all that apply)";
 
-  // question text
-  questionEl.textContent = qObj.question;
-
-  // For each answer, create a .answer-card
+  // Build horizontal answer cards
   qObj.answers.forEach((ans, ansIdx) => {
     const card = document.createElement("div");
     card.className = "answer-card";
@@ -555,7 +553,7 @@ function displayQuestion(index) {
       saveCurrentAnswer();
     };
 
-    // restore state if user had previously selected
+    // restore selection
     if (selectedAnswers[index].includes(ansIdx)) {
       checkbox.checked = true;
       card.classList.add("checked");
@@ -569,14 +567,14 @@ function displayQuestion(index) {
     answersEl.appendChild(card);
   });
 
-  // Hide 'Previous' if on first question
+  // Hide 'Previous' if on first
   if (index === 0) {
     prevBtn.style.display = "none";
   } else {
     prevBtn.style.display = "inline-block";
   }
 
-  // Show Next or Results
+  // show next or results
   if (index < questions.length - 1) {
     nextBtn.style.display = "inline-block";
     resultsBtn.style.display = "none";
@@ -589,7 +587,7 @@ function displayQuestion(index) {
 }
 
 /****************************************************
- * ADD/REMOVE .checked styling
+ * updateCheckedStyle
  ****************************************************/
 function updateCheckedStyle(cardEl, isChecked) {
   if (isChecked) {
@@ -612,7 +610,6 @@ function updateQuestionTracker(index) {
  ****************************************************/
 function goToNextQuestion() {
   saveCurrentAnswer();
-  // Must pick at least one
   if (selectedAnswers[currentQuestionIndex].length === 0) {
     alert("Please select at least one answer before proceeding.");
     return;
@@ -668,7 +665,6 @@ function showResults() {
   document.getElementById("results-section").classList.remove("hidden");
 
   const { sortedArray } = calculateCategoryScores(chosenEmotions);
-
   const topScore = sortedArray[0][1];
   const tiedCats = sortedArray.filter(([,score]) => score === topScore).map(([cat]) => cat);
 
@@ -699,13 +695,12 @@ function calculateCategoryScores(emotions) {
     }
   });
 
-  // sort descending
   let sortedArray = Object.entries(scores).sort((a,b)=> b[1] - a[1]);
   return { sortedArray };
 }
 
 /****************************************************
- * TIE / SINGLE - GET NAME + DESC
+ * GET COMBINED NAME + DESC
  ****************************************************/
 function getCombinedNameAndDesc(tiedCats) {
   if (tiedCats.length === 1) {
@@ -716,22 +711,23 @@ function getCombinedNameAndDesc(tiedCats) {
       description: categoriesData[cat].description
     };
   }
-  // multi-cat scenario
   const sortedTied = [...tiedCats].sort((a,b)=>a.localeCompare(b));
   const tieKey = sortedTied.join("+");
   if (tieData[tieKey]) {
     const comboName = tieData[tieKey].combinedName;
     const comboDesc = tieData[tieKey].description;
     const article = isVowel(comboName[0]) ? "an" : "a";
-    return { name: comboName, article, description: comboDesc };
-  } else {
-    // fallback
     return {
-      name: "Mixed",
-      article: "a",
-      description: "You have a unique blend of multiple categories."
+      name: comboName,
+      article,
+      description: comboDesc
     };
   }
+  return {
+    name: "Mixed",
+    article: "a",
+    description: "You have a unique blend of multiple categories."
+  };
 }
 
 function isVowel(ch) {
@@ -744,19 +740,22 @@ function isVowel(ch) {
 function displayFinalResults(tiedCats, sortedArray) {
   const { name, article, description } = getCombinedNameAndDesc(tiedCats);
 
-  // Intro text
+  // Intro paragraph + second line
   document.getElementById("intro-paragraph").textContent =
     "Finances touch our lives in personal ways and can often feel overwhelming. " +
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
-  document.getElementById("intro-second-line").textContent = 
+
+  document.getElementById("intro-second-line").textContent =
     `With your responses in mind, we think you are ${article}`;
 
   document.getElementById("category-name").textContent = name;
   document.getElementById("category-description").innerHTML = description;
 
+  // distribution bars
   buildDistributionBars(sortedArray, tiedCats);
 
+  // heading for distribution
   const distributionContainer = document.getElementById("distribution-container");
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
   const topPct = Math.round((sortedArray[0][1] / total) * 100);
@@ -777,32 +776,30 @@ function displayFinalResults(tiedCats, sortedArray) {
   plusCallout.textContent = `Click the “+” icons to view more about each non-winning category.`;
   distributionContainer.insertBefore(plusCallout, document.getElementById("category-bars"));
 
-  // figure out topCats for bullet items
+  // strengths + weaknesses
   const topCatsForBullets = determineTopCats(sortedArray);
   const pctMap = buildPctMap(sortedArray);
 
   const finalStrengths = buildOutputItems(topCatsForBullets, pctMap, "strengths");
   const finalWeaknesses = buildOutputItems(topCatsForBullets, pctMap, "weaknesses");
 
-  // fill strengths
   const excelList = document.getElementById("excel-list");
   excelList.innerHTML = "";
-  finalStrengths.forEach(str => {
+  finalStrengths.forEach(s => {
     const li = document.createElement("li");
-    li.textContent = str;
+    li.textContent = s;
     excelList.appendChild(li);
   });
 
-  // fill weaknesses
   const watchoutList = document.getElementById("watchout-list");
   watchoutList.innerHTML = "";
-  finalWeaknesses.forEach(wk => {
+  finalWeaknesses.forEach(w => {
     const li = document.createElement("li");
-    li.textContent = wk;
+    li.textContent = w;
     watchoutList.appendChild(li);
   });
 
-  // product rec if tie => first alpha cat
+  // products => pick first alpha cat if tie
   let mainCatForProducts = (tiedCats.length > 1)
     ? [...tiedCats].sort((a,b)=>a.localeCompare(b))[0]
     : tiedCats[0];
@@ -851,7 +848,6 @@ function buildDistributionBars(sortedArray, tiedCats) {
 
     let pct = Math.round((score / total) * 100);
 
-    // if cat not in tie => show plus
     if (!tiedCats.includes(cat)) {
       const toggle = document.createElement("span");
       toggle.className = "expand-toggle";
@@ -877,7 +873,6 @@ function buildDistributionBars(sortedArray, tiedCats) {
 
     catBarContainer.appendChild(barRow);
 
-    // short summary for non-winner cats
     if (!tiedCats.includes(cat)) {
       const shortBox = document.createElement("div");
       shortBox.id = `short-${cat}`;
@@ -899,7 +894,7 @@ function determineTopCats(sortedArray) {
     return [sortedArray[0][0]];
   }
 
-  // check if 4 tied
+  // check if all 4 tied
   const allTied = (sortedArray.length === 4 &&
     sortedArray[0][1] > 0 &&
     sortedArray.every(([, s]) => s === sortedArray[0][1])
@@ -916,7 +911,6 @@ function determineTopCats(sortedArray) {
     result.push(cat);
     if (runningPct >= 80) break;
   }
-
   if (result.length === 4) {
     result.pop();
   }
@@ -924,7 +918,7 @@ function determineTopCats(sortedArray) {
 }
 
 /****************************************************
- * BUILD A MAP: category -> integer percentage
+ * BUILD PCT MAP
  ****************************************************/
 function buildPctMap(sortedArray) {
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
@@ -942,9 +936,9 @@ function buildPctMap(sortedArray) {
 function buildOutputItems(topCats, pctMap, keyName) {
   const len = topCats.length;
   if (len === 4) {
-    return topCats.map((cat) => craftLine(cat, pctMap[cat], categoriesData[cat][keyName][0]));
+    return topCats.map(cat => craftLine(cat, pctMap[cat], categoriesData[cat][keyName][0]));
   } else if (len === 3) {
-    return topCats.map((cat) => craftLine(cat, pctMap[cat], categoriesData[cat][keyName][0]));
+    return topCats.map(cat => craftLine(cat, pctMap[cat], categoriesData[cat][keyName][0]));
   } else if (len === 2) {
     const [cat1, cat2] = topCats;
     const arr1 = categoriesData[cat1][keyName];
@@ -967,7 +961,7 @@ function buildOutputItems(topCats, pctMap, keyName) {
 }
 
 /****************************************************
- * TEMPLATES FOR BULLETS
+ * TEMPLATES
  ****************************************************/
 const bulletOpeners = [
   "Looks like you're about",
@@ -993,10 +987,8 @@ let bulletIndex = 0;
  * craftLine
  ****************************************************/
 function craftLine(cat, pct, originalLine) {
-  // remove leading "As a X," if present
   const commaIdx = originalLine.indexOf(",");
   let remainder = commaIdx >= 0 ? originalLine.substring(commaIdx + 1).trim() : originalLine;
-
   if (remainder.length > 0) {
     remainder = remainder[0].toLowerCase() + remainder.substring(1);
   }
