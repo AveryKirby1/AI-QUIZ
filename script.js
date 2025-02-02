@@ -1,8 +1,7 @@
 // script.js
 
 /****************************************************
- * QUESTIONS ARRAY (Full 10 with multiple selections, 
- * each with 4 answers, as per prior instructions)
+ * QUESTIONS ARRAY (10 total, multiple selection)
  ****************************************************/
 const questions = [
   {
@@ -218,7 +217,7 @@ const questions = [
 ];
 
 /****************************************************
- * categoriesData (unchanged)
+ * categoriesData 
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -375,7 +374,7 @@ const categoriesData = {
 };
 
 /****************************************************
- * tieData
+ * tieData 
  ****************************************************/
 const tieData = {
   "Adventurer+Planner": {
@@ -513,7 +512,7 @@ window.onload = function() {
 };
 
 /****************************************************
- * DISPLAY A QUESTION
+ * DISPLAY A QUESTION (single column box style)
  ****************************************************/
 function displayQuestion(index) {
   const questionEl = document.getElementById("question-text");
@@ -525,17 +524,15 @@ function displayQuestion(index) {
 
   answersEl.innerHTML = "";
 
-  // set question text
   const qObj = questions[index];
   questionEl.textContent = qObj.question;
   selectInstrEl.textContent = "(Select all that apply)";
 
-  // Build horizontal answer cards
+  // build vertical box layout
   qObj.answers.forEach((ans, ansIdx) => {
     const card = document.createElement("div");
     card.className = "answer-card";
     card.onclick = () => {
-      // toggle check
       const cb = card.querySelector("input[type='checkbox']");
       cb.checked = !cb.checked;
       updateCheckedStyle(card, cb.checked);
@@ -553,7 +550,6 @@ function displayQuestion(index) {
       saveCurrentAnswer();
     };
 
-    // restore selection
     if (selectedAnswers[index].includes(ansIdx)) {
       checkbox.checked = true;
       card.classList.add("checked");
@@ -567,14 +563,12 @@ function displayQuestion(index) {
     answersEl.appendChild(card);
   });
 
-  // Hide 'Previous' if on first
   if (index === 0) {
     prevBtn.style.display = "none";
   } else {
     prevBtn.style.display = "inline-block";
   }
 
-  // show next or results
   if (index < questions.length - 1) {
     nextBtn.style.display = "inline-block";
     resultsBtn.style.display = "none";
@@ -653,7 +647,6 @@ function showResults() {
     return;
   }
 
-  // gather chosen emotions
   let chosenEmotions = [];
   for (let i = 0; i < questions.length; i++) {
     selectedAnswers[i].forEach(idx => {
@@ -695,12 +688,12 @@ function calculateCategoryScores(emotions) {
     }
   });
 
-  let sortedArray = Object.entries(scores).sort((a,b)=> b[1] - a[1]);
+  let sortedArray = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
   return { sortedArray };
 }
 
 /****************************************************
- * GET COMBINED NAME + DESC
+ * TIE or SINGLE
  ****************************************************/
 function getCombinedNameAndDesc(tiedCats) {
   if (tiedCats.length === 1) {
@@ -717,11 +710,7 @@ function getCombinedNameAndDesc(tiedCats) {
     const comboName = tieData[tieKey].combinedName;
     const comboDesc = tieData[tieKey].description;
     const article = isVowel(comboName[0]) ? "an" : "a";
-    return {
-      name: comboName,
-      article,
-      description: comboDesc
-    };
+    return { name: comboName, article, description: comboDesc };
   }
   return {
     name: "Mixed",
@@ -740,22 +729,18 @@ function isVowel(ch) {
 function displayFinalResults(tiedCats, sortedArray) {
   const { name, article, description } = getCombinedNameAndDesc(tiedCats);
 
-  // Intro paragraph + second line
   document.getElementById("intro-paragraph").textContent =
     "Finances touch our lives in personal ways and can often feel overwhelming. " +
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
-
   document.getElementById("intro-second-line").textContent =
     `With your responses in mind, we think you are ${article}`;
 
   document.getElementById("category-name").textContent = name;
   document.getElementById("category-description").innerHTML = description;
 
-  // distribution bars
   buildDistributionBars(sortedArray, tiedCats);
 
-  // heading for distribution
   const distributionContainer = document.getElementById("distribution-container");
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
   const topPct = Math.round((sortedArray[0][1] / total) * 100);
@@ -776,7 +761,6 @@ function displayFinalResults(tiedCats, sortedArray) {
   plusCallout.textContent = `Click the “+” icons to view more about each non-winning category.`;
   distributionContainer.insertBefore(plusCallout, document.getElementById("category-bars"));
 
-  // strengths + weaknesses
   const topCatsForBullets = determineTopCats(sortedArray);
   const pctMap = buildPctMap(sortedArray);
 
@@ -799,7 +783,6 @@ function displayFinalResults(tiedCats, sortedArray) {
     watchoutList.appendChild(li);
   });
 
-  // products => pick first alpha cat if tie
   let mainCatForProducts = (tiedCats.length > 1)
     ? [...tiedCats].sort((a,b)=>a.localeCompare(b))[0]
     : tiedCats[0];
@@ -894,7 +877,6 @@ function determineTopCats(sortedArray) {
     return [sortedArray[0][0]];
   }
 
-  // check if all 4 tied
   const allTied = (sortedArray.length === 4 &&
     sortedArray[0][1] > 0 &&
     sortedArray.every(([, s]) => s === sortedArray[0][1])
