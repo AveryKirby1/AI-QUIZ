@@ -1,11 +1,11 @@
 // script.js
 
 /****************************************************
- * QUIZ DATA - 10 Questions (tie-handling logic)
+ * QUIZ DATA - 10 Questions (tie-handling logic + multiple selections)
  ****************************************************/
 const questions = [
   {
-    question: "1. You’ve just found $500 on the ground. What’s the first thing you do?",
+    question: "1. You’ve just found $500 on the ground. What’s the first thing you do? (Select all that apply)",
     answers: [
       {
         text: "A: Try to find the rightful owner; if you can’t, well, finders keepers.",
@@ -26,7 +26,7 @@ const questions = [
     ]
   },
   {
-    question: "2. Your friend asks you to split a $400 dinner bill evenly, but you only had a salad. What do you do?",
+    question: "2. Your friend asks you to split a $400 dinner bill evenly, but you only had a salad. What do you do? (Select all that apply)",
     answers: [
       {
         text: "A: Quietly pay it all to avoid drama, feeling uneasy.",
@@ -47,7 +47,7 @@ const questions = [
     ]
   },
   {
-    question: "3. You walk into a store to buy toothpaste and leave with...",
+    question: "3. You walk into a store to buy toothpaste and leave with... (Select all that apply)",
     answers: [
       {
         text: "A: Nothing—prices were too high, so you held off.",
@@ -68,7 +68,7 @@ const questions = [
     ]
   },
   {
-    question: "4. Your boss offers you a $10,000 raise. What’s your first thought?",
+    question: "4. Your boss offers you a $10,000 raise. What’s your first thought? (Select all that apply)",
     answers: [
       {
         text: "A: Pay off debts and maintain a practical buffer.",
@@ -89,7 +89,7 @@ const questions = [
     ]
   },
   {
-    question: "5. A friend calls you crying about a $1,000 car repair bill. What do you do?",
+    question: "5. A friend calls you crying about a $1,000 car repair bill. What do you do? (Select all that apply)",
     answers: [
       {
         text: "A: Reluctantly offer financial help if they explicitly ask, staying cautious.",
@@ -110,7 +110,7 @@ const questions = [
     ]
   },
   {
-    question: "6. You’re $2,000 short on your dream vacation budget. How do you handle it?",
+    question: "6. You’re $2,000 short on your dream vacation budget. How do you handle it? (Select all that apply)",
     answers: [
       {
         text: "A: Cancel the trip; the debt risk is too high.",
@@ -131,7 +131,7 @@ const questions = [
     ]
   },
   {
-    question: "7. Your favorite coffee shop just raised prices. Do you...",
+    question: "7. Your favorite coffee shop just raised prices. Do you... (Select all that apply)",
     answers: [
       {
         text: "A: Stop going—it's the most rational cut for your budget.",
@@ -152,7 +152,7 @@ const questions = [
     ]
   },
   {
-    question: "8. Someone raves about investing in cryptocurrency. Your reaction?",
+    question: "8. Someone raves about investing in cryptocurrency. Your reaction? (Select all that apply)",
     answers: [
       {
         text: "A: Too uncertain—I want concrete data first.",
@@ -173,7 +173,7 @@ const questions = [
     ]
   },
   {
-    question: "9. You see a limited edition gadget for $500. Do you...",
+    question: "9. You see a limited edition gadget for $500. Do you... (Select all that apply)",
     answers: [
       {
         text: "A: Skip it—you don’t truly need it.",
@@ -194,7 +194,7 @@ const questions = [
     ]
   },
   {
-    question: "10. You’ve had a long week and need to relax. How do you treat yourself?",
+    question: "10. You’ve had a long week and need to relax. How do you treat yourself? (Select all that apply)",
     answers: [
       {
         text: "A: Stay home with a simple, low-cost plan like a favorite show.",
@@ -217,7 +217,7 @@ const questions = [
 ];
 
 /****************************************************
- * CATEGORY DEFINITIONS
+ * CATEGORY DEFINITIONS (unchanged)
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -374,7 +374,7 @@ const categoriesData = {
 };
 
 /****************************************************
- * TIE DEFINITIONS (2-cat, 3-cat, 4-cat) 
+ * TIE DEFINITIONS (unchanged)
  ****************************************************/
 const tieData = {
   // Two-Way
@@ -504,7 +504,7 @@ const tieData = {
  * GLOBAL STATE
  ****************************************************/
 let currentQuestionIndex = 0;
-let selectedAnswers = new Array(questions.length).fill(null);
+let selectedAnswers = new Array(questions.length).fill([]);
 
 /****************************************************
  * ON WINDOW LOAD
@@ -516,7 +516,7 @@ window.onload = function() {
 };
 
 /****************************************************
- * DISPLAY A QUESTION
+ * DISPLAY A QUESTION (now uses checkboxes)
  ****************************************************/
 function displayQuestion(index) {
   const questionEl = document.getElementById("question-text");
@@ -531,19 +531,20 @@ function displayQuestion(index) {
   const qObj = questions[index];
   questionEl.textContent = qObj.question;
 
-  // Create radio options
+  // Create checkbox options
   qObj.answers.forEach((ans, ansIdx) => {
     const label = document.createElement("label");
-    const radio = document.createElement("input");
-    radio.type = "radio";
-    radio.name = `question_${index}`;
-    radio.value = ansIdx;
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.name = `question_${index}`;
+    checkbox.value = ansIdx;
 
-    if (selectedAnswers[index] === ansIdx) {
-      radio.checked = true;
+    // If user had previously selected this answer (in multiple selection)
+    if (selectedAnswers[index].includes(ansIdx)) {
+      checkbox.checked = true;
     }
 
-    label.appendChild(radio);
+    label.appendChild(checkbox);
     label.appendChild(document.createTextNode(" " + ans.text));
     answersEl.appendChild(label);
   });
@@ -580,8 +581,9 @@ function updateQuestionTracker(index) {
  ****************************************************/
 function goToNextQuestion() {
   saveCurrentAnswer();
-  if (selectedAnswers[currentQuestionIndex] === null) {
-    alert("Please select an answer before proceeding.");
+  // ensure at least 1 selection
+  if (selectedAnswers[currentQuestionIndex].length === 0) {
+    alert("Please select at least one answer before proceeding.");
     return;
   }
   currentQuestionIndex++;
@@ -601,14 +603,16 @@ function goToPreviousQuestion() {
 
 /****************************************************
  * SAVE CURRENT ANSWER
+ *  - gather all checked checkboxes
  ****************************************************/
 function saveCurrentAnswer() {
-  const selectedOption = document.querySelector(
+  const checkboxes = document.querySelectorAll(
     `input[name="question_${currentQuestionIndex}"]:checked`
   );
-  if (selectedOption) {
-    selectedAnswers[currentQuestionIndex] = parseInt(selectedOption.value);
-  }
+
+  // collect indices
+  const chosenIndices = Array.from(checkboxes).map((cb) => parseInt(cb.value));
+  selectedAnswers[currentQuestionIndex] = chosenIndices;
 }
 
 /****************************************************
@@ -616,17 +620,21 @@ function saveCurrentAnswer() {
  ****************************************************/
 function showResults() {
   saveCurrentAnswer();
-  if (selectedAnswers[currentQuestionIndex] === null) {
-    alert("Please select an answer before seeing results.");
+  // ensure at least 1 selection in last Q
+  if (selectedAnswers[currentQuestionIndex].length === 0) {
+    alert("Please select at least one answer before seeing results.");
     return;
   }
 
-  // Gather chosen emotions
+  // Gather chosen emotions from all checkboxes
   let chosenEmotions = [];
   for (let i = 0; i < questions.length; i++) {
-    const ansIdx = selectedAnswers[i];
-    if (ansIdx !== null) {
-      chosenEmotions.push(...questions[i].answers[ansIdx].emotions);
+    const questionSelections = selectedAnswers[i]; // array of indices
+    if (questionSelections.length > 0) {
+      // for each selected index
+      questionSelections.forEach((selIdx) => {
+        chosenEmotions.push(...questions[i].answers[selIdx].emotions);
+      });
     }
   }
 
@@ -823,11 +831,7 @@ function buildDistributionBars(sortedArray, tiedCats) {
   const catBarContainer = document.getElementById("category-bars");
   catBarContainer.innerHTML = "";
 
-  // 'tiedCats' are all cats with the top score
-  // so they should NOT have a "+" for short summary toggling
-  // Everyone else (i.e., if not in 'tiedCats') can have the plus sign
-
-  sortedArray.forEach(([cat, score], idx) => {
+  sortedArray.forEach(([cat, score]) => {
     const barRow = document.createElement("div");
     barRow.className = "category-bar";
 
