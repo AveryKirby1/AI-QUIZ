@@ -1,7 +1,7 @@
 // script.js
 
 /****************************************************
- * QUIZ DATA (10 Questions) - Multiple Selections + Tie logic
+ * QUESTIONS ARRAY (Multiple Selections)
  ****************************************************/
 const questions = [
   {
@@ -217,11 +217,166 @@ const questions = [
 ];
 
 /****************************************************
- * TIE DEFINITIONS
- * (provided earlier, no placeholders)
+ * CATEGORY DEFINITIONS (unchanged)
+ ****************************************************/
+const categoriesData = {
+  Planner: {
+    name: "Planner",
+    article: "a",
+    headingForProducts: "Plan Your Next Steps",
+    description: `
+      You are the master of practicality and preparation. You approach financial decisions 
+      with thoughtfulness, responsibility, and an eye toward long-term security. While your 
+      careful approach keeps you grounded, you might sometimes miss out on spontaneous 
+      opportunities. You thrive on structure and routine, preferring to plan each step to 
+      avoid surprises. By setting clear goals and budgets, you gain peace of mind and a 
+      sense of accomplishment.
+    `,
+    shortDescription: `
+      Planners focus on structured routines and detailed goal-setting to ensure 
+      financial stability, excelling at avoiding costly surprises. While a tendency to 
+      overthink can slow decisions, this disciplined approach provides peace of mind 
+      and fosters steady, long-term security.
+    `,
+    strengths: [
+      "As a Planner, you excel at Long-Term Strategizing—budgets and schedules are your superpower.",
+      "Being a Planner helps you stay Risk-Averse—you’d rather carefully analyze than leap blindly into decisions.",
+      "Because you’re a Planner, you maintain an Organized approach—spreadsheets, lists, and well-defined goals keep you on track."
+    ],
+    weaknesses: [
+      "Because you’re a Planner, Overthinking can hold you back—sometimes it’s okay to act on impulse.",
+      "Being a Planner can lead to Paralysis by Analysis—too much planning can stall your forward progress.",
+      "As a Planner, Limited Adaptability can be an issue—last-minute changes or surprises may feel uncomfortable."
+    ],
+    products: [
+      "Key Active Saver® Account – Help grow your savings with methodical transfers.",
+      "Laurel Road Savings – A reliable place for your money with competitive interest.",
+      "Key Secured Credit Card® – Build credit responsibly in a measured way."
+    ],
+    emotions: [
+      "Prudence","Security","Forward-thinking","Calculated","Organization",
+      "Structure","Stability","Methodical","Preparedness","Responsibility"
+    ]
+  },
+  Adventurer: {
+    name: "Adventurer",
+    article: "an",
+    headingForProducts: "Fuel Your Next Adventure",
+    description: `
+      Financial decisions for you are often about excitement, curiosity, 
+      and seizing new opportunities. You embrace risk with a positive mindset, 
+      driven by optimism and the thrill of the unknown. Each financial challenge 
+      is a chance to explore fresh possibilities, and you rarely shy away from 
+      trying something new. You see setbacks as growth opportunities, fueling 
+      your eagerness to keep pushing boundaries.
+    `,
+    shortDescription: `
+      Adventurers thrive on excitement and are quick to explore new financial 
+      possibilities, guided by an optimistic spirit. Though impulsive choices 
+      may arise, balancing spontaneity with prudent planning sustains momentum 
+      and protects against the downsides of taking bold risks.
+    `,
+    strengths: [
+      "As an Adventurer, you’re a Bold Decision-Maker—you jump on opportunities before they slip away.",
+      "Being an Adventurer means you’re Curious and Open-Minded—always seeking new ways to grow.",
+      "Because you’re an Adventurer, you’re an Optimistic Risk-Taker—trusting your instincts even when stepping into the unknown."
+    ],
+    weaknesses: [
+      "Because you’re an Adventurer, Balancing Fun with Goals can be tricky—it’s still important to save for the future.",
+      "Being an Adventurer can lead to Impulse Spending—a set “fun money” budget can help you stay in control.",
+      "As an Adventurer, FOMO-Fueled Choices may arise—fear of missing out can rush your decisions."
+    ],
+    products: [
+      "Key Smart Checking® – Quick, mobile-friendly banking for on-the-go lifestyles.",
+      "Key Rewards Credit Card® – Earn rewards on daily purchases to fuel your passions.",
+      "Laurel Road Savings – Keep an easy safety net growing while you explore new ventures."
+    ],
+    emotions: [
+      "Thrill","Indulgence","Excitement","Spontaneity","Joy",
+      "Impulsivity","Exploration","Passion","Risk-taking","Curiosity"
+    ]
+  },
+  Connector: {
+    name: "Connector",
+    article: "a",
+    headingForProducts: "Grow Your Community",
+    description: `
+      You view finances as a tool to support your community and bond with others. 
+      Whether it’s through generosity or lending a helping hand, you find emotional 
+      satisfaction in giving back. Working together toward common goals brings you 
+      genuine joy, and you take pride in uplifting those around you. In your mind, 
+      money only has true value when it’s used to strengthen relationships and 
+      foster goodwill.
+    `,
+    shortDescription: `
+      Connectors treat finances as a means to strengthen bonds and nurture communal 
+      goals, emphasizing generosity and shared victories. A highly giving nature 
+      can lead to overextension, but mindful boundaries preserve both personal 
+      well-being and the desire to uplift others.
+    `,
+    strengths: [
+      "As a Connector, you’re Community-Focused—caring deeply about helping others succeed.",
+      "Being a Connector keeps you Collaborative—pooling resources and sharing wins is your ideal approach.",
+      "Because you’re a Connector, a Generous Spirit guides your choices—giving is part of who you are."
+    ],
+    weaknesses: [
+      "Because you’re a Connector, Overextending Yourself can become a problem—your finances need protection too.",
+      "Being a Connector leads to Difficulty Saying No—it’s impossible to help everyone all the time.",
+      "As a Connector, you might prefer Conflict Avoidance—preserving harmony can overshadow tough but necessary conversations."
+    ],
+    products: [
+      "Key Family Checking® – Manage shared expenses or household needs cooperatively.",
+      "Laurel Road Loyalty Savings – Earn steadily while staying ready to help others.",
+      "Key Cashback Credit Card® – Put your rewards to good use in your community."
+    ],
+    emotions: [
+      "Generosity","Altruism","Warmth","Compassion","Connection",
+      "Harmony","Collaboration","Sharing","Empathy","Community"
+    ]
+  },
+  Realist: {
+    name: "Realist",
+    article: "a",
+    headingForProducts: "Build A Solid Foundation",
+    description: `
+      You prioritize managing risk, avoiding unnecessary spending, and protecting resources. 
+      While your approach may appear conservative, it helps you navigate challenges with 
+      confidence. You prefer stable, dependable strategies over flashy risks, trusting solid 
+      data and proven methods. This mindset keeps you prepared, ensuring you can handle both 
+      the ups and downs of your financial journey.
+    `,
+    shortDescription: `
+      Realists favor low-risk, dependable strategies to protect resources, guided by caution 
+      and clear data. While they may pass up certain prospects, measured openness to calculated 
+      risk can uncover worthwhile gains, ensuring security without sacrificing every chance 
+      for growth.
+    `,
+    strengths: [
+      "As a Realist, you’re a Clear-Eyed Investor—you see facts over hype and follow what works.",
+      "Being a Realist means you’re an expert Risk-Manager—you keep spending and investing decisions grounded.",
+      "Because you’re a Realist, you maintain a Level-Headed approach—rarely impulsive, you weigh outcomes before acting."
+    ],
+    weaknesses: [
+      "Because you’re a Realist, Missing Opportunities can happen—a small risk might sometimes pay off.",
+      "Being a Realist can lead to Over-Caution—progress often requires stepping out of your comfort zone.",
+      "As a Realist, you might adopt a Rigid Mindset—preferring only proven methods can limit innovative solutions."
+    ],
+    products: [
+      "Key Safe Checking® – Overdraft protection and fraud prevention for peace of mind.",
+      "Laurel Road High Yield Savings – Steady, reliable growth with minimal surprises.",
+      "Laurel Road Loan – Clear terms, predictable rates—ideal for risk-averse planning."
+    ],
+    emotions: [
+      "Apprehension","Duty","Caution","Skepticism","Reserved",
+      "Logic","Restraint","Practical","Realism","Grounded"
+    ]
+  }
+};
+
+/****************************************************
+ * TIE DEFINITIONS (No placeholders)
  ****************************************************/
 const tieData = {
-  // Two-Way
   "Adventurer+Planner": {
     combinedName: "Adventurous Planner",
     description: `
@@ -284,8 +439,6 @@ const tieData = {
       It’s an approach that keeps group goals in sight while protecting everyone’s interests.
     `
   },
-
-  // Three-Way
   "Adventurer+Connector+Planner": {
     combinedName: "Adventurous, Connected Planner",
     description: `
@@ -328,8 +481,6 @@ const tieData = {
       nurturing shared triumphs.
     `
   },
-
-  // Four-Way
   "Adventurer+Connector+Planner+Realist": {
     combinedName: "Adventurous, Connected, Realistic Planner",
     description: `
@@ -348,7 +499,7 @@ const tieData = {
  * GLOBAL STATE
  ****************************************************/
 let currentQuestionIndex = 0;
-// Now each element is an array of selected answer indices
+// each element is an array of indices for multiple answers
 let selectedAnswers = new Array(questions.length).fill([]);
 
 /****************************************************
@@ -361,7 +512,7 @@ window.onload = function() {
 };
 
 /****************************************************
- * DISPLAY A QUESTION (allows multiple selections)
+ * DISPLAY A QUESTION
  ****************************************************/
 function displayQuestion(index) {
   const questionEl = document.getElementById("question-text");
@@ -384,7 +535,7 @@ function displayQuestion(index) {
     checkbox.name = `question_${index}`;
     checkbox.value = ansIdx;
 
-    // If user had previously selected this answer
+    // If user had previously selected this
     if (selectedAnswers[index].includes(ansIdx)) {
       checkbox.checked = true;
     }
@@ -394,7 +545,7 @@ function displayQuestion(index) {
     answersEl.appendChild(label);
   });
 
-  // Hide 'Previous' if on first Q
+  // Hide 'Previous' if on first question
   if (index === 0) {
     prevBtn.style.display = "none";
   } else {
@@ -427,7 +578,7 @@ function updateQuestionTracker(index) {
 function goToNextQuestion() {
   saveCurrentAnswer();
 
-  // Must select at least one option
+  // must select at least one
   if (selectedAnswers[currentQuestionIndex].length === 0) {
     alert("Please select at least one answer before proceeding.");
     return;
@@ -456,8 +607,7 @@ function saveCurrentAnswer() {
     `input[name="question_${currentQuestionIndex}"]`
   );
 
-  // gather all checked indices
-  let chosenIndices = [];
+  const chosenIndices = [];
   checkboxes.forEach((cb) => {
     if (cb.checked) {
       chosenIndices.push(parseInt(cb.value));
@@ -472,21 +622,19 @@ function saveCurrentAnswer() {
  ****************************************************/
 function showResults() {
   saveCurrentAnswer();
-  // ensure last question has at least one selection
+
   if (selectedAnswers[currentQuestionIndex].length === 0) {
     alert("Please select at least one answer before seeing results.");
     return;
   }
 
-  // Gather chosen emotions
+  // Gather all chosen emotions from all checks
   let chosenEmotions = [];
   for (let i = 0; i < questions.length; i++) {
-    const multiSelected = selectedAnswers[i]; 
-    if (multiSelected.length > 0) {
-      multiSelected.forEach((idx) => {
-        chosenEmotions.push(...questions[i].answers[idx].emotions);
-      });
-    }
+    const multiSel = selectedAnswers[i];
+    multiSel.forEach(idx => {
+      chosenEmotions.push(...questions[i].answers[idx].emotions);
+    });
   }
 
   document.getElementById("quiz-section").style.display = "none";
@@ -524,13 +672,13 @@ function calculateCategoryScores(emotions) {
     }
   });
 
-  // sort descending for distribution
+  // sort descending
   let sortedArray = Object.entries(scores).sort((a, b) => b[1] - a[1]);
   return { sortedArray };
 }
 
 /****************************************************
- * GET COMBINED NAME + DESC
+ * GET COMBINED NAME + DESC (handles ties)
  ****************************************************/
 function getCombinedNameAndDesc(tiedCats) {
   if (tiedCats.length === 1) {
@@ -541,26 +689,26 @@ function getCombinedNameAndDesc(tiedCats) {
       description: categoriesData[cat].description
     };
   }
-  // multiple cats
+  // multiple cats => alphabetical key
   const sortedTied = [...tiedCats].sort((a, b) => a.localeCompare(b));
   const tieKey = sortedTied.join("+");
 
   if (tieData[tieKey]) {
-    let comboName = tieData[tieKey].combinedName;
-    let comboDesc = tieData[tieKey].description;
+    const comboName = tieData[tieKey].combinedName;
+    const comboDesc = tieData[tieKey].description;
     const article = isVowel(comboName[0]) ? "an" : "a";
     return {
       name: comboName,
       article,
       description: comboDesc
     };
+  } else {
+    return {
+      name: "Mixed",
+      article: "a",
+      description: "You have a unique blend of multiple categories."
+    };
   }
-  // fallback
-  return {
-    name: "Mixed",
-    article: "a",
-    description: "You have a unique blend of multiple categories."
-  };
 }
 
 function isVowel(ch) {
@@ -588,10 +736,10 @@ function displayFinalResults(tiedCats, sortedArray) {
   document.getElementById("category-name").textContent = name;
   document.getElementById("category-description").innerHTML = description;
 
-  // Build distribution bars
+  // Build distribution
   buildDistributionBars(sortedArray, tiedCats);
 
-  // Insert dynamic heading or text
+  // Possibly insert a heading before the chart
   const distributionContainer = document.getElementById("distribution-container");
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
   const topPct = Math.round((sortedArray[0][1] / total) * 100);
@@ -607,7 +755,6 @@ function displayFinalResults(tiedCats, sortedArray) {
   }
   distributionContainer.insertBefore(distributionTitle, document.getElementById("category-bars"));
 
-  // callout about clicking +
   const plusCallout = document.createElement("p");
   plusCallout.className = "plus-callout-small";
   plusCallout.textContent = `Click the “+” icons to view more about each non-winning category.`;
@@ -638,7 +785,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     watchoutList.appendChild(li);
   });
 
-  // If there's more than 1 cat in tie, pick the first cat alpha for products
+  // If multiple categories are tied for top, pick first alpha for products
   let mainCatForProducts = (tiedCats.length > 1)
     ? [...tiedCats].sort((a,b)=>a.localeCompare(b))[0]
     : tiedCats[0];
@@ -687,7 +834,7 @@ function buildDistributionBars(sortedArray, tiedCats) {
 
     let pct = Math.round((score / total) * 100);
 
-    // If cat is NOT in tiedCats, show the plus toggle
+    // If cat is not in the tie for first, it's non-winning => show plus
     if (!tiedCats.includes(cat)) {
       const toggle = document.createElement("span");
       toggle.className = "expand-toggle";
@@ -735,7 +882,7 @@ function determineTopCats(sortedArray) {
     return [sortedArray[0][0]];
   }
 
-  // if all 4 are tied
+  // check if all 4 tied
   const allTied = (sortedArray.length === 4 &&
     sortedArray[0][1] > 0 &&
     sortedArray.every(([, s]) => s === sortedArray[0][1])
@@ -773,7 +920,7 @@ function buildPctMap(sortedArray) {
 }
 
 /****************************************************
- * BUILD OUTPUT ITEMS (strengths or weaknesses)
+ * BUILD OUTPUT ITEMS (strengths/weaknesses)
  ****************************************************/
 function buildOutputItems(topCats, pctMap, keyName) {
   const len = topCats.length;
@@ -785,7 +932,6 @@ function buildOutputItems(topCats, pctMap, keyName) {
     const [cat1, cat2] = topCats;
     const arr1 = categoriesData[cat1][keyName];
     const arr2 = categoriesData[cat2][keyName];
-
     return [
       craftLine(cat1, pctMap[cat1], arr1[0]),
       craftLine(cat1, pctMap[cat1], arr1[1]),
@@ -804,7 +950,7 @@ function buildOutputItems(topCats, pctMap, keyName) {
 }
 
 /****************************************************
- * TEMPLATES FOR BULLETS
+ * LINE PHRASES FOR STRENGTHS/WEAKNESSES
  ****************************************************/
 const bulletOpeners = [
   "Looks like you're about",
@@ -814,6 +960,7 @@ const bulletOpeners = [
   "From these answers, you're about",
   "We noticed you're about"
 ];
+
 const bulletTransitions = [
   "so here’s something to consider:",
   "which means:",
@@ -822,12 +969,14 @@ const bulletTransitions = [
   "and that suggests:",
   "and this implies:"
 ];
+
 let bulletIndex = 0;
 
 /****************************************************
  * craftLine
  ****************************************************/
 function craftLine(cat, pct, originalLine) {
+  // remove initial phrase e.g. "As a Realist,"
   const commaIdx = originalLine.indexOf(",");
   let remainder = commaIdx >= 0 ? originalLine.substring(commaIdx + 1).trim() : originalLine;
 
