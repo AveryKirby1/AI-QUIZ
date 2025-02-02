@@ -1,47 +1,47 @@
 // script.js
 
 /****************************************************
- * QUESTIONS ARRAY (Multiple Selections)
+ * QUESTIONS ARRAY (10 full questions, multiple selections)
  ****************************************************/
 const questions = [
   {
-    question: "1. You’ve just found $500 on the ground. What’s the first thing you do? (Select all that apply)",
+    question: "1. You’ve just found $500 on the ground. What’s the first thing you do?",
     answers: [
       {
-        text: "A: Try to find the rightful owner; if you can’t, well, finders keepers.",
+        text: "Try to find the rightful owner; if you can’t, well, finders keepers.",
         emotions: ["Apprehension", "Duty", "Caution", "Skepticism", "Reserved"]
       },
       {
-        text: "B: Immediately deposit it into savings to boost your safety net.",
+        text: "Immediately deposit it into savings to boost your safety net.",
         emotions: ["Prudence", "Security", "Forward-thinking", "Responsibility", "Organization"]
       },
       {
-        text: "C: Celebrate with a spontaneous treat for yourself right now.",
+        text: "Celebrate with a spontaneous treat for yourself right now.",
         emotions: ["Thrill", "Indulgence", "Excitement", "Spontaneity", "Joy"]
       },
       {
-        text: "D: Share half with a local charity or a friend who needs help.",
+        text: "Share half with a local charity or a friend who needs help.",
         emotions: ["Generosity", "Altruism", "Warmth", "Compassion", "Connection"]
       }
     ]
   },
   {
-    question: "2. Your friend asks you to split a $400 dinner bill evenly, but you only had a salad. What do you do? (Select all that apply)",
+    question: "2. Your friend asks you to split a $400 dinner bill evenly, but you only had a salad. What do you do?",
     answers: [
       {
-        text: "A: Quietly pay it all to avoid drama, feeling uneasy.",
+        text: "Quietly pay it all to avoid drama, feeling uneasy.",
         emotions: ["Reserved", "Apprehension", "Logic", "Restraint", "Duty"]
       },
       {
-        text: "B: Propose a fair split based on what was actually ordered.",
+        text: "Propose a fair split based on what was actually ordered.",
         emotions: ["Structure", "Prudence", "Security", "Stability", "Calculated"]
       },
       {
-        text: "C: Laugh it off and cover the full share—it’s an entertaining story.",
+        text: "Laugh it off and cover the full share—it’s an entertaining story.",
         emotions: ["Spontaneity", "Joy", "Impulsivity", "Excitement", "Passion"]
       },
       {
-        text: "D: Pay the full amount now, trusting they’ll pick up the tab next time.",
+        text: "Pay the full amount now, trusting they’ll pick up the tab next time.",
         emotions: ["Harmony", "Collaboration", "Warmth", "Connection", "Sharing"]
       }
     ]
@@ -50,166 +50,166 @@ const questions = [
     question: "3. You walk into a store to buy toothpaste and leave with... (Select all that apply)",
     answers: [
       {
-        text: "A: Nothing—prices were too high, so you held off.",
+        text: "Nothing—prices were too high, so you held off.",
         emotions: ["Skepticism", "Restraint", "Logic", "Practical", "Realism"]
       },
       {
-        text: "B: Toothpaste plus a spare, just in case.",
+        text: "Toothpaste plus a spare, just in case.",
         emotions: ["Preparedness", "Organization", "Stability", "Prudence", "Security"]
       },
       {
-        text: "C: Multiple fun items you couldn’t resist trying.",
+        text: "Multiple fun items you couldn’t resist trying.",
         emotions: ["Impulsivity", "Exploration", "Thrill", "Indulgence", "Passion"]
       },
       {
-        text: "D: Toothpaste and a donation at the charity box.",
+        text: "Toothpaste and a donation at the charity box.",
         emotions: ["Generosity", "Compassion", "Sharing", "Community", "Connection"]
       }
     ]
   },
   {
-    question: "4. Your boss offers you a $10,000 raise. What’s your first thought? (Select all that apply)",
+    question: "4. Your boss offers you a $10,000 raise. What’s your first thought?",
     answers: [
       {
-        text: "A: Pay off debts and maintain a practical buffer.",
+        text: "Pay off debts and maintain a practical buffer.",
         emotions: ["Duty", "Grounded", "Logic", "Restraint", "Realism"]
       },
       {
-        text: "B: Invest it or add to long-term savings plans.",
+        text: "Invest it or add to long-term savings plans.",
         emotions: ["Forward-thinking", "Calculated", "Structure", "Stability", "Methodical"]
       },
       {
-        text: "C: Perfect opportunity to plan a dream trip or major splurge.",
+        text: "Perfect opportunity to plan a dream trip or major splurge.",
         emotions: ["Excitement", "Impulsivity", "Thrill", "Spontaneity", "Joy"]
       },
       {
-        text: "D: Share some with loved ones who are struggling.",
+        text: "Share some with loved ones who are struggling.",
         emotions: ["Altruism", "Warmth", "Compassion", "Connection", "Harmony"]
       }
     ]
   },
   {
-    question: "5. A friend calls you crying about a $1,000 car repair bill. What do you do? (Select all that apply)",
+    question: "5. A friend calls you crying about a $1,000 car repair bill. What do you do?",
     answers: [
       {
-        text: "A: Reluctantly offer financial help if they explicitly ask, staying cautious.",
+        text: "Reluctantly offer financial help if they explicitly ask, staying cautious.",
         emotions: ["Reserved", "Caution", "Duty", "Apprehension", "Logic"]
       },
       {
-        text: "B: Help them budget and research cheaper repair options.",
+        text: "Help them budget and research cheaper repair options.",
         emotions: ["Organization", "Methodical", "Preparedness", "Stability", "Prudence"]
       },
       {
-        text: "C: Chip in spontaneously—maybe $100—for an immediate lift.",
+        text: "Chip in spontaneously—maybe $100—for an immediate lift.",
         emotions: ["Spontaneity", "Impulsivity", "Thrill", "Joy", "Passion"]
       },
       {
-        text: "D: Lend them the full amount if you can; friends help each other.",
+        text: "Lend them the full amount if you can; friends help each other.",
         emotions: ["Generosity", "Compassion", "Empathy", "Sharing", "Connection"]
       }
     ]
   },
   {
-    question: "6. You’re $2,000 short on your dream vacation budget. How do you handle it? (Select all that apply)",
+    question: "6. You’re $2,000 short on your dream vacation budget. How do you handle it?",
     answers: [
       {
-        text: "A: Cancel the trip; the debt risk is too high.",
+        text: "Cancel the trip; the debt risk is too high.",
         emotions: ["Logic", "Caution", "Reserved", "Realism", "Skepticism"]
       },
       {
-        text: "B: Postpone until you’ve saved the full amount systematically.",
+        text: "Postpone until you’ve saved the full amount systematically.",
         emotions: ["Prudence", "Preparedness", "Security", "Forward-thinking", "Methodical"]
       },
       {
-        text: "C: Book it anyway—just put it on a credit card and figure it out later.",
+        text: "Book it anyway—just put it on a credit card and figure it out later.",
         emotions: ["Risk-taking", "Spontaneity", "Excitement", "Indulgence", "Passion"]
       },
       {
-        text: "D: Ask friends if they’d like to go together and split costs.",
+        text: "Ask friends if they’d like to go together and split costs.",
         emotions: ["Community", "Collaboration", "Harmony", "Sharing", "Connection"]
       }
     ]
   },
   {
-    question: "7. Your favorite coffee shop just raised prices. Do you... (Select all that apply)",
+    question: "7. Your favorite coffee shop just raised prices. Do you...",
     answers: [
       {
-        text: "A: Stop going—it's the most rational cut for your budget.",
+        text: "Stop going—it's the most rational cut for your budget.",
         emotions: ["Restraint", "Practical", "Apprehension", "Duty", "Logic"]
       },
       {
-        text: "B: Reduce visits and track spending closely.",
+        text: "Reduce visits and track spending closely.",
         emotions: ["Stability", "Organization", "Calculated", "Security", "Structure"]
       },
       {
-        text: "C: Keep going—coffee is your daily indulgence and joy.",
+        text: "Keep going—coffee is your daily indulgence and joy.",
         emotions: ["Thrill", "Indulgence", "Spontaneity", "Joy", "Impulsivity"]
       },
       {
-        text: "D: Start brewing my own and only treat myself at the shop on weekends.",
+        text: "Start brewing my own and only treat myself at the shop on weekends.",
         emotions: ["Generosity", "Harmony", "Warmth", "Compassion", "Sharing"]
       }
     ]
   },
   {
-    question: "8. Someone raves about investing in cryptocurrency. Your reaction? (Select all that apply)",
+    question: "8. Someone raves about investing in cryptocurrency. Your reaction?",
     answers: [
       {
-        text: "A: Too uncertain—I want concrete data first.",
+        text: "Too uncertain—I want concrete data first.",
         emotions: ["Skepticism", "Caution", "Reserved", "Logic", "Realism"]
       },
       {
-        text: "B: Research thoroughly, then invest in a controlled way.",
+        text: "Research thoroughly, then invest in a controlled way.",
         emotions: ["Methodical", "Prudence", "Calculated", "Forward-thinking", "Security"]
       },
       {
-        text: "C: I’m all in—no hesitation here, I’ve already got a big stake!",
+        text: "I’m all in—no hesitation here, I’ve already got a big stake!",
         emotions: ["Curiosity", "Risk-taking", "Thrill", "Passion", "Impulsivity"]
       },
       {
-        text: "D: Discuss with friends so we can learn and invest together.",
+        text: "Discuss with friends so we can learn and invest together.",
         emotions: ["Collaboration", "Community", "Connection", "Empathy", "Harmony"]
       }
     ]
   },
   {
-    question: "9. You see a limited edition gadget for $500. Do you... (Select all that apply)",
+    question: "9. You see a limited edition gadget for $500. Do you...",
     answers: [
       {
-        text: "A: Skip it—you don’t truly need it.",
+        text: "Skip it—you don’t truly need it.",
         emotions: ["Restraint", "Apprehension", "Practical", "Grounded", "Duty"]
       },
       {
-        text: "B: Add it to your wishlist and start saving systematically.",
+        text: "Add it to your wishlist and start saving systematically.",
         emotions: ["Organization", "Stability", "Forward-thinking", "Calculated", "Prudence"]
       },
       {
-        text: "C: Buy it immediately—life is about seizing the moment!",
+        text: "Buy it immediately—life is about seizing the moment!",
         emotions: ["Impulsivity", "Excitement", "Joy", "Spontaneity", "Indulgence"]
       },
       {
-        text: "D: Rally your friends who also want it—share the cost so everyone can try it.",
+        text: "Rally your friends who also want it—share the cost so everyone can try it.",
         emotions: ["Collaboration", "Community", "Sharing", "Connection", "Warmth"]
       }
     ]
   },
   {
-    question: "10. You’ve had a long week and need to relax. How do you treat yourself? (Select all that apply)",
+    question: "10. You’ve had a long week and need to relax. How do you treat yourself?",
     answers: [
       {
-        text: "A: Stay home with a simple, low-cost plan like a favorite show.",
+        text: "Stay home with a simple, low-cost plan like a favorite show.",
         emotions: ["Reserved", "Logic", "Practical", "Restraint", "Caution"]
       },
       {
-        text: "B: Buy a small, practical treat—just enough to recharge.",
+        text: "Buy a small, practical treat—just enough to recharge.",
         emotions: ["Calculated", "Organization", "Methodical", "Security", "Stability"]
       },
       {
-        text: "C: Go out for an exciting night—no regrets!",
+        text: "Go out for an exciting night—no regrets!",
         emotions: ["Thrill", "Excitement", "Spontaneity", "Joy", "Passion"]
       },
       {
-        text: "D: It’s an everything day—grab a treat, go out, AND invite friends later!",
+        text: "It’s an everything day—grab a treat, go out, AND invite friends later!",
         emotions: ["Community", "Connection", "Collaboration", "Warmth", "Compassion"]
       }
     ]
@@ -217,7 +217,7 @@ const questions = [
 ];
 
 /****************************************************
- * CATEGORY DEFINITIONS (unchanged)
+ * categoriesData
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -374,7 +374,7 @@ const categoriesData = {
 };
 
 /****************************************************
- * TIE DEFINITIONS (No placeholders)
+ * tieData - all combos
  ****************************************************/
 const tieData = {
   "Adventurer+Planner": {
@@ -499,7 +499,6 @@ const tieData = {
  * GLOBAL STATE
  ****************************************************/
 let currentQuestionIndex = 0;
-// each element is an array of indices for multiple answers
 let selectedAnswers = new Array(questions.length).fill([]);
 
 /****************************************************
@@ -512,10 +511,11 @@ window.onload = function() {
 };
 
 /****************************************************
- * DISPLAY A QUESTION
+ * DISPLAY A QUESTION (horizontal answer-cards)
  ****************************************************/
 function displayQuestion(index) {
   const questionEl = document.getElementById("question-text");
+  const selectInstrEl = document.getElementById("select-instructions");
   const answersEl = document.getElementById("answers-container");
   const nextBtn = document.getElementById("next-btn");
   const resultsBtn = document.getElementById("results-btn");
@@ -525,24 +525,48 @@ function displayQuestion(index) {
   answersEl.innerHTML = "";
 
   const qObj = questions[index];
+
+  // We'll apply a small subtext to indicate "Select all that apply"
+  selectInstrEl.textContent = "(Select all that apply)";
+
+  // question text
   questionEl.textContent = qObj.question;
 
-  // Create checkboxes for multiple selection
+  // For each answer, create a .answer-card
   qObj.answers.forEach((ans, ansIdx) => {
-    const label = document.createElement("label");
+    const card = document.createElement("div");
+    card.className = "answer-card";
+    card.onclick = () => {
+      // toggle check
+      const cb = card.querySelector("input[type='checkbox']");
+      cb.checked = !cb.checked;
+      updateCheckedStyle(card, cb.checked);
+      saveCurrentAnswer();
+    };
+
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
+    checkbox.className = "answer-checkbox";
     checkbox.name = `question_${index}`;
     checkbox.value = ansIdx;
+    checkbox.onclick = (ev) => {
+      ev.stopPropagation();
+      updateCheckedStyle(card, checkbox.checked);
+      saveCurrentAnswer();
+    };
 
-    // If user had previously selected this
+    // restore state if user had previously selected
     if (selectedAnswers[index].includes(ansIdx)) {
       checkbox.checked = true;
+      card.classList.add("checked");
     }
 
-    label.appendChild(checkbox);
-    label.appendChild(document.createTextNode(" " + ans.text));
-    answersEl.appendChild(label);
+    const labelSpan = document.createElement("span");
+    labelSpan.textContent = ans.text;
+
+    card.appendChild(checkbox);
+    card.appendChild(labelSpan);
+    answersEl.appendChild(card);
   });
 
   // Hide 'Previous' if on first question
@@ -565,6 +589,17 @@ function displayQuestion(index) {
 }
 
 /****************************************************
+ * ADD/REMOVE .checked styling
+ ****************************************************/
+function updateCheckedStyle(cardEl, isChecked) {
+  if (isChecked) {
+    cardEl.classList.add("checked");
+  } else {
+    cardEl.classList.remove("checked");
+  }
+}
+
+/****************************************************
  * UPDATE QUESTION TRACKER
  ****************************************************/
 function updateQuestionTracker(index) {
@@ -577,13 +612,11 @@ function updateQuestionTracker(index) {
  ****************************************************/
 function goToNextQuestion() {
   saveCurrentAnswer();
-
-  // must select at least one
+  // Must pick at least one
   if (selectedAnswers[currentQuestionIndex].length === 0) {
     alert("Please select at least one answer before proceeding.");
     return;
   }
-
   currentQuestionIndex++;
   displayQuestion(currentQuestionIndex);
 }
@@ -606,15 +639,11 @@ function saveCurrentAnswer() {
   const checkboxes = document.querySelectorAll(
     `input[name="question_${currentQuestionIndex}"]`
   );
-
-  const chosenIndices = [];
-  checkboxes.forEach((cb) => {
-    if (cb.checked) {
-      chosenIndices.push(parseInt(cb.value));
-    }
+  const chosen = [];
+  checkboxes.forEach(cb => {
+    if (cb.checked) chosen.push(parseInt(cb.value));
   });
-
-  selectedAnswers[currentQuestionIndex] = chosenIndices;
+  selectedAnswers[currentQuestionIndex] = chosen;
 }
 
 /****************************************************
@@ -622,17 +651,15 @@ function saveCurrentAnswer() {
  ****************************************************/
 function showResults() {
   saveCurrentAnswer();
-
   if (selectedAnswers[currentQuestionIndex].length === 0) {
     alert("Please select at least one answer before seeing results.");
     return;
   }
 
-  // Gather all chosen emotions from all checks
+  // gather chosen emotions
   let chosenEmotions = [];
   for (let i = 0; i < questions.length; i++) {
-    const multiSel = selectedAnswers[i];
-    multiSel.forEach(idx => {
+    selectedAnswers[i].forEach(idx => {
       chosenEmotions.push(...questions[i].answers[idx].emotions);
     });
   }
@@ -641,7 +668,7 @@ function showResults() {
   document.getElementById("results-section").classList.remove("hidden");
 
   const { sortedArray } = calculateCategoryScores(chosenEmotions);
-  // Identify top categories sharing the same top score
+
   const topScore = sortedArray[0][1];
   const tiedCats = sortedArray.filter(([,score]) => score === topScore).map(([cat]) => cat);
 
@@ -673,12 +700,12 @@ function calculateCategoryScores(emotions) {
   });
 
   // sort descending
-  let sortedArray = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+  let sortedArray = Object.entries(scores).sort((a,b)=> b[1] - a[1]);
   return { sortedArray };
 }
 
 /****************************************************
- * GET COMBINED NAME + DESC (handles ties)
+ * TIE / SINGLE - GET NAME + DESC
  ****************************************************/
 function getCombinedNameAndDesc(tiedCats) {
   if (tiedCats.length === 1) {
@@ -689,20 +716,16 @@ function getCombinedNameAndDesc(tiedCats) {
       description: categoriesData[cat].description
     };
   }
-  // multiple cats => alphabetical key
-  const sortedTied = [...tiedCats].sort((a, b) => a.localeCompare(b));
+  // multi-cat scenario
+  const sortedTied = [...tiedCats].sort((a,b)=>a.localeCompare(b));
   const tieKey = sortedTied.join("+");
-
   if (tieData[tieKey]) {
     const comboName = tieData[tieKey].combinedName;
     const comboDesc = tieData[tieKey].description;
     const article = isVowel(comboName[0]) ? "an" : "a";
-    return {
-      name: comboName,
-      article,
-      description: comboDesc
-    };
+    return { name: comboName, article, description: comboDesc };
   } else {
+    // fallback
     return {
       name: "Mixed",
       article: "a",
@@ -721,25 +744,19 @@ function isVowel(ch) {
 function displayFinalResults(tiedCats, sortedArray) {
   const { name, article, description } = getCombinedNameAndDesc(tiedCats);
 
-  // Intro paragraph
-  const introParagraphEl = document.getElementById("intro-paragraph");
-  introParagraphEl.textContent =
+  // Intro text
+  document.getElementById("intro-paragraph").textContent =
     "Finances touch our lives in personal ways and can often feel overwhelming. " +
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
+  document.getElementById("intro-second-line").textContent = 
+    `With your responses in mind, we think you are ${article}`;
 
-  // e.g. "With your responses in mind, we think you are a/an..."
-  const introSecondLineEl = document.getElementById("intro-second-line");
-  introSecondLineEl.textContent = `With your responses in mind, we think you are ${article}`;
-
-  // category name / tie name
   document.getElementById("category-name").textContent = name;
   document.getElementById("category-description").innerHTML = description;
 
-  // Build distribution
   buildDistributionBars(sortedArray, tiedCats);
 
-  // Possibly insert a heading before the chart
   const distributionContainer = document.getElementById("distribution-container");
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
   const topPct = Math.round((sortedArray[0][1] / total) * 100);
@@ -760,14 +777,14 @@ function displayFinalResults(tiedCats, sortedArray) {
   plusCallout.textContent = `Click the “+” icons to view more about each non-winning category.`;
   distributionContainer.insertBefore(plusCallout, document.getElementById("category-bars"));
 
-  // figure out topCats for strengths/weaknesses
-  const finalTopCats = determineTopCats(sortedArray);
+  // figure out topCats for bullet items
+  const topCatsForBullets = determineTopCats(sortedArray);
   const pctMap = buildPctMap(sortedArray);
 
-  const finalStrengths = buildOutputItems(finalTopCats, pctMap, "strengths");
-  const finalWeaknesses = buildOutputItems(finalTopCats, pctMap, "weaknesses");
+  const finalStrengths = buildOutputItems(topCatsForBullets, pctMap, "strengths");
+  const finalWeaknesses = buildOutputItems(topCatsForBullets, pctMap, "weaknesses");
 
-  // Fill strengths
+  // fill strengths
   const excelList = document.getElementById("excel-list");
   excelList.innerHTML = "";
   finalStrengths.forEach(str => {
@@ -776,7 +793,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     excelList.appendChild(li);
   });
 
-  // Fill weaknesses
+  // fill weaknesses
   const watchoutList = document.getElementById("watchout-list");
   watchoutList.innerHTML = "";
   finalWeaknesses.forEach(wk => {
@@ -785,13 +802,13 @@ function displayFinalResults(tiedCats, sortedArray) {
     watchoutList.appendChild(li);
   });
 
-  // If multiple categories are tied for top, pick first alpha for products
+  // product rec if tie => first alpha cat
   let mainCatForProducts = (tiedCats.length > 1)
     ? [...tiedCats].sort((a,b)=>a.localeCompare(b))[0]
     : tiedCats[0];
 
-  const productsTitle = document.getElementById("products-title");
-  productsTitle.textContent = categoriesData[mainCatForProducts].headingForProducts;
+  document.getElementById("products-title").textContent =
+    categoriesData[mainCatForProducts].headingForProducts;
 
   const productContainer = document.getElementById("product-recommendations");
   productContainer.innerHTML = "";
@@ -834,7 +851,7 @@ function buildDistributionBars(sortedArray, tiedCats) {
 
     let pct = Math.round((score / total) * 100);
 
-    // If cat is not in the tie for first, it's non-winning => show plus
+    // if cat not in tie => show plus
     if (!tiedCats.includes(cat)) {
       const toggle = document.createElement("span");
       toggle.className = "expand-toggle";
@@ -860,7 +877,7 @@ function buildDistributionBars(sortedArray, tiedCats) {
 
     catBarContainer.appendChild(barRow);
 
-    // short summary for non-winners only
+    // short summary for non-winner cats
     if (!tiedCats.includes(cat)) {
       const shortBox = document.createElement("div");
       shortBox.id = `short-${cat}`;
@@ -882,7 +899,7 @@ function determineTopCats(sortedArray) {
     return [sortedArray[0][0]];
   }
 
-  // check if all 4 tied
+  // check if 4 tied
   const allTied = (sortedArray.length === 4 &&
     sortedArray[0][1] > 0 &&
     sortedArray.every(([, s]) => s === sortedArray[0][1])
@@ -920,7 +937,7 @@ function buildPctMap(sortedArray) {
 }
 
 /****************************************************
- * BUILD OUTPUT ITEMS (strengths/weaknesses)
+ * BUILD OUTPUT (strengths or weaknesses)
  ****************************************************/
 function buildOutputItems(topCats, pctMap, keyName) {
   const len = topCats.length;
@@ -950,7 +967,7 @@ function buildOutputItems(topCats, pctMap, keyName) {
 }
 
 /****************************************************
- * LINE PHRASES FOR STRENGTHS/WEAKNESSES
+ * TEMPLATES FOR BULLETS
  ****************************************************/
 const bulletOpeners = [
   "Looks like you're about",
@@ -976,7 +993,7 @@ let bulletIndex = 0;
  * craftLine
  ****************************************************/
 function craftLine(cat, pct, originalLine) {
-  // remove initial phrase e.g. "As a Realist,"
+  // remove leading "As a X," if present
   const commaIdx = originalLine.indexOf(",");
   let remainder = commaIdx >= 0 ? originalLine.substring(commaIdx + 1).trim() : originalLine;
 
