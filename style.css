@@ -49,19 +49,17 @@ body {
   margin-bottom: 12px;
 }
 
-/* Answers container - we want boxes horizontally. We'll use flex. */
+/* Answers container - single column */
 #answers-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: flex-start;
+  flex-direction: column; /* stack them vertically */
+  gap: 15px; /* spacing between boxes */
   margin-bottom: 20px;
 }
 
-/* Each 'answer-card' is a clickable box. */
+/* Each answer is a box of same width, lined up under question */
 .answer-card {
-  width: calc(50% - 10px); /* 2 across on each row if we have 4 total answers */
-  min-width: 280px;
+  width: 100%;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 14px 16px;
@@ -70,7 +68,6 @@ body {
   display: flex;
   align-items: center;
   position: relative;
-  box-sizing: border-box;
 }
 
 .answer-card:hover {
@@ -78,7 +75,7 @@ body {
   border-color: #007BFF;
 }
 
-/* The checkbox within the card */
+/* The checkbox inside the box */
 .answer-checkbox {
   margin-right: 10px;
   transform: scale(1.2);
