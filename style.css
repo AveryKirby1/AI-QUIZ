@@ -7,23 +7,31 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: Arial, sans-serif;
+/* Make sure html/body fill the screen, removing default margin/padding */
+html, body {
+  width: 100%;
+  height: 100%;
   background-color: #f4f4f9; 
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
   color: #333;
   line-height: 1.5;
 }
 
-/* Main Container */
+/* The main container now spans the entire window width/height */
 .quiz-container {
-  max-width: 900px;
-  margin: 30px auto;
+  width: 100%;
+  min-height: 100%;
+  /* fill vertical space: */
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px 30px; 
   background: #fff;
-  padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-sizing: border-box;
 }
 
+/* Title */
 .quiz-container h1 {
   text-align: center;
   color: #007BFF;
@@ -49,15 +57,15 @@ body {
   margin-bottom: 12px;
 }
 
-/* Answers container - single column */
+/* Single column answers */
 #answers-container {
   display: flex;
-  flex-direction: column; /* stack them vertically */
-  gap: 15px; /* spacing between boxes */
+  flex-direction: column;
+  gap: 15px;
   margin-bottom: 20px;
 }
 
-/* Each answer is a box of same width, lined up under question */
+/* Each answer is a full-width box */
 .answer-card {
   width: 100%;
   border: 1px solid #ccc;
@@ -75,13 +83,11 @@ body {
   border-color: #007BFF;
 }
 
-/* The checkbox inside the box */
 .answer-checkbox {
   margin-right: 10px;
   transform: scale(1.2);
 }
 
-/* Highlight selected box */
 .answer-card.checked {
   background-color: #E9F6FF;
   border-color: #007BFF;
