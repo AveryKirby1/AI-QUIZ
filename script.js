@@ -217,7 +217,7 @@ const questions = [
 ];
 
 /****************************************************
- * categoriesData 
+ * categoriesData
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -499,7 +499,6 @@ const tieData = {
  * GLOBAL STATE
  ****************************************************/
 let currentQuestionIndex = 0;
-// multiple answers possible => array of indices per question
 let selectedAnswers = new Array(questions.length).fill([]);
 
 /****************************************************
@@ -512,7 +511,7 @@ window.onload = function() {
 };
 
 /****************************************************
- * DISPLAY A QUESTION (single column box style)
+ * DISPLAY A QUESTION
  ****************************************************/
 function displayQuestion(index) {
   const questionEl = document.getElementById("question-text");
@@ -528,7 +527,6 @@ function displayQuestion(index) {
   questionEl.textContent = qObj.question;
   selectInstrEl.textContent = "(Select all that apply)";
 
-  // build vertical box layout
   qObj.answers.forEach((ans, ansIdx) => {
     const card = document.createElement("div");
     card.className = "answer-card";
@@ -775,7 +773,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     excelList.appendChild(li);
   });
 
-  const watchoutList = document.getElementById("watchout-list");
+  const watchoutList = document.getElementById("watchout-box").querySelector("ul");
   watchoutList.innerHTML = "";
   finalWeaknesses.forEach(w => {
     const li = document.createElement("li");
@@ -931,7 +929,6 @@ function buildOutputItems(topCats, pctMap, keyName) {
       craftLine(cat2, pctMap[cat2], arr2[0])
     ];
   } else {
-    // single cat
     const cat = topCats[0];
     const arr = categoriesData[cat][keyName];
     return [
