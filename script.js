@@ -217,7 +217,7 @@ const questions = [
 ];
 
 /****************************************************
- * categoriesData
+ * SINGLE CATEGORY DATA (With Placeholders for products)
  ****************************************************/
 const categoriesData = {
   Planner: {
@@ -249,9 +249,46 @@ const categoriesData = {
       "As a Planner, Limited Adaptability can be an issue—last-minute changes or surprises may feel uncomfortable."
     ],
     products: [
-      "Key Active Saver® Account – Help grow your savings with methodical transfers.",
-      "Laurel Road Savings – A reliable place for your money with competitive interest.",
-      "Key Secured Credit Card® – Build credit responsibly in a measured way."
+      {
+        name: "Key Smart Checking® (Checking)",
+        pitch: "Planner Checking Pitch Goes Here...",
+        benefits: [
+          "Planner Checking Benefit #1",
+          "Planner Checking Benefit #2",
+          "Planner Checking Benefit #3",
+          "Planner Checking Benefit #4"
+        ]
+      },
+      {
+        name: "Key Active Saver® (Savings)",
+        pitch: "Planner Savings Pitch Goes Here...",
+        benefits: [
+          "Planner Savings Benefit #1",
+          "Planner Savings Benefit #2",
+          "Planner Savings Benefit #3",
+          "Planner Savings Benefit #4"
+        ]
+      },
+      {
+        name: "Key Secured Credit Card® (Credit Card)",
+        pitch: "Planner Credit Card Pitch Goes Here...",
+        benefits: [
+          "Planner Credit Card Benefit #1",
+          "Planner Credit Card Benefit #2",
+          "Planner Credit Card Benefit #3",
+          "Planner Credit Card Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Personal Loan (Loan)",
+        pitch: "Planner Loan Pitch Goes Here...",
+        benefits: [
+          "Planner Loan Benefit #1",
+          "Planner Loan Benefit #2",
+          "Planner Loan Benefit #3",
+          "Planner Loan Benefit #4"
+        ]
+      }
     ],
     emotions: [
       "Prudence","Security","Forward-thinking","Calculated","Organization",
@@ -287,9 +324,46 @@ const categoriesData = {
       "As an Adventurer, FOMO-Fueled Choices may arise—fear of missing out can rush your decisions."
     ],
     products: [
-      "Key Smart Checking® – Quick, mobile-friendly banking for on-the-go lifestyles.",
-      "Key Rewards Credit Card® – Earn rewards on daily purchases to fuel your passions.",
-      "Laurel Road Savings – Keep an easy safety net growing while you explore new ventures."
+      {
+        name: "KeyBank Hassle-Free Checking® (Checking)",
+        pitch: "Adventurer Checking Pitch Goes Here...",
+        benefits: [
+          "Adventurer Checking Benefit #1",
+          "Adventurer Checking Benefit #2",
+          "Adventurer Checking Benefit #3",
+          "Adventurer Checking Benefit #4"
+        ]
+      },
+      {
+        name: "Key Active Saver® (Savings)",
+        pitch: "Adventurer Savings Pitch Goes Here...",
+        benefits: [
+          "Adventurer Savings Benefit #1",
+          "Adventurer Savings Benefit #2",
+          "Adventurer Savings Benefit #3",
+          "Adventurer Savings Benefit #4"
+        ]
+      },
+      {
+        name: "Key2More Rewards® (Credit Card)",
+        pitch: "Adventurer Credit Card Pitch Goes Here...",
+        benefits: [
+          "Adventurer Credit Card Benefit #1",
+          "Adventurer Credit Card Benefit #2",
+          "Adventurer Credit Card Benefit #3",
+          "Adventurer Credit Card Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Personal Loan (Loan)",
+        pitch: "Adventurer Loan Pitch Goes Here...",
+        benefits: [
+          "Adventurer Loan Benefit #1",
+          "Adventurer Loan Benefit #2",
+          "Adventurer Loan Benefit #3",
+          "Adventurer Loan Benefit #4"
+        ]
+      }
     ],
     emotions: [
       "Thrill","Indulgence","Excitement","Spontaneity","Joy",
@@ -325,9 +399,46 @@ const categoriesData = {
       "As a Connector, you might prefer Conflict Avoidance—preserving harmony can overshadow tough but necessary conversations."
     ],
     products: [
-      "Key Family Checking® – Manage shared expenses or household needs cooperatively.",
-      "Laurel Road Loyalty Savings – Earn steadily while staying ready to help others.",
-      "Key Cashback Credit Card® – Put your rewards to good use in your community."
+      {
+        name: "Key Smart Checking® (Checking)",
+        pitch: "Connector Checking Pitch Goes Here...",
+        benefits: [
+          "Connector Checking Benefit #1",
+          "Connector Checking Benefit #2",
+          "Connector Checking Benefit #3",
+          "Connector Checking Benefit #4"
+        ]
+      },
+      {
+        name: "Key Active Saver® (Savings)",
+        pitch: "Connector Savings Pitch Goes Here...",
+        benefits: [
+          "Connector Savings Benefit #1",
+          "Connector Savings Benefit #2",
+          "Connector Savings Benefit #3",
+          "Connector Savings Benefit #4"
+        ]
+      },
+      {
+        name: "Key Cashback Credit Card® (Credit Card)",
+        pitch: "Connector Credit Card Pitch Goes Here...",
+        benefits: [
+          "Connector Credit Card Benefit #1",
+          "Connector Credit Card Benefit #2",
+          "Connector Credit Card Benefit #3",
+          "Connector Credit Card Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Personal Loan (Loan)",
+        pitch: "Connector Loan Pitch Goes Here...",
+        benefits: [
+          "Connector Loan Benefit #1",
+          "Connector Loan Benefit #2",
+          "Connector Loan Benefit #3",
+          "Connector Loan Benefit #4"
+        ]
+      }
     ],
     emotions: [
       "Generosity","Altruism","Warmth","Compassion","Connection",
@@ -362,9 +473,46 @@ const categoriesData = {
       "As a Realist, you might adopt a Rigid Mindset—preferring only proven methods can limit innovative solutions."
     ],
     products: [
-      "Key Safe Checking® – Overdraft protection and fraud prevention for peace of mind.",
-      "Laurel Road High Yield Savings – Steady, reliable growth with minimal surprises.",
-      "Laurel Road Loan – Clear terms, predictable rates—ideal for risk-averse planning."
+      {
+        name: "Key Safe Checking® (Checking)",
+        pitch: "Realist Checking Pitch Goes Here...",
+        benefits: [
+          "Realist Checking Benefit #1",
+          "Realist Checking Benefit #2",
+          "Realist Checking Benefit #3",
+          "Realist Checking Benefit #4"
+        ]
+      },
+      {
+        name: "Key Active Saver® (Savings)",
+        pitch: "Realist Savings Pitch Goes Here...",
+        benefits: [
+          "Realist Savings Benefit #1",
+          "Realist Savings Benefit #2",
+          "Realist Savings Benefit #3",
+          "Realist Savings Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Latitude® (Credit Card)",
+        pitch: "Realist Credit Card Pitch Goes Here...",
+        benefits: [
+          "Realist Credit Card Benefit #1",
+          "Realist Credit Card Benefit #2",
+          "Realist Credit Card Benefit #3",
+          "Realist Credit Card Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Personal Loan (Loan)",
+        pitch: "Realist Loan Pitch Goes Here...",
+        benefits: [
+          "Realist Loan Benefit #1",
+          "Realist Loan Benefit #2",
+          "Realist Loan Benefit #3",
+          "Realist Loan Benefit #4"
+        ]
+      }
     ],
     emotions: [
       "Apprehension","Duty","Caution","Skepticism","Reserved",
@@ -374,7 +522,7 @@ const categoriesData = {
 };
 
 /****************************************************
- * tieData 
+ * TIE CATEGORY DATA (With Placeholders for products)
  ****************************************************/
 const tieData = {
   "Adventurer+Planner": {
@@ -386,7 +534,49 @@ const tieData = {
       losing stability. Confidence comes from thorough research, yet there’s still room 
       for spontaneity. It’s an outlook that lets you relish life’s thrills while steadily 
       building toward future ambitions.
-    `
+    `,
+    products: [
+      {
+        name: "Key Smart Checking® (Checking)",
+        pitch: "Adventurer+Planner Checking Pitch...",
+        benefits: [
+          "Adventurer+Planner Checking Benefit #1",
+          "Adventurer+Planner Checking Benefit #2",
+          "Adventurer+Planner Checking Benefit #3",
+          "Adventurer+Planner Checking Benefit #4"
+        ]
+      },
+      {
+        name: "Key Active Saver® (Savings)",
+        pitch: "Adventurer+Planner Savings Pitch...",
+        benefits: [
+          "Adventurer+Planner Savings Benefit #1",
+          "Adventurer+Planner Savings Benefit #2",
+          "Adventurer+Planner Savings Benefit #3",
+          "Adventurer+Planner Savings Benefit #4"
+        ]
+      },
+      {
+        name: "Key2More Rewards® (Credit Card)",
+        pitch: "Adventurer+Planner Credit Card Pitch...",
+        benefits: [
+          "Adventurer+Planner CC Benefit #1",
+          "Adventurer+Planner CC Benefit #2",
+          "Adventurer+Planner CC Benefit #3",
+          "Adventurer+Planner CC Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Personal Loan (Loan)",
+        pitch: "Adventurer+Planner Loan Pitch...",
+        benefits: [
+          "Adventurer+Planner Loan Benefit #1",
+          "Adventurer+Planner Loan Benefit #2",
+          "Adventurer+Planner Loan Benefit #3",
+          "Adventurer+Planner Loan Benefit #4"
+        ]
+      }
+    ]
   },
   "Adventurer+Connector": {
     combinedName: "Adventurous Connector",
@@ -396,7 +586,49 @@ const tieData = {
       when they also serve friends, family, or a broader network. Forward momentum comes from 
       embracing new opportunities, all the while celebrating shared wins. Together, it forms 
       a synergy where excitement and social responsibility flourish side by side.
-    `
+    `,
+    products: [
+      {
+        name: "KeyBank Hassle-Free Checking® (Checking)",
+        pitch: "Adventurer+Connector Checking Pitch...",
+        benefits: [
+          "A+C Checking Benefit #1",
+          "A+C Checking Benefit #2",
+          "A+C Checking Benefit #3",
+          "A+C Checking Benefit #4"
+        ]
+      },
+      {
+        name: "Key Active Saver® (Savings)",
+        pitch: "Adventurer+Connector Savings Pitch...",
+        benefits: [
+          "A+C Savings Benefit #1",
+          "A+C Savings Benefit #2",
+          "A+C Savings Benefit #3",
+          "A+C Savings Benefit #4"
+        ]
+      },
+      {
+        name: "Key Cashback Credit Card® (Credit Card)",
+        pitch: "Adventurer+Connector Credit Card Pitch...",
+        benefits: [
+          "A+C CC Benefit #1",
+          "A+C CC Benefit #2",
+          "A+C CC Benefit #3",
+          "A+C CC Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Personal Loan (Loan)",
+        pitch: "Adventurer+Connector Loan Pitch...",
+        benefits: [
+          "A+C Loan Benefit #1",
+          "A+C Loan Benefit #2",
+          "A+C Loan Benefit #3",
+          "A+C Loan Benefit #4"
+        ]
+      }
+    ]
   },
   "Adventurer+Realist": {
     combinedName: "Adventurous Realist",
@@ -406,7 +638,49 @@ const tieData = {
       outcomes, ensuring enthusiasm doesn’t overshadow sound judgment. Forward motion is 
       fueled by curiosity, yet guided by measured analysis. The result is a mindset that 
       welcomes new ventures but insists on level-headed planning to keep risks in check.
-    `
+    `,
+    products: [
+      {
+        name: "KeyBank Hassle-Free Checking® (Checking)",
+        pitch: "Adventurer+Realist Checking Pitch...",
+        benefits: [
+          "A+R Checking Benefit #1",
+          "A+R Checking Benefit #2",
+          "A+R Checking Benefit #3",
+          "A+R Checking Benefit #4"
+        ]
+      },
+      {
+        name: "Key Active Saver® (Savings)",
+        pitch: "Adventurer+Realist Savings Pitch...",
+        benefits: [
+          "A+R Savings Benefit #1",
+          "A+R Savings Benefit #2",
+          "A+R Savings Benefit #3",
+          "A+R Savings Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Latitude® (Credit Card)",
+        pitch: "Adventurer+Realist Credit Card Pitch...",
+        benefits: [
+          "A+R CC Benefit #1",
+          "A+R CC Benefit #2",
+          "A+R CC Benefit #3",
+          "A+R CC Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Personal Loan (Loan)",
+        pitch: "Adventurer+Realist Loan Pitch...",
+        benefits: [
+          "A+R Loan Benefit #1",
+          "A+R Loan Benefit #2",
+          "A+R Loan Benefit #3",
+          "A+R Loan Benefit #4"
+        ]
+      }
+    ]
   },
   "Planner+Connector": {
     combinedName: "Connected Planner",
@@ -417,7 +691,49 @@ const tieData = {
       collaborative success. Discipline in planning doesn’t preclude caring deeply about 
       shared outcomes. Ultimately, it’s an approach that merges structure and empathy, 
       leaving room for both prosperity and heartfelt connection.
-    `
+    `,
+    products: [
+      {
+        name: "Key Smart Checking® (Checking)",
+        pitch: "Planner+Connector Checking Pitch...",
+        benefits: [
+          "P+C Checking Benefit #1",
+          "P+C Checking Benefit #2",
+          "P+C Checking Benefit #3",
+          "P+C Checking Benefit #4"
+        ]
+      },
+      {
+        name: "Key Active Saver® (Savings)",
+        pitch: "Planner+Connector Savings Pitch...",
+        benefits: [
+          "P+C Savings Benefit #1",
+          "P+C Savings Benefit #2",
+          "P+C Savings Benefit #3",
+          "P+C Savings Benefit #4"
+        ]
+      },
+      {
+        name: "Key Cashback Credit Card® (Credit Card)",
+        pitch: "Planner+Connector Credit Card Pitch...",
+        benefits: [
+          "P+C CC Benefit #1",
+          "P+C CC Benefit #2",
+          "P+C CC Benefit #3",
+          "P+C CC Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Personal Loan (Loan)",
+        pitch: "Planner+Connector Loan Pitch...",
+        benefits: [
+          "P+C Loan Benefit #1",
+          "P+C Loan Benefit #2",
+          "P+C Loan Benefit #3",
+          "P+C Loan Benefit #4"
+        ]
+      }
+    ]
   },
   "Planner+Realist": {
     combinedName: "Realistic Planner",
@@ -427,7 +743,49 @@ const tieData = {
       here, as every idea is vetted through proven methods. An orderly framework provides 
       the structure needed to avoid unpleasant surprises. In this environment, measured 
       action leads to steady financial stability, free from unnecessary gambles.
-    `
+    `,
+    products: [
+      {
+        name: "Key Safe Checking® (Checking)",
+        pitch: "Planner+Realist Checking Pitch...",
+        benefits: [
+          "P+R Checking Benefit #1",
+          "P+R Checking Benefit #2",
+          "P+R Checking Benefit #3",
+          "P+R Checking Benefit #4"
+        ]
+      },
+      {
+        name: "Key Active Saver® (Savings)",
+        pitch: "Planner+Realist Savings Pitch...",
+        benefits: [
+          "P+R Savings Benefit #1",
+          "P+R Savings Benefit #2",
+          "P+R Savings Benefit #3",
+          "P+R Savings Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Latitude® (Credit Card)",
+        pitch: "Planner+Realist Credit Card Pitch...",
+        benefits: [
+          "P+R CC Benefit #1",
+          "P+R CC Benefit #2",
+          "P+R CC Benefit #3",
+          "P+R CC Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Personal Loan (Loan)",
+        pitch: "Planner+Realist Loan Pitch...",
+        benefits: [
+          "P+R Loan Benefit #1",
+          "P+R Loan Benefit #2",
+          "P+R Loan Benefit #3",
+          "P+R Loan Benefit #4"
+        ]
+      }
+    ]
   },
   "Connector+Realist": {
     combinedName: "Realistic Connector",
@@ -437,7 +795,49 @@ const tieData = {
       can empower everyone, yet careful analysis remains a guiding principle. Balancing 
       empathy with level-headedness helps avoid overextending resources in the name of kindness. 
       It’s an approach that keeps group goals in sight while protecting everyone’s interests.
-    `
+    `,
+    products: [
+      {
+        name: "Key Safe Checking® (Checking)",
+        pitch: "Connector+Realist Checking Pitch...",
+        benefits: [
+          "C+R Checking Benefit #1",
+          "C+R Checking Benefit #2",
+          "C+R Checking Benefit #3",
+          "C+R Checking Benefit #4"
+        ]
+      },
+      {
+        name: "Key Active Saver® (Savings)",
+        pitch: "Connector+Realist Savings Pitch...",
+        benefits: [
+          "C+R Savings Benefit #1",
+          "C+R Savings Benefit #2",
+          "C+R Savings Benefit #3",
+          "C+R Savings Benefit #4"
+        ]
+      },
+      {
+        name: "Key Cashback Credit Card® (Credit Card)",
+        pitch: "Connector+Realist Credit Card Pitch...",
+        benefits: [
+          "C+R CC Benefit #1",
+          "C+R CC Benefit #2",
+          "C+R CC Benefit #3",
+          "C+R CC Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Personal Loan (Loan)",
+        pitch: "Connector+Realist Loan Pitch...",
+        benefits: [
+          "C+R Loan Benefit #1",
+          "C+R Loan Benefit #2",
+          "C+R Loan Benefit #3",
+          "C+R Loan Benefit #4"
+        ]
+      }
+    ]
   },
   "Adventurer+Connector+Planner": {
     combinedName: "Adventurous, Connected Planner",
@@ -448,7 +848,49 @@ const tieData = {
       rushing headlong, there’s a mindful effort to keep progress beneficial for all involved. 
       This synergy nurtures both personal ambition and the well-being of friends or 
       community members.
-    `
+    `,
+    products: [
+      {
+        name: "Key Smart Checking® (Checking)",
+        pitch: "A+C+P Checking Pitch...",
+        benefits: [
+          "A+C+P Checking Benefit #1",
+          "A+C+P Checking Benefit #2",
+          "A+C+P Checking Benefit #3",
+          "A+C+P Checking Benefit #4"
+        ]
+      },
+      {
+        name: "Key Active Saver® (Savings)",
+        pitch: "A+C+P Savings Pitch...",
+        benefits: [
+          "A+C+P Savings Benefit #1",
+          "A+C+P Savings Benefit #2",
+          "A+C+P Savings Benefit #3",
+          "A+C+P Savings Benefit #4"
+        ]
+      },
+      {
+        name: "Key2More Rewards® (Credit Card)",
+        pitch: "A+C+P Credit Card Pitch...",
+        benefits: [
+          "A+C+P CC Benefit #1",
+          "A+C+P CC Benefit #2",
+          "A+C+P CC Benefit #3",
+          "A+C+P CC Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Personal Loan (Loan)",
+        pitch: "A+C+P Loan Pitch...",
+        benefits: [
+          "A+C+P Loan Benefit #1",
+          "A+C+P Loan Benefit #2",
+          "A+C+P Loan Benefit #3",
+          "A+C+P Loan Benefit #4"
+        ]
+      }
+    ]
   },
   "Adventurer+Connector+Realist": {
     combinedName: "Adventurous, Connected Realist",
@@ -458,7 +900,49 @@ const tieData = {
       benefit others are pursued if they fit within sensible guidelines, helping everyone flourish. 
       Growth is fueled by curiosity and collaboration, yet governed by prudent decision-making. 
       It’s a path where excitement, social awareness, and practical strategy maintain equilibrium.
-    `
+    `,
+    products: [
+      {
+        name: "KeyBank Hassle-Free Checking® (Checking)",
+        pitch: "A+C+R Checking Pitch...",
+        benefits: [
+          "A+C+R Checking Benefit #1",
+          "A+C+R Checking Benefit #2",
+          "A+C+R Checking Benefit #3",
+          "A+C+R Checking Benefit #4"
+        ]
+      },
+      {
+        name: "Key Active Saver® (Savings)",
+        pitch: "A+C+R Savings Pitch...",
+        benefits: [
+          "A+C+R Savings Benefit #1",
+          "A+C+R Savings Benefit #2",
+          "A+C+R Savings Benefit #3",
+          "A+C+R Savings Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Cashback Credit Card® (Credit Card)",
+        pitch: "A+C+R Credit Card Pitch...",
+        benefits: [
+          "A+C+R CC Benefit #1",
+          "A+C+R CC Benefit #2",
+          "A+C+R CC Benefit #3",
+          "A+C+R CC Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Personal Loan (Loan)",
+        pitch: "A+C+R Loan Pitch...",
+        benefits: [
+          "A+C+R Loan Benefit #1",
+          "A+C+R Loan Benefit #2",
+          "A+C+R Loan Benefit #3",
+          "A+C+R Loan Benefit #4"
+        ]
+      }
+    ]
   },
   "Adventurer+Planner+Realist": {
     combinedName: "Adventurous, Realistic Planner",
@@ -468,7 +952,49 @@ const tieData = {
       that preserve financial stability. There’s room for spontaneity and fresh perspectives, 
       yet an underlying framework keeps risk in check. This mix shapes an approach that 
       strives for innovative progress without losing sight of security or discipline.
-    `
+    `,
+    products: [
+      {
+        name: "Key Smart Checking® (Checking)",
+        pitch: "A+P+R Checking Pitch...",
+        benefits: [
+          "A+P+R Checking Benefit #1",
+          "A+P+R Checking Benefit #2",
+          "A+P+R Checking Benefit #3",
+          "A+P+R Checking Benefit #4"
+        ]
+      },
+      {
+        name: "Key Active Saver® (Savings)",
+        pitch: "A+P+R Savings Pitch...",
+        benefits: [
+          "A+P+R Savings Benefit #1",
+          "A+P+R Savings Benefit #2",
+          "A+P+R Savings Benefit #3",
+          "A+P+R Savings Benefit #4"
+        ]
+      },
+      {
+        name: "Key2More Rewards® (Credit Card)",
+        pitch: "A+P+R Credit Card Pitch...",
+        benefits: [
+          "A+P+R CC Benefit #1",
+          "A+P+R CC Benefit #2",
+          "A+P+R CC Benefit #3",
+          "A+P+R CC Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Personal Loan (Loan)",
+        pitch: "A+P+R Loan Pitch...",
+        benefits: [
+          "A+P+R Loan Benefit #1",
+          "A+P+R Loan Benefit #2",
+          "A+P+R Loan Benefit #3",
+          "A+P+R Loan Benefit #4"
+        ]
+      }
+    ]
   },
   "Connector+Planner+Realist": {
     combinedName: "Connected, Realistic Planner",
@@ -479,7 +1005,49 @@ const tieData = {
       Each decision is researched, reducing the likelihood of mistakes or unexpected challenges. 
       The result is a measured but caring style that safeguards resources while 
       nurturing shared triumphs.
-    `
+    `,
+    products: [
+      {
+        name: "Key Safe Checking® (Checking)",
+        pitch: "C+P+R Checking Pitch...",
+        benefits: [
+          "C+P+R Checking Benefit #1",
+          "C+P+R Checking Benefit #2",
+          "C+P+R Checking Benefit #3",
+          "C+P+R Checking Benefit #4"
+        ]
+      },
+      {
+        name: "Key Active Saver® (Savings)",
+        pitch: "C+P+R Savings Pitch...",
+        benefits: [
+          "C+P+R Savings Benefit #1",
+          "C+P+R Savings Benefit #2",
+          "C+P+R Savings Benefit #3",
+          "C+P+R Savings Benefit #4"
+        ]
+      },
+      {
+        name: "Key Cashback Credit Card® (Credit Card)",
+        pitch: "C+P+R Credit Card Pitch...",
+        benefits: [
+          "C+P+R CC Benefit #1",
+          "C+P+R CC Benefit #2",
+          "C+P+R CC Benefit #3",
+          "C+P+R CC Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Personal Loan (Loan)",
+        pitch: "C+P+R Loan Pitch...",
+        benefits: [
+          "C+P+R Loan Benefit #1",
+          "C+P+R Loan Benefit #2",
+          "C+P+R Loan Benefit #3",
+          "C+P+R Loan Benefit #4"
+        ]
+      }
+    ]
   },
   "Adventurer+Connector+Planner+Realist": {
     combinedName: "Adventurous, Connected, Realistic Planner",
@@ -491,7 +1059,49 @@ const tieData = {
       guide your decisions, balancing personal goals with communal benefit. This all-encompassing 
       blend aims to harmonize exploration, empathy, security, and practicality in every 
       financial choice.
-    `
+    `,
+    products: [
+      {
+        name: "Key Smart Checking® (Checking)",
+        pitch: "A+C+P+R Checking Pitch...",
+        benefits: [
+          "A+C+P+R Checking Benefit #1",
+          "A+C+P+R Checking Benefit #2",
+          "A+C+P+R Checking Benefit #3",
+          "A+C+P+R Checking Benefit #4"
+        ]
+      },
+      {
+        name: "Key Active Saver® (Savings)",
+        pitch: "A+C+P+R Savings Pitch...",
+        benefits: [
+          "A+C+P+R Savings Benefit #1",
+          "A+C+P+R Savings Benefit #2",
+          "A+C+P+R Savings Benefit #3",
+          "A+C+P+R Savings Benefit #4"
+        ]
+      },
+      {
+        name: "Key Cashback Credit Card® (Credit Card)",
+        pitch: "A+C+P+R Credit Card Pitch...",
+        benefits: [
+          "A+C+P+R CC Benefit #1",
+          "A+C+P+R CC Benefit #2",
+          "A+C+P+R CC Benefit #3",
+          "A+C+P+R CC Benefit #4"
+        ]
+      },
+      {
+        name: "KeyBank Personal Loan (Loan)",
+        pitch: "A+C+P+R Loan Pitch...",
+        benefits: [
+          "A+C+P+R Loan Benefit #1",
+          "A+C+P+R Loan Benefit #2",
+          "A+C+P+R Loan Benefit #3",
+          "A+C+P+R Loan Benefit #4"
+        ]
+      }
+    ]
   }
 };
 
@@ -781,31 +1391,55 @@ function displayFinalResults(tiedCats, sortedArray) {
     watchoutList.appendChild(li);
   });
 
-  let mainCatForProducts = (tiedCats.length > 1)
-    ? [...tiedCats].sort((a,b)=>a.localeCompare(b))[0]
-    : tiedCats[0];
-
-  document.getElementById("products-title").textContent =
-    categoriesData[mainCatForProducts].headingForProducts;
+  // Determine if single or tie scenario
+  let productsArray;
+  if (tiedCats.length === 1) {
+    // Single category
+    productsArray = categoriesData[tiedCats[0]].products;
+    document.getElementById("products-title").textContent =
+      categoriesData[tiedCats[0]].headingForProducts;
+  } else {
+    // Tied scenario - sort to get the tieKey
+    const sortedTied = [...tiedCats].sort((a,b)=>a.localeCompare(b));
+    const tieKey = sortedTied.join("+");
+    if (tieData[tieKey]) {
+      productsArray = tieData[tieKey].products;
+      document.getElementById("products-title").textContent =
+        "A Hybrid Approach to Your Financial Life";
+    } else {
+      productsArray = [];
+      document.getElementById("products-title").textContent =
+        "A Mixed Approach to Your Financial Life";
+    }
+  }
 
   const productContainer = document.getElementById("product-recommendations");
   productContainer.innerHTML = "";
-  categoriesData[mainCatForProducts].products.forEach(prod => {
+
+  productsArray.forEach(prod => {
     const card = document.createElement("div");
     card.className = "product-card";
 
     const title = document.createElement("h5");
-    title.textContent = prod.split("–")[0].trim();
+    title.textContent = prod.name;
 
-    const detail = document.createElement("p");
-    detail.textContent = prod.split("–")[1] ? prod.split("–")[1].trim() : "";
+    const pitch = document.createElement("p");
+    pitch.textContent = prod.pitch;
+
+    const benefitsUl = document.createElement("ul");
+    prod.benefits.forEach(b => {
+      const li = document.createElement("li");
+      li.textContent = b;
+      benefitsUl.appendChild(li);
+    });
 
     const button = document.createElement("button");
     button.className = "product-btn";
     button.textContent = "Learn More";
 
     card.appendChild(title);
-    card.appendChild(detail);
+    card.appendChild(pitch);
+    card.appendChild(benefitsUl);
     card.appendChild(button);
     productContainer.appendChild(card);
   });
@@ -858,7 +1492,7 @@ function buildDistributionBars(sortedArray, tiedCats) {
       const shortBox = document.createElement("div");
       shortBox.id = `short-${cat}`;
       shortBox.className = "short-summary";
-      shortBox.textContent = categoriesData[cat].shortDescription.trim();
+      shortBox.textContent = categoriesData[cat]?.shortDescription?.trim() || "";
       catBarContainer.appendChild(shortBox);
     }
   });
