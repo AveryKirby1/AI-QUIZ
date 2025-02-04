@@ -1398,31 +1398,64 @@ function displayFinalResults(tiedCats, sortedArray) {
   productContainer.innerHTML = "";
 
   productsArray.forEach(prod => {
-    const card = document.createElement("div");
-    card.className = "product-card";
+    // Create the overall card container
+const card = document.createElement("div");
+card.className = "product-card";
 
-    const title = document.createElement("h5");
-    title.textContent = prod.name;
+// 1) Top header (10%)
+const headerDiv = document.createElement("div");
+headerDiv.className = "product-header";
 
-    const pitch = document.createElement("p");
-    pitch.textContent = prod.pitch;
+const headerTitle = document.createElement("h5");
+headerTitle.textContent = prod.name;
 
-    const benefitsUl = document.createElement("ul");
-    prod.benefits.forEach(b => {
-      const li = document.createElement("li");
-      li.textContent = b;
-      benefitsUl.appendChild(li);
-    });
+headerDiv.appendChild(headerTitle);
 
-    const button = document.createElement("button");
-    button.className = "product-btn";
-    button.textContent = "Learn More";
+// 2) Content area (90%) with three columns
+const contentDiv = document.createElement("div");
+contentDiv.className = "product-content";
 
-    card.appendChild(title);
-    card.appendChild(pitch);
-    card.appendChild(benefitsUl);
-    card.appendChild(button);
-    productContainer.appendChild(card);
+// Left column (25%): blank or for an image
+const leftDiv = document.createElement("div");
+leftDiv.className = "product-left";
+
+// Middle column (50%): pitch text + "Learn More" button
+const middleDiv = document.createElement("div");
+middleDiv.className = "product-middle";
+
+const pitchP = document.createElement("p");
+pitchP.textContent = prod.pitch;
+middleDiv.appendChild(pitchP);
+
+const button = document.createElement("button");
+button.className = "product-btn";
+button.textContent = "Learn More";
+middleDiv.appendChild(button);
+
+// Right column (25%): bullet points
+const rightDiv = document.createElement("div");
+rightDiv.className = "product-right";
+
+const benefitsUl = document.createElement("ul");
+prod.benefits.forEach(b => {
+  const li = document.createElement("li");
+  li.textContent = b;
+  benefitsUl.appendChild(li);
+});
+rightDiv.appendChild(benefitsUl);
+
+// Put columns together
+contentDiv.appendChild(leftDiv);
+contentDiv.appendChild(middleDiv);
+contentDiv.appendChild(rightDiv);
+
+// Finally, append the header and content to the card
+card.appendChild(headerDiv);
+card.appendChild(contentDiv);
+
+// And add the card to the container
+productContainer.appendChild(card);
+
   });
 }
 
