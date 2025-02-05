@@ -1366,7 +1366,7 @@ distributionTitle.style.textAlign = "center";
   excelList.innerHTML = "";
   finalStrengths.forEach(s => {
     const li = document.createElement("li");
-    li.textContent = s;
+    li.innerHTML = s;
     excelList.appendChild(li);
   });
 
@@ -1374,7 +1374,7 @@ distributionTitle.style.textAlign = "center";
   watchoutList.innerHTML = "";
   finalWeaknesses.forEach(w => {
     const li = document.createElement("li");
-    li.textContent = w;
+    li.innerHTML = w;
     watchoutList.appendChild(li);
   });
 
@@ -1568,70 +1568,136 @@ function buildPctMap(sortedArray) {
  * BUILD OUTPUT (strengths or weaknesses)
  ****************************************************/
 function buildOutputItems(topCats, pctMap, keyName) {
+  // Highest score among topCats
+  const topCategoryScore = pctMap[topCats[0]];
   const len = topCats.length;
+
   if (len === 4) {
-    return topCats.map(cat => craftLine(cat, pctMap[cat], categoriesData[cat][keyName][0]));
+    // Each of the 4 categories gets 1 bullet (arr[0])
+    return topCats.map(cat => {
+      const arr = categoriesData[cat][keyName];
+      return craftLineNew(
+        cat,
+        pctMap[cat] === topCategoryScore,
+        arr[0]
+      );
+    });
+
   } else if (len === 3) {
-    return topCats.map(cat => craftLine(cat, pctMap[cat], categoriesData[cat][keyName][0]));
+    // Each of the 3 categories gets 1 bullet
+    return topCats.map(cat => {
+      const arr = categoriesData[cat][keyName];
+      return craftLineNew(
+        cat,
+        pctMap[cat] === topCategoryScore,
+        arr[0]
+      );
+    });
+
   } else if (len === 2) {
+    // For 2 categories, we give cat1 two bullets, cat2 one bullet
     const [cat1, cat2] = topCats;
     const arr1 = categoriesData[cat1][keyName];
     const arr2 = categoriesData[cat2][keyName];
+
     return [
-      craftLine(cat1, pctMap[cat1], arr1[0]),
-      craftLine(cat1, pctMap[cat1], arr1[1]),
-      craftLine(cat2, pctMap[cat2], arr2[0])
+      craftLineNew(cat1, pctMap[cat1] === topCategoryScore, arr1[0]),
+      craftLineNew(cat1, pctMap[cat1] === topCategoryScore, arr1[1]),
+      craftLineNew(cat2, pctMap[cat2] === topCategoryScore, arr2[0])
     ];
+
   } else {
+    // Single category => 3 bullets
     const cat = topCats[0];
     const arr = categoriesData[cat][keyName];
+
+    // If there's only one topCat, it's automatically "dominant"
     return [
-      craftLine(cat, pctMap[cat], arr[0]),
-      craftLine(cat, pctMap[cat], arr[1]),
-      craftLine(cat, pctMap[cat], arr[2])
+      craftLineNew(cat, true, arr[0]),
+      craftLineNew(cat, true, arr[1]),
+      craftLineNew(cat, true, arr[2])
     ];
   }
 }
+
 
 /****************************************************
  * TEMPLATES
  ****************************************************/
-const bulletOpeners = [
-  "Looks like you're about",
-  "It seems you're roughly",
-  "We see you're around",
-  "You're approximately",
-  "From these answers, you're about",
-  "We noticed you're about"
+/****************************************************
+ * NEW ARRAYS & FUNCTION for Strength/Weakness bullets
+ ****************************************************/
+
+const dominantOpeners = [
+  "It looks like you strongly favor [cat]",
+  "Since you rank high in [cat]",
+  "You display a pronounced [cat] streak",
+  "You're mainly leaning [cat]",
+  "It's clear you're heavily oriented toward [cat]",
+  "A significant part of you is [cat]",
+  "You've shown a strong affinity for [cat]",
+  "You definitely resonate with [cat]",
+  "A big portion of you identifies with [cat]"
 ];
 
-const bulletTransitions = [
-  "so here’s something to consider:",
-  "which means:",
-  "so keep in mind:",
-  "so check this out:",
-  "and that suggests:",
-  "and this implies:"
+const secondaryOpeners = [
+  "You also carry a bit of [cat]",
+  "There's a subtle [cat] influence in you",
+  "You do have some [cat] traits",
+  "You're partly [cat]",
+  "There's a little [cat] side to you",
+  "You still show hints of [cat]",
+  "A touch of [cat] shines through",
+  "You also lean slightly toward [cat]",
+  "As a partial [cat]"
 ];
 
-let bulletIndex = 0;
+function stripLeadingClause(text) {
+  // Look for the first comma in the first ~25 characters:
+  const idx = text.indexOf(",");
+  if (idx !== -1 && idx < 25) {
+    // Remove everything up to (and including) that comma
+    text = text.slice(idx + 1).trim();
+  }
+  // Capitalize the first letter after removing the clause:
+  if (text.length > 0) {
+    return text[0].toUpperCase() + text.slice(1);
+  }
+  return text;
+}
+
+/**
+ * craftLineNew
+ * @param {string} cat - the category name
+ * @param {boolean} isDominant - true if this cat is tied for highest score
+ * @param {string} originalLine - the full strength/weakness phrase from categoriesData
+ * @returns {string} the revised bullet text
+ */
+let newBulletIndex = 0;
+function craftLineNew(cat, isDominant, originalLine) {
+  // 1) Choose an opener from the arrays
+  const openerArray = isDominant ? dominantOpeners : secondaryOpeners;
+  const opener = openerArray[newBulletIndex % openerArray.length];
+  newBulletIndex++;
+
+  // 2) Strip out "Because you’re a [cat]," from the original line if present
+  const remainder = stripLeadingClause(originalLine);
+
+  // 3) Replace [cat] placeholder in the opener
+  const finalOpener = opener.replace("[cat]", cat);
+
+  // 4) Return with an em dash in between
+  //    e.g. “It looks like you strongly favor Adventurer—Overthinking can hold you back...”
+  return `<span class="opener-text">${finalOpener}</span>—${remainder}`;
+
+}
+
+
 
 /****************************************************
  * craftLine
  ****************************************************/
-function craftLine(cat, pct, originalLine) {
-  const commaIdx = originalLine.indexOf(",");
-  let remainder = commaIdx >= 0 ? originalLine.substring(commaIdx + 1).trim() : originalLine;
-  if (remainder.length > 0) {
-    remainder = remainder[0].toLowerCase() + remainder.substring(1);
-  }
 
-  const opener = bulletOpeners[bulletIndex % bulletOpeners.length];
-  const transition = bulletTransitions[bulletIndex % bulletTransitions.length];
-  bulletIndex++;
-
-  return `${opener} ${pct}% ${cat} ${transition} ${remainder}`;
-}
 
 /****************************************************
  * TOGGLE SHORT SUMMARY
