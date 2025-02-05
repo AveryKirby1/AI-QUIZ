@@ -136,8 +136,8 @@ html, body {
   position: absolute;
   top: 20px;
   left: 60px;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   z-index: 10;
 
   /* ADDED: Use your real image name here */
