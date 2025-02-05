@@ -135,7 +135,7 @@ html, body {
 #results-section .results-image-placeholder {
   position: absolute;
   top: 20px;
-  left: 20px;
+  left: 60px;
   width: 100px;
   height: 100px;
   z-index: 10;
