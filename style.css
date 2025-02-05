@@ -27,6 +27,7 @@ html, body {
   padding: 0; 
   background: #fff;
   box-sizing: border-box;
+  position: relative;
 }
 
 /* Title */
@@ -463,4 +464,11 @@ html, body {
   font-weight: 700;
   color: #d10c1e;
   font-size: 1.8rem;
+}
+.top-left-img {
+  position: absolute;
+  top: 10px;    /* Adjust as needed */
+  left: 10px;   /* Adjust as needed */
+  width: 60px;  /* Adjust size as desired */
+  height: auto; /* Keeps the aspect ratio correct */
 }
