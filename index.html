@@ -18,23 +18,34 @@
     <h1>AI Quiz 4.0 Prototype</h1>
 
     <!-- QUIZ SECTION -->
-    <div id="quiz-section">
-      <div id="question-container">
-        <h2 id="question-text"></h2>
-        <p id="select-instructions" class="select-instructions"></p>
-      </div>
+    <!-- QUIZ SECTION (modified) -->
+<div id="quiz-section">
+  
+  <!-- Left column: questions, answers, buttons -->
+  <div id="quiz-left-column">
+    <div id="question-container">
+      <h2 id="question-text"></h2>
+      <p id="select-instructions" class="select-instructions"></p>
+    </div>
 
-      <div id="answers-container"></div>
+    <div id="answers-container"></div>
 
-      <div class="buttons-container">
-        <span id="question-tracker" class="question-tracker"></span>
-        <div>
-          <button id="prev-btn" class="quiz-btn" onclick="goToPreviousQuestion()">Previous</button>
-          <button id="next-btn" class="quiz-btn" onclick="goToNextQuestion()">Next</button>
-          <button id="results-btn" class="quiz-btn" onclick="showResults()">See Results</button>
-        </div>
+    <div class="buttons-container">
+      <span id="question-tracker" class="question-tracker"></span>
+      <div>
+        <button id="prev-btn" class="quiz-btn" onclick="goToPreviousQuestion()">Previous</button>
+        <button id="next-btn" class="quiz-btn" onclick="goToNextQuestion()">Next</button>
+        <button id="results-btn" class="quiz-btn" onclick="showResults()">See Results</button>
       </div>
     </div>
+  </div>
+
+  <!-- Right column: light gray placeholder for future images -->
+  <div id="quiz-right-column">
+    <!-- Just a light gray box for now: -->
+  </div>
+
+</div>
 
     <!-- RESULTS SECTION (hidden by default) -->
     <div id="results-section" class="hidden">
