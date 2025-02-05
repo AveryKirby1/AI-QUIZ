@@ -1335,14 +1335,20 @@ function displayFinalResults(tiedCats, sortedArray) {
   const topPct = Math.round((sortedArray[0][1] / total) * 100);
 
   const distributionTitle = document.createElement("h3");
-  if (topPct === 100 && tiedCats.length === 1) {
-    distributionTitle.innerHTML = `Your <span class="key-span">key</span> money signs:`;
-  } else {
-    distributionTitle.innerHTML = `
-      While your primary money sign may not capture everything about you, 
-      we notice traits from other money signs that also resonate with your financial personality:
-    `;
-  }
+  // ADD this block in its place:
+if (topPct === 100 && tiedCats.length === 1) {
+  distributionTitle.innerHTML = `Your <span class="key-span">key</span> money signs:`;
+} else {
+  distributionTitle.innerHTML = `
+    While one money sign leads the way, others add depth to your financial personality!
+  `;
+}
+
+// Also center it in the middle 50% of the page:
+distributionTitle.style.width = "50%";
+distributionTitle.style.margin = "0 auto";
+distributionTitle.style.textAlign = "center";
+
   distributionContainer.insertBefore(distributionTitle, document.getElementById("category-bars"));
 
   const plusCallout = document.createElement("p");
