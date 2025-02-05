@@ -248,7 +248,7 @@ const categoriesData = {
     ],
     products: [
       {
-        name: "Key Smart Checking® (Checking)",
+        name: "Key Smart Checking®",
         pitch: "Your organized mindset thrives when every transaction is transparent and secure. With Key Smart Checking®, you’ll track each bill or deposit in the KeyBank mobile app, using instant alerts and secure sign-on to keep finances meticulously under control.",
         benefits: [
           "No monthly maintenance fee to minimize unexpected costs",
@@ -258,7 +258,7 @@ const categoriesData = {
         ]
       },
       {
-        name: "Key Active Saver® (Savings)",
+        name: "Key Active Saver®",
         pitch: "Because you value predictability, this auto-savings feature helps you move a small amount to savings each time you spend. Access it all through KeyBank’s digital dashboard, so you can confirm every deposit and keep a precise saving schedule.",
         benefits: [
           "Auto-transfer on each debit card purchase (amount set by you)",
@@ -268,7 +268,7 @@ const categoriesData = {
         ]
       },
       {
-        name: "Key Secured Credit Card® (Credit Card)",
+        name: "Key Secured Credit Card®",
         pitch: "A secured card helps you build credit without risking overspending, and KeyBank’s security tools—like card lock/unlock and online statements—support your methodical budgeting. You decide your credit limit, watch progress in the app, and maintain complete control.",
         benefits: [
           "Security deposit sets the credit limit",
@@ -278,7 +278,7 @@ const categoriesData = {
         ]
       },
       {
-        name: "KeyBank Personal Loan (Loan)",
+        name: "KeyBank Personal Loan",
         pitch: "Large expenses won’t derail your careful timelines when you have a predictable monthly loan payment. KeyBank’s online portal shows your payoff schedule and offers autopay setup, so each step stays neatly on track.",
         benefits: [
           "Fixed APR for stable, planned repayment",
@@ -321,7 +321,7 @@ const categoriesData = {
     ],
     products: [
       {
-        name: "KeyBank Hassle-Free Checking® (Checking)",
+        name: "KeyBank Hassle-Free Checking®",
         pitch: "No monthly fees or checks to slow you down—this account pairs seamlessly with KeyBank’s mobile app so you can pay bills on the fly and get text alerts on your balance. Keep life easy, flexible, and ready for your next big thrill.",
         benefits: [
           "No monthly maintenance fee; checkless format",
@@ -331,7 +331,7 @@ const categoriesData = {
         ]
       },
       {
-        name: "Key Active Saver® (Savings)",
+        name: "Key Active Saver®",
         pitch: "Set up a tiny, automatic deposit each time you swipe, letting you build funds for your spontaneous plans without conscious effort. You’ll see a running total in KeyBank’s app, so you know exactly when to pounce on that next adventure.",
         benefits: [
           "Auto micro-deposit on each debit purchase",
@@ -341,7 +341,7 @@ const categoriesData = {
         ]
       },
       {
-        name: "Key2More Rewards® (Credit Card)",
+        name: "Key2More Rewards®",
         pitch: "Every impulsive purchase now becomes a pathway to more fun, thanks to reward points you can redeem later. Meanwhile, digital card controls let you set alerts or lock your card instantly if you misplace it mid-adventure.",
         benefits: [
           "Points on every purchase; 0% intro APR for a set period on new buys",
@@ -351,7 +351,7 @@ const categoriesData = {
         ]
       },
       {
-        name: "KeyBank Personal Loan (Loan)",
+        name: "KeyBank Personal Loan",
         pitch: "Kick off your dream trip or bucket-list project with a lump sum, then check your payoff schedule through KeyBank’s online portal whenever you’re back from exploring. You keep the thrill alive while your repayment stays organized.",
         benefits: [
           "Fixed-rate loan for predictable monthly payments",
@@ -394,7 +394,7 @@ const categoriesData = {
     ],
     products: [
       {
-        name: "Key Smart Checking® (Checking)",
+        name: "Key Smart Checking®",
         pitch: "Effortlessly send money to friends or split bills, thanks to a checking account that integrates with digital transfers and mobile payments. You’ll be free to focus on the people you care about while the app keeps transactions transparent.",
         benefits: [
           "No monthly fee on certain conditions",
@@ -404,7 +404,7 @@ const categoriesData = {
         ]
       },
       {
-        name: "Key Active Saver® (Savings)",
+        name: "Key Active Saver®",
         pitch: "When you set aside a bit each time you spend, you’re always ready to lend a hand or contribute to group activities. KeyBank’s app shows your running balance, so you can step up when others need you.",
         benefits: [
           "Auto micro-transfer on each debit purchase",
@@ -414,7 +414,7 @@ const categoriesData = {
         ]
       },
       {
-        name: "Key Cashback Credit Card® (Credit Card)",
+        name: "Key Cashback Credit Card®",
         pitch: "Your communal spirit will love turning every purchase into extra cash-back that can be shared or donated. Real-time spending alerts in KeyBank’s app help you keep track, so you can continue giving without missing a beat.",
         benefits: [
           "Up to 2% cash back with qualifying KeyBank checking",
@@ -424,7 +424,7 @@ const categoriesData = {
         ]
       },
       {
-        name: "KeyBank Personal Loan (Loan)",
+        name: "KeyBank Personal Loan",
         pitch: "Sometimes, helping others requires extra funds right away. This loan’s fixed monthly payment keeps your finances stable, while KeyBank’s online portal lets you manage it seamlessly so you never lose sight of your bigger financial picture.",
         benefits: [
           "Fixed APR with no origination fee",
@@ -466,7 +466,7 @@ const categoriesData = {
     ],
     products: [
       {
-        name: "Key Safe Checking® (Checking)",
+        name: "Key Safe Checking®",
         pitch: "Peace of mind comes from knowing you can’t accidentally overspend. This account blocks potential overdrafts and sends you instant balance alerts via KeyBank’s app, so you’re always in control.",
         benefits: [
           "Declines transactions exceeding your balance",
@@ -476,7 +476,7 @@ const categoriesData = {
         ]
       },
       {
-        name: "Key Active Saver® (Savings)",
+        name: "Key Active Saver®",
         pitch: "Tiny transfers to savings every time you buy something reduce risk, build your safety net, and keep you in charge. KeyBank’s digital platform shows each deposit, ensuring no surprises and total transparency.",
         benefits: [
           "Automatic saving on each debit purchase",
@@ -486,7 +486,7 @@ const categoriesData = {
         ]
       },
       {
-        name: "KeyBank Latitude® (Credit Card)",
+        name: "KeyBank Latitude®",
         pitch: "A lengthy 0% intro APR helps you handle unplanned costs without incurring high interest right away, while KeyBank’s fraud protection and card alerts keep spending strictly within your comfort zone.",
         benefits: [
           "0% intro APR for up to 15 months on purchases/balance transfers",
@@ -496,7 +496,7 @@ const categoriesData = {
         ]
       },
       {
-        name: "KeyBank Personal Loan (Loan)",
+        name: "KeyBank Personal Loan",
         pitch: "When bigger expenses loom, a fixed-rate loan is your safest bet for predictable monthly bills. Autopay and online monitoring let you confirm each payment is on schedule—no hidden twists.",
         benefits: [
           "Fixed APR; no origination fee",
@@ -528,7 +528,7 @@ const tieData = {
       building toward future ambitions.`,
     products: [
       {
-        name: "Key Smart Checking® (Checking)",
+        name: "Key Smart Checking",
         pitch: "For big ideas balanced by careful tracking, a no-fee checking with robust online tools lets you pursue spontaneous buys but keep each detail in your digital ledger. Real-time alerts help you pivot fast while staying on top of your plan.",
         benefits: [
           "No monthly maintenance fee",
@@ -538,7 +538,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key Active Saver® (Savings)",
+        name: "Key Active Saver®",
         pitch: "Auto-deposits let you chase excitement while still building a strong safety net. And KeyBank’s app keeps it transparent, so you can ensure your impulse buys never disrupt your long-term goals.",
         benefits: [
           "Micro-transfer each time you use your debit card",
@@ -548,7 +548,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key2More Rewards® (Credit Card)",
+        name: "Key2More Rewards®",
         pitch: "Enjoy points on every exciting purchase, then plan their redemption carefully for future goals. You get short 0% intro APR for initial spending, plus digital card controls to keep your budget in check.",
         benefits: [
           "Rewards on all spending, no annual fee",
@@ -558,7 +558,7 @@ const tieData = {
         ]
       },
       {
-        name: "KeyBank Personal Loan (Loan)",
+        name: "KeyBank Personal Loan",
         pitch: "Tackling a major project or fulfilling a dream is simpler with a lump sum and set payments. You see every payment detail online, blending your adventurous ambition with precise monthly structure.",
         benefits: [
           "Fixed APR, no origination fee",
@@ -579,7 +579,7 @@ const tieData = {
       a synergy where excitement and social responsibility flourish side by side.`,
     products: [
       {
-        name: "KeyBank Hassle-Free Checking® (Checking)",
+        name: "KeyBank Hassle-Free Checking®",
         pitch: "Spontaneous gatherings and communal expenses won’t lead to overdraft fees here. You can quickly send or receive money in the KeyBank app, keeping each group outing lighthearted and easy.",
         benefits: [
           "No monthly fee; fully electronic",
@@ -589,7 +589,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key Active Saver® (Savings)",
+        name: "Key Active Saver®",
         pitch: "Whether you’re funding a surprise group trip or gifting a friend, incremental saving ensures you always have a little something on hand. The mobile dashboard tracks contributions, so you know just how much you can spare.",
         benefits: [
           "Auto small deposit per debit purchase",
@@ -599,7 +599,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key Cashback Credit Card® (Credit Card)",
+        name: "Key Cashback Credit Card®",
         pitch: "Turn every impulsive purchase into extra cash that can power shared experiences or go straight to someone who needs a lift. Meanwhile, KeyBank’s card alerts let you see real-time spending if you’re pitching in for friends.",
         benefits: [
           "Up to 2% cash back with qualifying KeyBank checking",
@@ -609,7 +609,7 @@ const tieData = {
         ]
       },
       {
-        name: "KeyBank Personal Loan (Loan)",
+        name: "KeyBank Personal Loan",
         pitch: "Ready to fund a big communal plan or help someone cover an emergency? This lump-sum loan gives you immediate resources, while the online portal keeps your repayment organized and clear.",
         benefits: [
           "Fixed APR and term lengths",
@@ -630,7 +630,7 @@ const tieData = {
       welcomes new ventures but insists on level-headed planning to keep risks in check.`,
     products: [
       {
-        name: "KeyBank Hassle-Free Checking® (Checking)",
+        name: "KeyBank Hassle-Free Checking®",
         pitch: "You’re open to unexpected fun but won’t risk expensive overdrafts. This checkless, fee-free account, coupled with KeyBank’s real-time alerts, means you can spend spontaneously while maintaining financial safety.",
         benefits: [
           "No monthly fee; no paper checks",
@@ -640,7 +640,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key Active Saver® (Savings)",
+        name: "Key Active Saver®",
         pitch: "Even if you indulge in spur-of-the-moment purchases, small auto-transfers mean you’re still stashing funds for safety. The app’s deposit logs give you the security of knowing exactly how your cushion grows.",
         benefits: [
           "Micro-transfer on each debit purchase",
@@ -650,7 +650,7 @@ const tieData = {
         ]
       },
       {
-        name: "KeyBank Latitude® (Credit Card)",
+        name: "KeyBank Latitude®",
         pitch: "A 0% intro APR gives you the freedom to act on an exciting opportunity, then pay it off interest-free if you do so within that window. Online fraud alerts and spending controls add a safety layer to match your careful side.",
         benefits: [
           "0% intro APR on purchases/transfers for set period",
@@ -660,7 +660,7 @@ const tieData = {
         ]
       },
       {
-        name: "KeyBank Personal Loan (Loan)",
+        name: "KeyBank Personal Loan",
         pitch: "Funding big adventures or necessary emergencies can still fit your cautious budget, thanks to fixed-rate payments. Track the payoff in KeyBank’s app, keeping your realistic boundaries intact.",
         benefits: [
           "Fixed APR for predictable costs",
@@ -682,7 +682,7 @@ const tieData = {
       leaving room for both prosperity and heartfelt connection.`,
     products: [
       {
-        name: "Key Smart Checking® (Checking)",
+        name: "Key Smart Checking®",
         pitch: "Whether coordinating shared expenses or just tidying everyday transactions, you’ll love having no monthly fee and a robust app for splitting bills and setting alerts. It keeps everyone on the same page without clutter.",
         benefits: [
           "No monthly fee",
@@ -692,7 +692,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key Active Saver® (Savings)",
+        name: "Key Active Saver®",
         pitch: "Steady auto-savings ensure you’re prepared to assist friends or meet a communal goal. The KeyBank app shows each deposit, so you can plan exactly how and when to share your funds.",
         benefits: [
           "Auto small deposit per purchase",
@@ -702,7 +702,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key Cashback Credit Card® (Credit Card)",
+        name: "Key Cashback Credit Card®",
         pitch: "No intricate points system here—just cash back you can quickly share or reinvest in your budget. You’ll have online spending alerts to ensure every purchase aligns with the structured, caring approach you bring.",
         benefits: [
           "Earn up to 2% cash back with KeyBank checking",
@@ -712,7 +712,7 @@ const tieData = {
         ]
       },
       {
-        name: "KeyBank Personal Loan (Loan)",
+        name: "KeyBank Personal Loan",
         pitch: "Sometimes your collaborative plans need a chunk of money now, but you also want a tidy payoff schedule. This loan keeps the monthly cost predictable, and digital tools let you check balances or set autopay with ease.",
         benefits: [
           "Fixed APR for stable installments",
@@ -733,7 +733,7 @@ const tieData = {
       action leads to steady financial stability, free from unnecessary gambles.`,
     products: [
       {
-        name: "Key Safe Checking® (Checking)",
+        name: "Key Safe Checking®",
         pitch: "You rely on a meticulously crafted budget, and this account prevents overdrafts entirely, matching your cautious streak. KeyBank’s secure mobile app provides transaction alerts so every dollar is accounted for.",
         benefits: [
           "Declines over-balance transactions (no overdrafts)",
@@ -743,7 +743,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key Active Saver® (Savings)",
+        name: "Key Active Saver®",
         pitch: "Strategic saving in small increments keeps your risk low and your budget on plan. You’ll see each deposit in KeyBank’s app, so there’s zero guesswork about your growing safety net.",
         benefits: [
           "Tiny auto-deposits per purchase",
@@ -753,7 +753,7 @@ const tieData = {
         ]
       },
       {
-        name: "KeyBank Latitude® (Credit Card)",
+        name: "KeyBank Latitude®",
         pitch: "A long 0% intro APR matches your preference for stable, low-risk credit usage, while KeyBank’s advanced security features add peace of mind. You can plan precisely how to pay off balances before interest kicks in.",
         benefits: [
           "0% intro APR on purchases/transfers for set period",
@@ -763,7 +763,7 @@ const tieData = {
         ]
       },
       {
-        name: "KeyBank Personal Loan (Loan)",
+        name: "KeyBank Personal Loan",
         pitch: "For debt consolidation or a big expense, a predictable monthly bill is essential. You’ll check off each payment in KeyBank’s portal, ensuring your careful, risk-averse plan goes exactly as intended.",
         benefits: [
           "Fixed APR, no origination fee",
@@ -784,7 +784,7 @@ const tieData = {
       It’s an approach that keeps group goals in sight while protecting everyone’s interests.`,
     products: [
       {
-        name: "Key Safe Checking® (Checking)",
+        name: "Key Safe Checking®",
         pitch: "You love being there for others, but not at the cost of overdrafts or hidden fees. This checking approach ensures every transaction remains fully funded, with mobile updates that show you exactly where you stand.",
         benefits: [
           "Blocks transactions over your balance",
@@ -794,7 +794,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key Active Saver® (Savings)",
+        name: "Key Active Saver®",
         pitch: "A gentle, incremental savings method suits your cautious nature and ensures you’ve always got something set aside for friends or family. With the KeyBank app, you can see each deposit and be ready to give when needed.",
         benefits: [
           "Auto micro-deposit each time you purchase",
@@ -804,7 +804,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key Cashback Credit Card® (Credit Card)",
+        name: "Key Cashback Credit Card®",
         pitch: "Straightforward cash back lets you confidently share rewards, knowing there’s no complicated point system. Digital alerts keep everything transparent so you can help others without risking your financial stability.",
         benefits: [
           "Up to 2% back with KeyBank checking",
@@ -814,7 +814,7 @@ const tieData = {
         ]
       },
       {
-        name: "KeyBank Personal Loan (Loan)",
+        name: "KeyBank Personal Loan",
         pitch: "When those you care about need significant help, a fixed-rate loan offers immediate funds, repaid safely over time. You remain compassionate while KeyBank’s digital tracking ensures every payment stays on schedule.",
         benefits: [
           "Fixed APR, no origination fee",
@@ -836,7 +836,7 @@ const tieData = {
       community members.`,
     products: [
       {
-        name: "Key Smart Checking® (Checking)",
+        name: "Key Smart Checking®",
         pitch: "Your buzzing lifestyle needs a checking account with zero monthly fees, where you can also coordinate group bills. KeyBank’s mobile alerts let you handle spontaneous outings, while staying in sync with every transaction.",
         benefits: [
           "No monthly fee",
@@ -846,7 +846,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key Active Saver® (Savings)",
+        name: "Key Active Saver®",
         pitch: "You juggle exciting ideas, group obligations, and precise budgeting. Automatic small deposits ensure you don’t forget the future, and KeyBank’s app keeps each deposit visible so you can plan collaborative goals.",
         benefits: [
           "Auto micro-deposit on each debit purchase",
@@ -856,7 +856,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key2More Rewards® (Credit Card)",
+        name: "Key2More Rewards®",
         pitch: "Shopping for group ventures or your own thrills becomes more rewarding with points, and you’ll schedule redemptions whenever it suits your careful planning. Digital spending alerts keep the entire process shared and organized.",
         benefits: [
           "Earn points on all purchases",
@@ -866,7 +866,7 @@ const tieData = {
         ]
       },
       {
-        name: "KeyBank Personal Loan (Loan)",
+        name: "KeyBank Personal Loan",
         pitch: "For ambitious group plans or personal projects, a lump sum at a fixed rate ensures you can act boldly while maintaining a concrete repayment strategy. KeyBank’s digital loan management lets you set autopay and confirm each step matches your plan.",
         benefits: [
           "Fixed APR; no origination fee",
@@ -887,7 +887,7 @@ const tieData = {
       It’s a path where excitement, social awareness, and practical strategy maintain equilibrium.`,
     products: [
       {
-        name: "KeyBank Hassle-Free Checking® (Checking)",
+        name: "KeyBank Hassle-Free Checking®",
         pitch: "Spontaneous group expenses shouldn’t lead to surprise fees. This checkless, no-fee account works with digital alerts so you can help friends fast while avoiding overdrafts or hidden costs.",
         benefits: [
           "No monthly fee; no checks",
@@ -897,7 +897,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key Active Saver® (Savings)",
+        name: "Key Active Saver®",
         pitch: "Each swipe sets aside a bit of money, allowing you to step up for friends without risking major lumps. KeyBank’s online dashboard shows exactly how much you’ve stored, balancing risk with generosity.",
         benefits: [
           "Auto small deposit per debit purchase",
@@ -907,7 +907,7 @@ const tieData = {
         ]
       },
       {
-        name: "KeyBank Cashback Credit Card® (Credit Card)",
+        name: "KeyBank Cashback Credit Card®",
         pitch: "Turning your everyday buys into cash-back reserves means you can quickly assist a friend or fund a shared outing. Online fraud alerts and real-time spending controls match your cautious side, ensuring you don’t overshoot.",
         benefits: [
           "Up to 2% cash back with KeyBank checking",
@@ -917,7 +917,7 @@ const tieData = {
         ]
       },
       {
-        name: "KeyBank Personal Loan (Loan)",
+        name: "KeyBank Personal Loan",
         pitch: "Sometimes bigger help or a bold shared plan demands immediate funds, and a fixed-rate loan provides that while keeping you firmly in control. Use KeyBank’s online portal to manage each payment, preserving your realistic boundaries.",
         benefits: [
           "Fixed APR, no origination fee",
@@ -938,7 +938,7 @@ const tieData = {
       strives for innovative progress without losing sight of security or discipline.`,
     products: [
       {
-        name: "Key Smart Checking® (Checking)",
+        name: "Key Smart Checking®",
         pitch: "Your free-spirited side needs quick, fuss-free spending, while your methodical and risk-averse inclinations demand transparent oversight. A no-fee checking account with digital alerts hits both marks, letting you explore and monitor each move.",
         benefits: [
           "No monthly fee",
@@ -948,7 +948,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key Active Saver® (Savings)",
+        name: "Key Active Saver®",
         pitch: "Auto-saving each time you use your debit card offers a cushion for bold decisions, yet stays carefully within your outlined plan. The KeyBank app shows each deposit so you never lose sight of your big picture.",
         benefits: [
           "Auto micro-deposit each time you purchase",
@@ -958,7 +958,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key2More Rewards® (Credit Card)",
+        name: "Key2More Rewards®",
         pitch: "Rewards on your adventurous spending plus a short 0% intro APR caters to your spontaneous side, while your planner personality redeems those points strategically. Advanced security tools keep your risk level acceptable.",
         benefits: [
           "Points on all purchases, no annual fee",
@@ -968,7 +968,7 @@ const tieData = {
         ]
       },
       {
-        name: "KeyBank Personal Loan (Loan)",
+        name: "KeyBank Personal Loan",
         pitch: "An upfront loan at a fixed rate gives you freedom to fund a big idea while sticking to predictable monthly payments. KeyBank’s online tool shows your repayment timeline, merging adventurous moves with cautious planning.",
         benefits: [
           "Fixed APR; no origination fee",
@@ -990,7 +990,7 @@ const tieData = {
       nurturing shared triumphs.`,
     products: [
       {
-        name: "Key Safe Checking® (Checking)",
+        name: "Key Safe Checking®",
         pitch: "You care about people around you but won’t gamble on overdrafts. This checking account ensures transactions never exceed what you have, while the mobile alerts keep group or personal budgets secure.",
         benefits: [
           "Declines over-balance transactions",
@@ -1000,7 +1000,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key Active Saver® (Savings)",
+        name: "Key Active Saver®",
         pitch: "A small auto-deposit into savings on each purchase helps you build a resource for collaborative goals or a friend in need. You remain risk-averse by keeping the amounts small and fully visible in the app.",
         benefits: [
           "Micro-savings on every debit purchase",
@@ -1010,7 +1010,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key Cashback Credit Card® (Credit Card)",
+        name: "Key Cashback Credit Card®",
         pitch: "Earn up to 2% cash back on routine spending, which you can methodically direct toward group projects or personal goals. Digital alerts help you stay within safe limits while still supporting others generously.",
         benefits: [
           "Up to 2% back with a qualifying checking relationship",
@@ -1020,7 +1020,7 @@ const tieData = {
         ]
       },
       {
-        name: "KeyBank Personal Loan (Loan)",
+        name: "KeyBank Personal Loan",
         pitch: "Your structured mindset ensures a fixed-rate personal loan lets you assist loved ones or fund a collaborative initiative without risking financial turmoil. KeyBank’s digital payoff tracking keeps every payment clear.",
         benefits: [
           "Fixed APR; no origination fee",
@@ -1043,7 +1043,7 @@ const tieData = {
       financial choice.`,
     products: [
       {
-        name: "Key Smart Checking® (Checking)",
+        name: "Key Smart Checking®",
         pitch: "With so many facets—spontaneity, community spirit, structured planning, and caution—you need a checking account that’s flexible yet transparent. Real-time alerts and no monthly fees keep your finances fluid but carefully managed in KeyBank’s app.",
         benefits: [
           "No monthly fee",
@@ -1053,7 +1053,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key Active Saver® (Savings)",
+        name: "Key Active Saver®",
         pitch: "Every purchase quietly grows your savings, letting you jump on group plans, lend a hand, or safeguard yourself, all while keeping an eye on risk. The app shows every small deposit, merging all your traits into one neat method.",
         benefits: [
           "Auto micro-deposit on each debit use",
@@ -1063,7 +1063,7 @@ const tieData = {
         ]
       },
       {
-        name: "Key Cashback Credit Card® (Credit Card)",
+        name: "Key Cashback Credit Card®",
         pitch: "Up to 2% cash back covers your adventurous spur-of-the-moment shopping, your desire to share resources, your organized approach to budgeting, and your caution about hidden fees. Digital alerts and card controls mean everything stays on track.",
         benefits: [
           "Up to 2% cash back with KeyBank checking",
@@ -1073,7 +1073,7 @@ const tieData = {
         ]
       },
       {
-        name: "KeyBank Personal Loan (Loan)",
+        name: "KeyBank Personal Loan",
         pitch: "When a big opportunity or urgent need arises for your group or personal ambition, a fixed-rate loan provides the lump sum safely. KeyBank’s online payoff schedule merges your bold goals with a stable, cautious repayment structure.",
         benefits: [
           "Fixed APR, no origination fee",
