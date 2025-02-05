@@ -125,29 +125,9 @@ html, body {
   display: none;
 }
 
-/* =================== RESULTS SECTION =================== */
+/* Results Section */
 #results-section {
-  position: relative; /* anchor for absolute positioning */
   margin-top: 10px;
-}
-
-/* 
-   TOP-RIGHT SVG PLACEHOLDER
-   - Larger (160x160)
-   - Entire image shown via "contain"
-   - Absolutely positioned at the top-right
-*/
-#results-section .results-image-placeholder {
-  position: absolute;
-  top: 0;       /* pinned to the top */
-  right: 0;     /* pinned to the right */
-  width: 200px;
-  height: 200px;
-  z-index: 9999;
-
-  /* Replace with your actual SVG name/path */
-  background: url("images/myresultimage.svg") no-repeat center center;
-  background-size: contain; 
 }
 
 .results-header {
@@ -306,7 +286,7 @@ html, body {
   margin: 20px 0 10px;
 }
 
-/* =================== PRODUCT RECOMMENDATION CARDS =================== */
+/* PRODUCT RECOMMENDATION CARDS */
 .product-recs-container {
   display: flex;
   flex-direction: column;
@@ -316,6 +296,9 @@ html, body {
   width: 100%;
 }
 
+/* ---------------------------- */
+/* Make the boxes smaller       */
+/* ---------------------------- */
 .product-card {
   width: 100%;
   max-width: 900px;
@@ -324,13 +307,18 @@ html, body {
   border-radius: 5px;
   box-sizing: border-box;
   margin: 0;
+
+  /* CHANGED: replaced the old 400px height with a smaller fixed height */
   display: flex;
   flex-direction: column;
-  min-height: 300px;
+  min-height: 300px; /* CHANGED: smaller than before to reduce empty space */
 }
 
+/* Top 10% area for product name */
 .product-header {
-  flex: 0 0 40px;
+  flex: 0 0 40px; /* If you want 10% of 300px = 30px, 
+                     reduce to 30px. Right now it's still 40px 
+                     (13% of 300), but you can tweak. */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -344,6 +332,7 @@ html, body {
   line-height: 1.2;
 }
 
+/* Bottom area: 3 columns side by side */
 .product-content {
   flex: 1;
   display: flex;
@@ -374,19 +363,24 @@ html, body {
   width: 25%;
   padding: 20px;
   box-sizing: border-box;
+
+  /* ADDED: position relative for partial vertical line */
   position: relative; 
 }
 
+/* ADDED: partial vertical line in the middle 50% 
+   from top: 25% to top+50% = 75% */
 .product-right::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 25%;
-  height: 50%;
+  top: 25%;   /* start 25% down */
+  height: 50%; /* middle 50% */
   width: 1px;
   background-color: #ccc;
 }
 
+/* Slightly increase spacing between bullets */
 .product-right ul {
   list-style-type: disc;
   padding-left: 20px;
@@ -396,10 +390,10 @@ html, body {
 }
 
 .product-right ul li {
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.8rem; /* ADDED: bigger gap between bullet items */
 }
 
-/* Center the “Learn More” button horizontally */
+/* Center the â€œLearn Moreâ€ button horizontally */
 .product-btn {
   background-color: #d10c1e;
   color: #fff;
@@ -408,40 +402,49 @@ html, body {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  display: block;         
-  margin: 0 auto;         
-  margin-top: auto;       
+  
+  /* CHANGED: remove margin-top:auto / align-self:flex-start 
+     and center the button: */
+  display: block;         /* needed for margin auto */
+  margin: 0 auto;         /* center horizontally */
+  margin-top: auto;       /* keep it near bottom if you still want that? 
+                             optional - you can remove this line if you want 
+                             the button in the middle. */
 }
 
 .product-btn:hover {
   background-color: #9d0a16;
 }
 
+/* Middle column paragraphs */
 .product-middle p {
   margin-bottom: 1rem;
   font-size: 0.9rem;
   line-height: 1.4;
 }
 
-/* ============== "With your responses in mind..." Box ============== */
+/* Full-width container, covering left to right, no border */
 .results-box {
   width: 100%;
-  background-color: #f9f9f9;
-  padding: 80px 0;
+  background-color: #f9f9f9; /* Light gray background */
+  padding: 80px 0;          /* Make it taller so it appears larger */
+  /* Remove any border if you don't want one */
 }
 
 .results-inner {
-  width: 50%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
+  width: 50%;               /* Middle 50% container */
+  margin: 0 auto;           /* Center it horizontally */
+  display: flex;            /* Create side-by-side columns */
+  align-items: center;      /* Vertically align if columns differ in height */
 }
 
+/* Left 50%: image placeholder */
 .result-left {
   flex: 0 0 50%;
   text-align: center;
 }
 
+/* Right 50%: text lines */
 .result-right {
   flex: 0 0 50%;
   text-align: left;
