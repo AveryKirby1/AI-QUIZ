@@ -469,6 +469,6 @@ html, body {
   position: absolute;
   top: 10px;    /* Adjust as needed */
   left: 10px;   /* Adjust as needed */
-  width: 60px;  /* Adjust size as desired */
+  width: 200px;  /* Adjust size as desired */
   height: auto; /* Keeps the aspect ratio correct */
 }
