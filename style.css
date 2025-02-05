@@ -222,7 +222,7 @@ html, body {
 }
 
 .category-bar .bar-label {
-  width: 140px;
+  width: 180px;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 0.8rem;
@@ -239,14 +239,14 @@ html, body {
   flex: 1;
   background: #ddd;
   border-radius: 5px;
-  height: 20px;
+  height: 30px;
   margin: 0 10px;
   position: relative;
 }
 
 .category-bar .bar-fill {
   background-color: #007BFF;
-  height: 20px;
+  height: 30px;
   border-radius: 5px;
   width: 0%;
   position: absolute;
@@ -272,10 +272,12 @@ html, body {
 }
 
 .plus-callout-small {
-  font-size: 0.75rem;
+  text-align: center;    /* center text inside the element */
+  display: block;
+  max-width: 600px;      /* match the bar container */
+  margin: 10px auto 0;   /* top margin 10px, auto left/right for centering */
+  font-size: 0.75rem;    /* or whatever size you want */
   color: #777;
-  margin: 6px 0;
-  text-align: center;
 }
 
 /* Insights */
