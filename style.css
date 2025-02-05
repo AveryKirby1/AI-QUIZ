@@ -128,6 +128,21 @@ html, body {
 /* Results Section */
 #results-section {
   margin-top: 10px;
+  position: relative; /* so the image placeholder can be absolutely positioned */
+}
+
+/* Replaced the gray box with your actual image file below: */
+#results-section .results-image-placeholder {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 100px;
+  height: 100px;
+  z-index: 10;
+
+  /* ADDED: Use your real image name here */
+  background: url("images/myresultimage.png") no-repeat center center;
+  background-size: cover;
 }
 
 .results-header {
@@ -296,9 +311,7 @@ html, body {
   width: 100%;
 }
 
-/* ---------------------------- */
-/* Make the boxes smaller       */
-/* ---------------------------- */
+/* Make the boxes smaller */
 .product-card {
   width: 100%;
   max-width: 900px;
@@ -307,18 +320,14 @@ html, body {
   border-radius: 5px;
   box-sizing: border-box;
   margin: 0;
-
-  /* CHANGED: replaced the old 400px height with a smaller fixed height */
   display: flex;
   flex-direction: column;
-  min-height: 300px; /* CHANGED: smaller than before to reduce empty space */
+  min-height: 300px;
 }
 
 /* Top 10% area for product name */
 .product-header {
-  flex: 0 0 40px; /* If you want 10% of 300px = 30px, 
-                     reduce to 30px. Right now it's still 40px 
-                     (13% of 300), but you can tweak. */
+  flex: 0 0 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -363,19 +372,16 @@ html, body {
   width: 25%;
   padding: 20px;
   box-sizing: border-box;
-
-  /* ADDED: position relative for partial vertical line */
   position: relative; 
 }
 
-/* ADDED: partial vertical line in the middle 50% 
-   from top: 25% to top+50% = 75% */
+/* partial vertical line in the middle 50% from 25%-75% */
 .product-right::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 25%;   /* start 25% down */
-  height: 50%; /* middle 50% */
+  top: 25%;
+  height: 50%;
   width: 1px;
   background-color: #ccc;
 }
@@ -390,7 +396,7 @@ html, body {
 }
 
 .product-right ul li {
-  margin-bottom: 0.8rem; /* ADDED: bigger gap between bullet items */
+  margin-bottom: 0.8rem;
 }
 
 /* Center the “Learn More” button horizontally */
@@ -402,14 +408,9 @@ html, body {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  
-  /* CHANGED: remove margin-top:auto / align-self:flex-start 
-     and center the button: */
-  display: block;         /* needed for margin auto */
-  margin: 0 auto;         /* center horizontally */
-  margin-top: auto;       /* keep it near bottom if you still want that? 
-                             optional - you can remove this line if you want 
-                             the button in the middle. */
+  display: block;         
+  margin: 0 auto;         
+  margin-top: auto;       
 }
 
 .product-btn:hover {
@@ -426,19 +427,19 @@ html, body {
 /* Full-width container, covering left to right, no border */
 .results-box {
   width: 100%;
-  background-color: #f9f9f9; /* Light gray background */
-  padding: 80px 0;          /* Make it taller so it appears larger */
-  /* Remove any border if you don't want one */
+  background-color: #f9f9f9;
+  padding: 80px 0;
 }
 
+/* Middle 50% container for the top line + category name */
 .results-inner {
-  width: 50%;               /* Middle 50% container */
-  margin: 0 auto;           /* Center it horizontally */
-  display: flex;            /* Create side-by-side columns */
-  align-items: center;      /* Vertically align if columns differ in height */
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
 }
 
-/* Left 50%: image placeholder */
+/* Left 50%: image placeholder (different from .results-image-placeholder) */
 .result-left {
   flex: 0 0 50%;
   text-align: center;
