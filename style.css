@@ -140,13 +140,13 @@ html, body {
   z-index: 9999;
 
   /* The background image plus scaling */
-  background: url("images/myresultimage.png") no-repeat center center;
+  background: url("images/myresultimage.svg") no-repeat center center;
   background-size: cover; 
 }
 
 
   /* ADDED: Use your real image name here */
-  background: url("images/myresultimage.png") no-repeat center center;
+  background: url("images/myresultimage.svg") no-repeat center center;
   background-size: cover;
 }
 
