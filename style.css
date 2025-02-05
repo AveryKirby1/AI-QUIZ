@@ -499,3 +499,6 @@ html, body {
   background-color: #f0f0f0;
   box-sizing: border-box;
 }
+.opener-text {
+  font-weight: bold;
+}
