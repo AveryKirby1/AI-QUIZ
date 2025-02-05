@@ -1354,7 +1354,8 @@ distributionTitle.style.textAlign = "center";
   const plusCallout = document.createElement("p");
   plusCallout.className = "plus-callout-small";
   plusCallout.textContent = `Click the “+” icons to view more about each non-winning category.`;
-  distributionContainer.insertBefore(plusCallout, document.getElementById("category-bars"));
+  distributionContainer.appendChild(plusCallout);
+
 
   const topCatsForBullets = determineTopCats(sortedArray);
   const pctMap = buildPctMap(sortedArray);
