@@ -30,14 +30,39 @@ html, body {
   position: relative;
 }
 
-/* Title */
-.quiz-container h1 {
-  text-align: center;
-  color: #007BFF;
-  margin-bottom: 20px;
+/* ----------------------------------------------------------------------- */
+/* NEW: Top banner (15% height) with shadow and KeyBank logo + Quiz Title  */
+/* ----------------------------------------------------------------------- */
+#quiz-top-header {
+  position: relative;
+  width: 100%;
+  height: 15vh; /* ~15% of viewport height for the top banner */
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow along bottom */
 }
 
-/* Quiz Section */
+/* Logo pinned in top-left of the banner */
+.top-left-img {
+  position: absolute;
+  top: 20px;       /* Adjust as needed for vertical positioning */
+  left: 10px;      /* Adjust horizontal offset */
+  width: 200px;    /* Adjust size as desired */
+  height: auto;    /* Preserve aspect ratio */
+}
+
+/* The Quiz Title in the top banner */
+#quiz-top-header h1 {
+  position: absolute;
+  top: 25px;         /* Align with or below the logo */
+  left: 220px;       /* Move right so it doesn’t overlap the logo */
+  font-size: 1.5rem; /* Adjust as desired */
+  color: #007BFF;
+  margin: 0;
+}
+
+/* ----------------------------------------------------------------------- */
+/* QUIZ SECTION (Questions) */
+/* ----------------------------------------------------------------------- */
 #question-container {
   margin-bottom: 10px;
 }
@@ -68,7 +93,9 @@ html, body {
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 14px 16px;
+  /* Larger padding and font for bigger boxes */
+  padding: 20px;  
+  font-size: 1.1rem; 
   cursor: pointer;
   transition: background-color 0.3s ease, border-color 0.3s ease;
   display: flex;
@@ -126,7 +153,9 @@ html, body {
   display: none;
 }
 
-/* Results Section */
+/* ----------------------------------------------------------------------- */
+/* RESULTS SECTION (unchanged) */
+/* ----------------------------------------------------------------------- */
 #results-section {
   margin-top: 10px;
 }
@@ -231,7 +260,6 @@ html, body {
   font-size: 0.8rem;
 }
 
-/* Short summary below each bar */
 .short-summary {
   display: none;
   padding: 6px 10px;
@@ -243,7 +271,6 @@ html, body {
   line-height: 1.4;
 }
 
-/* plus-callout text (if needed) */
 .plus-callout-small {
   font-size: 0.75rem;
   color: #777;
@@ -297,9 +324,7 @@ html, body {
   width: 100%;
 }
 
-/* ---------------------------- */
-/* Make the boxes smaller       */
-/* ---------------------------- */
+/* Make product cards smaller */
 .product-card {
   width: 100%;
   max-width: 900px;
@@ -309,17 +334,13 @@ html, body {
   box-sizing: border-box;
   margin: 0;
 
-  /* CHANGED: replaced the old 400px height with a smaller fixed height */
   display: flex;
   flex-direction: column;
-  min-height: 300px; /* CHANGED: smaller than before to reduce empty space */
+  min-height: 300px;
 }
 
-/* Top 10% area for product name */
 .product-header {
-  flex: 0 0 40px; /* If you want 10% of 300px = 30px, 
-                     reduce to 30px. Right now it's still 40px 
-                     (13% of 300), but you can tweak. */
+  flex: 0 0 40px; /* top area of the card */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -333,14 +354,14 @@ html, body {
   line-height: 1.2;
 }
 
-/* Bottom area: 3 columns side by side */
+/* Card content: 3 columns */
 .product-content {
   flex: 1;
   display: flex;
   width: 100%;
 }
 
-/* Left 25%: blank placeholder for an image or other content */
+/* left 25% */
 .product-left {
   width: 25%;
   background-color: #ddd;
@@ -348,7 +369,7 @@ html, body {
   padding: 20px;
 }
 
-/* Middle 50%: pitch text */
+/* middle 50%: pitch text */
 .product-middle {
   width: 50%;
   padding: 20px;
@@ -359,29 +380,24 @@ html, body {
   justify-content: flex-start;
 }
 
-/* Right 25%: bullet points */
+/* right 25%: bullet points */
 .product-right {
   width: 25%;
   padding: 20px;
   box-sizing: border-box;
-
-  /* ADDED: position relative for partial vertical line */
-  position: relative; 
+  position: relative;
 }
 
-/* ADDED: partial vertical line in the middle 50% 
-   from top: 25% to top+50% = 75% */
 .product-right::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 25%;   /* start 25% down */
-  height: 50%; /* middle 50% */
+  top: 25%;
+  height: 50%;
   width: 1px;
   background-color: #ccc;
 }
 
-/* Slightly increase spacing between bullets */
 .product-right ul {
   list-style-type: disc;
   padding-left: 20px;
@@ -391,10 +407,9 @@ html, body {
 }
 
 .product-right ul li {
-  margin-bottom: 0.8rem; /* ADDED: bigger gap between bullet items */
+  margin-bottom: 0.8rem;
 }
 
-/* Center the â€œLearn Moreâ€ button horizontally */
 .product-btn {
   background-color: #d10c1e;
   color: #fff;
@@ -403,49 +418,40 @@ html, body {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  
-  /* CHANGED: remove margin-top:auto / align-self:flex-start 
-     and center the button: */
-  display: block;         /* needed for margin auto */
-  margin: 0 auto;         /* center horizontally */
-  margin-top: auto;       /* keep it near bottom if you still want that? 
-                             optional - you can remove this line if you want 
-                             the button in the middle. */
+  display: block;
+  margin: 0 auto;
+  margin-top: auto;
 }
 
 .product-btn:hover {
   background-color: #9d0a16;
 }
 
-/* Middle column paragraphs */
 .product-middle p {
   margin-bottom: 1rem;
   font-size: 0.9rem;
   line-height: 1.4;
 }
 
-/* Full-width container, covering left to right, no border */
+/* Full-width container under results */
 .results-box {
   width: 100%;
-  background-color: #f9f9f9; /* Light gray background */
-  padding: 80px 0;          /* Make it taller so it appears larger */
-  /* Remove any border if you don't want one */
+  background-color: #f9f9f9; 
+  padding: 80px 0;          
 }
 
 .results-inner {
-  width: 50%;               /* Middle 50% container */
-  margin: 0 auto;           /* Center it horizontally */
-  display: flex;            /* Create side-by-side columns */
-  align-items: center;      /* Vertically align if columns differ in height */
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
 }
 
-/* Left 50%: image placeholder */
 .result-left {
   flex: 0 0 50%;
   text-align: center;
 }
 
-/* Right 50%: text lines */
 .result-right {
   flex: 0 0 50%;
   text-align: left;
@@ -465,36 +471,31 @@ html, body {
   color: #d10c1e;
   font-size: 1.8rem;
 }
-.top-left-img {
-  position: absolute;
-  top: 20px;    /* Adjust as needed */
-  left: 10px;   /* Adjust as needed */
-  width: 200px;  /* Adjust size as desired */
-  height: auto; /* Keeps the aspect ratio correct */
-}
-/* ------------------------------------------------------ */
-/* NEW: Two-column layout for the 10-question quiz area   */
-/* ------------------------------------------------------ */
 
+/* ----------------------------------------------------------------------- */
+/* QUIZ SECTION: Two-Column Layout (Questions Left, Placeholder Right)     */
+/* ----------------------------------------------------------------------- */
 #quiz-section {
-  display: flex;          /* side-by-side columns */
+  display: flex;
+  align-items: stretch; 
   width: 100%;
   box-sizing: border-box;
-  /* If you'd like vertical spacing, you can add:
-     margin-top: 20px; or padding-top: 20px; */
+  padding-right: 20px;
+  margin-top: 20px;
 }
 
-/* Left column: questions, answers, buttons */
 #quiz-left-column {
-  width: 70%;             /* or 75%, 60%, etc. Adjust to your preference */
-  padding: 0 20px;        /* moves text in from left/right edges */
+  width: 60%;        
+  padding: 0 20px;   
   box-sizing: border-box;
 }
 
-/* Right column: light gray placeholder box */
 #quiz-right-column {
-  width: 30%;             /* complements the 70% above */
-  background-color: #f0f0f0; /* light gray placeholder */
-  min-height: 300px;      /* optional, ensures a visible box height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; 
+  width: 35%;             
+  margin-left: 20px;      
+  background-color: #f0f0f0;
   box-sizing: border-box;
 }
