@@ -125,20 +125,25 @@ html, body {
   display: none;
 }
 
-/* Results Section */
 #results-section {
-  margin-top: 10px;
-  position: relative; /* so the image placeholder can be absolutely positioned */
+  position: relative;  /* defines the coordinate system for absolutely positioned children */
+  margin-top: 10px;    /* optional, if you need some space at the top */
 }
 
-/* Replaced the gray box with your actual image file below: */
+/* The image placeholder in the top-left corner (without getting cut off). */
 #results-section .results-image-placeholder {
   position: absolute;
-  top: 20px;
-  left: 60px;
-  width: 80px;
+  top: 20px;      /* how far down from the top of #results-section */
+  left: 85px;     /* how far right from the left edge of #results-section */
+  width: 80px; 
   height: 80px;
-  z-index: 10;
+  z-index: 9999;
+
+  /* The background image plus scaling */
+  background: url("images/myresultimage.png") no-repeat center center;
+  background-size: cover; 
+}
+
 
   /* ADDED: Use your real image name here */
   background: url("images/myresultimage.png") no-repeat center center;
