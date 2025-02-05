@@ -472,3 +472,29 @@ html, body {
   width: 200px;  /* Adjust size as desired */
   height: auto; /* Keeps the aspect ratio correct */
 }
+/* ------------------------------------------------------ */
+/* NEW: Two-column layout for the 10-question quiz area   */
+/* ------------------------------------------------------ */
+
+#quiz-section {
+  display: flex;          /* side-by-side columns */
+  width: 100%;
+  box-sizing: border-box;
+  /* If you'd like vertical spacing, you can add:
+     margin-top: 20px; or padding-top: 20px; */
+}
+
+/* Left column: questions, answers, buttons */
+#quiz-left-column {
+  width: 70%;             /* or 75%, 60%, etc. Adjust to your preference */
+  padding: 0 20px;        /* moves text in from left/right edges */
+  box-sizing: border-box;
+}
+
+/* Right column: light gray placeholder box */
+#quiz-right-column {
+  width: 30%;             /* complements the 70% above */
+  background-color: #f0f0f0; /* light gray placeholder */
+  min-height: 300px;      /* optional, ensures a visible box height */
+  box-sizing: border-box;
+}
