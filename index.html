@@ -8,69 +8,63 @@
 </head>
 <body>
   <div class="quiz-container">
-   <!-- ADD this new img tag -->
-<!-- NEW: top banner for logo + title -->
-  <div id="quiz-top-header">
-    <img 
-      src="images/keybanklogo.svg"
-      alt="KeyBank Logo"
-      class="top-left-img"
-    />
-    <h1>AI Quiz 4.0 Prototype</h1>
-  </div>
-    <!-- QUIZ SECTION -->
-    <!-- QUIZ SECTION (modified) -->
-<div id="quiz-section">
-  
-  <!-- Left column: questions, answers, buttons -->
-  <div id="quiz-left-column">
-    <div id="question-container">
-      <h2 id="question-text"></h2>
-      <p id="select-instructions" class="select-instructions"></p>
+    <!-- NEW: Top banner for logo + title -->
+    <div id="quiz-top-header">
+      <img 
+        src="images/keybanklogo.svg"
+        alt="KeyBank Logo"
+        class="top-left-img"
+      />
+      <h1>AI Quiz 4.0 Prototype</h1>
     </div>
-
-    <div id="answers-container"></div>
-
-    <div class="buttons-container">
-      <span id="question-tracker" class="question-tracker"></span>
-      <div>
-        <button id="prev-btn" class="quiz-btn" onclick="goToPreviousQuestion()">Previous</button>
-        <button id="next-btn" class="quiz-btn" onclick="goToNextQuestion()">Next</button>
-        <button id="results-btn" class="quiz-btn" onclick="showResults()">See Results</button>
+    <!-- QUIZ SECTION -->
+    <div id="quiz-section">
+      <!-- Left column: questions, answers, buttons -->
+      <div id="quiz-left-column">
+        <div id="question-container">
+          <h2 id="question-text"></h2>
+          <p id="select-instructions" class="select-instructions"></p>
+        </div>
+        <div id="answers-container"></div>
+        <div class="buttons-container">
+          <span id="question-tracker" class="question-tracker"></span>
+          <div>
+            <button id="prev-btn" class="quiz-btn" onclick="goToPreviousQuestion()">Previous</button>
+            <button id="next-btn" class="quiz-btn" onclick="goToNextQuestion()">Next</button>
+            <button id="results-btn" class="quiz-btn" onclick="showResults()">See Results</button>
+            <!-- NEW: Auto Complete Quiz button for testing -->
+            <button id="auto-complete-btn" class="quiz-btn">Auto Complete Quiz</button>
+          </div>
+        </div>
+      </div>
+      <!-- Right column: light gray placeholder for future images -->
+      <div id="quiz-right-column">
+        <!-- Just a light gray box for now: -->
       </div>
     </div>
-  </div>
-
-  <!-- Right column: light gray placeholder for future images -->
-  <div id="quiz-right-column">
-    <!-- Just a light gray box for now: -->
-  </div>
-
-</div>
-
     <!-- RESULTS SECTION (hidden by default) -->
     <div id="results-section" class="hidden">
       <div class="results-header">
         <p id="intro-paragraph" class="intro-paragraph"></p>
-
         <div class="results-box">
           <div class="results-inner">
             <div class="result-left"></div>
             <div class="result-right">
-              <p id="intro-second-line" class="top-line"></p>
-              <p id="category-name" class="red-line"></p>
+              <!-- Static text on one line -->
+              <p id="intro-second-line" class="result-text black-text">
+                With your responses in mind, we think you are
+              </p>
+              <!-- Dynamic category on a separate line -->
+              <p id="category-name" class="result-text red-text"></p>
             </div>
           </div>
         </div>
-
         <p id="category-description"></p>
       </div>
-
       <!-- Distribution chart -->
       <div class="distribution-container" id="distribution-container">
         <div id="category-bars"></div>
       </div>
-
       <!-- Insights (Dynamic) -->
       <div class="insight-container">
         <div class="insight-box" id="excel-box">
@@ -82,11 +76,9 @@
           <ul id="watchout-list"></ul>
         </div>
       </div>
-
       <!-- Product Recommendations -->
       <h2 id="products-title" class="fuel-title"></h2>
       <div class="product-recs-container" id="product-recommendations">
-
         <!-- SAMPLE PRODUCT CARD #1 -->
         <div class="product-card">
           <div class="product-header">
@@ -113,7 +105,6 @@
             </div>
           </div>
         </div>
-
         <!-- SAMPLE PRODUCT CARD #2 -->
         <div class="product-card">
           <div class="product-header">
@@ -139,7 +130,6 @@
             </div>
           </div>
         </div>
-
         <!-- SAMPLE PRODUCT CARD #3 -->
         <div class="product-card">
           <div class="product-header">
@@ -164,11 +154,9 @@
             </div>
           </div>
         </div>
-
       </div> <!-- end product-recs-container -->
     </div> <!-- end results-section -->
   </div> <!-- end quiz-container -->
-
   <script src="script.js"></script>
 </body>
 </html>
