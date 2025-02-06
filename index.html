@@ -17,6 +17,7 @@
       />
       <h1>AI Quiz 4.0 Prototype</h1>
     </div>
+
     <!-- QUIZ SECTION -->
     <div id="quiz-section">
       <!-- Left column: questions, answers, buttons -->
@@ -37,11 +38,13 @@
           </div>
         </div>
       </div>
+
       <!-- Right column: light gray placeholder for future images -->
       <div id="quiz-right-column">
         <!-- Just a light gray box for now: -->
       </div>
     </div>
+
     <!-- RESULTS SECTION (hidden by default) -->
     <div id="results-section" class="hidden">
       <div class="results-header">
@@ -61,10 +64,12 @@
         </div>
         <p id="category-description"></p>
       </div>
+
       <!-- Distribution chart -->
       <div class="distribution-container" id="distribution-container">
         <div id="category-bars"></div>
       </div>
+
       <!-- Insights (Dynamic) -->
       <div class="insight-container">
         <div class="insight-box" id="excel-box">
@@ -76,6 +81,7 @@
           <ul id="watchout-list"></ul>
         </div>
       </div>
+
       <!-- Product Recommendations -->
       <h2 id="products-title" class="fuel-title"></h2>
       <div class="product-recs-container" id="product-recommendations">
@@ -157,6 +163,10 @@
       </div> <!-- end product-recs-container -->
     </div> <!-- end results-section -->
   </div> <!-- end quiz-container -->
+
+  <!-- Load the new questions.js first -->
+  <script src="questions.js"></script>
+  <!-- Then load your main logic script -->
   <script src="script.js"></script>
 </body>
 </html>
