@@ -1322,10 +1322,9 @@ function displayFinalResults(tiedCats, sortedArray) {
     "Finances touch our lives in personal ways and can often feel overwhelming. " +
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
-  document.getElementById("intro-second-line").textContent =
-    `With your responses in mind, we think you are ${article}`;
+ document.getElementById("category-name").textContent = name;
+document.getElementById("category-name").classList.add("red-text");
 
-  document.getElementById("category-name").textContent = name;
   document.getElementById("category-description").innerHTML = description;
 
   buildDistributionBars(sortedArray, tiedCats);
@@ -1715,3 +1714,22 @@ function toggleShortSummary(cat, toggleSpan) {
     toggleSpan.textContent = "−";
   }
 }
+/****************************************************
+ * AUTO COMPLETE QUIZ BUTTON (For Testing Only)
+ * This code automatically selects the first answer for every question
+ * and then displays the results page when the "Auto Complete Quiz" button is clicked.
+ * Remove this block when you no longer need the testing functionality.
+ ****************************************************/
+document.getElementById("auto-complete-btn").addEventListener("click", function() {
+  // Auto-select the first answer for each question
+  for (var i = 0; i < questions.length; i++) {
+    selectedAnswers[i] = [0];
+  }
+  
+  // Set currentQuestionIndex to the last question
+  currentQuestionIndex = questions.length - 1;
+  
+  // Update the display (optional) and immediately show results
+  displayQuestion(currentQuestionIndex);
+  showResults();
+});
