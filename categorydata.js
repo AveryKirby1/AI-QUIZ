@@ -19,14 +19,14 @@ const categoriesData = {
       overthink can slow decisions, this disciplined approach provides peace of mind 
       and fosters steady, long-term security.`,
     strengths: [
-      "You excel at Long-Term Strategizing—budgets and schedules are your superpower.",
-      "You stay Risk-Averse—you’d rather carefully analyze than leap blindly into decisions.",
-      "You maintain an Organized approach—spreadsheets, lists, and well-defined goals keep you on track."
+      "You excel at long-term strategizing—budgets and schedules are your superpower.",
+      "You stay risk-averse—you’d rather carefully analyze than leap blindly into decisions.",
+      "You maintain an organized approach—spreadsheets, lists, and well-defined goals keep you on track."
     ],
     weaknesses: [
       "Overthinking can hold you back—sometimes it’s okay to act on impulse.",
-      "Paralysis by Analysis can stall your forward progress.",
-      "Limited Adaptability can be an issue—last-minute changes or surprises may feel uncomfortable."
+      "Paralysis by analysis can stall your forward progress.",
+      "Limited adaptability can be an issue—last-minute changes or surprises may feel uncomfortable."
     ],
     products: [
       {
@@ -92,14 +92,14 @@ const categoriesData = {
       may arise, balancing spontaneity with prudent planning sustains momentum 
       and protects against the downsides of taking bold risks.`,
     strengths: [
-      "You’re a Bold Decision-Maker—you jump on opportunities before they slip away.",
-      "You’re Curious and Open-Minded—always seeking new ways to grow.",
-      "You’re an Optimistic Risk-Taker—trusting your instincts even when stepping into the unknown."
+      "You’re a bold decision-maker—you jump on opportunities before they slip away.",
+      "You’re curious and open-minded—always seeking new ways to grow.",
+      "You’re an optimistic risk-taker—trusting your instincts even when stepping into the unknown."
     ],
     weaknesses: [
-      "Balancing Fun with Goals can be tricky—it’s still important to save for the future.",
-      "Impulse Spending can be a challenge—a set “fun money” budget can help you stay in control.",
-      "FOMO-Fueled Choices may arise—fear of missing out can rush your decisions."
+      "Balancing fun with goals can be tricky—it’s still important to save for the future.",
+      "Impulse spending can be a challenge—a set “fun money” budget can help you stay in control.",
+      "FOMO-fueled choices may arise—fear of missing out can rush your decisions."
     ],
     products: [
       {
@@ -165,14 +165,14 @@ const categoriesData = {
       can lead to overextension, but mindful boundaries preserve both personal 
       well-being and the desire to uplift others.`,
     strengths: [
-      "You’re Community-Focused—caring deeply about helping others succeed.",
-      "You stay Collaborative—pooling resources and sharing wins is your ideal approach.",
-      "A Generous Spirit guides your choices—giving is part of who you are."
+      "You’re community-focused—caring deeply about helping others succeed.",
+      "You stay collaborative—pooling resources and sharing wins is your ideal approach.",
+      "A generous spirit guides your choices—giving is part of who you are."
     ],
     weaknesses: [
-      "Overextending Yourself can become a problem—your finances need protection too.",
-      "Difficulty Saying No can arise—it’s impossible to help everyone all the time.",
-      "Conflict Avoidance can overshadow tough but necessary conversations."
+      "Overextending yourself can become a problem—your finances need protection too.",
+      "Difficulty saying no can arise—it’s impossible to help everyone all the time.",
+      "Conflict avoidance can overshadow tough but necessary conversations."
     ],
     products: [
       {
@@ -237,14 +237,14 @@ const categoriesData = {
       risk can uncover worthwhile gains, ensuring security without sacrificing every chance 
       for growth.`,
     strengths: [
-      "You’re a Clear-Eyed Investor—you see facts over hype and follow what works.",
-      "You’re an expert Risk-Manager—you keep spending and investing decisions grounded.",
-      "You maintain a Level-Headed approach—rarely impulsive, you weigh outcomes before acting."
+      "You’re a clear-eyed investor—you see facts over hype and follow what works.",
+      "You’re an expert risk manager—you keep spending and investing decisions grounded.",
+      "You maintain a level-headed approach—rarely impulsive, you weigh outcomes before acting."
     ],
     weaknesses: [
-      "Missing Opportunities can happen—a small risk might sometimes pay off.",
-      "Over-Caution can hold you back—progress often requires stepping out of your comfort zone.",
-      "A Rigid Mindset may develop—preferring only proven methods can limit innovative solutions."
+      "Missing opportunities can happen—a small risk might sometimes pay off.",
+      "Over-caution can hold you back—progress often requires stepping out of your comfort zone.",
+      "A rigid mindset may develop—preferring only proven methods can limit innovative solutions."
     ],
     products: [
       {
@@ -295,7 +295,9 @@ const categoriesData = {
   }
 };
 
-// Tie Data (no changes to product definitions)
+/****************************************************
+ * TIE CATEGORY DATA
+ ****************************************************/
 const tieData = {
   "Adventurer+Planner": {
     combinedName: "Adventurous Planner",
