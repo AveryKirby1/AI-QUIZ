@@ -256,6 +256,7 @@ const categoriesData = {
           "Real-time balance/transaction alerts to stay in sync with plans",
           "Early Pay (if eligible) for quicker paycheck access"
         ]
+        + image: "images/checking.png"
       },
       {
         name: "Key Active Saver®",
@@ -1424,6 +1425,14 @@ contentDiv.className = "product-content";
 // Left column (25%): blank or for an image
 const leftDiv = document.createElement("div");
 leftDiv.className = "product-left";
+    + // ADD THIS: Create and append an <img> if 'prod.image' is defined
++ if (prod.image) {
++   const productImage = document.createElement("img");
++   productImage.src = prod.image;
++   productImage.alt = prod.name;
++   productImage.className = "product-image";
++   leftDiv.appendChild(productImage);
++ }
 
 // Middle column (50%): pitch text + "Learn More" button
 const middleDiv = document.createElement("div");
