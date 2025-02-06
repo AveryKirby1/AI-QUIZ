@@ -93,7 +93,6 @@ html, body {
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 8px;
-  /* Larger padding and font for bigger boxes */
   padding: 20px;  
   font-size: 1.1rem; 
   cursor: pointer;
@@ -154,7 +153,7 @@ html, body {
 }
 
 /* ----------------------------------------------------------------------- */
-/* RESULTS SECTION (unchanged) */
+/* RESULTS SECTION */
 /* ----------------------------------------------------------------------- */
 #results-section {
   margin-top: 10px;
@@ -179,10 +178,11 @@ html, body {
   margin-bottom: 5px;
 }
 
+/* Remove the color from #category-name so the red-text class applies */
 #category-name {
   margin-top: 5px;
   font-size: 1.8rem;
-  color: #007BFF;
+  /* color property removed */
 }
 
 #category-description {
@@ -272,11 +272,11 @@ html, body {
 }
 
 .plus-callout-small {
-  text-align: center;    /* center text inside the element */
+  text-align: center;
   display: block;
-  max-width: 600px;      /* match the bar container */
-  margin: 10px auto 0;   /* top margin 10px, auto left/right for centering */
-  font-size: 0.75rem;    /* or whatever size you want */
+  max-width: 600px;
+  margin: 10px auto 0;
+  font-size: 0.75rem;
   color: #777;
 }
 
@@ -308,7 +308,6 @@ html, body {
   font-size: 0.9rem;
 }
 
-/* Product Recommendations Title */
 .fuel-title {
   text-align: center;
   font-size: 1.2rem;
@@ -326,7 +325,6 @@ html, body {
   width: 100%;
 }
 
-/* Make product cards smaller */
 .product-card {
   width: 100%;
   max-width: 900px;
@@ -335,14 +333,13 @@ html, body {
   border-radius: 5px;
   box-sizing: border-box;
   margin: 0;
-
   display: flex;
   flex-direction: column;
   min-height: 300px;
 }
 
 .product-header {
-  flex: 0 0 40px; /* top area of the card */
+  flex: 0 0 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -356,14 +353,12 @@ html, body {
   line-height: 1.2;
 }
 
-/* Card content: 3 columns */
 .product-content {
   flex: 1;
   display: flex;
   width: 100%;
 }
 
-/* left 25% */
 .product-left {
   width: 25%;
   background-color: #ddd;
@@ -371,7 +366,6 @@ html, body {
   padding: 20px;
 }
 
-/* middle 50%: pitch text */
 .product-middle {
   width: 50%;
   padding: 20px;
@@ -382,7 +376,6 @@ html, body {
   justify-content: flex-start;
 }
 
-/* right 25%: bullet points */
 .product-right {
   width: 25%;
   padding: 20px;
@@ -439,7 +432,8 @@ html, body {
 .results-box {
   width: 100%;
   background-color: #f9f9f9; 
-  padding: 80px 0;          
+  padding: 80px 0;
+  margin-top: -110px;
 }
 
 .results-inner {
@@ -459,7 +453,6 @@ html, body {
   text-align: left;
 }
 
-/* "With your responses in mind..." line: bold black */
 .top-line {
   font-weight: 700;
   color: #000;
@@ -467,11 +460,24 @@ html, body {
   margin-bottom: 0.5rem;
 }
 
-/* Category name: slightly larger, bold red */
-.red-line {
-  font-weight: 700;
-  color: #d10c1e;
-  font-size: 1.8rem;
+#intro-second-line {
+  margin-top: 60px;
+}
+
+/* New result text class to style only the specific result sentence */
+.result-text {
+  font-family: "Arial Black", sans-serif;
+  font-weight: bold;
+  font-size: 15x; /* Adjust as needed */
+}
+
+/* Existing color classes */
+.black-text {
+  color: #000000;
+}
+
+.red-text {
+  color: #B22222;
 }
 
 /* ----------------------------------------------------------------------- */
@@ -501,6 +507,7 @@ html, body {
   background-color: #f0f0f0;
   box-sizing: border-box;
 }
+
 .opener-text {
   font-weight: bold;
 }
