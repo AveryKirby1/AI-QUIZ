@@ -1425,27 +1425,27 @@ contentDiv.className = "product-content";
 const leftDiv = document.createElement("div");
 leftDiv.className = "product-left";
 
-+ // NEW: Derive which image to show based on product name
-+ let imageSrc = "";
-+ const lowerName = prod.name.toLowerCase();
-+ if (lowerName.includes("checking")) {
-+   imageSrc = "images/checking.png";
-+ } else if (lowerName.includes("saver") || lowerName.includes("savings")) {
-+   imageSrc = "images/savings.png";
-+ } else if (lowerName.includes("credit")) {
-+   imageSrc = "images/creditcard copy.png";
-+ } else if (lowerName.includes("loan")) {
-+   imageSrc = "images/loans.png";
-+ }
-+
-+ // If we found a match, create an <img> in the left column
-+ if (imageSrc) {
-+   const productImage = document.createElement("img");
-+   productImage.src = imageSrc;
-+   productImage.alt = prod.name;
-+   productImage.className = "product-image";
-+   leftDiv.appendChild(productImage);
-+ }
+// NEW: Derive which image to show based on product name
+let imageSrc = "";
+const lowerName = prod.name.toLowerCase();
+if (lowerName.includes("checking")) {
+   imageSrc = "images/checking.png";
+ } else if (lowerName.includes("saver") || lowerName.includes("savings")) {
+   imageSrc = "images/savings.png";
+ } else if (lowerName.includes("credit")) {
+   imageSrc = "images/creditcard copy.png";
+ } else if (lowerName.includes("loan")) {
+   imageSrc = "images/loans.png";
+ }
+
+ // If we found a match, create an <img> in the left column
+ if (imageSrc) {
+   const productImage = document.createElement("img");
+   productImage.src = imageSrc;
+   productImage.alt = prod.name;
+   productImage.className = "product-image";
+   leftDiv.appendChild(productImage);
+    }
 
 const middleDiv = document.createElement("div");
 middleDiv.className = "product-middle";
