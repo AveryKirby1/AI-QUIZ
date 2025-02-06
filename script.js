@@ -1433,7 +1433,7 @@ if (lowerName.includes("checking")) {
  } else if (lowerName.includes("saver") || lowerName.includes("savings")) {
    imageSrc = "images/savings.png";
  } else if (lowerName.includes("credit")) {
-   imageSrc = "images/creditcard copy.png";
+   imageSrc = "images/creditcard.png";
  } else if (lowerName.includes("loan")) {
    imageSrc = "images/loans.png";
  }
