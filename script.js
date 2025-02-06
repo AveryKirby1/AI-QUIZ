@@ -35,6 +35,7 @@ function displayQuestion(index) {
   qObj.answers.forEach((ans, ansIdx) => {
     const card = document.createElement("div");
     card.className = "answer-card";
+
     card.onclick = () => {
       const cb = card.querySelector("input[type='checkbox']");
       cb.checked = !cb.checked;
@@ -162,7 +163,9 @@ function showResults() {
 
   const { sortedArray } = calculateCategoryScores(chosenEmotions);
   const topScore = sortedArray[0][1];
-  const tiedCats = sortedArray.filter(([,score]) => score === topScore).map(([cat]) => cat);
+  const tiedCats = sortedArray
+    .filter(([, score]) => score === topScore)
+    .map(([cat]) => cat);
 
   displayFinalResults(tiedCats, sortedArray);
 }
@@ -191,7 +194,7 @@ function calculateCategoryScores(emotions) {
     }
   });
 
-  let sortedArray = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+  let sortedArray = Object.entries(scores).sort((a, b) => b[1] - a[1]);
   return { sortedArray };
 }
 
@@ -207,7 +210,7 @@ function getCombinedNameAndDesc(tiedCats) {
       description: categoriesData[cat].description
     };
   }
-  const sortedTied = [...tiedCats].sort((a,b)=>a.localeCompare(b));
+  const sortedTied = [...tiedCats].sort((a, b) => a.localeCompare(b));
   const tieKey = sortedTied.join("+");
   if (tieData[tieKey]) {
     const comboName = tieData[tieKey].combinedName;
@@ -223,7 +226,7 @@ function getCombinedNameAndDesc(tiedCats) {
 }
 
 function isVowel(ch) {
-  return ["A","E","I","O","U"].includes(ch.toUpperCase());
+  return ["A", "E", "I", "O", "U"].includes(ch.toUpperCase());
 }
 
 /****************************************************
@@ -236,8 +239,8 @@ function displayFinalResults(tiedCats, sortedArray) {
     "Finances touch our lives in personal ways and can often feel overwhelming. " +
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
- document.getElementById("category-name").textContent = name;
-document.getElementById("category-name").classList.add("red-text");
+  document.getElementById("category-name").textContent = name;
+  document.getElementById("category-name").classList.add("red-text");
 
   document.getElementById("category-description").innerHTML = description;
 
@@ -249,26 +252,28 @@ document.getElementById("category-name").classList.add("red-text");
 
   const distributionTitle = document.createElement("h3");
   // ADD this block in its place:
-if (topPct === 100 && tiedCats.length === 1) {
-  distributionTitle.innerHTML = `Your <span class="key-span">key</span> money signs:`;
-} else {
-  distributionTitle.innerHTML = `
-    While one money sign leads the way, others add depth to your financial personality!
-  `;
-}
+  if (topPct === 100 && tiedCats.length === 1) {
+    distributionTitle.innerHTML = `Your <span class="key-span">key</span> money signs:`;
+  } else {
+    distributionTitle.innerHTML = `
+      While one money sign leads the way, others add depth to your financial personality!
+    `;
+  }
 
-// Also center it in the middle 50% of the page:
-distributionTitle.style.width = "50%";
-distributionTitle.style.margin = "0 auto";
-distributionTitle.style.textAlign = "center";
+  // Also center it in the middle 50% of the page:
+  distributionTitle.style.width = "50%";
+  distributionTitle.style.margin = "0 auto";
+  distributionTitle.style.textAlign = "center";
 
-  distributionContainer.insertBefore(distributionTitle, document.getElementById("category-bars"));
+  distributionContainer.insertBefore(
+    distributionTitle,
+    document.getElementById("category-bars")
+  );
 
   const plusCallout = document.createElement("p");
   plusCallout.className = "plus-callout-small";
   plusCallout.textContent = `Click the “+” icons to view more about each non-winning category.`;
   distributionContainer.appendChild(plusCallout);
-
 
   const topCatsForBullets = determineTopCats(sortedArray);
   const pctMap = buildPctMap(sortedArray);
@@ -284,7 +289,9 @@ distributionTitle.style.textAlign = "center";
     excelList.appendChild(li);
   });
 
-  const watchoutList = document.getElementById("watchout-box").querySelector("ul");
+  const watchoutList = document
+    .getElementById("watchout-box")
+    .querySelector("ul");
   watchoutList.innerHTML = "";
   finalWeaknesses.forEach(w => {
     const li = document.createElement("li");
@@ -301,7 +308,7 @@ distributionTitle.style.textAlign = "center";
       categoriesData[tiedCats[0]].headingForProducts;
   } else {
     // Tied scenario - sort to get the tieKey
-    const sortedTied = [...tiedCats].sort((a,b)=>a.localeCompare(b));
+    const sortedTied = [...tiedCats].sort((a, b) => a.localeCompare(b));
     const tieKey = sortedTied.join("+");
     if (tieData[tieKey]) {
       productsArray = tieData[tieKey].products;
@@ -319,85 +326,87 @@ distributionTitle.style.textAlign = "center";
 
   productsArray.forEach(prod => {
     // Create the overall card container
-const card = document.createElement("div");
-card.className = "product-card";
+    const card = document.createElement("div");
+    card.className = "product-card";
 
-// 1) Top header (10%)
-const headerDiv = document.createElement("div");
-headerDiv.className = "product-header";
+    // 1) Top header (10%)
+    const headerDiv = document.createElement("div");
+    headerDiv.className = "product-header";
 
-const headerTitle = document.createElement("h5");
-headerTitle.textContent = prod.name;
+    const headerTitle = document.createElement("h5");
+    headerTitle.textContent = prod.name;
+    headerDiv.appendChild(headerTitle);
 
-headerDiv.appendChild(headerTitle);
+    // 2) Content area (90%) with three columns
+    const contentDiv = document.createElement("div");
+    contentDiv.className = "product-content";
 
-// 2) Content area (90%) with three columns
-const contentDiv = document.createElement("div");
-contentDiv.className = "product-content";
+    // Left column (25%): blank or for an image
+    const leftDiv = document.createElement("div");
+    leftDiv.className = "product-left";
 
-// Left column (25%): blank or for an image
-const leftDiv = document.createElement("div");
-leftDiv.className = "product-left";
+    // NEW: Derive which image to show based on product name
+    let imageSrc = "";
+    const lowerName = prod.name.toLowerCase();
 
-// NEW: Derive which image to show based on product name
-let imageSrc = "";
-const lowerName = prod.name.toLowerCase();
-if (lowerName.includes("checking")) {
-   imageSrc = "images/checking.png";
- } else if (lowerName.includes("saver") || lowerName.includes("savings")) {
-   imageSrc = "images/savings.png";
- } else if (lowerName.includes("credit")) {
-   imageSrc = "images/creditcard.png";
- } else if (lowerName.includes("loan")) {
-   imageSrc = "images/loans.png";
- }
-
- // If we found a match, create an <img> in the left column
- if (imageSrc) {
-   const productImage = document.createElement("img");
-   productImage.src = imageSrc;
-   productImage.alt = prod.name;
-   productImage.className = "product-image";
-   leftDiv.appendChild(productImage);
+    if (lowerName.includes("checking")) {
+      imageSrc = "images/checking.png";
+    } else if (lowerName.includes("saver") || lowerName.includes("savings")) {
+      imageSrc = "images/savings.png";
+    } else if (
+      lowerName.includes("credit") ||
+      lowerName.includes("latitude") ||
+      lowerName.includes("rewards")
+    ) {
+      imageSrc = "images/creditcard.png";
+    } else if (lowerName.includes("loan")) {
+      imageSrc = "images/loans.png";
     }
 
-const middleDiv = document.createElement("div");
-middleDiv.className = "product-middle";
+    // If we found a match, create an <img> in the left column
+    if (imageSrc) {
+      const productImage = document.createElement("img");
+      productImage.src = imageSrc;
+      productImage.alt = prod.name;
+      productImage.className = "product-image";
+      leftDiv.appendChild(productImage);
+    }
 
+    const middleDiv = document.createElement("div");
+    middleDiv.className = "product-middle";
 
-const pitchP = document.createElement("p");
-pitchP.textContent = prod.pitch;
-middleDiv.appendChild(pitchP);
+    const pitchP = document.createElement("p");
+    pitchP.textContent = prod.pitch;
+    middleDiv.appendChild(pitchP);
 
-const button = document.createElement("button");
-button.className = "product-btn";
-button.textContent = "Learn More";
-middleDiv.appendChild(button);
+    const button = document.createElement("button");
+    button.className = "product-btn";
+    button.textContent = "Learn More";
+    middleDiv.appendChild(button);
 
-// Right column (25%): bullet points
-const rightDiv = document.createElement("div");
-rightDiv.className = "product-right";
+    // Right column (25%): bullet points
+    const rightDiv = document.createElement("div");
+    rightDiv.className = "product-right";
 
-const benefitsUl = document.createElement("ul");
-prod.benefits.forEach(b => {
-  const li = document.createElement("li");
-  li.textContent = b;
-  benefitsUl.appendChild(li);
-});
-rightDiv.appendChild(benefitsUl);
+    const benefitsUl = document.createElement("ul");
+    prod.benefits.forEach(b => {
+      const li = document.createElement("li");
+      li.textContent = b;
+      benefitsUl.appendChild(li);
+    });
+    rightDiv.appendChild(benefitsUl);
 
-// Put columns together
-contentDiv.appendChild(leftDiv);
-contentDiv.appendChild(middleDiv);
-contentDiv.appendChild(rightDiv);
+    // Put columns together
+    contentDiv.appendChild(leftDiv);
+    contentDiv.appendChild(middleDiv);
+    contentDiv.appendChild(rightDiv);
 
-// Finally, append the header and content to the card
-card.appendChild(headerDiv);
-card.appendChild(contentDiv);
+    // Finally, append the header and content to the card
+    card.appendChild(headerDiv);
+    card.appendChild(contentDiv);
 
-// And add the card to the container
-productContainer.appendChild(card);
-
+    // And add the card to the container
+    productContainer.appendChild(card);
   });
 }
 
@@ -429,6 +438,7 @@ function buildDistributionBars(sortedArray, tiedCats) {
 
     const barBg = document.createElement("div");
     barBg.className = "bar-bg";
+
     const fill = document.createElement("div");
     fill.className = "bar-fill";
     fill.style.width = pct + "%";
@@ -448,7 +458,8 @@ function buildDistributionBars(sortedArray, tiedCats) {
       const shortBox = document.createElement("div");
       shortBox.id = `short-${cat}`;
       shortBox.className = "short-summary";
-      shortBox.textContent = categoriesData[cat]?.shortDescription?.trim() || "";
+      shortBox.textContent =
+        categoriesData[cat]?.shortDescription?.trim() || "";
       catBarContainer.appendChild(shortBox);
     }
   });
@@ -465,10 +476,11 @@ function determineTopCats(sortedArray) {
     return [sortedArray[0][0]];
   }
 
-  const allTied = (sortedArray.length === 4 &&
+  const allTied =
+    sortedArray.length === 4 &&
     sortedArray[0][1] > 0 &&
-    sortedArray.every(([, s]) => s === sortedArray[0][1])
-  );
+    sortedArray.every(([, s]) => s === sortedArray[0][1]);
+
   if (allTied) {
     return sortedArray.map(([cat]) => cat);
   }
@@ -518,7 +530,6 @@ function buildOutputItems(topCats, pctMap, keyName) {
         arr[0]
       );
     });
-
   } else if (len === 3) {
     // Each of the 3 categories gets 1 bullet
     return topCats.map(cat => {
@@ -529,7 +540,6 @@ function buildOutputItems(topCats, pctMap, keyName) {
         arr[0]
       );
     });
-
   } else if (len === 2) {
     // For 2 categories, we give cat1 two bullets, cat2 one bullet
     const [cat1, cat2] = topCats;
@@ -541,7 +551,6 @@ function buildOutputItems(topCats, pctMap, keyName) {
       craftLineNew(cat1, pctMap[cat1] === topCategoryScore, arr1[1]),
       craftLineNew(cat2, pctMap[cat2] === topCategoryScore, arr2[0])
     ];
-
   } else {
     // Single category => 3 bullets
     const cat = topCats[0];
@@ -556,14 +565,12 @@ function buildOutputItems(topCats, pctMap, keyName) {
   }
 }
 
-
 /****************************************************
  * TEMPLATES
  ****************************************************/
 /****************************************************
  * NEW ARRAYS & FUNCTION for Strength/Weakness bullets
  ****************************************************/
-
 const dominantOpeners = [
   "It looks like you strongly favor [cat]",
   "Since you rank high in [cat]",
@@ -588,14 +595,15 @@ const secondaryOpeners = [
   "As a partial [cat]"
 ];
 
+/**
+ * Removes any leading phrase like “Because you’re a [cat], ...” up to the comma,
+ * if that comma appears within the first ~25 characters.
+ */
 function stripLeadingClause(text) {
-  // Look for the first comma in the first ~25 characters:
   const idx = text.indexOf(",");
   if (idx !== -1 && idx < 25) {
-    // Remove everything up to (and including) that comma
     text = text.slice(idx + 1).trim();
   }
-  // Capitalize the first letter after removing the clause:
   if (text.length > 0) {
     return text[0].toUpperCase() + text.slice(1);
   }
@@ -623,17 +631,9 @@ function craftLineNew(cat, isDominant, originalLine) {
   const finalOpener = opener.replace("[cat]", cat);
 
   // 4) Return with an em dash in between
-  //    e.g. “It looks like you strongly favor Adventurer—Overthinking can hold you back...”
+  // e.g. “It looks like you strongly favor Adventurer—Overthinking can hold you back...”
   return `<span class="opener-text">${finalOpener}</span>—${remainder}`;
-
 }
-
-
-
-/****************************************************
- * craftLine
- ****************************************************/
-
 
 /****************************************************
  * TOGGLE SHORT SUMMARY
@@ -650,6 +650,7 @@ function toggleShortSummary(cat, toggleSpan) {
     toggleSpan.textContent = "−";
   }
 }
+
 /****************************************************
  * AUTO COMPLETE QUIZ BUTTON (For Testing Only)
  * This code automatically selects the first answer for every question
@@ -658,7 +659,7 @@ function toggleShortSummary(cat, toggleSpan) {
  ****************************************************/
 document.getElementById("auto-complete-btn").addEventListener("click", function() {
   // Auto-select the first answer for each question
-  for (var i = 0; i < questions.length; i++) {
+  for (let i = 0; i < questions.length; i++) {
     selectedAnswers[i] = [0];
   }
   
