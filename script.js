@@ -239,8 +239,16 @@ function displayFinalResults(tiedCats, sortedArray) {
     "Finances touch our lives in personal ways and can often feel overwhelming. " +
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
-  document.getElementById("category-name").textContent = `${article} ${name}`;
-  document.getElementById("category-name").classList.add("red-text");
+
+  // 1) Put the article ONLY on the black-text line (“intro-second-line”)
+  //    so it ends with "... we think you are a/an"
+  const introSecondLineEl = document.getElementById("intro-second-line");
+  introSecondLineEl.textContent = `With your responses in mind, we think you are ${article}`;
+
+  // 2) Put just the category name (e.g. "Adventurous Planner") on the red-text line
+  const categoryNameEl = document.getElementById("category-name");
+  categoryNameEl.textContent = name;                 // No article here
+  categoryNameEl.classList.add("red-text");          // Stays red & bold
 
   document.getElementById("category-description").innerHTML = description;
 
@@ -251,7 +259,6 @@ function displayFinalResults(tiedCats, sortedArray) {
   const topPct = Math.round((sortedArray[0][1] / total) * 100);
 
   const distributionTitle = document.createElement("h3");
-  // ADD this block in its place:
   if (topPct === 100 && tiedCats.length === 1) {
     distributionTitle.innerHTML = `Your <span class="key-span">key</span> money signs:`;
   } else {
@@ -259,8 +266,6 @@ function displayFinalResults(tiedCats, sortedArray) {
       While one money sign leads the way, others add depth to your financial personality!
     `;
   }
-
-  // Also center it in the middle 50% of the page:
   distributionTitle.style.width = "50%";
   distributionTitle.style.margin = "0 auto";
   distributionTitle.style.textAlign = "center";
@@ -274,6 +279,8 @@ function displayFinalResults(tiedCats, sortedArray) {
   plusCallout.className = "plus-callout-small";
   plusCallout.textContent = `Click the “+” icons to view more about each non-winning category.`;
   distributionContainer.appendChild(plusCallout);
+}
+
 
   const topCatsForBullets = determineTopCats(sortedArray);
   const pctMap = buildPctMap(sortedArray);
