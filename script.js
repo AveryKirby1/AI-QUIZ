@@ -240,15 +240,15 @@ function displayFinalResults(tiedCats, sortedArray) {
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
 
-  // 1) Put the article ONLY on the black-text line (“intro-second-line”)
-  //    so it ends with "... we think you are a/an"
+  // Put the article ONLY on the black-text line (“intro-second-line”) 
+  // so it ends with "... we think you are a/an"
   const introSecondLineEl = document.getElementById("intro-second-line");
   introSecondLineEl.textContent = `With your responses in mind, we think you are ${article}`;
 
-  // 2) Put just the category name (e.g. "Adventurous Planner") on the red-text line
+  // Put just the category name (e.g. "Adventurous Planner") on the red-text line
   const categoryNameEl = document.getElementById("category-name");
-  categoryNameEl.textContent = name;                 // No article here
-  categoryNameEl.classList.add("red-text");          // Stays red & bold
+  categoryNameEl.textContent = name;
+  categoryNameEl.classList.add("red-text");  
 
   document.getElementById("category-description").innerHTML = description;
 
@@ -279,9 +279,12 @@ function displayFinalResults(tiedCats, sortedArray) {
   plusCallout.className = "plus-callout-small";
   plusCallout.textContent = `Click the “+” icons to view more about each non-winning category.`;
   distributionContainer.appendChild(plusCallout);
-}
 
+  // -------------------------------------------
+  // NO closing brace here — keep the function going!
+  // -------------------------------------------
 
+  // Now continue with the rest of the function logic:
   const topCatsForBullets = determineTopCats(sortedArray);
   const pctMap = buildPctMap(sortedArray);
 
@@ -336,15 +339,14 @@ function displayFinalResults(tiedCats, sortedArray) {
     const card = document.createElement("div");
     card.className = "product-card";
 
-    // 1) Top header (10%)
+    // 1) Top header
     const headerDiv = document.createElement("div");
     headerDiv.className = "product-header";
-
     const headerTitle = document.createElement("h5");
     headerTitle.textContent = prod.name;
     headerDiv.appendChild(headerTitle);
 
-    // 2) Content area (90%) with three columns
+    // 2) Content area
     const contentDiv = document.createElement("div");
     contentDiv.className = "product-content";
 
@@ -352,10 +354,9 @@ function displayFinalResults(tiedCats, sortedArray) {
     const leftDiv = document.createElement("div");
     leftDiv.className = "product-left";
 
-    // NEW: Derive which image to show based on product name
+    // Derive which image to show
     let imageSrc = "";
     const lowerName = prod.name.toLowerCase();
-
     if (lowerName.includes("checking")) {
       imageSrc = "images/checking.png";
     } else if (lowerName.includes("saver") || lowerName.includes("savings")) {
@@ -369,8 +370,6 @@ function displayFinalResults(tiedCats, sortedArray) {
     } else if (lowerName.includes("loan")) {
       imageSrc = "images/loans.png";
     }
-
-    // If we found a match, create an <img> in the left column
     if (imageSrc) {
       const productImage = document.createElement("img");
       productImage.src = imageSrc;
@@ -381,20 +380,16 @@ function displayFinalResults(tiedCats, sortedArray) {
 
     const middleDiv = document.createElement("div");
     middleDiv.className = "product-middle";
-
     const pitchP = document.createElement("p");
     pitchP.textContent = prod.pitch;
     middleDiv.appendChild(pitchP);
-
     const button = document.createElement("button");
     button.className = "product-btn";
     button.textContent = "Learn More";
     middleDiv.appendChild(button);
 
-    // Right column (25%): bullet points
     const rightDiv = document.createElement("div");
     rightDiv.className = "product-right";
-
     const benefitsUl = document.createElement("ul");
     prod.benefits.forEach(b => {
       const li = document.createElement("li");
@@ -415,7 +410,8 @@ function displayFinalResults(tiedCats, sortedArray) {
     // And add the card to the container
     productContainer.appendChild(card);
   });
-}
+} // <-- Now we properly close the function here, at the end.
+
 
 /****************************************************
  * BUILD DISTRIBUTION BARS
