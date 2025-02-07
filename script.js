@@ -239,7 +239,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     "Finances touch our lives in personal ways and can often feel overwhelming. " +
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
-  document.getElementById("category-name").textContent = name;
+  document.getElementById("category-name").textContent = `${article} ${name}`;
   document.getElementById("category-name").classList.add("red-text");
 
   document.getElementById("category-description").innerHTML = description;
