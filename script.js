@@ -240,15 +240,15 @@ function displayFinalResults(tiedCats, sortedArray) {
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
 
-  // Put the article ONLY on the black-text line (“intro-second-line”) 
+  // Put the article on the black-text line
   // so it ends with "... we think you are a/an"
   const introSecondLineEl = document.getElementById("intro-second-line");
   introSecondLineEl.textContent = `With your responses in mind, we think you are ${article}`;
 
-  // Put just the category name (e.g. "Adventurous Planner") on the red-text line
+  // Put just the category name on the red-text line
   const categoryNameEl = document.getElementById("category-name");
   categoryNameEl.textContent = name;
-  categoryNameEl.classList.add("red-text");  
+  categoryNameEl.classList.add("red-text");
 
   document.getElementById("category-description").innerHTML = description;
 
@@ -280,11 +280,8 @@ function displayFinalResults(tiedCats, sortedArray) {
   plusCallout.textContent = `Click the “+” icons to view more about each non-winning category.`;
   distributionContainer.appendChild(plusCallout);
 
-  // -------------------------------------------
-  // NO closing brace here — keep the function going!
-  // -------------------------------------------
+  // Continue the function (DON'T close it here):
 
-  // Now continue with the rest of the function logic:
   const topCatsForBullets = determineTopCats(sortedArray);
   const pctMap = buildPctMap(sortedArray);
 
@@ -314,20 +311,28 @@ function displayFinalResults(tiedCats, sortedArray) {
   if (tiedCats.length === 1) {
     // Single category
     productsArray = categoriesData[tiedCats[0]].products;
+
+    // If you DO want a heading for single categories, leave this:
     document.getElementById("products-title").textContent =
       categoriesData[tiedCats[0]].headingForProducts;
+    // ^ If headingForProducts doesn't exist, this might do nothing or cause an error,
+    //   so remove/disable if undesired or no property in your data.
+
   } else {
-    // Tied scenario - sort to get the tieKey
+    // Tied scenario
     const sortedTied = [...tiedCats].sort((a, b) => a.localeCompare(b));
     const tieKey = sortedTied.join("+");
     if (tieData[tieKey]) {
       productsArray = tieData[tieKey].products;
-      document.getElementById("products-title").textContent =
-        "A Hybrid Approach to Your Financial Life";
+
+      // We REMOVE the tie wording, so just set it to empty:
+      document.getElementById("products-title").textContent = "";
+
     } else {
       productsArray = [];
-      document.getElementById("products-title").textContent =
-        "A Mixed Approach to Your Financial Life";
+
+      // Also set this to empty for the "Mixed" scenario:
+      document.getElementById("products-title").textContent = "";
     }
   }
 
@@ -383,6 +388,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     const pitchP = document.createElement("p");
     pitchP.textContent = prod.pitch;
     middleDiv.appendChild(pitchP);
+
     const button = document.createElement("button");
     button.className = "product-btn";
     button.textContent = "Learn More";
@@ -410,7 +416,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     // And add the card to the container
     productContainer.appendChild(card);
   });
-} // <-- Now we properly close the function here, at the end.
+}
 
 
 /****************************************************
