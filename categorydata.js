@@ -404,9 +404,15 @@ const categoriesData = {
 // We’re reintroducing the “combinedName” property and preserving a “description” field.
 // All code from prior steps is included, with updated pitch and bullets per your instructions.
 
+/* tieData.js */
+
+// Below are the 11 tie personas, each with a combinedName, description, and 4 product recommendations.
+// The pitches now explicitly address each facet of the tie (e.g., “Adventurous” + “Planner”), explaining
+// why the product appeals to both sides. No placeholders or references to “key.com” in bullet points.
+
 const tieData = {
   "Adventurer+Planner": {
-    combinedName: "Adventurer + Planner",
+    combinedName: "Adventurous Planner",
     description: `
       You blend spontaneous energy with structured foresight, dreaming big yet 
       staying organized. Bold impulses meet methodical planning, creating a 
@@ -416,24 +422,23 @@ const tieData = {
       {
         name: "Key Smart Checking®",
         pitch: `
-          Zero monthly fees let you handle spur-of-the-moment buys without penalty, 
-          while online bill pay and alerts satisfy your need for order. You can 
-          spontaneously jump at opportunities, then track spending precisely 
-          to stay on plan.
+          Your adventurous side loves no monthly fees and freedom to spend on a whim, 
+          while your planner side appreciates the digital bill pay and real-time alerts. 
+          You can jump on sudden deals without losing track of each transaction.
         `,
         benefits: [
           "No monthly fee, ideal for mixed spending habits",
-          "Early deposits available for quick moves",
-          "Bill pay and real-time alerts for structured tracking",
+          "Early deposits for quick moves",
+          "Bill pay and alerts for structured tracking",
           "Nationwide ATM network for on-the-fly access"
         ]
       },
       {
         name: "Key Active Saver®",
         pitch: `
-          Each adventurous purchase also increments your savings. This automatic 
-          process means you don’t skip building a future cushion, even when you’re 
-          caught up in exciting opportunities.
+          This hits your spontaneity by letting you spend freely, yet it automatically 
+          saves a bit each time—perfect for the planner in you who wants future security. 
+          You remain impulsive but still build a cushion for tomorrow.
         `,
         benefits: [
           "Auto-deposits per debit swipe for steady growth",
@@ -445,10 +450,9 @@ const tieData = {
       {
         name: "Key2More Rewards® Credit Card",
         pitch: `
-          5x points on every purchase suits your adventurous bursts, while 
-          monthly bonus tiers reward bigger spending. No annual fee means 
-          you can redeem points for experiences or statement credit—perfect 
-          for balancing bold outlays and methodical earning.
+          The adventurer in you enjoys 5x points on any purchase, fueling big thrills, 
+          while your planner side likes monthly spend bonuses that you can strategically 
+          aim for. No annual fee ensures each point you earn goes toward future ventures.
         `,
         benefits: [
           "5x points on all buys, no rotating categories",
@@ -460,10 +464,9 @@ const tieData = {
       {
         name: "KeyBank Personal Loan",
         pitch: `
-          Get fast funding for major plans—a dream project or a calculated 
-          risk—without derailing your daily budget. A fixed APR lines up with 
-          your planning mindset, while quick approval aligns with your 
-          adventurous drive.
+          If you spot a major opportunity, your adventurer side wants fast funding, but 
+          the planner in you demands fixed payments and no hidden fees. A predictable APR 
+          meets your methodical style, and quick access satisfies your bold impulses.
         `,
         benefits: [
           "Predictable monthly payments, no origination fee",
@@ -476,7 +479,7 @@ const tieData = {
   },
 
   "Adventurer+Connector": {
-    combinedName: "Adventurer + Connector",
+    combinedName: "Adventurous Connector",
     description: `
       You’re driven by bold experiences and sharing them with others. You love 
       diving into new thrills alongside friends or family, ensuring everyone 
@@ -486,9 +489,9 @@ const tieData = {
       {
         name: "KeyBank Hassle-Free Checking Account®",
         pitch: `
-          No monthly fees, no overdraft charges, purely digital—perfect for quick 
-          group outings or last-minute plans. If you’re short on funds, transactions 
-          just decline, so you never plunge into hidden debt.
+          Your adventurous side wants no surprise fees, and your connector side 
+          wants a simple way to handle group finances. If you overspend, it’s 
+          declined—no overdraft drama. You can seize group outings worry-free.
         `,
         benefits: [
           "Truly no-fee checking, no monthly or overdraft",
@@ -500,9 +503,10 @@ const tieData = {
       {
         name: "Key Active Saver®",
         pitch: `
-          Build a small pool of funds automatically with each purchase, so you’re 
-          ready to jump on group adventures or help a friend spontaneously. 
-          No monthly fee linked to checking means more to share.
+          You often treat friends spontaneously, but this saver ensures each 
+          purchase also builds a small fund. Adventurer? You still get to spend 
+          freely. Connector? You’ll be ready if someone needs help. All with no 
+          extra monthly fee.
         `,
         benefits: [
           "Auto-deposits each time you swipe",
@@ -514,14 +518,13 @@ const tieData = {
       {
         name: "Key Cashback® Credit Card",
         pitch: `
-          Earning up to 2% back on every spend means your fearless buys can also 
-          support communal goals. No annual fee and digital controls keep group 
-          spending safe, and real-time cashback helps finance the next shared 
-          adventure.
+          Earn up to 2% back on every impulsive buy (adventurer), which you 
+          can then channel into group experiences (connector). No annual fee 
+          keeps it simple, and digital controls safeguard communal spending.
         `,
         benefits: [
           "2% cash back with an active Key checking",
-          "No annual fee, so all rewards stay yours",
+          "No annual fee, no complicated rewards categories",
           "Lock/unlock card instantly if misplaced",
           "Straightforward redemption for quick returns"
         ]
@@ -529,9 +532,10 @@ const tieData = {
       {
         name: "KeyBank Personal Loan",
         pitch: `
-          Sometimes you need immediate funds for a big communal trip or a philanthropic 
-          gesture. This loan provides that lump sum fast, with no origination fee, 
-          so you can lead the charge while keeping finances in check.
+          Sometimes your group needs a quick infusion of funds for a grand 
+          adventure or a joint cause. This loan’s speedy approval and no origination 
+          fee help you lead the charge (adventurer) while supporting everyone else 
+          (connector) responsibly.
         `,
         benefits: [
           "Fixed APR for predictable group payback",
@@ -544,7 +548,7 @@ const tieData = {
   },
 
   "Adventurer+Realist": {
-    combinedName: "Adventurer + Realist",
+    combinedName: "Adventurous Realist",
     description: `
       You crave new experiences but watch costs and avoid risky pitfalls. You 
       act quickly on opportunities yet prefer straightforward products with 
@@ -554,9 +558,9 @@ const tieData = {
       {
         name: "KeyBank Hassle-Free Checking Account®",
         pitch: `
-          Go anywhere, spend spontaneously. If you try to buy more than your balance, 
-          it’s simply declined—no overdraft fees or hidden interest. This safety net 
-          keeps you from accidental overspending while fueling your next adventure.
+          Your adventurer side loves the freedom of no monthly fees, while your 
+          realist side wants guaranteed no overdrafts. Charges are declined beyond 
+          your balance, so you don’t slip into unwanted debt after a spur-of-the-moment buy.
         `,
         benefits: [
           "No monthly or overdraft fees, purely digital",
@@ -568,9 +572,9 @@ const tieData = {
       {
         name: "Key Active Saver®",
         pitch: `
-          Each impulse buy also pads your savings a little. You stay free to explore 
-          but always have a small buffer building in the background. No monthly fee 
-          if linked to checking—practical security for your adventurous side.
+          Adventurers often spend impulsively; realists want a cushion. This 
+          quietly saves a little every time you buy, ensuring you keep building 
+          a safety net, even as you chase new thrills.
         `,
         benefits: [
           "Incremental saving each debit purchase",
@@ -582,25 +586,25 @@ const tieData = {
       {
         name: "KeyBank Latitude® Credit Card",
         pitch: `
-          Low interest over flashy rewards suits your careful approach. A 15-month 
-          0% intro APR helps with occasional big purchases, then you pay a lower 
-          rate. No annual fee means you’re not forced into constant spending 
-          to justify a card—only use it when needed.
+          You want quick credit for bold opportunities but minimal interest 
+          if you carry a balance. Latitude’s 15-month 0% intro satisfies 
+          adventure plans, while its lower ongoing APR respects your 
+          cost-conscious realism.
         `,
         benefits: [
-          "0% intro APR for 15 months on buys/transfers",
-          "Lower ongoing APR, saving you long-term",
-          "No annual fee, keep it in reserve",
+          "15-month 0% intro APR on buys/transfers",
+          "Lower ongoing APR than many reward cards",
+          "$0 annual fee, keep it in reserve",
           "Straightforward security features included"
         ]
       },
       {
         name: "KeyBank Personal Loan",
         pitch: `
-          For larger goals—like a dream travel or crucial purchase—you want quick 
-          access without ridiculous fees. A fixed-rate loan with no origination fee 
-          fits your cost-conscious outlook, letting you seize the moment while 
-          ensuring stable monthly payments.
+          For bigger leaps—like that dream trip—your realist side needs stable 
+          payments and no hidden fees, while your adventurous side appreciates 
+          quick funding. A fixed APR, no origination fee, and online ease check 
+          both boxes perfectly.
         `,
         benefits: [
           "Fixed APR, predictable monthly outlay",
@@ -613,35 +617,35 @@ const tieData = {
   },
 
   "Planner+Connector": {
-    combinedName: "Planner + Connector",
+    combinedName: "Connected Planner",
     description: `
-      You combine meticulous organization with a desire to help others thrive. 
-      You want to ensure finances are structured, but also flexible enough to 
-      handle group goals and communal success.
+      You meticulously organize your finances but also enjoy supporting and 
+      uplifting those around you. You need products that create order while 
+      letting you share resources and plan group goals smoothly.
     `,
     products: [
       {
         name: "Key Smart Checking®",
         pitch: `
-          No monthly fee keeps your budget precise, and Zelle® ensures group or 
-          family payments flow smoothly. Early deposit can help you organize 
-          bills or group events on time, tying your detailed scheduling with 
-          collaborative needs.
+          Your planner side loves no monthly fees and robust bill pay. 
+          Your connector side appreciates built-in Zelle® for group splits 
+          and easy reimbursements. It’s a stable, communal-friendly account 
+          with digital convenience.
         `,
         benefits: [
-          "No monthly fee, easy on structured budgets",
-          "Zelle® for quick cost splits or reimbursements",
-          "Early deposits if direct pay is set up",
-          "Bill pay keeps everything tracked methodically"
+          "No monthly fees, stable for any budget plan",
+          "Zelle for immediate splits or donations",
+          "Early deposit options for better scheduling",
+          "Online bill pay keeps everything tracked"
         ]
       },
       {
         name: "Key Active Saver®",
         pitch: `
-          Every debit card use also boosts your communal or personal fund 
-          automatically. No monthly fee if linked to checking means your 
-          structured plan remains intact while you’re prepared to help or 
-          handle events at any time.
+          As a planner, you value consistent savings; as a connector, you might 
+          also need funds to help others. This automatically sets aside a little 
+          each time you buy, ensuring your nest egg or communal support pool 
+          grows without fuss.
         `,
         benefits: [
           "Small auto-deposits each purchase",
@@ -653,25 +657,25 @@ const tieData = {
       {
         name: "Key Cashback® Credit Card",
         pitch: `
-          Earn 2% on all spending (with an active Key checking). Perfect for the 
-          structured Planner in you who wants clear returns, and the Connector 
-          who might donate or share part of those rewards with friends or family. 
-          No annual fee ensures every bit of value remains.
+          Planners want clear rewards, connectors want to share them. 
+          2% cash back on all spending (with checking) plus no annual fee 
+          fits both goals: systematically earn while easily redistributing 
+          or reinvesting if you choose.
         `,
         benefits: [
           "2% on every purchase, no rotating categories",
-          "No annual fee, keep it as a long-term tool",
-          "Straightforward redemption to checking or statements",
-          "Fraud protection so group finances stay safe"
+          "No annual fee, so no hidden cost to your plan",
+          "Simple redemption—statement credit or deposit",
+          "Real-time alerts, lock feature for secure group spending"
         ]
       },
       {
         name: "KeyBank Personal Loan",
         pitch: `
-          Group initiatives or personal milestones can require a large sum. This 
-          loan’s fixed monthly payments align well with your planning style, and 
-          no origination fee means you’re maximizing the funds that go toward 
-          shared or personal goals.
+          For larger group initiatives or your own projects, a fixed monthly 
+          cost keeps it tidy in your planner mindset, while no origination fee 
+          means more money can go to helping others or building out your 
+          structured goals.
         `,
         benefits: [
           "Fixed APR, stable monthly bill",
@@ -684,7 +688,7 @@ const tieData = {
   },
 
   "Planner+Realist": {
-    combinedName: "Planner + Realist",
+    combinedName: "Realistic Planner",
     description: `
       You thoroughly map out your finances but also maintain a pragmatic, 
       data-driven perspective. You want everything proven and clear, no hidden 
@@ -694,10 +698,10 @@ const tieData = {
       {
         name: "Key Safe Checking®",
         pitch: `
-          Overdrafts contradict your structured, cost-conscious style. Safe Checking 
-          simply declines transactions beyond your balance, so no negative totals 
-          occur. A modest monthly fee is transparent, matching your preference 
-          for zero hidden traps.
+          Overdrafts break your system, and hidden fees annoy your realism. 
+          Safe Checking declines payments beyond your balance, so you never 
+          slip into unexpected debt. Everything is methodical and upfront, 
+          just as you prefer.
         `,
         benefits: [
           "No overdrafts—declined if balance not sufficient",
@@ -709,10 +713,10 @@ const tieData = {
       {
         name: "Key Active Saver®",
         pitch: `
-          Consistent, incremental savings match your preference for stable growth. 
-          Each debit transaction shifts a small amount to savings, so you remain 
-          prepared without frantic efforts. No monthly fee if linked to checking 
-          maintains your orderly cost structure.
+          You want consistent growth that fits your precise plans. Each debit 
+          triggers a small deposit into savings. No monthly fee keeps the 
+          cost structure simple, so your carefully designed budget remains 
+          on track.
         `,
         benefits: [
           "Auto-transfer per debit for steady accumulation",
@@ -724,25 +728,24 @@ const tieData = {
       {
         name: "KeyBank Latitude® Credit Card",
         pitch: `
-          If you must carry a balance, you want the rate as low as possible. 
-          Latitude starts with a 15-month 0% intro APR, then transitions to 
-          a lower ongoing APR. No annual fee helps keep it neatly in your 
-          financial plan, with no extraneous cost.
+          You prefer a lower interest rate to gimmicky rewards. Latitude offers 
+          a 15-month 0% intro APR, then transitions to a consistently modest rate. 
+          No annual fee ensures it aligns with your measured, organized approach.
         `,
         benefits: [
-          "15-month 0% APR on purchases/transfers",
+          "15-month 0% intro APR on buys/transfers",
           "Lower ongoing APR than many reward cards",
-          "$0 annual fee, keep as a strategic backup",
-          "Simple perks, minimal complexity"
+          "$0 annual fee, no forced usage",
+          "Straightforward perks, minimal complexity"
         ]
       },
       {
         name: "KeyBank Personal Loan",
         pitch: `
-          For major goals—like consolidating debts or funding a necessary purchase— 
-          a fixed-rate personal loan fits your preference for exact budgeting. No 
-          origination fee means you know every cost upfront. A neat, all-digital 
-          process completes the package.
+          Large, planned goals—debt consolidation or a critical purchase— 
+          deserve fixed, transparent financing. This loan’s fixed APR and 
+          no origination fee let you integrate it neatly into your budget 
+          without any messy cost surprises.
         `,
         benefits: [
           "Fixed APR, predictable monthly outlay",
@@ -755,7 +758,7 @@ const tieData = {
   },
 
   "Connector+Realist": {
-    combinedName: "Connector + Realist",
+    combinedName: "Realistic Connector",
     description: `
       You love helping and collaborating but won’t compromise your financial 
       stability. You look for products that let you assist others while keeping 
@@ -765,68 +768,65 @@ const tieData = {
       {
         name: "Key Safe Checking®",
         pitch: `
-          You can’t afford to go overdraft just because you covered someone else’s 
-          expense. Safe Checking automatically declines over-limit transactions, 
-          so you stay in the black. Straightforward fees keep your cautious side 
-          comfortable.
+          Your connector side might cover someone’s bill, but your realist side 
+          refuses overdraft fees. Safe Checking declines transactions over your 
+          balance, so you can help without incurring surprise debt.
         `,
         benefits: [
-          "No overdrafts, if balance insufficient transaction declines",
-          "Simple monthly fee, no surprise extras",
-          "Digital tools for everyday needs",
-          "Alerts help maintain precise spending"
+          "No overdrafts—charges beyond balance are declined",
+          "Low, predictable monthly fee structure",
+          "Online bill pay & deposit for ease",
+          "Real-time alerts to watch each transaction"
         ]
       },
       {
         name: "Key Active Saver®",
         pitch: `
-          Your giving side likes to be prepared, and this account quietly grows 
-          savings with every purchase. If a friend needs urgent help, you have 
-          the funds—no stress. Fee waived with checking, so nothing eats 
-          into your goodwill.
+          Your caring nature wants an emergency fund for friends, yet you remain 
+          cost-conscious. Each purchase adds a bit to savings, building a safety net. 
+          No monthly fee with checking ensures you’re not wasting resources.
         `,
         benefits: [
-          "Auto savings, no complicated setup",
-          "Pause/adjust if money’s tight",
+          "Small deposit each debit, building a fund",
+          "Pause or adjust as finances shift",
           "Fee waived with Key checking",
-          "Transaction logs for total clarity"
+          "Instant visibility in the mobile app"
         ]
       },
       {
         name: "Key Cashback® Credit Card",
         pitch: `
-          Earn up to 2% on every spend—money you can either keep or share. 
-          No annual fee ensures the card never becomes a burden, and real-time 
-          alerts guard against fraudulent group charges. It’s a straightforward 
-          way to support both you and others.
+          Earn up to 2% back on each purchase—use it to further your own stability 
+          or lend a hand to others. No annual fee suits your practicality, and 
+          card lock/unlock keeps communal spending safe if you help a friend.
         `,
         benefits: [
-          "2% back with an active Key checking relationship",
-          "No annual fee, redeem as statement credit or deposit",
-          "Card lock/unlock if stolen or misplaced",
-          "Fraud alerts protect group spending"
+          "2% cash back with an active Key checking",
+          "No annual fee, simple redemption",
+          "Digital card lock/unlock for security",
+          "Fraud alerts keep group transactions safe"
         ]
       },
       {
         name: "KeyBank Personal Loan",
         pitch: `
-          Larger support—like paying a big emergency bill or funding a 
-          community effort—might need immediate resources. A fixed APR 
-          and no origination fee keep you stable while still enabling 
-          significant help. Manage it all online for total transparency.
+          Sometimes bigger generosity or a group initiative calls for substantial funds. 
+          A fixed APR and no origination fee keep it stable and transparent, so you 
+          can help loved ones or fund communal projects without jeopardizing your 
+          financial ground.
         `,
         benefits: [
-          "Fixed APR, consistent monthly cost",
-          "No origination fee, so all funds go to help",
-          "Flexible term lengths up to 84 months",
-          "Apply, manage, and track fully online"
+          "Fixed APR for predictable monthly cost",
+          "No origination fee, all funds go toward the goal",
+          "Flexible terms up to 84 months",
+          "Online application for clear, quick setup"
         ]
       }
     ]
   },
 
   "Adventurer+Connector+Planner": {
-    combinedName: "Adventurer + Connector + Planner",
+    combinedName: "Adventurous, Connected Planner",
     description: `
       You have an adventurous spark, a caring heart, and an organized mind. 
       You seek new experiences, often shared with friends, while keeping 
@@ -836,10 +836,10 @@ const tieData = {
       {
         name: "Key Smart Checking®",
         pitch: `
-          No monthly fee, broad ATM access, and built-in Zelle® for 
-          communal splitting. Early deposits let you pivot quickly if a 
-          group plan forms. Meanwhile, digital bill pay suits your 
-          need for structure.
+          Your adventurous side loves no fees and broad ATM access, your connector 
+          side likes Zelle® for group cost-splitting, and your planner side enjoys 
+          the digital bill pay and early deposit scheduling. All angles covered, 
+          no monthly cost.
         `,
         benefits: [
           "No monthly fee, flexible for shifting group funds",
@@ -851,10 +851,10 @@ const tieData = {
       {
         name: "Key Active Saver®",
         pitch: `
-          You can chase fun or help others, yet still watch your 
-          balance grow. Each debit sets aside a little—no monthly 
-          fee if linked to checking. Perfect for someone who 
-          balances spontaneity, sharing, and planning.
+          Enjoy spontaneous fun or helping others, yet still systematically save. 
+          A small deposit goes into savings each time you use your card, 
+          satisfying both your caring and organized sides, with no monthly fee 
+          to hamper your sense of adventure.
         `,
         benefits: [
           "Auto micro-deposits keep your future in mind",
@@ -866,11 +866,10 @@ const tieData = {
       {
         name: "Key2More Rewards® Credit Card",
         pitch: `
-          Earn 5x points on every purchase—great for covering both 
-          thrilling personal buys and group costs. Monthly bonuses 
-          reward bigger monthly spending bursts. No annual fee 
-          means you can plan exactly how your points serve you or 
-          your friends.
+          Your adventurous side makes purchases freely, the connector side often 
+          covers group bills, and your planner side wants structured rewards. 
+          With 5x points and monthly bonuses, no annual fee, it satisfies all 
+          three perspectives at once.
         `,
         benefits: [
           "5x points on all buys, no rotating categories",
@@ -882,14 +881,13 @@ const tieData = {
       {
         name: "KeyBank Personal Loan",
         pitch: `
-          For bigger collective adventures or personal goals, 
-          you need upfront money fast but with a tidy repayment plan. 
-          This loan has no origination fee and a fixed APR, 
-          ensuring you can rally everyone behind an exciting plan 
-          without financial chaos.
+          For big collective adventures or personal expansions, you want quick funds, 
+          stable repayment, and zero hidden fees. This loan checks all boxes: 
+          immediate lumpsum for your bold moves, no origination fee for your 
+          structured budget, and a safe space to help your group too.
         `,
         benefits: [
-          "Fixed APR, straightforward monthly payment",
+          "Fixed APR, stable monthly payment",
           "No origination fee, more funds for the idea",
           "Up to 84 months if you want extended pacing",
           "Online management to keep group in the loop"
@@ -899,20 +897,20 @@ const tieData = {
   },
 
   "Adventurer+Connector+Realist": {
-    combinedName: "Adventurer + Connector + Realist",
+    combinedName: "Adventurous, Connected Realist",
     description: `
-      You’re keen on exploration and shared experiences but refuse to 
-      let costs spiral. You help others but keep a rational lid on 
-      finances, ensuring no hidden fees or uncontrolled debt.
+      You love exploring new ideas and helping friends but remain firmly grounded 
+      in cost awareness. You’ll chase excitement if it fits your practical, 
+      community-centered outlook, always balancing risk with real-world caution.
     `,
     products: [
       {
         name: "KeyBank Hassle-Free Checking Account®",
         pitch: `
-          Spontaneous gatherings call for no monthly fees or overdraft costs. 
-          This digital account blocks any overspending, so you can say “yes” 
-          to group plans without quietly sliding into debt. Straightforward, 
-          just how you like it.
+          You want no monthly fees or overdrafts (realist), but also a quick, 
+          digital way to handle group contributions (connector) and spontaneous 
+          outings (adventurer). Declines if over balance, so no hidden charges 
+          hamper your communal fun.
         `,
         benefits: [
           "No monthly/overdraft fees, purely digital",
@@ -924,41 +922,39 @@ const tieData = {
       {
         name: "Key Active Saver®",
         pitch: `
-          Each impulsive or charitable purchase also builds a small reserve, 
-          balancing your generosity with practicality. No monthly fee 
-          (with checking) means it’s a safe, low-cost way to remain 
-          financially grounded.
+          Each time you indulge or pitch in for friends, a small portion lands 
+          in savings. Your adventurous side spends freely, your connector side 
+          helps others, your realist side is comforted by building a 
+          no-fee safety net.
         `,
         benefits: [
           "Auto deposit per debit keeps a buffer growing",
-          "Pause/change anytime if cash flow changes",
-          "Fee waived with Key checking account",
-          "Transparency in the mobile app for each deposit"
+          "Pause/change if cash flow changes",
+          "Fee waived with checking link",
+          "Real-time logs to keep it transparent"
         ]
       },
       {
         name: "Key Cashback® Credit Card",
         pitch: `
-          Get 2% back on everything, with no annual fee. That means your social 
-          outings or adventurous buys return real cash to you—enabling you to 
-          share or invest in your next opportunity. Digital alerts protect 
-          against fraud, matching your cautious side.
+          Earn 2% back on your adventurous group buys. Connector? You can share 
+          the rewards. Realist? No annual fee or complicated categories. 
+          Everyone wins, with fraud protection safeguarding each purchase.
         `,
         benefits: [
           "2% cash back (active Key checking) on all spending",
           "No annual fee, straightforward redemption",
-          "Fraud protection and quick card lock/unlock",
+          "Lock/unlock card quickly if misplaced",
           "Simple cash-back method to fund future adventures"
         ]
       },
       {
         name: "KeyBank Personal Loan",
         pitch: `
-          Sometimes a bigger plan needs immediate resources—maybe a group trip 
-          or a chance to help someone. This loan’s fixed payments and 
-          no-origination-fee structure let you fund it responsibly, 
-          keeping your adventurous generosity safely anchored in rational 
-          repayment schedules.
+          If a big communal opportunity or personal dream comes along, 
+          a fixed-rate loan satisfies your adventurous spark and connector’s 
+          desire to help, while your realist side likes stable payments 
+          and no origination fee.
         `,
         benefits: [
           "Fixed APR, consistent monthly payments",
@@ -971,7 +967,7 @@ const tieData = {
   },
 
   "Adventurer+Planner+Realist": {
-    combinedName: "Adventurer + Planner + Realist",
+    combinedName: "Adventurous, Realistic Planner",
     description: `
       You crave fresh experiences but insist on well-researched, stable 
       methods. You strategize each move yet remain ready to adapt if a 
@@ -981,10 +977,10 @@ const tieData = {
       {
         name: "Key Smart Checking®",
         pitch: `
-          A no-fee checking account suits your adventurous side, 
-          while digital bill pay and spending alerts satisfy your 
-          planning and realist traits. Early pay gets funds faster, 
-          letting you act when needed but keep costs under control.
+          No fees suit your adventurous flair, while your planning side 
+          benefits from digital bill pay and budgeting tools, and the 
+          realist in you likes real-time alerts. Early pay gets funds 
+          quicker, fitting all facets of your personality.
         `,
         benefits: [
           "No monthly fee, more for potential leaps",
@@ -996,10 +992,10 @@ const tieData = {
       {
         name: "Key Active Saver®",
         pitch: `
-          Each purchase nudges money into savings automatically— 
-          a hidden advantage for someone who wants a stable foundation 
-          while staying free to explore. Pause or adjust if your 
-          careful planning says so, or if you need quick funds.
+          Adventurous moves might deplete funds, but each purchase 
+          automatically saves a bit. Your realist side feels secure 
+          with a growing buffer, while your planner side appreciates 
+          the gentle, consistent build.
         `,
         benefits: [
           "Auto micro-deposits build a cushion",
@@ -1011,25 +1007,25 @@ const tieData = {
       {
         name: "Key2More Rewards® Credit Card",
         pitch: `
-          Earn 5x points for any spending surge—great for big leaps—and no 
-          annual fee to weigh down your budget. This matches your blend of 
-          planning and caution while still rewarding spontaneous purchases 
-          with strategic redemption.
+          Earn 5x points whether you buy spontaneously or in line 
+          with a careful plan, then redeem them strategically. 
+          No annual fee matches your practical side, while you 
+          still enjoy big-point thrills for your adventurer spirit.
         `,
         benefits: [
           "5x points on all spending, no categories",
           "Monthly bonus thresholds reward bigger outlays",
-          "No annual fee, so no forced usage",
-          "Redeem points for travel, gift cards, credit"
+          "No annual fee, no forced usage",
+          "Redeem for travel, gift cards, credit"
         ]
       },
       {
         name: "KeyBank Personal Loan",
         pitch: `
-          For ambitious projects or crucial purchases, a fixed-rate loan 
-          aligns with your structured approach. No origination fee means 
-          your realist side is satisfied with clear costs, while your 
-          adventurer side gets immediate capital to act on ideas.
+          If you find a significant opportunity, your adventurer side 
+          wants immediate funding. Your planner side demands a fixed APR, 
+          and your realist side rejects hidden fees. This loan hits all points, 
+          letting you confidently seize big goals.
         `,
         benefits: [
           "Fixed APR, stable monthly outlay",
@@ -1042,71 +1038,71 @@ const tieData = {
   },
 
   "Connector+Planner+Realist": {
-    combinedName: "Connector + Planner + Realist",
+    combinedName: "Connected, Realistic Planner",
     description: `
-      You harmonize caring about others, methodical organization, and a 
-      cautious approach. You want to help, but everything must be researched, 
-      clearly budgeted, and free from unpleasant surprises.
+      You love coordinating group goals but also insist on solid financial 
+      foundations and transparent, dependable methods. You keep everyone 
+      on track, merging structure and caution with a warm heart for community.
     `,
     products: [
       {
         name: "Key Safe Checking®",
         pitch: `
-          Protecting your finances from accidental overdrafts is crucial, 
-          especially when helping others. Safe Checking declines over-limit 
-          payments, so no one event sinks you into debt. You keep a calm, 
-          predictable structure with a modest monthly fee.
+          Your planner side demands clarity, your realist side hates overdrafts, 
+          and your connector side might occasionally front group costs. Safe 
+          Checking declines over-limit transactions, so you avoid random debt 
+          while staying inclusive.
         `,
         benefits: [
-          "No overdrafts—transactions simply decline",
-          "Transparent monthly fee, no hidden traps",
-          "Online bill pay & deposit for easy group tracking",
+          "No overdrafts—charges beyond balance are declined",
+          "Straightforward monthly fee, no hidden traps",
+          "Digital bill pay & deposit for easy group tracking",
           "Alerts so you see every spend immediately"
         ]
       },
       {
         name: "Key Active Saver®",
         pitch: `
-          Each time you or others rely on your debit, a small deposit flows 
-          into savings. It’s a quiet, disciplined way to ensure you stay 
-          ready to assist, without risking large lumps. No monthly fee 
-          if linked to checking.
+          Each community purchase also grows a small buffer, which you can 
+          use for personal security or future group needs. No monthly fee 
+          if checking is linked, satisfying your caution and your desire 
+          to help.
         `,
         benefits: [
-          "Incremental savings with each purchase",
-          "Pause or adjust as group or personal budgets shift",
-          "Fee waived with checking, no overhead cost",
-          "Transaction logs for meticulous records"
+          "Automatic micro-deposits per debit",
+          "Pause or adjust as priorities shift",
+          "No monthly fee with checking",
+          "Clear transaction logs for total oversight"
         ]
       },
       {
         name: "Key Cashback® Credit Card",
         pitch: `
-          Earn 2% on all purchases (with an active Key checking), ideal 
-          if you often cover group expenses or help family. No annual fee 
-          means no wasted cost, and real-time fraud alerts keep everything 
-          safe for collaborative spending.
+          You often cover costs for others but keep a careful eye on finances. 
+          Earn 2% back on each purchase, no annual fee, and real-time alerts. 
+          Planner + Realist: it’s stable and easy to track, Connector: you can 
+          share or donate rewards.
         `,
         benefits: [
-          "2% cash back, no complicated categories",
-          "No annual fee, straightforward redemption",
-          "Card lock/unlock for security",
-          "Fraud monitoring for shared purchases"
+          "2% cash back with active Key checking",
+          "No annual fee, simple redemption",
+          "Digital card lock/unlock for security",
+          "Fraud monitoring for safe group transactions"
         ]
       },
       {
         name: "KeyBank Personal Loan",
         pitch: `
-          Bigger communal goals or urgent family needs call for stable, 
-          transparent financing. A fixed APR, no origination fee, and up 
-          to 84-month terms let you plan repayment exactly, so you can 
-          offer generous support without undermining your financial safety.
+          When a big group event or family emergency arises, you step in 
+          but won’t compromise stable finances. A fixed APR and no origination 
+          fee let you plan repayment meticulously, ensure realistic budgeting, 
+          and still offer genuine support.
         `,
         benefits: [
-          "Fixed APR, predictable monthly bill",
-          "No origination fee, maximizing your loan amount",
-          "12–84 months for flexible scheduling",
-          "Manage online, ensuring total visibility"
+          "Fixed APR, predictable monthly cost",
+          "No origination fee, all funds go toward the goal",
+          "12–84 month terms for flexible repayment",
+          "Digital tracking keeps everything organized"
         ]
       }
     ]
@@ -1124,10 +1120,10 @@ const tieData = {
       {
         name: "Key Smart Checking®",
         pitch: `
-          A no-fee checking that handles everything from group cost-splitting 
-          to spontaneous purchases or scheduled bills. Early deposits suit 
-          adventurous moves, while digital organization delights the planner, 
-          and zero hidden fees calm the realist.
+          This no-fee checking flexes for your adventurous spending, 
+          your connector group-splits (Zelle®), your planner’s desire 
+          for digital organization, and your realist’s need for no hidden 
+          costs. It’s a universal fit for all four traits.
         `,
         benefits: [
           "No monthly fee, fosters flexibility",
@@ -1139,25 +1135,26 @@ const tieData = {
       {
         name: "Key Active Saver®",
         pitch: `
-          Each card swipe also contributes to savings, covering both your 
-          forward-thinking side and your readiness to help or fund a new 
-          venture. No monthly fee if linked to checking, so it remains 
-          practical and aligned with all your traits.
+          Adventurous? Keep spending. Connector? Ready to help others. 
+          Planner? Automatic contributions. Realist? No monthly fee if 
+          linked to checking. It incrementally grows your safety net 
+          across all your varied motivations.
         `,
         benefits: [
           "Incremental deposits per debit purchase",
           "No monthly fee with a linked Key checking",
           "Easy logs for your structured approach",
-          "Pause any time if adventure calls for funds"
+          "Pause or modify at will as goals change"
         ]
       },
       {
         name: "Key Cashback® Credit Card",
         pitch: `
-          Up to 2% back on all spending—great for spontaneous outlays, 
-          group payments, or planned expenses. No annual fee ensures 
-          it’s cost-effective, and digital controls align with your 
-          mix of caution, planning, connection, and adventure.
+          2% back on everything addresses your thirst for spontaneous 
+          buys (adventurer), group expenses (connector), thorough 
+          budgeting (planner), and cost-consciousness (realist). 
+          No annual fee, straightforward redemption, robust security— 
+          it checks all boxes.
         `,
         benefits: [
           "2% back if Key checking is active",
@@ -1169,10 +1166,11 @@ const tieData = {
       {
         name: "KeyBank Personal Loan",
         pitch: `
-          Whether it’s a personal leap, a communal project, a carefully plotted 
-          endeavor, or a practical necessity, this fixed-rate loan with no 
-          origination fee matches every angle. You get lump-sum freedom with 
-          stable monthly repayments—ideal for your all-encompassing style.
+          Whether it’s personal exploration, communal needs, carefully 
+          planned goals, or rational budgeting, this loan’s fixed APR 
+          and no origination fee adapt to your every angle. Lump-sum 
+          funding with stable payments means you can handle big ideas 
+          responsibly.
         `,
         benefits: [
           "Fixed APR, no origination fee",
@@ -1186,6 +1184,6 @@ const tieData = {
 };
 
 // End of tieData.js
-// Each combinedName persona has 4 product recommendations,
-// with pitches focusing on why they fit that multiple-trait mindset,
-// and bullet points kept concise without explicit key.com references.
+// Each tie persona now explicitly references both (or all) traits in the pitch,
+// explaining how that product meets their combined motivations.
+// Bullet points remain concise and free of “key.com” placeholders.
