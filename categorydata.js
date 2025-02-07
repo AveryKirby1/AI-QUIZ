@@ -16,17 +16,19 @@ const categoriesData = {
   Planner: {
     name: "Planner",
     article: "a",
-    description:
-      `Planners are organized and future-focused. They budget carefully, plan for 
+    description: `
+      Planners are organized and future-focused. They budget carefully, plan for 
       long-term goals, and appreciate tools that help them save money and avoid 
       surprises. They don’t mind meeting requirements to get a reward, as long as 
       they can map out a clear benefit. The following products align with the 
-      Planner’s desire for stability, growth, and control:`,
-    shortDescription:
-      `Planners focus on structured routines and detailed goal-setting to ensure 
+      Planner’s desire for stability, growth, and control:
+    `,
+    shortDescription: `
+      Planners focus on structured routines and detailed goal-setting to ensure 
       financial stability, excelling at avoiding costly surprises. While a tendency 
       to overthink can slow decisions, this disciplined approach provides peace of 
-      mind and fosters steady, long-term security.`,
+      mind and fosters steady, long-term security.
+    `,
     strengths: [
       "You excel at long-term strategizing—budgets and schedules are your superpower.",
       "You stay risk-averse—you’d rather carefully analyze than leap blindly into decisions.",
@@ -40,46 +42,62 @@ const categoriesData = {
     products: [
       {
         name: "Key Select Checking®",
-        pitch:
-          "You value a checking account that rewards foresight. Earn interest on your balance and a $100 cash bonus yearly when you set up direct deposits that meet requirements. This supports your long-term strategy with automatic savings options and waived fees on a premium saver, helping you grow your money while handling daily finances.",
+        pitch: `
+          Perfect for your structured style: it rewards you with a clear $100 yearly bonus 
+          for meeting direct deposit goals, plus interest on your balance. You can plan each 
+          deposit meticulously, knowing exactly how you’ll hit the requirements. No surprises—just 
+          steady progress toward your financial blueprint.
+        `,
         benefits: [
-          "Earn a $100 yearly bonus for direct deposits key.com.",
-          "Interest-bearing with daily compounding key.com.",
-          "Waive $25 fee by $5K monthly deposits or $15K balance key.com.",
-          "Link with Key Select Money Market for top-tier rates key.com."
+          "Earn a $100 annual bonus via direct deposits key.com.",
+          "Interest-bearing for daily compounding key.com.",
+          "Waive $25 fee with $5K/mo deposits or $15K total key.com.",
+          "Links seamlessly with Key Select Money Market key.com."
         ]
       },
       {
         name: "Key Active Saver®",
-        pitch:
-          "This account automates saving. Start with $10, enable EasyUp® to move a dollar (or more) each time you use your debit, and watch your balance grow behind the scenes. No monthly fee if you have KeyBank checking, so every deposit furthers your goals. It’s a simple path to build an emergency fund or nest egg in step with your monthly budget.",
+        pitch: `
+          Since every penny counts in your plan, this account automates saving each time you 
+          use your debit card. No monthly fee (with Key checking) keeps your expenses predictable, 
+          and you can see each micro-deposit building a tidy nest egg. It’s the perfect 
+          “set it and forget it” approach to steady growth.
+        `,
         benefits: [
-          "No monthly fee with Key checking key.com.",
-          "EasyUp® moves $1+ from checking to savings each debit key.com.",
-          "Open with just $10, start saving now key.com.",
-          "Unlimited withdrawals if you need funds key.com."
+          "No monthly fee if paired with Key checking key.com.",
+          "EasyUp® moves $1+ into savings per debit key.com.",
+          "Open with just $10; simple start to your plan key.com.",
+          "Unlimited withdrawals for planned expenses key.com."
         ]
       },
       {
         name: "Key Cashback® Credit Card",
-        pitch:
-          "Turn every purchase into a strategic advantage. Get 2% cash back (with an active Key checking) on gas, groceries, and bills—no categories to juggle. No annual fee, so you keep 100% of your rewards. Plan your expenses, and the more you spend according to budget, the more cash you can reinvest or pay down.",
+        pitch: `
+          As a Planner, you want tangible returns on every purchase. This card gives you 2% 
+          back (with Key checking) on anything you buy—no annual fee, no complicated categories. 
+          Roll that cash back directly into your carefully structured budget or savings to 
+          keep your long-term strategy humming.
+        `,
         benefits: [
-          "2% cash back with Key checking, no categories key.com.",
-          "$0 annual fee; keep all your rewards key.com.",
-          "0% intro APR on transfers for 12 months, then variable key.com.",
-          "Auto-deposit rewards into Active Saver or checking key.com."
+          "2% cash back if Key checking is active key.com.",
+          "$0 annual fee, so rewards stay yours key.com.",
+          "0% intro APR on balance transfers (12 mos) key.com.",
+          "Auto-deposit cash back to checking/savings key.com."
         ]
       },
       {
         name: "KeyBank Personal Loan",
-        pitch:
-          "Big plans sometimes demand extra funding—renovations, debt consolidation, or new projects. This loan’s fixed rate and predictable payments align with your careful budgeting style, and no origination fee means every dollar goes to your goals. Apply online and track everything in one place, preserving your structured approach.",
+        pitch: `
+          Larger goals sometimes require extra funds. This loan offers a fixed rate and no 
+          origination fee, letting you incorporate its predictable monthly payment right 
+          into your budget. It’s ideal for Planners: everything is transparent, so you stay 
+          in complete control while tackling major projects.
+        `,
         benefits: [
-          "Fixed APR for predictable monthly costs.",
-          "No origination fee, more funds for your goals.",
-          "Choose terms up to 84 months if needed.",
-          "Apply and track progress entirely online."
+          "Fixed APR—monthly costs never surprise you.",
+          "No origination fee, more money for your goals.",
+          "Terms up to 84 months—align them with your timeline.",
+          "Manage it all online, fitting your organized approach."
         ]
       }
     ],
@@ -92,18 +110,20 @@ const categoriesData = {
   Realist: {
     name: "Realist",
     article: "a",
-    description:
-      `Realists are pragmatic and down-to-earth about their finances. They want 
+    description: `
+      Realists are pragmatic and down-to-earth about their finances. They want 
       straightforward, no-nonsense products that help them manage necessities, 
       prepare for the unexpected, and improve their financial footing. Low fees, 
       low interest rates, and credit-building opportunities appeal to them more 
       than fancy rewards. The following products match the Realist’s desire for 
-      simplicity, security, and solid value:`,
-    shortDescription:
-      `Realists favor low-risk, dependable strategies to protect resources, guided by 
-      caution and clear data. While they may pass up certain prospects, measured 
+      simplicity, security, and solid value:
+    `,
+    shortDescription: `
+      Realists favor low-risk, dependable strategies to protect resources, guided 
+      by caution and clear data. While they may pass up certain prospects, measured 
       openness to calculated risk can uncover worthwhile gains, ensuring security 
-      without sacrificing every chance for growth.`,
+      without sacrificing every chance for growth.
+    `,
     strengths: [
       "You’re a clear-eyed investor—you see facts over hype and follow what works.",
       "You’re an expert risk manager—you keep spending and investing decisions grounded.",
@@ -117,46 +137,62 @@ const categoriesData = {
     products: [
       {
         name: "KeyBank Hassle-Free Checking Account®",
-        pitch:
-          "A purely digital, no-fee checking that prevents overdrafts by declining charges beyond your balance. No monthly fee, no checks, no hidden traps. It helps you live within your means, so you never face unexpected bank costs. Perfect for those who want banking to be as straightforward as possible.",
+        pitch: `
+          You demand zero nonsense: no monthly fees, no overdraft charges, no guesswork. 
+          That’s exactly what this account delivers. If a transaction exceeds your balance, 
+          it’s declined—no hidden debt, no surprise fees. It’s the ultimate “straightforward” 
+          checking for your practical mindset.
+        `,
         benefits: [
-          "Fully fee-free: $0 monthly, $0 overdraft key.com.",
-          "Cannot overdraw: charges decline if over balance key.comkey.com.",
-          "Digital payments only: no checks needed key.com.",
-          "Open with $10, easy to start key.com."
+          "No monthly/overdraft fees, purely digital key.com.",
+          "Declines charges beyond balance, no surprises key.comkey.com.",
+          "Online bill pay/Zelle instead of checks key.com.",
+          "Open with $10, easy and minimal start key.com."
         ]
       },
       {
         name: "KeyBank Personal Loan",
-        pitch:
-          "You might need funds for a car, home project, or bill consolidation. This fixed-term loan has no origination or prepayment fees, so every dollar repaid goes to principal or interest. Consolidate high-interest debt to simplify life and lower costs. Quick approvals mean you can tackle necessities promptly, all with stable monthly payments.",
+        pitch: `
+          When you need clear, fixed financing for debt consolidation or major expenses, 
+          this no-fee loan keeps costs predictable. You’ll know the rate and term up front, 
+          ensuring each payment aligns with your budget. It’s for Realists who don’t tolerate 
+          murky interest rates or hidden charges.
+        `,
         benefits: [
-          "No fees: no origination or prepay penalties key.com.",
-          "Fixed rate & set term for total clarity key.com.",
+          "No origination or prepayment fees key.com.",
+          "Fixed rate & term, full clarity in budgeting key.com.",
           "Borrow $5k+ with up to 84-month repayment key.com.",
-          "Approval in 1–3 days, same-day funding possible key.comkey.com."
+          "Quick funding: solve practical needs fast key.comkey.com."
         ]
       },
       {
         name: "KeyBank Latitude® Credit Card",
-        pitch:
-          "Not everyone needs fancy rewards. Latitude keeps it simple with a 15-month 0% intro APR on purchases/balance transfers, then a lower ongoing rate than many reward cards. No annual fee means you can keep it for emergencies without penalty. Ideal for those who value cost-saving over complex perks.",
+        pitch: `
+          If you ever carry a balance, low interest matters more than rewards. Latitude starts 
+          you with 0% APR for 15 months on purchases/balance transfers, then stays modest 
+          afterward. No annual fee ensures there’s no waste. It’s the practical, calm credit 
+          card for real-life scenarios.
+        `,
         benefits: [
-          "15-month 0% intro APR on buys/transfers key.com.",
-          "Lower ongoing APR than typical reward cards key.com.",
-          "$0 annual fee, keep it for emergencies key.com.",
-          "Simplicity: ID Theft Protection & Zero Liability key.com."
+          "15-month 0% intro on buys/transfers key.com.",
+          "Lower ongoing APR vs. typical rewards cards key.com.",
+          "$0 annual fee—use as needed, no penalty key.com.",
+          "Simple perks: ID Theft Protection, Zero Liability key.com."
         ]
       },
       {
         name: "Key Active Saver®",
-        pitch:
-          "Automate small transfers to savings with every debit card purchase. Pause or adjust anytime if finances shift. No monthly fee when linked to your Key checking. It's a straightforward safeguard for unexpected costs, giving you a steady buffer that grows with each transaction.",
+        pitch: `
+          You want a dependable way to build savings without fuss. This quietly transfers a small 
+          amount to savings each time you buy something. No monthly fee if linked to checking, and 
+          you remain in control if you need to pause. Straightforward, unobtrusive security against 
+          life’s curveballs.
+        `,
         benefits: [
-          "Small auto transfers build a backup fund each purchase.",
-          "Pause/change anytime if budgets shift.",
-          "Fee waived if you have Key checking.",
-          "Every deposit is logged in the app for clarity."
+          "Automatic deposits per debit, building a buffer.",
+          "Pause/change if budgets shift—flexibility.",
+          "Fee waived with Key checking—no extra cost.",
+          "All transactions documented for clarity."
         ]
       }
     ],
@@ -169,18 +205,20 @@ const categoriesData = {
   Connector: {
     name: "Connector",
     article: "a",
-    description:
-      `Connectors are relationship-oriented and community-driven. They manage money 
+    description: `
+      Connectors are relationship-oriented and community-driven. They manage money 
       to support family, friends, and experiences – whether that’s splitting bills, 
       going to events, or helping others. They value convenient ways to share funds, 
       earn rewards they can use for social activities, and accounts that simplify 
       joint or group finances. The following products resonate with the Connector’s 
-      collaborative and experience-focused approach:`,
-    shortDescription:
-      `Connectors treat finances as a means to strengthen bonds and nurture communal 
+      collaborative and experience-focused approach:
+    `,
+    shortDescription: `
+      Connectors treat finances as a means to strengthen bonds and nurture communal 
       goals, emphasizing generosity and shared victories. A highly giving nature 
       can lead to overextension, but mindful boundaries preserve both personal 
-      well-being and the desire to uplift others.`,
+      well-being and the desire to uplift others.
+    `,
     strengths: [
       "You’re community-focused—caring deeply about helping others succeed.",
       "You stay collaborative—pooling resources and sharing wins is your ideal approach.",
@@ -194,46 +232,62 @@ const categoriesData = {
     products: [
       {
         name: "Key Smart Checking®",
-        pitch:
-          "No fees or minimums let you manage group finances easily, even if contributions vary. Comes with Zelle® for instant splits or reimbursements, plus optional paper checks if needed. Overdraft forgiveness helps if a friend repays late. It’s all about simplifying shared money matters so you can focus on experiences together.",
+        pitch: `
+          You often handle group finances and shared bills. Key Smart Checking is fee-free, 
+          so you aren’t penalized if contributions arrive late. Zelle® built in for quick 
+          cost-splitting, plus optional checks for those who still need them. It simplifies 
+          collaboration, letting you focus on bringing people together.
+        `,
         benefits: [
-          "No monthly fees or minimums, perfect for group finances key.comkey.com.",
-          "Digital app with Zelle® for quick splitting or sending key.comkey.com.",
-          "Paper checks included if needed key.comkey.com.",
-          "Overdraft forgiveness for small shortfalls key.com."
+          "No monthly fee or minimum, perfect for shifting balances key.comkey.com.",
+          "Zelle® for fast group splits or reimbursements key.comkey.com.",
+          "Paper checks if older payees need them key.comkey.com.",
+          "Small overdraft forgiveness if a friend’s late key.com."
         ]
       },
       {
         name: "Key2More Rewards® Credit Card",
-        pitch:
-          "A robust 5x points per dollar on everything means group activities pay off in future rewards. Spend thresholds can yield bonus points, great for big events or trips. Redeem points for travel, tickets, or statement credit. No annual fee means you can keep it indefinitely, turning social spending into real perks.",
+        pitch: `
+          If you’re frequently covering communal costs—dinners, events, gifts—why not 
+          earn points on every dollar? With 5x points, plus monthly spend bonuses, you 
+          can turn group spending into travel or event tickets. No annual fee means 
+          more reward value to share with friends.
+        `,
         benefits: [
-          "5× points on all purchases, no caps key.com.",
-          "Monthly spend bonuses unlock higher rewards key.com.",
-          "Redeem for experiences, travel, or credit key.com.",
-          "No annual fee, card lock if lost key.com."
+          "5× points on all buys, no cap key.com.",
+          "Monthly bonus tiers for bigger spending key.com.",
+          "Redeem for experiences or statement credit key.com.",
+          "No annual fee, handy lock feature if card misplaced key.com."
         ]
       },
       {
         name: "KeyBank Preferred Line of Credit",
-        pitch:
-          "Sometimes you want a safety net for communal projects or urgent help. This line of credit charges no fees unless you draw on it, so it’s ready for surprise group expenses. Link it to checking to avoid overdraft charges. Borrow only what’s needed, repay it, and keep the line open for the next occasion.",
+        pitch: `
+          Your generous heart loves having a backup plan if someone needs help. This 
+          credit line costs nothing unless you draw on it, ensuring you can always step 
+          up when unexpected group expenses arise. Link it to checking to cover overdrafts, 
+          saving you from surprise fees if reimbursements lag.
+        `,
         benefits: [
-          "Tap funds anytime, pay interest only if used.",
-          "No annual fee, no collateral needed key.com.",
-          "Link to checking for overdraft safety net.",
-          "Transfer online or in branch for quick help."
+          "Use funds only when needed, pay interest then.",
+          "No annual fee, no collateral required key.com.",
+          "Overdraft link covers shortfalls or late paybacks key.com.",
+          "Transfer online or in branch, instant availability."
         ]
       },
       {
         name: "KeyBank Personal Loan",
-        pitch:
-          "When it’s time for a bigger initiative—covering a family member’s emergency, planning a large event, or backing a cause—this loan provides a lump sum with stable monthly payments. No origination fee, so the funds go exactly where needed. Manage it in KeyBank’s app for clarity and peace of mind.",
+        pitch: `
+          When you’re funding a bigger group event or helping a loved one, a personal 
+          loan can quickly provide the amount needed. Fixed APR, no origination fee, 
+          and manageable terms let you stay in control. You handle the immediate need, 
+          secure in the knowledge that monthly payments won’t unravel your finances.
+        `,
         benefits: [
-          "Fixed APR means predictable monthly payment.",
-          "No origination fee, all funds go to your goal.",
-          "Repay over up to 84 months to fit your budget.",
-          "Online application & tracking keeps finances transparent."
+          "Fixed APR, stable monthly cost.",
+          "No origination fee, funds go straight to your cause.",
+          "Up to 84 months repayment for flexibility.",
+          "Apply and monitor easily online."
         ]
       }
     ],
@@ -246,19 +300,21 @@ const categoriesData = {
   Adventurer: {
     name: "Adventurer",
     article: "an",
-    description:
-      `Adventurers are risk-takers and experience-seekers. They are often on the go 
+    description: `
+      Adventurers are risk-takers and experience-seekers. They are often on the go 
       – traveling, trying new ventures, or embracing spontaneous opportunities. 
       They need financial products that keep up with their pace, offering wide 
       access to funds, flexibility in borrowing, and rewards that cater to their 
       adventurous spending. Importantly, they want to avoid being slowed down by 
       banking hassles or not having money accessible when and where they need it. 
-      The following products suit the Adventurer’s dynamic lifestyle:`,
-    shortDescription:
-      `Adventurers thrive on excitement and are quick to explore new financial 
+      The following products suit the Adventurer’s dynamic lifestyle:
+    `,
+    shortDescription: `
+      Adventurers thrive on excitement and are quick to explore new financial 
       possibilities, guided by an optimistic spirit. Though impulsive choices 
       may arise, balancing spontaneity with prudent planning sustains momentum 
-      and protects against the downsides of taking bold risks.`,
+      and protects against the downsides of taking bold risks.
+    `,
     strengths: [
       "You’re a bold decision-maker—you jump on opportunities before they slip away.",
       "You’re curious and open-minded—always seeking new ways to grow.",
@@ -272,46 +328,64 @@ const categoriesData = {
     products: [
       {
         name: "Key Smart Checking®",
-        pitch:
-          "A no-fee account with 40,000+ fee-free ATMs nationwide, perfect for a traveler’s lifestyle. Early Pay can get your deposits to you two days sooner, and the mobile app supports check deposits and Zelle® on the move. Enjoy your adventures without worrying about hidden charges or limited access.",
+        pitch: `
+          You hate anything that slows you down. This no-fee checking gives you 
+          nationwide fee-free ATM access, Early Pay for direct deposits, and an 
+          easy-to-use mobile app. No monthly charges means more money for travel, 
+          adventures, or spontaneous plans—whenever and wherever they appear.
+        `,
         benefits: [
-          "$0 fees, $0 minimum, wide ATM network key.comkey.com.",
-          "Early Pay direct deposits up to 2 days early key.com.",
-          "Full mobile convenience for deposits & Zelle key.com.",
-          "Roam free without surprise charges or hidden fees key.com."
+          "$0 fee, $0 min, wide ATM network key.comkey.com.",
+          "Early Pay: get deposits up to 2 days sooner key.com.",
+          "Mobile app deposits checks, sends money via Zelle key.com.",
+          "No hidden costs, pure freedom to roam key.com."
         ]
       },
       {
         name: "KeyBank Preferred Line of Credit",
-        pitch:
-          "Pay interest only on what you use, no annual fee. Great for booking a last-minute trip or seizing a sudden opportunity. Link it to your checking for overdraft protection so you’re never caught off guard. Borrow whenever needed and repay to free it up again—ultimate spontaneity with built-in safety.",
+        pitch: `
+          Adventurers never know when opportunity knocks. Keep this line of credit 
+          open at no annual fee, and use it only when you need a quick cash infusion. 
+          Pay interest solely on what you borrow, and link it to checking to dodge 
+          overdrafts if a spur-of-the-moment purchase happens. It’s your go-to safety 
+          rope for bold leaps.
+        `,
         benefits: [
-          "Borrow only what you need, repay & reuse.",
-          "No annual fee, no collateral key.com.",
-          "Covers overdrafts for checking if you’re short key.com.",
-          "Transfer line funds to checking instantly for unexpected costs."
+          "Borrow as needed, no fee if unused key.com.",
+          "Overdraft protection for impulsive buys key.com.",
+          "No collateral required, easy digital transfers.",
+          "Repay, free up credit again for next adventure."
         ]
       },
       {
         name: "Key Cashback® Credit Card",
-        pitch:
-          "You get 2% cash back on all purchases with an active Key checking, no categories to track. No annual fee keeps more money in your pocket for gear or travel. Fraud protection, contactless pay, and a free FICO® score keep you safe and flexible on the road. Redeem your rewards to fund the next big leap.",
+        pitch: `
+          Whether it’s last-minute flights or thrilling gear purchases, you crave 
+          simple rewards. Earn 2% cash back on every transaction (with active Key checking), 
+          fueling the next big adventure at no annual cost. You focus on experiences, 
+          while the card quietly refunds a piece of every spend to fund the next journey.
+        `,
         benefits: [
-          "2% on every purchase with Key checking, no category juggling key.comkey.com.",
-          "$0 annual fee, contactless pay for speed key.com.",
-          "Fraud protection, free FICO® score monitoring key.com.",
-          "Use rewards to offset trip costs or gear expenses."
+          "2% cash back on all buys if Key checking active key.comkey.com.",
+          "$0 annual fee, no overhead to worry about key.com.",
+          "Tap-to-pay, fraud alerts for stress-free travel key.com.",
+          "Redeem cash easily for new trips or gear."
         ]
       },
       {
         name: "KeyBank Personal Loan",
-        pitch:
-          "Sometimes you need a bigger sum fast—maybe a dream trip or a personal venture that can’t wait. A fixed-rate personal loan ensures stable monthly payments, and no origination fee means all funds go to your plan. Apply online and manage it via KeyBank’s app so you stay focused on the journey, not the financing.",
+        pitch: `
+          Sometimes you need a lump sum for a dream trip, a big leap into a new 
+          venture, or a bold personal project. A fixed-rate, no-origination-fee loan 
+          delivers immediate funding without hidden strings—giving you the freedom 
+          to embrace spontaneity. Manageable monthly payments let you keep exploring, 
+          confident in stable finances.
+        `,
         benefits: [
-          "Fast approval, no hidden fees to stall you.",
-          "Fixed APR, stable monthly payment schedule.",
-          "No origination fee, put full amount into your plan.",
-          "Manage it digitally, focusing energy on your next move."
+          "Fixed APR for predictable budgeting.",
+          "No origination fee, use full amount for your goal.",
+          "Borrow up to 84 months, suiting your pace.",
+          "Apply online, track easily in the KeyBank app."
         ]
       }
     ],
@@ -321,6 +395,10 @@ const categoriesData = {
     ]
   }
 };
+
+// End of categorydata.js
+// Each category now has product pitches explicitly focusing on why the product is ideal
+// for that persona's core motivations.
 
 
 /****************************************************
