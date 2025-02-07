@@ -1,13 +1,17 @@
 /* categorydata.js */
 
-// We’re including only the four main categories (Planner, Realist, Connector, Adventurer)
-// Each category now has exactly four product recommendations, as requested.
-// We have removed any references to “headingForProducts” and “(Optional)” labels,
-// and incorporated the fourth product fully into each category.
-
 /****************************************************
  * MAIN CATEGORIES DATA
  ****************************************************/
+
+// Below are the four main categories (Planner, Realist, Connector, Adventurer)
+// Each category has exactly four product recommendations.
+// Enhancements made per your request:
+// 1) Renamed to "KeyBank Hassle-Free Checking Account" where needed
+// 2) Reduced bullet text to concise one-liners
+// 3) Removed references to "(Unsecured)" or "(Secured)" in loans
+// 4) Removed the first sentence in quotes/parentheses at the start of each pitch
+
 const categoriesData = {
   Planner: {
     name: "Planner",
@@ -35,51 +39,47 @@ const categoriesData = {
     ],
     products: [
       {
-        // 1) Key Select Checking
         name: "Key Select Checking®",
         pitch:
-          "“Plan ahead and prosper.” As a Planner, you value a checking account that rewards your foresight. Key Select Checking offers exactly that – you’ll earn interest on your balance and a $100 cash bonus every year for sticking to your plan  key.com. By arranging direct deposits to meet the requirements, you turn your everyday checking into a yearly payday. This account supports your long-term strategy, from automatic savings transfers to waived fees on a premium saver account, so you can systematically grow your money while managing daily finances.",
+          "You value a checking account that rewards foresight. Earn interest on your balance and a $100 cash bonus yearly when you set up direct deposits that meet requirements. This supports your long-term strategy with automatic savings options and waived fees on a premium saver, helping you grow your money while handling daily finances.",
         benefits: [
-          "Annual $100 loyalty bonus for qualifying direct deposits, rewarding you year after year for steady money management key.com.",
-          "Interest-bearing checking with daily compounding, so your balance earns a little extra on the side key.com.",
-          "$25 monthly fee waived when you maintain $5,000 in deposits per month or $15,000 combined balances (and the fee is automatically waived for the first 3 months) key.com.",
-          "Linked savings perks – Pair with Key Select Money Market Savings to waive that account’s fee and get top-tier rates, integrating your checking and savings strategy seamlessly key.com."
+          "Earn a $100 yearly bonus for direct deposits key.com.",
+          "Interest-bearing with daily compounding key.com.",
+          "Waive $25 fee by $5K monthly deposits or $15K balance key.com.",
+          "Link with Key Select Money Market for top-tier rates key.com."
         ]
       },
       {
-        // 2) Key Active Saver
         name: "Key Active Saver®",
         pitch:
-          "“Save first, spend later.” This simple savings account aligns with your Planner mindset by making saving automatic and painless. You can start with just $10, set up EasyUp® to move a dollar (or more) into savings with each debit purchase, and watch your balance grow without a second thought  key.com. Because you also have a KeyBank checking, you won’t pay any monthly fees on this account key.com– every dollar you deposit stays working toward your goals. Key Active Saver helps you plan for the future by building an emergency fund or nest egg in the background while you focus on your monthly budget.",
+          "This account automates saving. Start with $10, enable EasyUp® to move a dollar (or more) each time you use your debit, and watch your balance grow behind the scenes. No monthly fee if you have KeyBank checking, so every deposit furthers your goals. It’s a simple path to build an emergency fund or nest egg in step with your monthly budget.",
         benefits: [
-          "No monthly fee with your Key checking – the $4 fee is waived for KeyBank checking clients, so it’s free to maintain key.com.",
-          "EasyUp® automatic transfers help you painlessly save – e.g. $1 from checking to savings with each transaction – turning everyday spending into consistent savings key.comkey.com.",
-          "Open with just $10; no large initial deposit needed, so you can start your saving habit immediately and build up over time key.com.",
-          "Unlimited withdrawals – need to move money for a planned expense? No limits or penalties for transferring your own funds between accounts key.com, giving you flexible access when life doesn’t go exactly to plan."
+          "No monthly fee with Key checking key.com.",
+          "EasyUp® moves $1+ from checking to savings each debit key.com.",
+          "Open with just $10, start saving now key.com.",
+          "Unlimited withdrawals if you need funds key.com."
         ]
       },
       {
-        // 3) Key Cashback Credit Card
         name: "Key Cashback® Credit Card",
         pitch:
-          "“Maximize every dollar.” For a Planner, a credit card isn’t about splurging – it’s about strategy. The Key Cashback card turns all your purchases into cash rewards, with 2% back on everything when you also bank with Key  key.comkey.com. That means your carefully planned grocery runs, gas fill-ups, and recurring bills are earning money for you. With no annual fee, you keep 100% of those rewards. It’s a straightforward, no-nonsense card that fits perfectly into your planned budget – the more you’ve budgeted to spend, the more cash you’ll get back to re-invest in your goals or pay down the balance.",
+          "Turn every purchase into a strategic advantage. Get 2% cash back (with an active Key checking) on gas, groceries, and bills—no categories to juggle. No annual fee, so you keep 100% of your rewards. Plan your expenses, and the more you spend according to budget, the more cash you can reinvest or pay down.",
         benefits: [
-          "Unlimited 2% cash back on all purchases for KeyBank clients who meet the simple checking account activity requirement key.comkey.com (otherwise 1% minimum). No caps, no rotating categories – your entire spending plan earns rewards.",
-          "$0 annual fee, so you never worry about a fee eating into your cash-back profit key.com.",
-          "Intro 0% APR on balance transfers for 12 months, helpful if part of your plan is consolidating debt key.com. (After 12 months, a variable APR applies.)",
-          "Easy redemption – cash back can automatically sweep into your Key Active Saver or checking, or just credit your statement key.com."
+          "2% cash back with Key checking, no categories key.com.",
+          "$0 annual fee; keep all your rewards key.com.",
+          "0% intro APR on transfers for 12 months, then variable key.com.",
+          "Auto-deposit rewards into Active Saver or checking key.com."
         ]
       },
       {
-        // 4) KeyBank Personal Loan
         name: "KeyBank Personal Loan",
         pitch:
-          "Even the best-laid plans sometimes require extra funding—for renovations, debt consolidation, or setting up a new project. A KeyBank Personal Loan gives you a fixed rate and predictable payments, so your monthly budget remains tidy and on track. No origination fee means every dollar borrowed goes toward your goals, not extra fees. It’s a straightforward way to handle big expenses while staying faithful to your carefully mapped-out financial strategy.",
+          "Big plans sometimes demand extra funding—renovations, debt consolidation, or new projects. This loan’s fixed rate and predictable payments align with your careful budgeting style, and no origination fee means every dollar goes to your goals. Apply online and track everything in one place, preserving your structured approach.",
         benefits: [
-          "Fixed APR – You’ll know exactly your interest rate from day one, making monthly costs predictable.",
-          "No origination fee – No hidden start-up costs, so more funds go toward your actual needs.",
-          "Terms up to 84 months – Choose a repayment timeframe that suits your plan without unnecessary strain.",
-          "Online application & tracking – Manage the loan within the KeyBank app, aligning with your methodical approach."
+          "Fixed APR for predictable monthly costs.",
+          "No origination fee, more funds for your goals.",
+          "Choose terms up to 84 months if needed.",
+          "Apply and track progress entirely online."
         ]
       }
     ],
@@ -116,51 +116,47 @@ const categoriesData = {
     ],
     products: [
       {
-        // 1) KeyBank Hassle-Free Account
-        name: "KeyBank Hassle-Free Account®",
+        name: "KeyBank Hassle-Free Checking Account®",
         pitch:
-          "“No surprises, no overspending.” The Realist in you will appreciate an account that keeps things simple and safe. The KeyBank Hassle-Free Checking has no monthly fees and never charges overdraft fees – ever  key.com. It’s a purely digital account, which suits your practical nature: you can’t write checks (avoiding bounced check worries), and if you don’t have the funds, the transaction just won’t go through. This account puts guardrails on your spending, helping you live within your means and avoiding the pitfalls of unexpected fees. It’s banking that’s as straightforward as it gets – your money, managed your way, with nothing extra to pay.",
+          "A purely digital, no-fee checking that prevents overdrafts by declining charges beyond your balance. No monthly fee, no checks, no hidden traps. It helps you live within your means, so you never face unexpected bank costs. Perfect for those who want banking to be as straightforward as possible.",
         benefits: [
-          "Truly fee-free checking – $0 monthly maintenance fee and $0 overdraft/NSF fees, so you’ll never be dinged for a mistake key.com.",
-          "Cannot overdraw – If a charge would overdraw the account, it’s declined rather than approved, preventing hidden debt key.comkey.com.",
-          "Digital payments only – Rely on debit card, online bill pay, or Zelle® for a modern, practical lifestyle key.com.",
-          "Easy to start – A $10 opening deposit is all you need, lowering barriers and keeping things simple key.com."
+          "Fully fee-free: $0 monthly, $0 overdraft key.com.",
+          "Cannot overdraw: charges decline if over balance key.comkey.com.",
+          "Digital payments only: no checks needed key.com.",
+          "Open with $10, easy to start key.com."
         ]
       },
       {
-        // 2) KeyBank Personal Loan (Unsecured)
-        name: "KeyBank Personal Loan (Unsecured)",
+        name: "KeyBank Personal Loan",
         pitch:
-          "“Tackle debt the smart way.” You’re realistic about debt: sometimes you need it for a car, a home project, or to simplify multiple bills. The KeyBank Personal Loan gives you a clear, fixed plan to pay off what you owe, with no origination or prepayment fees  key.com. Consolidating higher-interest debts into this loan could lower your monthly costs and eliminate variable credit card payments. As a Realist, you’ll like that the rate is fixed and the term is set – no surprises. It’s a straightforward way to finance big needs or wipe out costly debt, managed right alongside your other KeyBank accounts.",
+          "You might need funds for a car, home project, or bill consolidation. This fixed-term loan has no origination or prepayment fees, so every dollar repaid goes to principal or interest. Consolidate high-interest debt to simplify life and lower costs. Quick approvals mean you can tackle necessities promptly, all with stable monthly payments.",
         benefits: [
-          "No fees at all – No origination or prepayment penalties, so every dollar repaid goes to principal/interest key.com.",
-          "Fixed interest rate & term – You can realistically budget each payment and know exactly when you’ll be debt-free key.com.",
-          "Flexible amounts & up to 84 months – Borrow as little as $5,000, picking a repayment window that fits your life key.com.",
-          "Fast funding – Approval in 1–3 days, with same-day funding possible, helps you promptly tackle obligations key.comkey.com."
+          "No fees: no origination or prepay penalties key.com.",
+          "Fixed rate & set term for total clarity key.com.",
+          "Borrow $5k+ with up to 84-month repayment key.com.",
+          "Approval in 1–3 days, same-day funding possible key.comkey.com."
         ]
       },
       {
-        // 3) KeyBank Latitude® Credit Card
         name: "KeyBank Latitude® Credit Card",
         pitch:
-          "“Low interest, for life’s what-ifs.” For a Realist, a credit card is a tool – not for extravagant rewards, but for affordable flexibility. The KeyBank Latitude offers a 15-month 0% intro APR to handle an urgent purchase or balance transfer  key.com. Afterward, it continues with a lower ongoing APR than many rewards cards key.com. There’s no annual fee, so it can sit in your wallet as a safety net. It’s practical credit for practical people—saving you money if you ever need to carry a balance rather than focusing on flashy perks.",
+          "Not everyone needs fancy rewards. Latitude keeps it simple with a 15-month 0% intro APR on purchases/balance transfers, then a lower ongoing rate than many reward cards. No annual fee means you can keep it for emergencies without penalty. Ideal for those who value cost-saving over complex perks.",
         benefits: [
-          "0% APR for 15 months – Plenty of time to pay off a major buy or debt interest-free key.com.",
-          "Low ongoing APR – Once the intro ends, it remains more budget-friendly than typical rewards cards key.com.",
-          "$0 annual fee – No cost to keep as an emergency fallback key.com.",
-          "Simplicity first – Features like ID Theft Protection, Zero Liability fraud coverage, and no rotating categories key.com."
+          "15-month 0% intro APR on buys/transfers key.com.",
+          "Lower ongoing APR than typical reward cards key.com.",
+          "$0 annual fee, keep it for emergencies key.com.",
+          "Simplicity: ID Theft Protection & Zero Liability key.com."
         ]
       },
       {
-        // 4) Key Active Saver
         name: "Key Active Saver®",
         pitch:
-          "“Build a reliable cushion.” While you keep costs down and weigh each purchase carefully, it never hurts to have extra backup. Key Active Saver automates a small deposit into savings whenever you use your debit card—so you steadily grow an emergency fund without complicated budgeting. You can pause or adjust at any time, and because it’s linked to your KeyBank checking, there’s no monthly fee. In true Realist fashion, it’s straightforward and low-risk, providing peace of mind for life’s unexpected moments.",
+          "Automate small transfers to savings with every debit card purchase. Pause or adjust anytime if finances shift. No monthly fee when linked to your Key checking. It's a straightforward safeguard for unexpected costs, giving you a steady buffer that grows with each transaction.",
         benefits: [
-          "Automatic micro-savings – Each transaction triggers a small deposit into your savings.",
-          "Pause or adjust anytime – Maintain control if finances tighten or priorities shift.",
-          "Fee waived with Key checking – Keep more of your money for that rainy-day buffer.",
-          "Full transparency – Every deposit is logged in the app so you always know your balance."
+          "Small auto transfers build a backup fund each purchase.",
+          "Pause/change anytime if budgets shift.",
+          "Fee waived if you have Key checking.",
+          "Every deposit is logged in the app for clarity."
         ]
       }
     ],
@@ -197,51 +193,47 @@ const categoriesData = {
     ],
     products: [
       {
-        // 1) Key Smart Checking
         name: "Key Smart Checking®",
         pitch:
-          "“Shared moments, simplified money.” As a Connector, you’re often the one organizing dinners, trips, or group gifts – you need a checking account that’s flexible and user-friendly. Key Smart Checking has no fees or minimums  key.comkey.com, so you can open and maintain it easily even if group funds ebb and flow. It comes with Zelle® built in, making it a breeze to send and receive money with friends. You can even order paper checks (if Grandma still needs one) without any monthly cost burden. This account puts you in control of group finances without ever getting in the way – all the features, none of the fees, so you can focus on connecting with people, not banking logistics.",
+          "No fees or minimums let you manage group finances easily, even if contributions vary. Comes with Zelle® for instant splits or reimbursements, plus optional paper checks if needed. Overdraft forgiveness helps if a friend repays late. It’s all about simplifying shared money matters so you can focus on experiences together.",
         benefits: [
-          "No monthly fees, no minimum balance – Zero cost to keep open, lowering stress around group paybacks key.com.",
-          "Full digital toolkit – Instant check deposit, bill pay, and Zelle® for quick money moves key.comkey.com.",
-          "Paper checks included – Handy if a landlord or club still needs a physical check key.comkey.com.",
-          "No overdraft drama – Overdraft protection or fee forgiveness ensures minor shortfalls don’t become big issues key.com."
+          "No monthly fees or minimums, perfect for group finances key.comkey.com.",
+          "Digital app with Zelle® for quick splitting or sending key.comkey.com.",
+          "Paper checks included if needed key.comkey.com.",
+          "Overdraft forgiveness for small shortfalls key.com."
         ]
       },
       {
-        // 2) Key2More Rewards
         name: "Key2More Rewards® Credit Card",
         pitch:
-          "“Earn rewards for the fun stuff.” Your social life can get expensive – but with the Key2More card, every brunch, concert ticket, or vacation flight you charge is racking up points toward the next shared adventure. You get a generous 5x points on every $1 spent  key.com, so pooling expenses on this card can yield big rewards. Take it a step further and you’ll earn bonus points each month you hit certain spend levels key.com– perfect for big events or group trips. Redeem them for travel or tickets key.com and treat your friends (or yourself). With no annual fee, it’s a guilt-free way to turn spending into social wins.",
+          "A robust 5x points per dollar on everything means group activities pay off in future rewards. Spend thresholds can yield bonus points, great for big events or trips. Redeem points for travel, tickets, or statement credit. No annual fee means you can keep it indefinitely, turning social spending into real perks.",
         benefits: [
-          "5× reward points on all purchases – Speedy accumulation for group outings, gifts, or everyday buys key.com.",
-          "Monthly bonus thresholds – Earn extra points when spending surpasses certain levels key.com.",
-          "Redeem for experiences – Travel, event tickets, or statement credit let you share the fun key.com.",
-          "No annual fee – Keep it as long as you want, with security features like quick card lock if lost key.com."
+          "5× points on all purchases, no caps key.com.",
+          "Monthly spend bonuses unlock higher rewards key.com.",
+          "Redeem for experiences, travel, or credit key.com.",
+          "No annual fee, card lock if lost key.com."
         ]
       },
       {
-        // 3) KeyBank Preferred Line of Credit
         name: "KeyBank Preferred Line of Credit",
         pitch:
-          "“Be ready to help, no matter what.” As a Connector, you like having the resources to support friends or family—or to handle unexpected group expenses. This line of credit provides a flexible pot of funds you can access anytime, with no fees until you actually use it. Link it to your checking so if group spending overruns your balance, you won’t be charged overdraft fees. You pay interest only on what you borrow, making it a steady safety net that helps you say “yes” without jeopardizing your own finances.",
+          "Sometimes you want a safety net for communal projects or urgent help. This line of credit charges no fees unless you draw on it, so it’s ready for surprise group expenses. Link it to checking to avoid overdraft charges. Borrow only what’s needed, repay it, and keep the line open for the next occasion.",
         benefits: [
-          "Revolving access – Borrow and repay repeatedly as needs arise, no annual fee.",
-          "Overdraft protection – Automatic cover for your Key checking at no transfer cost.",
-          "No collateral required – Approval depends on credit; no need to pledge assets.",
-          "Quick digital transfers – Move credit line funds into checking instantly to cover any group or personal expense."
+          "Tap funds anytime, pay interest only if used.",
+          "No annual fee, no collateral needed key.com.",
+          "Link to checking for overdraft safety net.",
+          "Transfer online or in branch for quick help."
         ]
       },
       {
-        // 4) KeyBank Personal Loan
         name: "KeyBank Personal Loan",
         pitch:
-          "Sometimes helping others or planning a big communal event calls for substantial funding right away. A KeyBank Personal Loan delivers that lump sum in one go, with predictable monthly payments so you can keep finances clear and calm. There’s no origination fee, so you won’t lose any money upfront. Apply online, monitor progress in the KeyBank app, and repay on a timeline that fits everyone’s situation. It’s a meaningful, controlled way to support your connections or fund group endeavors.",
+          "When it’s time for a bigger initiative—covering a family member’s emergency, planning a large event, or backing a cause—this loan provides a lump sum with stable monthly payments. No origination fee, so the funds go exactly where needed. Manage it in KeyBank’s app for clarity and peace of mind.",
         benefits: [
-          "Fixed APR – Easy budgeting to ensure you can stay generous without chaos.",
-          "No origination fee – Every dollar you borrow goes to the cause, not processing fees.",
-          "Up to 84 months – Stretch or shorten repayment as the situation demands.",
-          "Online application & management – Keep everything transparent for both you and any co-payers."
+          "Fixed APR means predictable monthly payment.",
+          "No origination fee, all funds go to your goal.",
+          "Repay over up to 84 months to fit your budget.",
+          "Online application & tracking keeps finances transparent."
         ]
       }
     ],
@@ -279,51 +271,47 @@ const categoriesData = {
     ],
     products: [
       {
-        // 1) Key Smart Checking
         name: "Key Smart Checking®",
         pitch:
-          "“Access anywhere, worry nowhere.” For an Adventurer, an ideal checking account is one you never have to think twice about – no fees to monitor and a broad ATM network so you’re never far from your cash. Key Smart Checking fits that bill perfectly with $0 fees and 40,000+ ATMs nationwide (KeyBank + Allpoint network) for fee-free withdrawals  key.comkey.com. Whether you’re backpacking cross-country or hopping between cities, you’ll find an ATM when you need one, and Early Pay ensures your money arrives even if you’re in a new time zone key.com. With robust mobile tools, your account stays effortlessly in reach, leaving you free to roam without surprise charges.",
+          "A no-fee account with 40,000+ fee-free ATMs nationwide, perfect for a traveler’s lifestyle. Early Pay can get your deposits to you two days sooner, and the mobile app supports check deposits and Zelle® on the move. Enjoy your adventures without worrying about hidden charges or limited access.",
         benefits: [
-          "No monthly fee – Keep your adventures funded without losing money to bank costs key.com.",
-          "40,000+ fee-free ATMs – Access your cash anywhere without extra charges key.comkey.com.",
-          "Early Pay – Receive direct deposits up to two days early, fueling spontaneous plans key.com.",
-          "Mobile convenience – Deposit checks, transfer funds, and use Zelle® on the fly, no waiting around key.com."
+          "$0 fees, $0 minimum, wide ATM network key.comkey.com.",
+          "Early Pay direct deposits up to 2 days early key.com.",
+          "Full mobile convenience for deposits & Zelle key.com.",
+          "Roam free without surprise charges or hidden fees key.com."
         ]
       },
       {
-        // 2) KeyBank Preferred Line of Credit
         name: "KeyBank Preferred Line of Credit",
         pitch:
-          "“Flexible funds for the next adventure.” Spontaneity is the spice of life, and the Preferred Credit Line ensures you always have financing on tap for last-minute trips or side hustles. Pay interest only on what you use—no annual fee to keep it open. Link it to your checking so a surprise expense never overdrafts your account. Think of it as a bungee cord for your boldest leaps: there when you need it, unobtrusive when you don’t.",
+          "Pay interest only on what you use, no annual fee. Great for booking a last-minute trip or seizing a sudden opportunity. Link it to your checking for overdraft protection so you’re never caught off guard. Borrow whenever needed and repay to free it up again—ultimate spontaneity with built-in safety.",
         benefits: [
-          "Borrow, repay, borrow again – Revolving credit that adapts to your changing plans.",
-          "No collateral, no annual fee – Keep it available at zero cost unless you use it key.com.",
-          "Overdraft protection – Protect your checking with automatic transfers if funds dip too low key.com.",
-          "Easy access – Transfer line-of-credit funds online or write checks, ensuring you can jump on opportunities fast."
+          "Borrow only what you need, repay & reuse.",
+          "No annual fee, no collateral key.com.",
+          "Covers overdrafts for checking if you’re short key.com.",
+          "Transfer line funds to checking instantly for unexpected costs."
         ]
       },
       {
-        // 3) Key Cashback Credit Card
         name: "Key Cashback® Credit Card",
         pitch:
-          "“Fuel your adventures (and get paid for it).” This card offers a flat 2% cash back on every purchase (with an active KeyBank account)  key.comkey.com—no categories to juggle, so you can pay for travel, gear, or dining anywhere. No annual fee means it won’t drain your budget, and features like contactless payments keep you moving quickly. If you plan to spend money on new experiences, why not earn some back to fund your next escapade?",
+          "You get 2% cash back on all purchases with an active Key checking, no categories to track. No annual fee keeps more money in your pocket for gear or travel. Fraud protection, contactless pay, and a free FICO® score keep you safe and flexible on the road. Redeem your rewards to fund the next big leap.",
         benefits: [
-          "2% cash back – Earn top-tier rewards for every purchase, as long as you meet basic checking requirements key.comkey.com.",
-          "No annual fee – Keep it in your wallet for the long haul at zero extra cost key.com.",
-          "Digital controls – Freeze or unfreeze the card instantly if you misplace it during your travels key.com.",
-          "Worldwide acceptance – A Mastercard with broad usage, plus fraud protection and free FICO® score access."
+          "2% on every purchase with Key checking, no category juggling key.comkey.com.",
+          "$0 annual fee, contactless pay for speed key.com.",
+          "Fraud protection, free FICO® score monitoring key.com.",
+          "Use rewards to offset trip costs or gear expenses."
         ]
       },
       {
-        // 4) KeyBank Personal Loan
         name: "KeyBank Personal Loan",
         pitch:
-          "Sometimes an exciting project or dream trip needs a bigger infusion of cash. A KeyBank Personal Loan provides that lump sum at a fixed rate, so you’ll have predictable payments and no origination fee cutting into your funds. Apply online for quick approval, then keep track of everything through the KeyBank app. It’s a clean, simple way to finance major adventures without losing control of your budget.",
+          "Sometimes you need a bigger sum fast—maybe a dream trip or a personal venture that can’t wait. A fixed-rate personal loan ensures stable monthly payments, and no origination fee means all funds go to your plan. Apply online and manage it via KeyBank’s app so you stay focused on the journey, not the financing.",
         benefits: [
-          "Fast approval – Don’t let excessive paperwork stall your big plans.",
-          "Fixed APR – Know your monthly cost upfront, with no hidden spikes.",
-          "No origination fee – 100% of the loan can go toward your trip, startup, or new gear.",
-          "Flexible terms – Up to 84 months, letting you manage repayment around future travels."
+          "Fast approval, no hidden fees to stall you.",
+          "Fixed APR, stable monthly payment schedule.",
+          "No origination fee, put full amount into your plan.",
+          "Manage it digitally, focusing energy on your next move."
         ]
       }
     ],
