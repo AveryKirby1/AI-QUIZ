@@ -408,7 +408,7 @@ function buildDistributionBars(sortedArray, tiedCats) {
   const catBarContainer = document.getElementById("category-bars");
   catBarContainer.innerHTML = "";
 
-  sortedArray.forEach(([cat, score]) => {
+  sortedArray.forEach(([cat, score], index) => {
     const barRow = document.createElement("div");
     barRow.className = "category-bar";
 
@@ -452,8 +452,18 @@ function buildDistributionBars(sortedArray, tiedCats) {
         categoriesData[cat]?.shortDescription?.trim() || "";
       catBarContainer.appendChild(shortBox);
     }
+
+    // Insert the “Click the '+' icons…” text right after the final bar
+    if (index === sortedArray.length - 1) {
+      const plusCallout = document.createElement("p");
+      plusCallout.className = "plus-callout-small";
+      plusCallout.textContent = 
+        "Click the “+” icons to view more about each non-winning category.";
+      catBarContainer.appendChild(plusCallout);
+    }
   });
 }
+
 
 /****************************************************
  * DETERMINE TOP CATS UNTIL >= 80
