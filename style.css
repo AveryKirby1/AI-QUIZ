@@ -215,7 +215,9 @@ html, body {
   display: none;
 }
 
-/* Distribution bars container */
+/* ----------------------------------------------------------------------- */
+/* DISTRIBUTION (BREAKOUT) CHART */
+/* ----------------------------------------------------------------------- */
 .distribution-container {
   margin: 20px 0;
 }
@@ -229,7 +231,7 @@ html, body {
 
 /* The container for the bars themselves */
 #category-bars {
-  max-width: 700px; /* make a bit wider if you want an even bigger chart */
+  max-width: 700px;
   margin: 0 auto;
 }
 
@@ -241,12 +243,25 @@ html, body {
   position: relative;
 }
 
-/* Category label on the left */
+/* Make label a flex container to separate the category text from the + icon
+   so they line up neatly in a vertical column. */
 .category-bar .bar-label {
-  width: 200px;            /* increased from 180px */
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* left: cat name, right: plus sign */
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 1rem;         /* bigger text */
+  font-size: 1rem;
+}
+
+/* If there is no plus sign, the category name remains left aligned in that space. */
+.expand-toggle {
+  margin-left: 10px;  /* optional small gap after the cat name */
+  color: #B22222;     /* same red as the bar fill & category name */
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.2rem;  /* bigger plus */
 }
 
 /* The bar track (background) */
@@ -254,15 +269,15 @@ html, body {
   flex: 1;
   background: #ddd;
   border-radius: 5px;
-  height: 40px;            /* bigger bar height */
+  height: 40px;
   margin: 0 10px;
   position: relative;
 }
 
-/* The fill inside the bar -- now red to match category name color (#B22222) */
+/* The fill inside the bar: red, same as #B22222. */
 .category-bar .bar-fill {
-  background-color: #B22222; /* "FireBrick" red, matching your .red-text color */
-  height: 40px; 
+  background-color: #B22222; 
+  height: 40px;
   border-radius: 5px;
   width: 0%;
   position: absolute;
@@ -272,16 +287,16 @@ html, body {
 
 /* The percentage on the right */
 .category-bar .bar-percent {
-  width: 60px;             /* give it more space */
+  width: 60px;
   text-align: right;
-  font-size: 1rem;         /* bigger text */
+  font-size: 1rem;
 }
 
 /* For the short summary text that appears when expanded */
 .short-summary {
   display: none;
   padding: 6px 10px;
-  margin: 4px 0 10px 140px;
+  margin: 4px 0 10px 140px; 
   background: #f0f8ff;
   border-left: 4px solid #007BFF;
   border-radius: 4px;
@@ -289,17 +304,19 @@ html, body {
   line-height: 1.4;
 }
 
-/* Subtext under distribution bars */
+/* Centered subtext under the last bar row, with extra top margin to separate it from the bars */
 .plus-callout-small {
   text-align: center;
   display: block;
   max-width: 600px;
-  margin: 10px auto 0;
-  font-size: 0.75rem;
+  margin: 30px auto 0; /* increased top margin for breathing room */
+  font-size: 0.85rem;
   color: #777;
 }
 
-/* Insights: spacing around strengths & weaknesses */
+/* ----------------------------------------------------------------------- */
+/* INSIGHTS (STRENGTHS & WEAKNESSES) */
+/* ----------------------------------------------------------------------- */
 .insight-container {
   display: flex;
   justify-content: space-between;
@@ -316,7 +333,7 @@ html, body {
   margin: 0;
 }
 
-/* Center just the headings */
+/* Center just the headings ("Where you excel..."/"Watch out...") */
 .insight-box h4 {
   margin-bottom: 8px;
   font-size: 1rem;
@@ -352,7 +369,9 @@ html, body {
   font-weight: bold;
 }
 
-/* Title above product recs */
+/* ----------------------------------------------------------------------- */
+/* PRODUCT RECOMMENDATION CARDS */
+/* ----------------------------------------------------------------------- */
 .fuel-title {
   text-align: center;
   font-size: 1.2rem;
@@ -360,7 +379,6 @@ html, body {
   margin: 20px 0 10px;
 }
 
-/* PRODUCT RECOMMENDATION CARDS */
 .product-recs-container {
   display: flex;
   flex-direction: column;
