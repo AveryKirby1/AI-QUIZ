@@ -561,29 +561,6 @@ function buildOutputItems(topCats, pctMap, keyName) {
 /****************************************************
  * NEW ARRAYS & FUNCTION for Strength/Weakness bullets
  ****************************************************/
-const dominantOpeners = [
-  "It looks like you strongly favor [cat]",
-  "Since you rank high in [cat]",
-  "You display a pronounced [cat] streak",
-  "You're mainly leaning [cat]",
-  "It's clear you're heavily oriented toward [cat]",
-  "A significant part of you is [cat]",
-  "You've shown a strong affinity for [cat]",
-  "You definitely resonate with [cat]",
-  "A big portion of you identifies with [cat]"
-];
-
-const secondaryOpeners = [
-  "You also carry a bit of [cat]",
-  "There's a subtle [cat] influence in you",
-  "You do have some [cat] traits",
-  "You're partly [cat]",
-  "There's a little [cat] side to you",
-  "You still show hints of [cat]",
-  "A touch of [cat] shines through",
-  "You also lean slightly toward [cat]",
-  "As a partial [cat]"
-];
 
 /**
  * Removes any leading phrase like “Because you’re a [cat], ...” up to the comma,
