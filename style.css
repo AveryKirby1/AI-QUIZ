@@ -195,13 +195,11 @@ html, body {
   margin-bottom: 5px;
 }
 
-/* Category name at the top of results */
 #category-name {
   margin-top: 5px;
   font-size: 1.8rem;
 }
 
-/* Main category description text */
 #category-description {
   margin: 10px auto;
   max-width: 650px;
@@ -210,7 +208,6 @@ html, body {
   color: #333;
 }
 
-/* Hide results by default */
 .hidden {
   display: none;
 }
@@ -243,7 +240,7 @@ html, body {
   position: relative;
 }
 
-/* We use a flex container for .bar-label to separate the category text from the + icon. */
+/* Let label hold cat name on left, plus sign on the right side if relevant */
 .category-bar .bar-label {
   width: 200px;
   display: flex;
@@ -254,7 +251,7 @@ html, body {
   font-size: 1rem;
 }
 
-/* The plus sign: same red as the bar fill (#B22222), bigger font, spaced a bit after the cat name */
+/* The plus sign: same red as the bar fill (#B22222) */
 .expand-toggle {
   margin-left: 10px;
   color: #B22222; 
@@ -273,7 +270,7 @@ html, body {
   position: relative;
 }
 
-/* The fill inside the bar: red, same as #B22222 */
+/* The fill inside the bar: red, #B22222. */
 .category-bar .bar-fill {
   background-color: #B22222; 
   height: 40px;
@@ -303,14 +300,13 @@ html, body {
   line-height: 1.4;
 }
 
-/* 
-  Center the line “Click the '+' icons…” 
-  Right after the last bar, with some extra top margin. 
-*/
+/* The "Click the '+' icons..." text: 
+   appended after the final bar, centered within #category-bars (700px width). */
 .plus-callout-small {
-  text-align: center;
   display: block;
-  margin: 10px auto 0; /* minimal top margin since it's now right under the last bar */
+  width: 100%;
+  text-align: center;
+  margin: 10px 0 0;
   font-size: 0.85rem;
   color: #777;
 }
@@ -537,7 +533,7 @@ html, body {
   margin-top: 60px;
 }
 
-/* This class controls key text in results */
+/* Key text in results */
 .result-text {
   font-family: "Arial Black", sans-serif;
   font-weight: bold;
