@@ -609,20 +609,11 @@ function stripLeadingClause(text) {
  */
 let newBulletIndex = 0;
 function craftLineNew(cat, isDominant, originalLine) {
-  // 1) Choose an opener from the arrays
-  const openerArray = isDominant ? dominantOpeners : secondaryOpeners;
-  const opener = openerArray[newBulletIndex % openerArray.length];
-  newBulletIndex++;
-
-  // 2) Strip out "Because you’re a [cat]," from the original line if present
+  // Simply remove any leading phrase from the original text, if present
   const remainder = stripLeadingClause(originalLine);
 
-  // 3) Replace [cat] placeholder in the opener
-  const finalOpener = opener.replace("[cat]", cat);
-
-  // 4) Return with an em dash in between
-  // e.g. “It looks like you strongly favor Adventurer—Overthinking can hold you back...”
-  return `<span class="opener-text">${finalOpener}</span>—${remainder}`;
+  // Return ONLY the remainder, no extra "It looks like..." text
+  return remainder;
 }
 
 /****************************************************
