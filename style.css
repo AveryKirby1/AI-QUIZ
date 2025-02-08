@@ -153,9 +153,9 @@ html, body {
   margin-left: 5px;
 }
 
-/* Base styles for quiz-btn */
+/* Base .quiz-btn styling (if used by some other buttons) */
 .quiz-btn {
-  background-color: #007BFF;  /* default (blue) for other buttons if any */
+  background-color: #007BFF; 
   color: #fff;
   padding: 10px 16px;
   border: none;
@@ -170,30 +170,37 @@ html, body {
   background-color: #0056b3;
 }
 
-/* SPECIFIC: Make Prev and Next buttons the same red (#B22222)
-   Only the Next button becomes disabled/lighter if no selection 
-*/
+/* PREVIOUS & NEXT buttons: same red (#B22222) */
 #prev-btn {
-  background-color: #B22222;  /* Red for the Previous button */
+  background-color: #B22222;
 }
 
 #prev-btn:hover {
-  background-color: #8a1b1b;  /* Slightly darker red on hover */
-}
-
-/* Next button in normal (enabled) state */
-#next-btn {
-  background-color: #B22222;  /* Same red as category names */
-}
-
-/* Next button hover when enabled */
-#next-btn:hover:not(:disabled) {
   background-color: #8a1b1b;
 }
 
-/* Next button disabled => lighter shade, no hover, not-allowed cursor */
+/* Next button (enabled) in the same red */
+#next-btn {
+  background-color: #B22222;
+}
+
+/* Next button disabled => lighter red, unclickable */
 #next-btn:disabled {
-  background-color: #e3b8b8;  /* Lighter red */
+  background-color: #e3b8b8;
+  cursor: not-allowed;
+}
+
+/* "See Results" button: same red logic as Next */
+#results-btn {
+  background-color: #B22222; 
+}
+
+#results-btn:hover:not(:disabled) {
+  background-color: #8a1b1b;
+}
+
+#results-btn:disabled {
+  background-color: #e3b8b8;
   cursor: not-allowed;
 }
 
@@ -268,26 +275,23 @@ html, body {
   position: relative;
 }
 
-/* 
-  Special row that just has the plus-callout text 
-  We'll center its content horizontally
-*/
+/* plus-row for the callout text */
 .category-bar.plus-row {
   justify-content: center;
 }
 
-/* Let label hold cat name on left, plus sign on the right if relevant */
+/* Label with cat name and optional + icon */
 .category-bar .bar-label {
   width: 200px;
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 1rem;
 }
 
-/* The plus sign: same red as bar fill (#B22222) */
+/* + icon in same red (#B22222) as the bar fill */
 .expand-toggle {
   margin-left: 10px;
   color: #B22222; 
@@ -296,7 +300,7 @@ html, body {
   font-size: 1.2rem; 
 }
 
-/* The bar track (background) */
+/* The bar track (gray) */
 .category-bar .bar-bg {
   flex: 1;
   background: #ddd;
@@ -306,9 +310,9 @@ html, body {
   position: relative;
 }
 
-/* The fill inside the bar: red (#B22222) */
+/* The bar fill (red #B22222) */
 .category-bar .bar-fill {
-  background-color: #B22222; 
+  background-color: #B22222;
   height: 40px;
   border-radius: 5px;
   width: 0%;
@@ -317,18 +321,18 @@ html, body {
   left: 0;
 }
 
-/* The percentage on the right */
+/* The percentage label on the right side */
 .category-bar .bar-percent {
   width: 60px;
   text-align: right;
   font-size: 1rem;
 }
 
-/* Short summary text for expand/collapse below each bar */
+/* Expandable short summary if user clicks the + toggle */
 .short-summary {
   display: none;
   padding: 6px 10px;
-  margin: 4px 0 10px 140px; 
+  margin: 4px 0 10px 140px;
   background: #f0f8ff;
   border-left: 4px solid #007BFF;
   border-radius: 4px;
@@ -336,7 +340,7 @@ html, body {
   line-height: 1.4;
 }
 
-/* "Click the '+' icons..." text row */
+/* "Click the '+' icons..." note appended to final row, centered. */
 .plus-callout-small {
   margin: 0;
   text-align: center;
@@ -350,8 +354,8 @@ html, body {
 .insight-container {
   display: flex;
   justify-content: space-between;
-  max-width: 900px; 
-  margin: 40px auto; 
+  max-width: 900px;
+  margin: 40px auto;
 }
 
 .insight-box {
@@ -371,13 +375,13 @@ html, body {
   text-align: center;
 }
 
-/* Color them red, matching category name (#B22222) */
+/* Color them red (#B22222) */
 #excel-box h4,
 #watchout-box h4 {
   color: #B22222;
 }
 
-/* Bullets: left-aligned */
+/* Bullets: left-aligned, with thin divider lines */
 .insight-box ul {
   list-style-type: disc;
   list-style-position: outside;
