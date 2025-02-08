@@ -1,6 +1,6 @@
 const questions = [
   {
-    question: "1. You’ve just found $500 on the ground. What’s the first thing you do?",
+    question: "You’ve just found $500 on the ground. What’s the first thing you do?",
     answers: [
       {
         text: "Try to find the rightful owner; if you can’t, well, finders keepers.",
@@ -21,7 +21,7 @@ const questions = [
     ]
   },
   {
-    question: "2. Your friend asks you to split a $400 dinner bill evenly, but you only had a salad. What do you do?",
+    question: "Your friend asks you to split a $400 dinner bill evenly, but you only had a salad. What do you do?",
     answers: [
       {
         text: "Quietly pay it all to avoid drama, feeling uneasy.",
@@ -42,7 +42,7 @@ const questions = [
     ]
   },
   {
-    question: "3. You walk into a store to buy toothpaste and leave with...",
+    question: "You walk into a store to buy toothpaste and leave with...",
     answers: [
       {
         text: "Nothing—prices were too high, so you held off.",
@@ -63,7 +63,7 @@ const questions = [
     ]
   },
   {
-    question: "4. Your boss offers you a $10,000 raise. What’s your first thought?",
+    question: "Your boss offers you a $10,000 raise. What’s your first thought?",
     answers: [
       {
         text: "Pay off debts and maintain a practical buffer.",
@@ -84,7 +84,7 @@ const questions = [
     ]
   },
   {
-    question: "5. A friend calls you crying about a $1,000 car repair bill. What do you do?",
+    question: "A friend calls you crying about a $1,000 car repair bill. What do you do?",
     answers: [
       {
         text: "Reluctantly offer financial help if they explicitly ask, staying cautious.",
@@ -105,7 +105,7 @@ const questions = [
     ]
   },
   {
-    question: "6. You’re $2,000 short on your dream vacation budget. How do you handle it?",
+    question: "You’re $2,000 short on your dream vacation budget. How do you handle it?",
     answers: [
       {
         text: "Cancel the trip; the debt risk is too high.",
@@ -126,7 +126,7 @@ const questions = [
     ]
   },
   {
-    question: "7. Your favorite coffee shop just raised prices. Do you...",
+    question: "Your favorite coffee shop just raised prices. Do you...",
     answers: [
       {
         text: "Stop going—it's the most rational cut for your budget.",
@@ -147,7 +147,7 @@ const questions = [
     ]
   },
   {
-    question: "8. Someone raves about investing in cryptocurrency. Your reaction?",
+    question: "Someone raves about investing in cryptocurrency. Your reaction?",
     answers: [
       {
         text: "Too uncertain—I want concrete data first.",
@@ -168,7 +168,7 @@ const questions = [
     ]
   },
   {
-    question: "9. You see a limited edition gadget for $500. Do you...",
+    question: "You see a limited edition gadget for $500. Do you...",
     answers: [
       {
         text: "Skip it—you don’t truly need it.",
@@ -189,7 +189,7 @@ const questions = [
     ]
   },
   {
-    question: "10. You’ve had a long week and need to relax. How do you treat yourself?",
+    question: "You’ve had a long week and need to relax. How do you treat yourself?",
     answers: [
       {
         text: "Stay home with a simple, low-cost plan like a favorite show.",
