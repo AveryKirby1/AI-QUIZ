@@ -251,35 +251,40 @@ function displayFinalResults(tiedCats, sortedArray) {
 
   document.getElementById("category-description").innerHTML = description;
 
-  // Build the distribution bars (which already appends the plusCallout text at the end)
-  buildDistributionBars(sortedArray, tiedCats);
-
+  // Calculate how “dominant” the top category is
   const distributionContainer = document.getElementById("distribution-container");
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
   const topPct = Math.round((sortedArray[0][1] / total) * 100);
 
-  // Insert the distribution title above the bars
-  const distributionTitle = document.createElement("h3");
+  // If 100% in a single category, hide the entire chart
   if (topPct === 100 && tiedCats.length === 1) {
-    distributionTitle.innerHTML = `Your <span class="key-span">key</span> money signs:`;
+    distributionContainer.style.display = "none";
   } else {
-    distributionTitle.innerHTML = `
-      While one money sign leads the way, others add depth to your financial personality!
-    `;
+    // Otherwise, show the container (in case it was hidden previously)
+    distributionContainer.style.display = "block";
+    
+    // Build the distribution bars (which also appends the plusCallout text at the end)
+    buildDistributionBars(sortedArray, tiedCats);
+
+    // Insert the distribution title above the bars
+    const distributionTitle = document.createElement("h3");
+    if (topPct === 100 && tiedCats.length === 1) {
+      distributionTitle.innerHTML = `Your <span class="key-span">key</span> money signs:`;
+    } else {
+      distributionTitle.innerHTML = `
+        While one money sign leads the way, others add depth to your financial personality!
+      `;
+    }
+    distributionTitle.style.width = "50%";
+    distributionTitle.style.margin = "0 auto";
+    distributionTitle.style.textAlign = "center";
+    distributionContainer.insertBefore(
+      distributionTitle,
+      document.getElementById("category-bars")
+    );
   }
-  distributionTitle.style.width = "50%";
-  distributionTitle.style.margin = "0 auto";
-  distributionTitle.style.textAlign = "center";
 
-  // Insert the title before #category-bars
-  distributionContainer.insertBefore(
-    distributionTitle,
-    document.getElementById("category-bars")
-  );
-
-  // (Removed the duplicate plusCallout code here)
-
-  // Now handle the “strengths” and “weaknesses” bullet lists
+  // Next, handle the “strengths” and “weaknesses” bullet lists
   const topCatsForBullets = determineTopCats(sortedArray);
   const pctMap = buildPctMap(sortedArray);
 
@@ -304,6 +309,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     watchoutList.appendChild(li);
   });
 
+  // Finally, handle product recommendations
   let productsArray;
   if (tiedCats.length === 1) {
     productsArray = categoriesData[tiedCats[0]].products;
@@ -345,7 +351,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     const leftDiv = document.createElement("div");
     leftDiv.className = "product-left";
 
-    // Derive image
+    // Derive image from product name
     let imageSrc = "";
     const lowerName = prod.name.toLowerCase();
     if (lowerName.includes("checking")) {
@@ -400,6 +406,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     productContainer.appendChild(card);
   });
 }
+
 
 /****************************************************
  * BUILD DISTRIBUTION BARS
