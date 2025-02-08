@@ -454,13 +454,18 @@ function buildDistributionBars(sortedArray, tiedCats) {
       catBarContainer.appendChild(shortBox);
     }
 
-    // Insert the “Click the '+' icons…” text right after the final bar
+    // After the final bar row, create a new row just for the + callout text
     if (index === sortedArray.length - 1) {
+      const plusRow = document.createElement("div");
+      plusRow.className = "category-bar plus-row";  // new row with same structure
+      catBarContainer.appendChild(plusRow);
+
       const plusCallout = document.createElement("p");
       plusCallout.className = "plus-callout-small";
-      plusCallout.textContent = 
+      plusCallout.textContent =
         "Click the “+” icons to view more about each non-winning category.";
-      catBarContainer.appendChild(plusCallout);
+
+      plusRow.appendChild(plusCallout);
     }
   });
 }
