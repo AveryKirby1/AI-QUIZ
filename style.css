@@ -240,6 +240,14 @@ html, body {
   position: relative;
 }
 
+/* 
+  Optional new class to identify the row with the plus-callout text. 
+  We'll center its content horizontally.
+*/
+.category-bar.plus-row {
+  justify-content: center;
+}
+
 /* Let label hold cat name on left, plus sign on the right side if relevant */
 .category-bar .bar-label {
   width: 200px;
@@ -300,13 +308,10 @@ html, body {
   line-height: 1.4;
 }
 
-/* The "Click the '+' icons..." text: 
-   appended after the final bar, centered within #category-bars (700px width). */
+/* The "Click the '+' icons..." text appended in a special row */
 .plus-callout-small {
-  display: block;
-  width: 100%;
+  margin: 0;
   text-align: center;
-  margin: 10px 0 0;
   font-size: 0.85rem;
   color: #777;
 }
