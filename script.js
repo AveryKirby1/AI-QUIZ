@@ -251,12 +251,14 @@ function displayFinalResults(tiedCats, sortedArray) {
 
   document.getElementById("category-description").innerHTML = description;
 
+  // Build the distribution bars (which already appends the plusCallout text at the end)
   buildDistributionBars(sortedArray, tiedCats);
 
   const distributionContainer = document.getElementById("distribution-container");
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
   const topPct = Math.round((sortedArray[0][1] / total) * 100);
 
+  // Insert the distribution title above the bars
   const distributionTitle = document.createElement("h3");
   if (topPct === 100 && tiedCats.length === 1) {
     distributionTitle.innerHTML = `Your <span class="key-span">key</span> money signs:`;
@@ -269,16 +271,15 @@ function displayFinalResults(tiedCats, sortedArray) {
   distributionTitle.style.margin = "0 auto";
   distributionTitle.style.textAlign = "center";
 
+  // Insert the title before #category-bars
   distributionContainer.insertBefore(
     distributionTitle,
     document.getElementById("category-bars")
   );
 
-  const plusCallout = document.createElement("p");
-  plusCallout.className = "plus-callout-small";
-  plusCallout.textContent = `Click the “+” icons to view more about each non-winning category.`;
-  distributionContainer.appendChild(plusCallout);
+  // (Removed the duplicate plusCallout code here)
 
+  // Now handle the “strengths” and “weaknesses” bullet lists
   const topCatsForBullets = determineTopCats(sortedArray);
   const pctMap = buildPctMap(sortedArray);
 
@@ -302,6 +303,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     li.innerHTML = w;
     watchoutList.appendChild(li);
   });
+}
 
   let productsArray;
   if (tiedCats.length === 1) {
