@@ -280,47 +280,46 @@ html, body {
   color: #777;
 }
 
-/* Insights: container now matches product recs width so boxes line up horizontally */
+/* Insights: add top/bottom space and revert bullets to left alignment */
 .insight-container {
   display: flex;
-  justify-content: space-between;  /* spread them to the full width */
-  margin: 20px auto;
-  max-width: 900px;               /* same max width as product cards */
+  justify-content: space-between;
+  max-width: 900px; /* same max width as product cards */
+  margin: 40px auto; /* adds extra space above and below these boxes */
 }
 
-/* Each box set to roughly half, and center all text inside each box */
 .insight-box {
   width: 48%;
   background: #f9f9f9;
   border: 1px solid #eee;
   border-radius: 6px;
   padding: 10px 15px;
-  text-align: center; /* center the heading and bullet items */
+  margin: 0;
 }
 
-/* Default heading for insight boxes; overridden below for excel/watchout color */
+/* Headings: center the "Where you excel..." / "Watch out for..." text only */
 .insight-box h4 {
   margin-bottom: 8px;
   font-size: 1rem;
   color: #333;
+  text-align: center;
 }
 
-/* Match the headings’ color to the category name (red-text = #B22222) */
+/* Color them to match the category name (red-text = #B22222) */
 #excel-box h4,
 #watchout-box h4 {
   color: #B22222;
 }
 
-/* Bullet styling + thin divider lines; text is centered */
+/* Bullet points: left-aligned, with thin divider lines */
 .insight-box ul {
   list-style-type: disc;
-  margin: 0 auto; /* center the bullet list */
-  padding: 0;     /* no left padding for the UL itself */
+  list-style-position: outside;
+  margin: 0;
+  padding-left: 1.5rem;  /* a bit of indentation for the bullets */
 }
 
 .insight-box li {
-  display: list-item;        /* ensures bullet is used */
-  list-style-position: inside;
   margin: 10px 0;
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
@@ -330,10 +329,12 @@ html, body {
   border-bottom: none;
 }
 
+/* The bold opener text in each bullet (if any remains) */
 .opener-text {
   font-weight: bold;
 }
 
+/* Title above product recs */
 .fuel-title {
   text-align: center;
   font-size: 1.2rem;
