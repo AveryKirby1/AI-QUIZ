@@ -369,7 +369,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     } else if (lowerName.includes("saver") || lowerName.includes("savings")) {
       imageSrc = "images/savings.png";
     } else if (
-      lowerName.includes("credit") ||
+      lowerName.includes("credit card") ||
       lowerName.includes("latitude") ||
       lowerName.includes("rewards")
     ) {
