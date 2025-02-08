@@ -9,11 +9,12 @@ const categoriesData = {
     name: "Planner",
     article: "a",
     description: `
-      Planners are organized and future-focused. They budget carefully, plan for 
-      long-term goals, and appreciate tools that help them save money and avoid 
-      surprises. They don’t mind meeting requirements to get a reward, as long as 
-      they can map out a clear benefit. The following products align with the 
-      Planner’s desire for stability, growth, and control:
+      You are the master of practicality and preparation. You approach financial decisions 
+      with thoughtfulness, responsibility, and an eye toward long-term security. While your 
+      careful approach keeps you grounded, you might sometimes miss out on spontaneous 
+      opportunities. You thrive on structure and routine, preferring to plan each step to 
+      avoid surprises. By setting clear goals and budgets, you gain peace of mind and a 
+      sense of accomplishment.
     `,
     shortDescription: `
       Planners focus on structured routines and detailed goal-setting to ensure 
@@ -103,12 +104,11 @@ const categoriesData = {
     name: "Realist",
     article: "a",
     description: `
-      Realists are pragmatic and down-to-earth about their finances. They want 
-      straightforward, no-nonsense products that help them manage necessities, 
-      prepare for the unexpected, and improve their financial footing. Low fees, 
-      low interest rates, and credit-building opportunities appeal to them more 
-      than fancy rewards. The following products match the Realist’s desire for 
-      simplicity, security, and solid value:
+      You prioritize managing risk, avoiding unnecessary spending, and protecting resources. 
+      While your approach may appear conservative, it helps you navigate challenges with 
+      confidence. You prefer stable, dependable strategies over flashy risks, trusting solid 
+      data and proven methods. This mindset keeps you prepared, ensuring you can handle both 
+      the ups and downs of your financial journey.
     `,
     shortDescription: `
       Realists favor low-risk, dependable strategies to protect resources, guided 
@@ -198,12 +198,12 @@ const categoriesData = {
     name: "Connector",
     article: "a",
     description: `
-      Connectors are relationship-oriented and community-driven. They manage money 
-      to support family, friends, and experiences – whether that’s splitting bills, 
-      going to events, or helping others. They value convenient ways to share funds, 
-      earn rewards they can use for social activities, and accounts that simplify 
-      joint or group finances. The following products resonate with the Connector’s 
-      collaborative and experience-focused approach:
+      You view finances as a tool to support your community and bond with others. 
+      Whether it’s through generosity or lending a helping hand, you find emotional 
+      satisfaction in giving back. Working together toward common goals brings you 
+      genuine joy, and you take pride in uplifting those around you. In your mind, 
+      money only has true value when it’s used to strengthen relationships and 
+      foster goodwill.
     `,
     shortDescription: `
       Connectors treat finances as a means to strengthen bonds and nurture communal 
@@ -293,13 +293,12 @@ const categoriesData = {
     name: "Adventurer",
     article: "an",
     description: `
-      Adventurers are risk-takers and experience-seekers. They are often on the go 
-      – traveling, trying new ventures, or embracing spontaneous opportunities. 
-      They need financial products that keep up with their pace, offering wide 
-      access to funds, flexibility in borrowing, and rewards that cater to their 
-      adventurous spending. Importantly, they want to avoid being slowed down by 
-      banking hassles or not having money accessible when and where they need it. 
-      The following products suit the Adventurer’s dynamic lifestyle:
+      Financial decisions for you are often about excitement, curiosity, 
+      and seizing new opportunities. You embrace risk with a positive mindset, 
+      driven by optimism and the thrill of the unknown. Each financial challenge 
+      is a chance to explore fresh possibilities, and you rarely shy away from 
+      trying something new. You see setbacks as growth opportunities, fueling 
+      your eagerness to keep pushing boundaries.
     `,
     shortDescription: `
       Adventurers thrive on excitement and are quick to explore new financial 
