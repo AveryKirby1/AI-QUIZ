@@ -303,7 +303,6 @@ function displayFinalResults(tiedCats, sortedArray) {
     li.innerHTML = w;
     watchoutList.appendChild(li);
   });
-}
 
   let productsArray;
   if (tiedCats.length === 1) {
