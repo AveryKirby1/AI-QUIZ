@@ -416,8 +416,12 @@ function buildDistributionBars(sortedArray, tiedCats) {
   const catBarContainer = document.getElementById("category-bars");
   catBarContainer.innerHTML = "";
 
-  // Filter out categories that have a 0% score
+  // 1) Filter out categories that have a 0% score
   const nonzeroArray = sortedArray.filter(([cat, score]) => score > 0);
+
+  // 2) We'll track if there's at least one "non-winning" category
+  //    (meaning a category NOT in tiedCats). Only then we show the plus callout text.
+  let foundNonWinning = false;
 
   nonzeroArray.forEach(([cat, score], index) => {
     const barRow = document.createElement("div");
@@ -429,8 +433,9 @@ function buildDistributionBars(sortedArray, tiedCats) {
 
     let pct = Math.round((score / total) * 100);
 
-    // If it's not part of the winning categories, we add a '+' to expand/collapse short summary
+    // If this category isn't in the winning set, it has a plus sign
     if (!tiedCats.includes(cat)) {
+      foundNonWinning = true; // we'll need the plus callout
       const toggle = document.createElement("span");
       toggle.className = "expand-toggle";
       toggle.textContent = "+";
@@ -456,7 +461,7 @@ function buildDistributionBars(sortedArray, tiedCats) {
 
     catBarContainer.appendChild(barRow);
 
-    // If there's a short description for that category, append it below (for toggling)
+    // If there's a short summary for categories not in the tie, append it
     if (!tiedCats.includes(cat)) {
       const shortBox = document.createElement("div");
       shortBox.id = `short-${cat}`;
@@ -465,16 +470,23 @@ function buildDistributionBars(sortedArray, tiedCats) {
       catBarContainer.appendChild(shortBox);
     }
 
-    // Insert the “Click the '+' icons…” text right after the final nonzero bar row
-    if (index === nonzeroArray.length - 1) {
+    // After the final bar, we'll decide whether to add the plus-row (for the text)
+    if (index === nonzeroArray.length - 1 && foundNonWinning) {
+      // We only create this row if there's actually a non-winning category
+      const plusRow = document.createElement("div");
+      plusRow.className = "category-bar plus-row"; // same styling as a bar row
+      catBarContainer.appendChild(plusRow);
+
       const plusCallout = document.createElement("p");
       plusCallout.className = "plus-callout-small";
       plusCallout.textContent = 
         "Click the “+” icons to view more about each non-winning category.";
-      catBarContainer.appendChild(plusCallout);
+
+      plusRow.appendChild(plusCallout);
     }
   });
 }
+
 
 
 /****************************************************
