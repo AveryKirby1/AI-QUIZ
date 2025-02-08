@@ -374,7 +374,7 @@ function displayFinalResults(tiedCats, sortedArray) {
       lowerName.includes("rewards")
     ) {
       imageSrc = "images/creditcard.png";
-    } else if (lowerName.includes("loan") || lowerName.includes("Line of Credit")) {
+    } else if (lowerName.includes("loan") || lowerName.includes("line of credit")) {
       imageSrc = "images/loans.png";
     }
     if (imageSrc) {
