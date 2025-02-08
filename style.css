@@ -153,8 +153,9 @@ html, body {
   margin-left: 5px;
 }
 
+/* Base styles for quiz-btn */
 .quiz-btn {
-  background-color: #007BFF;
+  background-color: #007BFF;  /* default (blue) for other buttons if any */
   color: #fff;
   padding: 10px 16px;
   border: none;
@@ -167,6 +168,33 @@ html, body {
 
 .quiz-btn:hover {
   background-color: #0056b3;
+}
+
+/* SPECIFIC: Make Prev and Next buttons the same red (#B22222)
+   Only the Next button becomes disabled/lighter if no selection 
+*/
+#prev-btn {
+  background-color: #B22222;  /* Red for the Previous button */
+}
+
+#prev-btn:hover {
+  background-color: #8a1b1b;  /* Slightly darker red on hover */
+}
+
+/* Next button in normal (enabled) state */
+#next-btn {
+  background-color: #B22222;  /* Same red as category names */
+}
+
+/* Next button hover when enabled */
+#next-btn:hover:not(:disabled) {
+  background-color: #8a1b1b;
+}
+
+/* Next button disabled => lighter shade, no hover, not-allowed cursor */
+#next-btn:disabled {
+  background-color: #e3b8b8;  /* Lighter red */
+  cursor: not-allowed;
 }
 
 /* ----------------------------------------------------------------------- */
@@ -241,14 +269,14 @@ html, body {
 }
 
 /* 
-  Optional new class to identify the row with the plus-callout text. 
-  We'll center its content horizontally.
+  Special row that just has the plus-callout text 
+  We'll center its content horizontally
 */
 .category-bar.plus-row {
   justify-content: center;
 }
 
-/* Let label hold cat name on left, plus sign on the right side if relevant */
+/* Let label hold cat name on left, plus sign on the right if relevant */
 .category-bar .bar-label {
   width: 200px;
   display: flex;
@@ -259,7 +287,7 @@ html, body {
   font-size: 1rem;
 }
 
-/* The plus sign: same red as the bar fill (#B22222) */
+/* The plus sign: same red as bar fill (#B22222) */
 .expand-toggle {
   margin-left: 10px;
   color: #B22222; 
@@ -278,7 +306,7 @@ html, body {
   position: relative;
 }
 
-/* The fill inside the bar: red, #B22222. */
+/* The fill inside the bar: red (#B22222) */
 .category-bar .bar-fill {
   background-color: #B22222; 
   height: 40px;
@@ -296,7 +324,7 @@ html, body {
   font-size: 1rem;
 }
 
-/* For the short summary text that appears when expanded */
+/* Short summary text for expand/collapse below each bar */
 .short-summary {
   display: none;
   padding: 6px 10px;
@@ -308,7 +336,7 @@ html, body {
   line-height: 1.4;
 }
 
-/* The "Click the '+' icons..." text appended in a special row */
+/* "Click the '+' icons..." text row */
 .plus-callout-small {
   margin: 0;
   text-align: center;
@@ -343,7 +371,7 @@ html, body {
   text-align: center;
 }
 
-/* Color them red, matching category name */
+/* Color them red, matching category name (#B22222) */
 #excel-box h4,
 #watchout-box h4 {
   color: #B22222;
