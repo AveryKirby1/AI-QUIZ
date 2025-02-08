@@ -31,30 +31,28 @@ html, body {
 }
 
 /* ----------------------------------------------------------------------- */
-/* NEW: Top banner (15% height) with shadow and KeyBank logo + Quiz Title  */
+/* TOP BANNER (LOGO + TITLE) */
 /* ----------------------------------------------------------------------- */
 #quiz-top-header {
   position: relative;
   width: 100%;
-  height: 15vh; /* ~15% of viewport height for the top banner */
+  height: 15vh; 
   background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow along bottom */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Logo pinned in top-left of the banner */
 .top-left-img {
   position: absolute;
   top: 20px;
   left: 10px;
   width: 200px;
-  height: auto; /* Preserve aspect ratio */
+  height: auto;
 }
 
-/* The Quiz Title in the top banner */
 #quiz-top-header h1 {
   position: absolute;
-  top: 25px; /* Align with or below the logo */
-  left: 220px; /* Move right so it doesn’t overlap the logo */
+  top: 25px;
+  left: 220px;
   font-size: 1.5rem;
   color: #007BFF;
   margin: 0;
@@ -63,6 +61,31 @@ html, body {
 /* ----------------------------------------------------------------------- */
 /* QUIZ SECTION (Questions) */
 /* ----------------------------------------------------------------------- */
+#quiz-section {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 20px;
+  margin-top: 20px;
+}
+
+#quiz-left-column {
+  width: 60%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+#quiz-right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 35%;
+  margin-left: 20px;
+  background-color: #f0f0f0;
+  box-sizing: border-box;
+}
+
 #question-container {
   margin-bottom: 10px;
 }
@@ -80,7 +103,7 @@ html, body {
   margin-bottom: 12px;
 }
 
-/* Single column answers */
+/* Answer cards */
 #answers-container {
   display: flex;
   flex-direction: column;
@@ -88,7 +111,6 @@ html, body {
   margin-bottom: 20px;
 }
 
-/* Each answer is a full-width box */
 .answer-card {
   width: 100%;
   border: 1px solid #ccc;
@@ -147,11 +169,6 @@ html, body {
   background-color: #0056b3;
 }
 
-/* Hide results by default */
-.hidden {
-  display: none;
-}
-
 /* ----------------------------------------------------------------------- */
 /* RESULTS SECTION */
 /* ----------------------------------------------------------------------- */
@@ -178,13 +195,13 @@ html, body {
   margin-bottom: 5px;
 }
 
-/* Remove the color from #category-name so the red-text class applies */
+/* Category name at the top of results */
 #category-name {
   margin-top: 5px;
   font-size: 1.8rem;
-  /* color property removed */
 }
 
+/* Main category description text */
 #category-description {
   margin: 10px auto;
   max-width: 650px;
@@ -193,7 +210,12 @@ html, body {
   color: #333;
 }
 
-/* Distribution bars */
+/* Hide results by default */
+.hidden {
+  display: none;
+}
+
+/* Distribution bars container */
 .distribution-container {
   margin: 20px 0;
 }
@@ -202,51 +224,45 @@ html, body {
   margin-bottom: 10px;
   font-size: 1.1rem;
   font-weight: bold;
+  text-align: center;
 }
 
-.key-span {
-  color: #007BFF;
-  font-weight: bold;
-}
-
+/* The container for the bars themselves */
 #category-bars {
-  max-width: 600px;
+  max-width: 700px; /* make a bit wider if you want an even bigger chart */
   margin: 0 auto;
 }
 
+/* Each bar row */
 .category-bar {
   display: flex;
   align-items: center;
-  margin: 8px 0;
+  margin: 14px 0; /* more vertical space */
   position: relative;
 }
 
+/* Category label on the left */
 .category-bar .bar-label {
-  width: 180px;
+  width: 200px;            /* increased from 180px */
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 1rem;         /* bigger text */
 }
 
-.expand-toggle {
-  margin-left: 5px;
-  color: #007BFF;
-  font-weight: bold;
-  cursor: pointer;
-}
-
+/* The bar track (background) */
 .category-bar .bar-bg {
   flex: 1;
   background: #ddd;
   border-radius: 5px;
-  height: 30px;
+  height: 40px;            /* bigger bar height */
   margin: 0 10px;
   position: relative;
 }
 
+/* The fill inside the bar -- now red to match category name color (#B22222) */
 .category-bar .bar-fill {
-  background-color: #007BFF;
-  height: 30px;
+  background-color: #B22222; /* "FireBrick" red, matching your .red-text color */
+  height: 40px; 
   border-radius: 5px;
   width: 0%;
   position: absolute;
@@ -254,12 +270,14 @@ html, body {
   left: 0;
 }
 
+/* The percentage on the right */
 .category-bar .bar-percent {
-  width: 40px;
+  width: 60px;             /* give it more space */
   text-align: right;
-  font-size: 0.8rem;
+  font-size: 1rem;         /* bigger text */
 }
 
+/* For the short summary text that appears when expanded */
 .short-summary {
   display: none;
   padding: 6px 10px;
@@ -271,6 +289,7 @@ html, body {
   line-height: 1.4;
 }
 
+/* Subtext under distribution bars */
 .plus-callout-small {
   text-align: center;
   display: block;
@@ -280,12 +299,12 @@ html, body {
   color: #777;
 }
 
-/* Insights: add top/bottom space and revert bullets to left alignment */
+/* Insights: spacing around strengths & weaknesses */
 .insight-container {
   display: flex;
   justify-content: space-between;
-  max-width: 900px; /* same max width as product cards */
-  margin: 40px auto; /* adds extra space above and below these boxes */
+  max-width: 900px; 
+  margin: 40px auto; 
 }
 
 .insight-box {
@@ -297,7 +316,7 @@ html, body {
   margin: 0;
 }
 
-/* Headings: center the "Where you excel..." / "Watch out for..." text only */
+/* Center just the headings */
 .insight-box h4 {
   margin-bottom: 8px;
   font-size: 1rem;
@@ -305,18 +324,18 @@ html, body {
   text-align: center;
 }
 
-/* Color them to match the category name (red-text = #B22222) */
+/* Color them red, matching category name */
 #excel-box h4,
 #watchout-box h4 {
   color: #B22222;
 }
 
-/* Bullet points: left-aligned, with thin divider lines */
+/* Bullets: left-aligned */
 .insight-box ul {
   list-style-type: disc;
   list-style-position: outside;
   margin: 0;
-  padding-left: 1.5rem;  /* a bit of indentation for the bullets */
+  padding-left: 1.5rem;
 }
 
 .insight-box li {
@@ -329,7 +348,6 @@ html, body {
   border-bottom: none;
 }
 
-/* The bold opener text in each bullet (if any remains) */
 .opener-text {
   font-weight: bold;
 }
@@ -464,7 +482,7 @@ html, body {
   line-height: 1.4;
 }
 
-/* Full-width container under results */
+/* Full-width container under results section */
 .results-box {
   width: 100%;
   background-color: #f9f9f9;
@@ -500,7 +518,7 @@ html, body {
   margin-top: 60px;
 }
 
-/* New result text class to style only the specific result sentence */
+/* This class controls key text in results */
 .result-text {
   font-family: "Arial Black", sans-serif;
   font-weight: bold;
@@ -514,36 +532,4 @@ html, body {
 
 .red-text {
   color: #B22222;
-}
-
-/* ----------------------------------------------------------------------- */
-/* QUIZ SECTION: Two-Column Layout (Questions Left, Placeholder Right)     */
-/* ----------------------------------------------------------------------- */
-#quiz-section {
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-  box-sizing: border-box;
-  padding-right: 20px;
-  margin-top: 20px;
-}
-
-#quiz-left-column {
-  width: 60%;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
-
-#quiz-right-column {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  width: 35%;
-  margin-left: 20px;
-  background-color: #f0f0f0;
-  box-sizing: border-box;
-}
-
-.opener-text {
-  font-weight: bold;
 }
