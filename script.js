@@ -659,19 +659,6 @@ function toggleShortSummary(cat, toggleSpan) {
  * and then displays the results page when the "Auto Complete Quiz" button is clicked.
  * Remove this block when you no longer need the testing functionality.
  ****************************************************/
-document.getElementById("auto-complete-btn").addEventListener("click", function() {
-  // Auto-select the first answer for each question
-  for (let i = 0; i < questions.length; i++) {
-    selectedAnswers[i] = [0];
-  }
-  
-  // Set currentQuestionIndex to the last question
-  currentQuestionIndex = questions.length - 1;
-  
-  // Update the display (optional) and immediately show results
-  displayQuestion(currentQuestionIndex);
-  showResults();
-});
 function toggleNextButtonDisabled(qIndex) {
   // Grab the Next button
   const nextBtn = document.getElementById("next-btn");
