@@ -235,28 +235,24 @@ function isVowel(ch) {
 function displayFinalResults(tiedCats, sortedArray) {
   const { name, article, description } = getCombinedNameAndDesc(tiedCats);
 
-  // Intro text remains
   document.getElementById("intro-paragraph").textContent =
     "Finances touch our lives in personal ways and can often feel overwhelming. " +
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
 
-  // 1) Black line ends with "are a/an"
+  // Black line: "... we think you are a/an"
   const introSecondLineEl = document.getElementById("intro-second-line");
   introSecondLineEl.textContent = `With your responses in mind, we think you are ${article}`;
 
-  // 2) Red line: just the category name
+  // Red line: just the category name
   const categoryNameEl = document.getElementById("category-name");
   categoryNameEl.textContent = name;
   categoryNameEl.classList.add("red-text");
 
-  // 3) Insert category description
   document.getElementById("category-description").innerHTML = description;
 
-  // Build distribution bars
   buildDistributionBars(sortedArray, tiedCats);
 
-  // Distribution container logic
   const distributionContainer = document.getElementById("distribution-container");
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
   const topPct = Math.round((sortedArray[0][1] / total) * 100);
@@ -283,7 +279,6 @@ function displayFinalResults(tiedCats, sortedArray) {
   plusCallout.textContent = `Click the “+” icons to view more about each non-winning category.`;
   distributionContainer.appendChild(plusCallout);
 
-  // Next, strengths/weaknesses logic
   const topCatsForBullets = determineTopCats(sortedArray);
   const pctMap = buildPctMap(sortedArray);
 
@@ -298,7 +293,9 @@ function displayFinalResults(tiedCats, sortedArray) {
     excelList.appendChild(li);
   });
 
-  const watchoutList = document.getElementById("watchout-box").querySelector("ul");
+  const watchoutList = document
+    .getElementById("watchout-box")
+    .querySelector("ul");
   watchoutList.innerHTML = "";
   finalWeaknesses.forEach(w => {
     const li = document.createElement("li");
@@ -306,13 +303,10 @@ function displayFinalResults(tiedCats, sortedArray) {
     watchoutList.appendChild(li);
   });
 
-  // 4) Determine if single or tie scenario and build product array
   let productsArray;
   if (tiedCats.length === 1) {
-    // Single category
     productsArray = categoriesData[tiedCats[0]].products;
   } else {
-    // Tied scenario
     const sortedTied = [...tiedCats].sort((a, b) => a.localeCompare(b));
     const tieKey = sortedTied.join("+");
     if (tieData[tieKey]) {
@@ -322,38 +316,35 @@ function displayFinalResults(tiedCats, sortedArray) {
     }
   }
 
-  // 5) Insert “Find solutions we’ve made just for …” in bold black + red + `'s`
+  // Insert “Find solutions we've made just for …” in bold black, category + “s” in bold red
   const productsTitleEl = document.getElementById("products-title");
   productsTitleEl.innerHTML = `
     <span class="result-text black-text" style="font-weight: bold;">
       Find solutions we've made just for 
-      <span class="red-text result-text">${name}'s</span>
+      <span class="red-text result-text">${name}s</span>
     </span>
   `;
 
-  // 6) Build product cards
   const productContainer = document.getElementById("product-recommendations");
   productContainer.innerHTML = "";
 
   productsArray.forEach(prod => {
-    // Create the overall card container
     const card = document.createElement("div");
     card.className = "product-card";
 
-    // 1) Top header
     const headerDiv = document.createElement("div");
     headerDiv.className = "product-header";
     const headerTitle = document.createElement("h5");
     headerTitle.textContent = prod.name;
     headerDiv.appendChild(headerTitle);
 
-    // 2) Content area
     const contentDiv = document.createElement("div");
     contentDiv.className = "product-content";
 
-    // Left column for image
     const leftDiv = document.createElement("div");
     leftDiv.className = "product-left";
+
+    // Derive image
     let imageSrc = "";
     const lowerName = prod.name.toLowerCase();
     if (lowerName.includes("checking")) {
@@ -382,6 +373,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     const pitchP = document.createElement("p");
     pitchP.textContent = prod.pitch;
     middleDiv.appendChild(pitchP);
+
     const button = document.createElement("button");
     button.className = "product-btn";
     button.textContent = "Learn More";
@@ -397,20 +389,16 @@ function displayFinalResults(tiedCats, sortedArray) {
     });
     rightDiv.appendChild(benefitsUl);
 
-    // Put columns together
     contentDiv.appendChild(leftDiv);
     contentDiv.appendChild(middleDiv);
     contentDiv.appendChild(rightDiv);
 
-    // Finally, append the header and content to the card
     card.appendChild(headerDiv);
     card.appendChild(contentDiv);
 
-    // And add the card to the container
     productContainer.appendChild(card);
   });
 }
-
 
 /****************************************************
  * BUILD DISTRIBUTION BARS
