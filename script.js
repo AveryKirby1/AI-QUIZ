@@ -235,25 +235,28 @@ function isVowel(ch) {
 function displayFinalResults(tiedCats, sortedArray) {
   const { name, article, description } = getCombinedNameAndDesc(tiedCats);
 
+  // Intro text remains
   document.getElementById("intro-paragraph").textContent =
     "Finances touch our lives in personal ways and can often feel overwhelming. " +
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
 
-  // Put the article on the black-text line
-  // so it ends with "... we think you are a/an"
+  // 1) Black line ends with "are a/an"
   const introSecondLineEl = document.getElementById("intro-second-line");
   introSecondLineEl.textContent = `With your responses in mind, we think you are ${article}`;
 
-  // Put just the category name on the red-text line
+  // 2) Red line: just the category name
   const categoryNameEl = document.getElementById("category-name");
   categoryNameEl.textContent = name;
   categoryNameEl.classList.add("red-text");
 
+  // 3) Insert category description
   document.getElementById("category-description").innerHTML = description;
 
+  // Build distribution bars
   buildDistributionBars(sortedArray, tiedCats);
 
+  // Distribution container logic
   const distributionContainer = document.getElementById("distribution-container");
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
   const topPct = Math.round((sortedArray[0][1] / total) * 100);
@@ -280,8 +283,7 @@ function displayFinalResults(tiedCats, sortedArray) {
   plusCallout.textContent = `Click the “+” icons to view more about each non-winning category.`;
   distributionContainer.appendChild(plusCallout);
 
-  // Continue the function (DON'T close it here):
-
+  // Next, strengths/weaknesses logic
   const topCatsForBullets = determineTopCats(sortedArray);
   const pctMap = buildPctMap(sortedArray);
 
@@ -296,9 +298,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     excelList.appendChild(li);
   });
 
-  const watchoutList = document
-    .getElementById("watchout-box")
-    .querySelector("ul");
+  const watchoutList = document.getElementById("watchout-box").querySelector("ul");
   watchoutList.innerHTML = "";
   finalWeaknesses.forEach(w => {
     const li = document.createElement("li");
@@ -306,36 +306,32 @@ function displayFinalResults(tiedCats, sortedArray) {
     watchoutList.appendChild(li);
   });
 
-  // Determine if single or tie scenario
+  // 4) Determine if single or tie scenario and build product array
   let productsArray;
   if (tiedCats.length === 1) {
     // Single category
     productsArray = categoriesData[tiedCats[0]].products;
-
-    // If you DO want a heading for single categories, leave this:
-    document.getElementById("products-title").textContent =
-      categoriesData[tiedCats[0]].headingForProducts;
-    // ^ If headingForProducts doesn't exist, this might do nothing or cause an error,
-    //   so remove/disable if undesired or no property in your data.
-
   } else {
     // Tied scenario
     const sortedTied = [...tiedCats].sort((a, b) => a.localeCompare(b));
     const tieKey = sortedTied.join("+");
     if (tieData[tieKey]) {
       productsArray = tieData[tieKey].products;
-
-      // We REMOVE the tie wording, so just set it to empty:
-      document.getElementById("products-title").textContent = "";
-
     } else {
       productsArray = [];
-
-      // Also set this to empty for the "Mixed" scenario:
-      document.getElementById("products-title").textContent = "";
     }
   }
 
+  // 5) Insert “Find solutions we’ve made just for …” in bold black + red + `'s`
+  const productsTitleEl = document.getElementById("products-title");
+  productsTitleEl.innerHTML = `
+    <span class="result-text black-text" style="font-weight: bold;">
+      Find solutions we've made just for 
+      <span class="red-text result-text">${name}'s</span>
+    </span>
+  `;
+
+  // 6) Build product cards
   const productContainer = document.getElementById("product-recommendations");
   productContainer.innerHTML = "";
 
@@ -355,11 +351,9 @@ function displayFinalResults(tiedCats, sortedArray) {
     const contentDiv = document.createElement("div");
     contentDiv.className = "product-content";
 
-    // Left column (25%): blank or for an image
+    // Left column for image
     const leftDiv = document.createElement("div");
     leftDiv.className = "product-left";
-
-    // Derive which image to show
     let imageSrc = "";
     const lowerName = prod.name.toLowerCase();
     if (lowerName.includes("checking")) {
@@ -388,7 +382,6 @@ function displayFinalResults(tiedCats, sortedArray) {
     const pitchP = document.createElement("p");
     pitchP.textContent = prod.pitch;
     middleDiv.appendChild(pitchP);
-
     const button = document.createElement("button");
     button.className = "product-btn";
     button.textContent = "Learn More";
