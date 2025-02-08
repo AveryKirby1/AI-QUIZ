@@ -82,6 +82,9 @@ function displayQuestion(index) {
   }
 
   updateQuestionTracker(index);
+  
+  toggleNextButtonDisabled(index);
+
 }
 
 /****************************************************
@@ -108,10 +111,6 @@ function updateQuestionTracker(index) {
  ****************************************************/
 function goToNextQuestion() {
   saveCurrentAnswer();
-  if (selectedAnswers[currentQuestionIndex].length === 0) {
-    alert("Please select at least one answer before proceeding.");
-    return;
-  }
   currentQuestionIndex++;
   displayQuestion(currentQuestionIndex);
 }
@@ -139,6 +138,9 @@ function saveCurrentAnswer() {
     if (cb.checked) chosen.push(parseInt(cb.value));
   });
   selectedAnswers[currentQuestionIndex] = chosen;
+
+  // Re-check how many answers were selected, then enable/disable Next
+  toggleNextButtonDisabled(currentQuestionIndex);
 }
 
 /****************************************************
@@ -662,3 +664,22 @@ document.getElementById("auto-complete-btn").addEventListener("click", function(
   displayQuestion(currentQuestionIndex);
   showResults();
 });
+function toggleNextButtonDisabled(qIndex) {
+  // Grab the Next button
+  const nextBtn = document.getElementById("next-btn");
+  // If we're on the last question, "nextBtn" might not be shown
+  if (!nextBtn) return;
+
+  // Count how many answers are selected
+  const chosenCount = selectedAnswers[qIndex].length;
+
+  if (chosenCount === 0) {
+    // Disable Next button
+    nextBtn.disabled = true;
+    nextBtn.classList.add("btn-disabled");
+  } else {
+    // Enable Next button
+    nextBtn.disabled = false;
+    nextBtn.classList.remove("btn-disabled");
+  }
+}
