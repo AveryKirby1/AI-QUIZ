@@ -296,16 +296,37 @@ html, body {
   padding: 10px 15px;
 }
 
+/* Default heading for insight boxes; we override excel/watchout below if needed */
 .insight-box h4 {
   margin-bottom: 8px;
   font-size: 1rem;
-  color: #007BFF;
+  color: #333;
 }
 
+/* Match the headings’ color to the category name (red-text = #B22222) */
+#excel-box h4,
+#watchout-box h4 {
+  color: #B22222;
+}
+
+/* Make bullets and add a thin divider line per bullet, plus bold opener text */
 .insight-box ul {
-  padding-left: 20px;
   list-style-type: disc;
-  font-size: 0.9rem;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.insight-box li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.insight-box li:last-child {
+  border-bottom: none;
+}
+
+.opener-text {
+  font-weight: bold;
 }
 
 .fuel-title {
@@ -359,7 +380,6 @@ html, body {
   width: 100%;
 }
 
-/* REMOVED gray background, now flex-centered for the image */
 .product-left {
   width: 25%;
   box-sizing: border-box;
