@@ -239,29 +239,28 @@ html, body {
 .category-bar {
   display: flex;
   align-items: center;
-  margin: 14px 0; /* more vertical space */
+  margin: 14px 0;
   position: relative;
 }
 
-/* Make label a flex container to separate the category text from the + icon
-   so they line up neatly in a vertical column. */
+/* We use a flex container for .bar-label to separate the category text from the + icon. */
 .category-bar .bar-label {
   width: 200px;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* left: cat name, right: plus sign */
+  justify-content: space-between; 
   font-weight: bold;
   text-transform: uppercase;
   font-size: 1rem;
 }
 
-/* If there is no plus sign, the category name remains left aligned in that space. */
+/* The plus sign: same red as the bar fill (#B22222), bigger font, spaced a bit after the cat name */
 .expand-toggle {
-  margin-left: 10px;  /* optional small gap after the cat name */
-  color: #B22222;     /* same red as the bar fill & category name */
+  margin-left: 10px;
+  color: #B22222; 
   font-weight: bold;
   cursor: pointer;
-  font-size: 1.2rem;  /* bigger plus */
+  font-size: 1.2rem; 
 }
 
 /* The bar track (background) */
@@ -274,7 +273,7 @@ html, body {
   position: relative;
 }
 
-/* The fill inside the bar: red, same as #B22222. */
+/* The fill inside the bar: red, same as #B22222 */
 .category-bar .bar-fill {
   background-color: #B22222; 
   height: 40px;
@@ -304,12 +303,14 @@ html, body {
   line-height: 1.4;
 }
 
-/* Centered subtext under the last bar row, with extra top margin to separate it from the bars */
+/* 
+  Center the line “Click the '+' icons…” 
+  Right after the last bar, with some extra top margin. 
+*/
 .plus-callout-small {
   text-align: center;
   display: block;
-  max-width: 600px;
-  margin: 30px auto 0; /* increased top margin for breathing room */
+  margin: 10px auto 0; /* minimal top margin since it's now right under the last bar */
   font-size: 0.85rem;
   color: #777;
 }
