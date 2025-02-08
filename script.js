@@ -73,13 +73,15 @@ function displayQuestion(index) {
     prevBtn.style.display = "inline-block";
   }
 
-  if (index < questions.length - 1) {
-    nextBtn.style.display = "inline-block";
-    resultsBtn.style.display = "none";
-  } else {
-    nextBtn.style.display = "none";
-    resultsBtn.style.display = "inline-block";
-  }
+ if (index < questions.length - 1) {
+  nextBtn.style.display = "inline-block";
+  resultsBtn.style.display = "none";
+  toggleNextButtonDisabled(index);
+} else {
+  nextBtn.style.display = "none";
+  resultsBtn.style.display = "inline-block";
+  toggleResultsButtonDisabled(index); // newly created function
+}
 
   updateQuestionTracker(index);
   
@@ -139,9 +141,15 @@ function saveCurrentAnswer() {
   });
   selectedAnswers[currentQuestionIndex] = chosen;
 
-  // Re-check how many answers were selected, then enable/disable Next
-  toggleNextButtonDisabled(currentQuestionIndex);
+  // If not the final question, enable/disable Next 
+  if (currentQuestionIndex < questions.length - 1) {
+    toggleNextButtonDisabled(currentQuestionIndex);
+  } else {
+    // final question => enable/disable results
+    toggleResultsButtonDisabled(currentQuestionIndex);
+  }
 }
+
 
 /****************************************************
  * SHOW RESULTS
@@ -683,3 +691,17 @@ function toggleNextButtonDisabled(qIndex) {
     nextBtn.classList.remove("btn-disabled");
   }
 }
+function toggleResultsButtonDisabled(qIndex) {
+  const resultsBtn = document.getElementById("results-btn");
+  if (!resultsBtn) return;
+
+  const chosenCount = selectedAnswers[qIndex].length;
+  if (chosenCount === 0) {
+    // No answers => disable
+    resultsBtn.disabled = true;
+  } else {
+    // At least one => enable
+    resultsBtn.disabled = false;
+  }
+}
+
