@@ -416,7 +416,10 @@ function buildDistributionBars(sortedArray, tiedCats) {
   const catBarContainer = document.getElementById("category-bars");
   catBarContainer.innerHTML = "";
 
-  sortedArray.forEach(([cat, score], index) => {
+  // Filter out categories that have a 0% score
+  const nonzeroArray = sortedArray.filter(([cat, score]) => score > 0);
+
+  nonzeroArray.forEach(([cat, score], index) => {
     const barRow = document.createElement("div");
     barRow.className = "category-bar";
 
@@ -426,6 +429,7 @@ function buildDistributionBars(sortedArray, tiedCats) {
 
     let pct = Math.round((score / total) * 100);
 
+    // If it's not part of the winning categories, we add a '+' to expand/collapse short summary
     if (!tiedCats.includes(cat)) {
       const toggle = document.createElement("span");
       toggle.className = "expand-toggle";
@@ -452,27 +456,22 @@ function buildDistributionBars(sortedArray, tiedCats) {
 
     catBarContainer.appendChild(barRow);
 
+    // If there's a short description for that category, append it below (for toggling)
     if (!tiedCats.includes(cat)) {
       const shortBox = document.createElement("div");
       shortBox.id = `short-${cat}`;
       shortBox.className = "short-summary";
-      shortBox.textContent =
-        categoriesData[cat]?.shortDescription?.trim() || "";
+      shortBox.textContent = categoriesData[cat]?.shortDescription?.trim() || "";
       catBarContainer.appendChild(shortBox);
     }
 
-    // After the final bar row, create a new row just for the + callout text
-    if (index === sortedArray.length - 1) {
-      const plusRow = document.createElement("div");
-      plusRow.className = "category-bar plus-row";  // new row with same structure
-      catBarContainer.appendChild(plusRow);
-
+    // Insert the “Click the '+' icons…” text right after the final nonzero bar row
+    if (index === nonzeroArray.length - 1) {
       const plusCallout = document.createElement("p");
       plusCallout.className = "plus-callout-small";
-      plusCallout.textContent =
+      plusCallout.textContent = 
         "Click the “+” icons to view more about each non-winning category.";
-
-      plusRow.appendChild(plusCallout);
+      catBarContainer.appendChild(plusCallout);
     }
   });
 }
