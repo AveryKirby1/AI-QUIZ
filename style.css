@@ -546,18 +546,32 @@ html, body {
   width: 50%;
   margin: 0 auto;
   display: flex;
-  align-items: center;
+  align-items: center;   /* vertically center .result-left & .result-right */
+  justify-content: center; /* horizontally center them within .results-inner */
 }
 
+/* The left half for your image */
 .result-left {
-  flex: 0 0 50%;
-  text-align: center;
+  display: flex;        /* enable flex for more precise control */
+  justify-content: center; /* center the image horizontally in left area */
+  align-items: center;  /* center vertically if needed */
 }
 
-.result-right {
-  flex: 0 0 50%;
-  text-align: left;
+/* Make the image larger */
+.result-left img {
+  max-width: 200px;     /* you can adjust this size as you wish */
+  height: auto;
+  margin-right: 20px;   /* space between image & the text column */
 }
+
+/* The right half for your 2 lines of text */
+.result-right {
+  display: flex;        /* stack lines (intro + category name) vertically */
+  flex-direction: column;
+  align-items: center;  /* center horizontally */
+  text-align: center;   /* each line is centered within .result-right */
+}
+
 
 .top-line {
   font-weight: 700;
