@@ -259,25 +259,26 @@ function displayFinalResults(tiedCats, sortedArray) {
   categoryNameEl.textContent = name;
   categoryNameEl.classList.add("red-text");
 
-  // Now set the summary (NEW position: placed just above the description)
-  const categorySummaryEl = document.getElementById("category-summary");
-  let summary = "";
-
+  // Determine which summary to use
+  let summaryText = "";
   if (tiedCats.length === 1) {
-    summary = categoriesData[tiedCats[0]].summary || "";
+    const catKey = tiedCats[0];
+    summaryText = categoriesData[catKey].summary || "";
   } else {
     const sortedTied = [...tiedCats].sort((a, b) => a.localeCompare(b));
     const tieKey = sortedTied.join("+");
     if (tieData[tieKey]) {
-      summary = tieData[tieKey].summary || "";
-    } else {
-      summary = "";
+      summaryText = tieData[tieKey].summary || "";
     }
   }
-  categorySummaryEl.textContent = summary;
 
-  // Then set the main description below the summary
-  document.getElementById("category-description").innerHTML = description;
+  // Combine summary + description into two paragraphs in the same element
+  // First paragraph is the summary sentence, second paragraph is the remainder
+  const combinedText = `
+    <p>${summaryText}</p>
+    <p>${description}</p>
+  `;
+  document.getElementById("category-description").innerHTML = combinedText;
 
   // Calculate how “dominant” the top category is
   const distributionContainer = document.getElementById("distribution-container");
@@ -434,6 +435,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     productContainer.appendChild(card);
   });
 }
+
 
 
 /****************************************************
