@@ -8,14 +8,14 @@ const categoriesData = {
   Planner: {
     name: "Planner",
     article: "a",
-    description: `
-      You are the master of practicality and preparation. You approach financial decisions 
-      with thoughtfulness, responsibility, and an eye toward long-term security. While your 
-      careful approach keeps you grounded, you might sometimes miss out on spontaneous 
-      opportunities. You thrive on structure and routine, preferring to plan each step to 
-      avoid surprises. By setting clear goals and budgets, you gain peace of mind and a 
-      sense of accomplishment.
-    `,
+    summary: "You are the master of practicality and preparation.",
+  description: `
+    You approach financial decisions with thoughtfulness, responsibility, and an eye toward 
+    long-term security. While your careful approach keeps you grounded, you might sometimes 
+    miss out on spontaneous opportunities. You thrive on structure and routine, preferring 
+    to plan each step to avoid surprises. By setting clear goals and budgets, you gain 
+    peace of mind and a sense of accomplishment.
+  `,
     shortDescription: `
       Planners focus on structured routines and detailed goal-setting to ensure 
       financial stability, excelling at avoiding costly surprises. While a tendency 
@@ -103,13 +103,13 @@ weaknesses: [
   Realist: {
     name: "Realist",
     article: "a",
-    description: `
-      You prioritize managing risk, avoiding unnecessary spending, and protecting resources. 
-      While your approach may appear conservative, it helps you navigate challenges with 
-      confidence. You prefer stable, dependable strategies over flashy risks, trusting solid 
-      data and proven methods. This mindset keeps you prepared, ensuring you can handle both 
-      the ups and downs of your financial journey.
-    `,
+    summary: "You prioritize managing risk, avoiding unnecessary spending, and protecting resources.",
+  description: `
+    While your approach may appear conservative, it helps you navigate challenges with confidence. 
+    You prefer stable, dependable strategies over flashy risks, trusting solid data and proven 
+    methods. This mindset keeps you prepared, ensuring you can handle both the ups and downs 
+    of your financial journey.
+  `,
     shortDescription: `
       Realists favor low-risk, dependable strategies to protect resources, guided 
       by caution and clear data. While they may pass up certain prospects, measured 
@@ -197,14 +197,13 @@ weaknesses: [
   Connector: {
     name: "Connector",
     article: "a",
-    description: `
-      You view finances as a tool to support your community and bond with others. 
-      Whether it’s through generosity or lending a helping hand, you find emotional 
-      satisfaction in giving back. Working together toward common goals brings you 
-      genuine joy, and you take pride in uplifting those around you. In your mind, 
-      money only has true value when it’s used to strengthen relationships and 
-      foster goodwill.
-    `,
+    summary: "You view finances as a tool to support your community and bond with others.",
+  description: `
+    Whether it’s through generosity or lending a helping hand, you find emotional satisfaction 
+    in giving back. Working together toward common goals brings you genuine joy, and you take 
+    pride in uplifting those around you. In your mind, money only has true value when it’s used 
+    to strengthen relationships and foster goodwill.
+  `,
     shortDescription: `
       Connectors treat finances as a means to strengthen bonds and nurture communal 
       goals, emphasizing generosity and shared victories. A highly giving nature 
@@ -289,14 +288,13 @@ weaknesses: [
   Adventurer: {
     name: "Adventurer",
     article: "an",
-    description: `
-      Financial decisions for you are often about excitement, curiosity, 
-      and seizing new opportunities. You embrace risk with a positive mindset, 
-      driven by optimism and the thrill of the unknown. Each financial challenge 
-      is a chance to explore fresh possibilities, and you rarely shy away from 
-      trying something new. You see setbacks as growth opportunities, fueling 
-      your eagerness to keep pushing boundaries.
-    `,
+   summary: "Financial decisions for you are often about excitement, curiosity, and seizing new opportunities.",
+  description: `
+    You embrace risk with a positive mindset, driven by optimism and the thrill of the unknown. 
+    Each financial challenge is a chance to explore fresh possibilities, and you rarely shy 
+    away from trying something new. You see setbacks as growth opportunities, fueling your 
+    eagerness to keep pushing boundaries.
+  `,
     shortDescription: `
       Adventurers thrive on excitement and are quick to explore new financial 
       possibilities, guided by an optimistic spirit. Though impulsive choices 
