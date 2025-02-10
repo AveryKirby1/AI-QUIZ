@@ -22,16 +22,16 @@ const categoriesData = {
       to overthink can slow decisions, this disciplined approach provides peace of 
       mind and fosters steady, long-term security.
     `,
-    strengths: [
-      "You excel at long-term strategizing—budgets and schedules are your superpower.",
-      "You stay risk-averse—you’d rather carefully analyze than leap blindly into decisions.",
-      "You maintain an organized approach—spreadsheets, lists, and well-defined goals keep you on track."
-    ],
-    weaknesses: [
-      "Overthinking can hold you back—sometimes it’s okay to act on impulse.",
-      "Paralysis by analysis can stall your forward progress.",
-      "Limited adaptability can be an issue—last-minute changes or surprises may feel uncomfortable."
-    ],
+   strengths: [
+  "You excel at long-term strategizing—budgets and schedules are your superpower.",
+  "You prefer detailed analysis before committing, helping avoid costly pitfalls.",
+  "You maintain a structured, organized approach—goals, spreadsheets, and timelines keep you on track."
+],
+weaknesses: [
+  "Overthinking can slow your progress—sometimes a quicker decision is valuable.",
+  "Paralysis by analysis can happen if you never trust your instincts.",
+  "Sudden changes or surprises may leave you feeling unprepared."
+],
     products: [
       {
         name: "Key Select Checking®",
@@ -117,15 +117,15 @@ const categoriesData = {
       without sacrificing every chance for growth.
     `,
     strengths: [
-      "You’re a clear-eyed investor—you see facts over hype and follow what works.",
-      "You’re an expert risk manager—you keep spending and investing decisions grounded.",
-      "You maintain a level-headed approach—rarely impulsive, you weigh outcomes before acting."
-    ],
-    weaknesses: [
-      "Missing opportunities can happen—a small risk might sometimes pay off.",
-      "Over-caution can hold you back—progress often requires stepping out of your comfort zone.",
-      "A rigid mindset may develop—preferring only proven methods can limit innovative solutions."
-    ],
+  "You rely on clear evidence and proven methods, reducing the chance of big mistakes.",
+  "You manage risk effectively—staying practical and level-headed in decisions.",
+  "You rarely act impulsively, which keeps your finances stable under most conditions."
+],
+weaknesses: [
+  "Being too cautious can mean missing some growth opportunities.",
+  "Relying only on proven methods may limit creative solutions.",
+  "You may hesitate to adapt quickly, waiting for total certainty."
+],
     products: [
       {
         name: "KeyBank Hassle-Free Checking Account®",
@@ -211,16 +211,16 @@ const categoriesData = {
       can lead to overextension, but mindful boundaries preserve both personal 
       well-being and the desire to uplift others.
     `,
-    strengths: [
-      "You’re community-focused—caring deeply about helping others succeed.",
-      "You stay collaborative—pooling resources and sharing wins is your ideal approach.",
-      "A generous spirit guides your choices—giving is part of who you are."
-    ],
-    weaknesses: [
-      "Overextending yourself can become a problem—your finances need protection too.",
-      "Difficulty saying no can arise—it’s impossible to help everyone all the time.",
-      "Conflict avoidance can overshadow tough but necessary conversations."
-    ],
+   strengths: [
+  "You’re community-focused, supporting others and celebrating shared success.",
+  "You thrive on collaboration—pooling resources and expertise for mutual benefit.",
+  "Your generous spirit leads you to give back wherever possible."
+],
+weaknesses: [
+  "You risk overextending your own resources by helping everyone.",
+  "It can be hard to say no, leaving you vulnerable to financial strain.",
+  "Avoiding conflict sometimes means you don’t address necessary money conversations."
+],
     products: [
       {
         name: "Key Smart Checking®",
@@ -304,15 +304,15 @@ const categoriesData = {
       and protects against the downsides of taking bold risks.
     `,
     strengths: [
-      "You’re a bold decision-maker—you jump on opportunities before they slip away.",
-      "You’re curious and open-minded—always seeking new ways to grow.",
-      "You’re an optimistic risk-taker—trusting your instincts even when stepping into the unknown."
-    ],
-    weaknesses: [
-      "Balancing fun with goals can be tricky—it’s still important to save for the future.",
-      "Impulse spending can be a challenge—a set “fun money” budget can help you stay in control.",
-      "FOMO-fueled choices may arise—fear of missing out can rush your decisions."
-    ],
+  "You’re ready to act decisively—opportunities excite you, and you seize the moment.",
+  "You stay curious and open-minded—always seeking new ways to grow.",
+  "Your optimism fuels bold moves—trusting your instincts can open doors."
+],
+weaknesses: [
+  "Balancing spontaneous fun with future needs can be tough—you still need a safety net.",
+  "Impulse spending can creep up—reserving some ‘fun money’ helps maintain control.",
+  "Acting too quickly may lead to regrets—sometimes stepping back is wise."
+],
     products: [
       {
         name: "Key Smart Checking®",
