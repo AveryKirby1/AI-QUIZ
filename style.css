@@ -560,10 +560,10 @@ html, body {
 
 /* Make the image bigger and shift it downward */
 .result-left img {
-  max-width: 200px;      /* You can adjust the size as needed */
+  max-width: 250px;      /* You can adjust the size as needed */
   height: auto;
   margin-right: 20px;    /* Space between image & text */
-  transform: translateY(30px); /* Shift image down by 30px without expanding container */
+  transform: translateY(50px); /* Shift image down by 30px without expanding container */
 }
 
 /* The right half for your two lines of text */
