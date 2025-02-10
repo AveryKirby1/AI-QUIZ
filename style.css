@@ -546,30 +546,32 @@ html, body {
   width: 50%;
   margin: 0 auto;
   display: flex;
-  align-items: center;   /* vertically center .result-left & .result-right */
-  justify-content: center; /* horizontally center them within .results-inner */
+  align-items: center;   /* Vertically center .result-left & .result-right */
+  justify-content: center; /* Horizontally center them within .results-inner */
 }
 
 /* The left half for your image */
 .result-left {
-  display: flex;        /* enable flex for more precise control */
-  justify-content: center; /* center the image horizontally in left area */
-  align-items: center;  /* center vertically if needed */
+  display: flex;         /* Enable flex for precise control */
+  justify-content: center; /* Center the image horizontally in left area */
+  align-items: center;   /* Center vertically if needed */
+  position: relative;    /* So we can use transform on the image */
 }
 
-/* Make the image larger */
+/* Make the image bigger and shift it downward */
 .result-left img {
-  max-width: 200px;     /* you can adjust this size as you wish */
+  max-width: 200px;      /* You can adjust the size as needed */
   height: auto;
-  margin-right: 20px;   /* space between image & the text column */
+  margin-right: 20px;    /* Space between image & text */
+  transform: translateY(30px); /* Shift image down by 30px without expanding container */
 }
 
-/* The right half for your 2 lines of text */
+/* The right half for your two lines of text */
 .result-right {
-  display: flex;        /* stack lines (intro + category name) vertically */
+  display: flex;         /* Stack lines (intro + category name) vertically */
   flex-direction: column;
-  align-items: center;  /* center horizontally */
-  text-align: center;   /* each line is centered within .result-right */
+  align-items: center;   /* Center horizontally */
+  text-align: center;    /* Each line is centered within .result-right */
 }
 
 
