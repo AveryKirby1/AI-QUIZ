@@ -259,7 +259,7 @@ function displayFinalResults(tiedCats, sortedArray) {
   categoryNameEl.textContent = name;
   categoryNameEl.classList.add("red-text");
 
-  // NEW: summary line
+  // Now set the summary (NEW position: placed just above the description)
   const categorySummaryEl = document.getElementById("category-summary");
   let summary = "";
 
@@ -276,6 +276,7 @@ function displayFinalResults(tiedCats, sortedArray) {
   }
   categorySummaryEl.textContent = summary;
 
+  // Then set the main description below the summary
   document.getElementById("category-description").innerHTML = description;
 
   // Calculate how “dominant” the top category is
