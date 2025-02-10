@@ -253,18 +253,15 @@ const categoriesData = {
         ]
       },
       {
-        name: "KeyBank Preferred Line of Credit",
+        name: "Key Active Saver®",
         pitch: `
-          Your generous heart loves having a backup plan if someone needs help. This 
-          credit line costs nothing unless you draw on it, ensuring you can always step 
-          up when unexpected group expenses arise. Link it to checking to cover overdrafts, 
-          saving you from surprise fees if reimbursements lag.
+          You’re all about uplifting others, so a little extra cushion helps you give freely without worrying about your own security. This savings account automatically transfers a small amount each time you make a purchase, and no monthly fee means you can keep more ready to help those around you.
         `,
         benefits: [
-          "Use only if needed, pay interest then",
-          "No annual fee, no collateral",
-          "Covers overdrafts for late paybacks",
-          "Quick transfers for urgent group needs"
+          "Auto-deposits per debit purchase, perfect for consistent saving",
+          "No monthly fee when linked to a Key checking",
+          "Flexible pause or change if group priorities shift",
+          "Instant visibility in the mobile app, so you always know your balance"
         ]
       },
       {
@@ -333,18 +330,15 @@ const categoriesData = {
         ]
       },
       {
-        name: "KeyBank Preferred Line of Credit",
+        name: "Key Active Saver®",
         pitch: `
-          Life can throw exciting curveballs, and this line of credit stands ready. Keep it 
-          open at no annual fee, dip in only if that last-minute flight or bold new idea 
-          appears. Pay interest on what you use, link it to checking for overdraft cover. 
-          It’s your flexible safety rope for each big leap.
+          Every spontaneous purchase can also feed your next adventure. This account automatically transfers a bit into savings each time you swipe, building a fund for your bold moves—all with no monthly fee when linked to checking.
         `,
         benefits: [
-          "No annual fee, borrow only as needed",
-          "Overdraft link if checking falls short",
-          "Revolving credit: repay, borrow again",
-          "Quick digital transfers to checking"
+          "Automatic micro-deposits per debit card purchase",
+          "No monthly fee if you have a Key checking",
+          "Pause/change anytime if new adventures pop up",
+          "Mobile logs so you see your savings build in real time"
         ]
       },
       {
