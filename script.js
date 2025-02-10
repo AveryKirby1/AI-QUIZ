@@ -245,21 +245,22 @@ function isVowel(ch) {
 function displayFinalResults(tiedCats, sortedArray) {
   const { name, article, description } = getCombinedNameAndDesc(tiedCats);
 
+  // Intro text at the top
   document.getElementById("intro-paragraph").textContent =
     "Finances touch our lives in personal ways and can often feel overwhelming. " +
     "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
     "so we can help you thrive in your financial life.";
 
-  // Black line: "... we think you are a/an"
+  // "... we think you are a/an"
   const introSecondLineEl = document.getElementById("intro-second-line");
   introSecondLineEl.textContent = `With your responses in mind, we think you are ${article}`;
 
-  // Red line: just the category name
+  // Category name (red)
   const categoryNameEl = document.getElementById("category-name");
   categoryNameEl.textContent = name;
   categoryNameEl.classList.add("red-text");
 
-  // Determine which summary to use
+  // Gather summary
   let summaryText = "";
   if (tiedCats.length === 1) {
     const catKey = tiedCats[0];
@@ -272,30 +273,25 @@ function displayFinalResults(tiedCats, sortedArray) {
     }
   }
 
-  // Combine summary + description into two paragraphs in the same element
-  // First paragraph is the summary sentence, second paragraph is the remainder
+  // Insert summary (red) + description (black) into the same element
   const combinedText = `
-    <p>${summaryText}</p>
+    <p class="result-text red-text" style="font-size: 1rem;">${summaryText}</p>
     <p>${description}</p>
   `;
   document.getElementById("category-description").innerHTML = combinedText;
 
-  // Calculate how “dominant” the top category is
+  // Distribution chart setup
   const distributionContainer = document.getElementById("distribution-container");
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
   const topPct = Math.round((sortedArray[0][1] / total) * 100);
 
-  // If 100% in a single category, hide the entire chart
+  // Hide chart if 100% single category
   if (topPct === 100 && tiedCats.length === 1) {
     distributionContainer.style.display = "none";
   } else {
-    // Otherwise, show the container (in case it was hidden previously)
     distributionContainer.style.display = "block";
-    
-    // Build the distribution bars (which also appends the plusCallout text at the end)
     buildDistributionBars(sortedArray, tiedCats);
 
-    // Insert the distribution title above the bars
     const distributionTitle = document.createElement("h3");
     if (topPct === 100 && tiedCats.length === 1) {
       distributionTitle.innerHTML = `Your <span class="key-span">key</span> money signs:`;
@@ -313,10 +309,9 @@ function displayFinalResults(tiedCats, sortedArray) {
     );
   }
 
-  // Next, handle the “strengths” and “weaknesses” bullet lists
+  // Strengths & Weaknesses
   const topCatsForBullets = determineTopCats(sortedArray);
   const pctMap = buildPctMap(sortedArray);
-
   const finalStrengths = buildOutputItems(topCatsForBullets, pctMap, "strengths");
   const finalWeaknesses = buildOutputItems(topCatsForBullets, pctMap, "weaknesses");
 
@@ -338,7 +333,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     watchoutList.appendChild(li);
   });
 
-  // Finally, handle product recommendations
+  // Product recommendations
   let productsArray;
   if (tiedCats.length === 1) {
     productsArray = categoriesData[tiedCats[0]].products;
@@ -352,7 +347,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     }
   }
 
-  // Insert “Find solutions we've made just for …” in bold black, category + “s” in bold red
+  // Title for products
   const productsTitleEl = document.getElementById("products-title");
   productsTitleEl.innerHTML = `
     <span class="result-text black-text" style="font-weight: bold;">
