@@ -420,15 +420,14 @@ const tieData = {
   "Adventurer+Planner": {
     article: "an",
     combinedName: "Adventurous Planner",
-    description: `
-      An optimistic approach to new possibilities merges seamlessly with 
-      meticulous planning and goal-setting, striking a balance between 
-      excitement and long-term security. Fresh ideas stay grounded in 
-      structured strategies, ensuring you can dream big without losing 
-      stability. Confidence comes from thorough research, yet there’s still 
-      room for spontaneity. It’s an outlook that lets you relish life’s 
-      thrills while steadily building toward future ambitions.
-    `,
+     summary: "An optimistic approach to new possibilities merges seamlessly with meticulous planning and goal-setting.",
+  description: `
+    Striking a balance between excitement and long-term security. Fresh ideas 
+    stay grounded in structured strategies, ensuring you can dream big without 
+    losing stability. Confidence comes from thorough research, yet there’s still 
+    room for spontaneity. It’s an outlook that lets you relish life’s thrills 
+    while steadily building toward future ambitions.
+  `,
     products: [
       {
         name: "Key Smart Checking®",
@@ -495,15 +494,13 @@ const tieData = {
   "Adventurer+Connector": {
     article: "an",
     combinedName: "Adventurous Connector",
-    description: `
-      An eagerness for bold experiences joins forces with a caring, 
-      collaborative mindset, fueling both personal growth and communal uplift. 
-      Daring choices become more meaningful when they also serve friends, 
-      family, or a broader network. Forward momentum comes from embracing 
-      new opportunities, all the while celebrating shared wins. Together, 
-      it forms a synergy where excitement and social responsibility flourish 
-      side by side.
-    `,
+     summary: "An eagerness for bold experiences joins forces with a caring, collaborative mindset.",
+  description: `
+    Daring choices become more meaningful when they also serve friends, family, 
+    or a broader network. Forward momentum comes from embracing new opportunities, 
+    all the while celebrating shared wins. Together, it forms a synergy where 
+    excitement and social responsibility flourish side by side.
+  `,
     products: [
       {
         name: "KeyBank Hassle-Free Checking Account®",
@@ -570,14 +567,13 @@ const tieData = {
   "Adventurer+Realist": {
     article: "an",
     combinedName: "Adventurous Realist",
-    description: `
-      Creative exploration blends with a fact-driven, cautious perspective, 
-      maintaining a healthy tension between passion and pragmatism. Bold moves 
-      never lose sight of stable outcomes, ensuring enthusiasm doesn’t overshadow 
-      sound judgment. Forward motion is fueled by curiosity, yet guided by measured 
-      analysis. The result is a mindset that welcomes new ventures but insists on 
-      level-headed planning to keep risks in check.
-    `,
+      summary: "Creative exploration blends with a fact-driven, cautious perspective, maintaining a healthy tension between passion and pragmatism.",
+  description: `
+    Bold moves never lose sight of stable outcomes, ensuring enthusiasm 
+    doesn’t overshadow sound judgment. Forward motion is fueled by curiosity, 
+    yet guided by measured analysis. The result is a mindset that welcomes 
+    new ventures but insists on level-headed planning to keep risks in check.
+  `,
     products: [
       {
         name: "KeyBank Hassle-Free Checking Account®",
@@ -642,15 +638,14 @@ const tieData = {
   "Planner+Connector": {
     article: "a",
     combinedName: "Connected Planner",
-    description: `
-      Practical, long-term strategies align with a genuine desire to see others 
-      thrive, weaving personal security and communal benefit into one roadmap. 
-      Methodical budgeting and goal-setting not only stabilize your finances but 
-      also create pathways for collaborative success. Discipline in planning 
-      doesn’t preclude caring deeply about shared outcomes. Ultimately, it’s an 
-      approach that merges structure and empathy, leaving room for both prosperity 
-      and heartfelt connection.
-    `,
+    summary: "Practical, long-term strategies align with a genuine desire to see others thrive.",
+  description: `
+    Weaving personal security and communal benefit into one roadmap. Methodical 
+    budgeting and goal-setting not only stabilize your finances but also create 
+    pathways for collaborative success. Discipline in planning doesn’t preclude 
+    caring deeply about shared outcomes. Ultimately, it’s an approach that merges 
+    structure and empathy, leaving room for both prosperity and heartfelt connection.
+  `,
     products: [
       {
         name: "Key Smart Checking®",
@@ -718,14 +713,14 @@ const tieData = {
   "Planner+Realist": {
     article: "a",
     combinedName: "Realistic Planner",
-    description: `
-      Careful goal-setting pairs with a guarded, data-driven stance on risk, 
-      building a foundation of consistent and reliable progress. Impulsive 
-      choices rarely gain ground here, as every idea is vetted through 
-      proven methods. An orderly framework provides the structure needed 
-      to avoid unpleasant surprises. In this environment, measured action 
-      leads to steady financial stability, free from unnecessary gambles.
-    `,
+     summary: "Careful goal-setting pairs with a guarded, data-driven stance on risk.",
+  description: `
+    Building a foundation of consistent and reliable progress. Impulsive 
+    choices rarely gain ground here, as every idea is vetted through 
+    proven methods. An orderly framework provides the structure needed 
+    to avoid unpleasant surprises. In this environment, measured action 
+    leads to steady financial stability, free from unnecessary gambles.
+  `,
     products: [
       {
         name: "Key Safe Checking®",
@@ -793,14 +788,13 @@ const tieData = {
   "Connector+Realist": {
     article: "a",
     combinedName: "Realistic Connector",
-    description: `
-      A strong sense of generosity and collaboration is tempered by cautious 
-      financial management, ensuring supportive efforts don’t compromise security. 
-      Thoughtful teamwork can empower everyone, yet careful analysis remains a 
-      guiding principle. Balancing empathy with level-headedness helps avoid 
-      overextending resources in the name of kindness. It’s an approach that 
-      keeps group goals in sight while protecting everyone’s interests.
-    `,
+    summary: "A strong sense of generosity and collaboration is tempered by cautious financial management, ensuring supportive efforts don’t compromise security.",
+  description: `
+    Thoughtful teamwork can empower everyone, yet careful analysis remains 
+    a guiding principle. Balancing empathy with level-headedness helps 
+    avoid overextending resources in the name of kindness. It’s an 
+    approach that keeps group goals in sight while protecting everyone’s interests.
+  `,
     products: [
       {
         name: "Key Safe Checking®",
@@ -867,14 +861,13 @@ const tieData = {
   "Adventurer+Connector+Planner": {
     article: "an",
     combinedName: "Adventurous, Connected Planner",
-    description: `
-      Excitement for new possibilities meets structured planning and a caring 
-      heart for collective success. Bold ideas thrive when carefully mapped 
-      out and shared with those around you, letting optimism and discipline 
-      work hand in hand. Rather than rushing headlong, there’s a mindful effort 
-      to keep progress beneficial for all involved. This synergy nurtures 
-      both personal ambition and the well-being of friends or community members.
-    `,
+     summary: "Excitement for new possibilities meets structured planning and a caring heart for collective success.",
+  description: `
+    Bold ideas thrive when carefully mapped out and shared with those around you, 
+    letting optimism and discipline work hand in hand. Rather than rushing headlong, 
+    there’s a mindful effort to keep progress beneficial for all involved. This synergy 
+    nurtures both personal ambition and the well-being of friends or community members.
+  `,
     products: [
       {
         name: "Key Smart Checking®",
@@ -942,15 +935,14 @@ const tieData = {
   "Adventurer+Connector+Realist": {
     article: "an",
     combinedName: "Adventurous, Connected Realist",
-    description: `
-      A drive for discovery blends with generous intentions and a no-nonsense 
-      eye on risk, creating an outlook that values bold moves but remains 
-      firmly grounded. Ventures that benefit others are pursued if they fit 
-      within sensible guidelines, helping everyone flourish. Growth is fueled 
-      by curiosity and collaboration, yet governed by prudent decision-making. 
-      It’s a path where excitement, social awareness, and practical strategy 
-      maintain equilibrium.
-    `,
+    summary: "A drive for discovery blends with generous intentions and a no-nonsense eye on risk, creating an outlook that values bold moves but remains firmly grounded.",
+  description: `
+    Ventures that benefit others are pursued if they fit within sensible 
+    guidelines, helping everyone flourish. Growth is fueled by curiosity 
+    and collaboration, yet governed by prudent decision-making. It’s a 
+    path where excitement, social awareness, and practical strategy 
+    maintain equilibrium.
+  `,
     products: [
       {
         name: "KeyBank Hassle-Free Checking Account®",
@@ -1016,14 +1008,14 @@ const tieData = {
   "Adventurer+Planner+Realist": {
     article: "an",
     combinedName: "Adventurous, Realistic Planner",
-    description: `
-      An appetite for new adventures runs alongside detailed planning and 
-      pragmatic caution. Breakthrough ideas feel invigorating, but each step 
-      is backed by reliable methods that preserve financial stability. 
-      There’s room for spontaneity and fresh perspectives, yet an underlying 
-      framework keeps risk in check. This mix shapes an approach that strives 
-      for innovative progress without losing sight of security or discipline.
-    `,
+     summary: "An appetite for new adventures runs alongside detailed planning and pragmatic caution.",
+  description: `
+    Breakthrough ideas feel invigorating, but each step is backed by reliable 
+    methods that preserve financial stability. There’s room for spontaneity 
+    and fresh perspectives, yet an underlying framework keeps risk in check. 
+    This mix shapes an approach that strives for innovative progress without 
+    losing sight of security or discipline.
+  `,
     products: [
       {
         name: "Key Smart Checking®",
@@ -1091,15 +1083,13 @@ const tieData = {
   "Connector+Planner+Realist": {
     article: "a",
     combinedName: "Connected, Realistic Planner",
-    description: `
-      Community-focused values intersect with thorough organization and a 
-      conservative approach to risk, forming a calm yet people-centric vision. 
-      Collaborative efforts can blossom under systematic goals, ensuring that 
-      everyone moves forward together. Each decision is researched, reducing 
-      the likelihood of mistakes or unexpected challenges. The result is a 
-      measured but caring style that safeguards resources while nurturing 
-      shared triumphs.
-    `,
+    summary: "Community-focused values intersect with thorough organization and a conservative approach to risk.",
+  description: `
+    Methodical goals ensure that everyone moves forward together. Each decision 
+    is researched, reducing the likelihood of mistakes or unexpected challenges. 
+    The result is a measured but caring style that safeguards resources while 
+    nurturing shared triumphs.
+  `,
     products: [
       {
         name: "Key Safe Checking®",
@@ -1168,16 +1158,15 @@ const tieData = {
   "Adventurer+Connector+Planner+Realist": {
     article: "an",
     combinedName: "Adventurous, Connected, Realistic Planner",
-    description: `
-      A love of fresh experiences, a generous spirit, structured direction, 
-      and factual risk assessment all converge here, weaving excitement 
-      and caution into one strategy. Bold ideas are considered through 
-      careful planning and validated against collective well-being, so each 
-      move feels both thrilling and responsible. Research and collaboration 
-      guide your decisions, balancing personal goals with communal benefit. 
-      This all-encompassing blend aims to harmonize exploration, empathy, 
-      security, and practicality in every financial choice.
-    `,
+    summary: "A love of fresh experiences, a generous spirit, structured direction, and factual risk assessment all converge here.",
+  description: `
+    Weaving excitement and caution into one strategy. Bold ideas are considered 
+    through careful planning and validated against collective well-being, so 
+    each move feels both thrilling and responsible. Research and collaboration 
+    guide your decisions, balancing personal goals with communal benefit. 
+    This all-encompassing blend aims to harmonize exploration, empathy, 
+    security, and practicality in every financial choice.
+  `,
     products: [
       {
         name: "Key Smart Checking®",
