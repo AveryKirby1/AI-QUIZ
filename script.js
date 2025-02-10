@@ -245,11 +245,11 @@ function isVowel(ch) {
 function displayFinalResults(tiedCats, sortedArray) {
   const { name, article, description } = getCombinedNameAndDesc(tiedCats);
 
-  // Intro text at the top
-  document.getElementById("intro-paragraph").textContent =
-    "Finances touch our lives in personal ways and can often feel overwhelming. " +
-    "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
-    "so we can help you thrive in your financial life.";
+  // Intro text at the top (can be added back in later if needed)
+ // document.getElementById("intro-paragraph").textContent =
+  //  "Finances touch our lives in personal ways and can often feel overwhelming. " +
+   // "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
+   // "so we can help you thrive in your financial life.";
 
   // "... we think you are a/an"
   const introSecondLineEl = document.getElementById("intro-second-line");
