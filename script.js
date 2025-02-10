@@ -259,6 +259,23 @@ function displayFinalResults(tiedCats, sortedArray) {
   categoryNameEl.textContent = name;
   categoryNameEl.classList.add("red-text");
 
+  // NEW: summary line
+  const categorySummaryEl = document.getElementById("category-summary");
+  let summary = "";
+
+  if (tiedCats.length === 1) {
+    summary = categoriesData[tiedCats[0]].summary || "";
+  } else {
+    const sortedTied = [...tiedCats].sort((a, b) => a.localeCompare(b));
+    const tieKey = sortedTied.join("+");
+    if (tieData[tieKey]) {
+      summary = tieData[tieKey].summary || "";
+    } else {
+      summary = "";
+    }
+  }
+  categorySummaryEl.textContent = summary;
+
   document.getElementById("category-description").innerHTML = description;
 
   // Calculate how “dominant” the top category is
