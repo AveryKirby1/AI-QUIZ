@@ -873,7 +873,7 @@ const tieData = {
         name: "Key Smart Checking®",
         pitch: `
           No fee fosters your adventurous impulses, Zelle® helps you split 
-          costs with friends (connector), and digital bill pay plus early deposit 
+          costs with friends, and digital bill pay plus early deposit 
           satisfy your planner side. Everyone benefits from a stable, flexible 
           checking solution.
         `,
@@ -947,8 +947,8 @@ const tieData = {
       {
         name: "KeyBank Hassle-Free Checking Account®",
         pitch: `
-          You crave easy group spending (connector), quick moves (adventurer), 
-          but no hidden debt (realist). This account has no fees, no overdrafts, 
+          You crave easy group spending, quick moves, 
+          but no hidden debt. This account has no fees, no overdrafts, 
           and purely digital management. If you overshoot, it declines 
           the charge—simple and risk-free.
         `,
@@ -1171,10 +1171,7 @@ const tieData = {
       {
         name: "Key Smart Checking®",
         pitch: `
-          This no-fee checking fits your adventurous spending, group cost-splitting 
-          (connector), structured digital organization (planner), and minimal 
-          risk (realist). Early deposits and robust bill pay complement every 
-          facet of your persona.
+          This no-fee checking fits your adventurous spending, group cost-splitting, structured digital organization (planner), and minimal risk. Early deposits and robust bill pay complement every facet of your persona.
         `,
         benefits: [
           "No monthly fee, flexible for any approach",
@@ -1187,8 +1184,8 @@ const tieData = {
         name: "Key Active Saver®",
         pitch: `
           Each swipe shifts some funds to savings, covering your future 
-          ambitions (planner), your communal generosity (connector), 
-          your need for caution (realist), and still allowing for 
+          ambitions, your communal generosity, 
+          your need for caution, and still allowing for 
           adventurous purchases. No monthly fee ensures practical efficiency.
         `,
         benefits: [
