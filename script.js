@@ -260,6 +260,34 @@ function displayFinalResults(tiedCats, sortedArray) {
   categoryNameEl.textContent = name;
   categoryNameEl.classList.add("red-text");
 
+  // Choose an image if single category
+  const resultLeftEl = document.querySelector(".result-left");
+  resultLeftEl.innerHTML = ""; // clear any previous
+
+  if (tiedCats.length === 1) {
+    const singleCat = tiedCats[0];
+    let catImage = "";
+
+    if (singleCat === "Adventurer") {
+      catImage = "images/adventurer.png";
+    } else if (singleCat === "Planner") {
+      catImage = "images/planner.png";
+    }
+    // OPTIONAL: add more else if blocks for Realist, Connector, etc.
+    // else if (singleCat === "Realist") catImage = "images/realist.png";
+    // else if (singleCat === "Connector") catImage = "images/connector.png";
+
+    if (catImage) {
+      const imgEl = document.createElement("img");
+      imgEl.src = catImage;
+      imgEl.alt = singleCat;
+      imgEl.style.maxWidth = "120px"; // or any desired styling
+      imgEl.style.display = "block";  // so it’s on its own line in .result-left
+      imgEl.style.margin = "0 auto";  // center horizontally in the left div
+      resultLeftEl.appendChild(imgEl);
+    }
+  }
+
   // Gather summary
   let summaryText = "";
   if (tiedCats.length === 1) {
@@ -430,6 +458,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     productContainer.appendChild(card);
   });
 }
+
 
 
 
