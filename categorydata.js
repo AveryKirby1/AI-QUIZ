@@ -1171,7 +1171,7 @@ const tieData = {
       {
         name: "Key Smart Checking®",
         pitch: `
-          This no-fee checking fits your adventurous spending, group cost-splitting, structured digital organization (planner), and minimal risk. Early deposits and robust bill pay complement every facet of your persona.
+          This no-fee checking fits your adventurous spending, group cost-splitting, structured digital organization, and minimal risk. Early deposits and robust bill pay complement every facet of your persona.
         `,
         benefits: [
           "No monthly fee, flexible for any approach",
