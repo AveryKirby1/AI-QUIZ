@@ -546,25 +546,33 @@ html, body {
   width: 50%;
   margin: 0 auto;
   display: flex;
-  align-items: center;   /* Vertically center .result-left & .result-right */
-  justify-content: center; /* Horizontally center them within .results-inner */
+  /* Instead of align-items:center, use stretch to fill the vertical space. */
+  align-items: stretch;  
+  /* Force a specific height so the image can fill top and bottom. */
+  height: 160px;  
 }
 
 /* The left half for your image */
 .result-left {
-  display: flex;         /* Enable flex for precise control */
-  justify-content: center; /* Center the image horizontally in left area */
-  align-items: center;   /* Center vertically if needed */
-  position: relative;    /* So we can use transform on the image */
+  flex: 0 0 auto; 
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  position: relative;
 }
 
-/* Make the image bigger and shift it downward */
 .result-left img {
-  max-width: 250px;      /* You can adjust the size as needed */
-  height: auto;
-  margin-right: 20px;    /* Space between image & text */
-  transform: translateY(50px); /* Shift image down by 30px without expanding container */
+  /* Fill full container height and maintain aspect ratio */
+  height: 100%;
+  width: auto;
+
+  /* If you want a circular shape forced, and the image is square or close to square: */
+  /* border-radius: 50%; */
+
+  /* object-fit can help if the image is not perfectly square: */
+  object-fit: cover; 
 }
+
 
 /* The right half for your two lines of text */
 .result-right {
