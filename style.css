@@ -579,7 +579,8 @@ html, body {
   display: flex;         /* Stack lines (intro + category name) vertically */
   flex-direction: column;
   align-items: center;   /* Center horizontally */
-  text-align: center;    /* Each line is centered within .result-right */
+  text-align: center;
+  flex: 1 1 auto; /* Each line is centered within .result-right */
 }
 
 
