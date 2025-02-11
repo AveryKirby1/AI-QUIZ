@@ -542,47 +542,40 @@ html, body {
   margin-top: -110px;
 }
 
+/* Adjusted .results-inner so there's NO fixed height and we center content */
 .results-inner {
   width: 50%;
   margin: 0 auto;
   display: flex;
-  /* Instead of align-items:center, use stretch to fill the vertical space. */
-  align-items: stretch;  
-  /* Force a specific height so the image can fill top and bottom. */
-  height: 160px;  
+  align-items: center;    /* center image & text vertically */
+  justify-content: center;/* horizontally center them if needed */
 }
 
 /* The left half for your image */
 .result-left {
-  flex: 0 0 auto; 
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   position: relative;
+  margin-right: 20px; /* space between image and text column */
 }
 
+/* Make the image bigger but not fill top-to-bottom */
 .result-left img {
-  /* Fill full container height and maintain aspect ratio */
-  height: 100%;
-  width: auto;
-
-  /* If you want a circular shape forced, and the image is square or close to square: */
-  /* border-radius: 50%; */
-
-  /* object-fit can help if the image is not perfectly square: */
+  max-width: 250px; /* enlarge as needed */
+  height: auto;
   object-fit: cover; 
+  /* border-radius: 50%; to force a circle if you want */
 }
-
 
 /* The right half for your two lines of text */
 .result-right {
-  display: flex;         /* Stack lines (intro + category name) vertically */
+  display: flex;
   flex-direction: column;
-  align-items: center;   /* Center horizontally */
+  align-items: center;
   text-align: center;
-  flex: 1 1 auto; /* Each line is centered within .result-right */
+  flex: 1 1 auto;
 }
-
 
 .top-line {
   font-weight: 700;
@@ -599,7 +592,7 @@ html, body {
 .result-text {
   font-family: "Arial Black", sans-serif;
   font-weight: bold;
-  font-size: 15x; /* Adjust as needed */
+  font-size: 15px; /* changed from 15x to 15px */
 }
 
 /* Existing color classes */
