@@ -40,7 +40,9 @@
       <!-- Left column: questions, answers, buttons -->
       <div id="quiz-left-column">
         <div id="question-container">
+          <!-- STEP 1: Ensure we have an element for the question text -->
           <h2 id="question-text"></h2>
+
           <p id="select-instructions" class="select-instructions"></p>
         </div>
         <div id="answers-container"></div>
@@ -49,7 +51,6 @@
           <div>
             <button id="prev-btn" class="quiz-btn" onclick="goToPreviousQuestion()">Previous</button>
             <button id="next-btn" class="quiz-btn" onclick="goToNextQuestion()">Next</button>
-            <!-- Here is the unique ID for the "See Results" button: -->
             <button id="results-btn" class="quiz-btn" onclick="showResults()">See Results</button>
           </div>
         </div>
@@ -75,7 +76,6 @@
               </p>
               <!-- Dynamic category on a separate line -->
               <p id="category-name" class="result-text red-text"></p>
-              <!-- NEW: summary line, same red font style as category name, but same size as description -->
             </div>
           </div>
         </div>
