@@ -245,12 +245,6 @@ function isVowel(ch) {
 function displayFinalResults(tiedCats, sortedArray) {
   const { name, article, description } = getCombinedNameAndDesc(tiedCats);
 
-  // Intro text at the top (can be added back in later if needed)
- // document.getElementById("intro-paragraph").textContent =
-  //  "Finances touch our lives in personal ways and can often feel overwhelming. " +
-   // "At KeyBank, we celebrate the uniqueness of each individual’s approach to money, " +
-   // "so we can help you thrive in your financial life.";
-
   // "... we think you are a/an"
   const introSecondLineEl = document.getElementById("intro-second-line");
   introSecondLineEl.textContent = `With your responses in mind, we think you are ${article}`;
@@ -259,6 +253,14 @@ function displayFinalResults(tiedCats, sortedArray) {
   const categoryNameEl = document.getElementById("category-name");
   categoryNameEl.textContent = name;
   categoryNameEl.classList.add("red-text");
+
+  // ---------------------------------------------------
+  // NEW LINE: push 'quiz_completed' + final_category to the dataLayer
+  // ---------------------------------------------------
+  dataLayer.push({
+    event: 'quiz_completed',
+    final_category: name
+  });
 
   // Choose an image if single category
   const resultLeftEl = document.querySelector(".result-left");
@@ -274,16 +276,14 @@ function displayFinalResults(tiedCats, sortedArray) {
       catImage = "images/planner.png";
     }
     // OPTIONAL: add more else if blocks for Realist, Connector, etc.
-    // else if (singleCat === "Realist") catImage = "images/realist.png";
-    // else if (singleCat === "Connector") catImage = "images/connector.png";
 
     if (catImage) {
       const imgEl = document.createElement("img");
       imgEl.src = catImage;
       imgEl.alt = singleCat;
-      imgEl.style.maxWidth = "120px"; // or any desired styling
-      imgEl.style.display = "block";  // so it’s on its own line in .result-left
-      imgEl.style.margin = "0 auto";  // center horizontally in the left div
+      imgEl.style.maxWidth = "120px";
+      imgEl.style.display = "block";
+      imgEl.style.margin = "0 auto";
       resultLeftEl.appendChild(imgEl);
     }
   }
@@ -458,7 +458,6 @@ function displayFinalResults(tiedCats, sortedArray) {
     productContainer.appendChild(card);
   });
 }
-
 
 
 
