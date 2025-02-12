@@ -243,25 +243,37 @@ function isVowel(ch) {
  * DISPLAY FINAL RESULTS
  ****************************************************/
 function displayFinalResults(tiedCats, sortedArray) {
+  // 1) Build a string of all chosen answers from "selectedAnswers"
+  let finalAnswersString = questions.map((qObj, i) => {
+    const chosenIndices = selectedAnswers[i];
+    if (chosenIndices.length === 0) {
+      return `Q${i+1}: (none)`;
+    } else {
+      // Convert each chosen index to the actual answer text
+      let chosenTexts = chosenIndices.map(idx => qObj.answers[idx].text);
+      return `Q${i+1}: ${chosenTexts.join(", ")}`;
+    }
+  }).join(" | ");
+
+  // 2) Use getCombinedNameAndDesc() to find final category (existing logic)
   const { name, article, description } = getCombinedNameAndDesc(tiedCats);
 
-  // "... we think you are a/an"
+  // 3) Update the DOM with final category text
   const introSecondLineEl = document.getElementById("intro-second-line");
   introSecondLineEl.textContent = `With your responses in mind, we think you are ${article}`;
 
-  // Category name (red)
   const categoryNameEl = document.getElementById("category-name");
   categoryNameEl.textContent = name;
   categoryNameEl.classList.add("red-text");
 
-  // ---------------------------------------------------
-  // NEW LINE: push 'quiz_completed' + final_category to the dataLayer
-  // ---------------------------------------------------
+  // 4) dataLayer push: final category + final answers
   dataLayer.push({
     event: 'quiz_completed',
-    final_category: name
+    final_category: name,
+    final_answers: finalAnswersString
   });
 
+  // ------------- Existing code (unchanged) --------------
   // Choose an image if single category
   const resultLeftEl = document.querySelector(".result-left");
   resultLeftEl.innerHTML = ""; // clear any previous
@@ -301,19 +313,18 @@ function displayFinalResults(tiedCats, sortedArray) {
     }
   }
 
-  // Insert summary (red) + description (black) into the same element
+  // Insert summary + description
   const combinedText = `
     <p class="result-text red-text" style="font-size: 1rem;">${summaryText}</p>
     <p>${description}</p>
   `;
   document.getElementById("category-description").innerHTML = combinedText;
 
-  // Distribution chart setup
+  // Distribution chart
   const distributionContainer = document.getElementById("distribution-container");
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
   const topPct = Math.round((sortedArray[0][1] / total) * 100);
 
-  // Hide chart if 100% single category
   if (topPct === 100 && tiedCats.length === 1) {
     distributionContainer.style.display = "none";
   } else {
@@ -375,7 +386,6 @@ function displayFinalResults(tiedCats, sortedArray) {
     }
   }
 
-  // Title for products
   const productsTitleEl = document.getElementById("products-title");
   productsTitleEl.innerHTML = `
     <span class="result-text black-text" style="font-weight: bold;">
