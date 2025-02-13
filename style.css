@@ -406,6 +406,9 @@ html, body {
 /* ----------------------------------------------------------------------- */
 /* PRODUCT RECOMMENDATION CARDS */
 /* ----------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------- */
+/* PRODUCT RECOMMENDATION CARDS */
+/* ----------------------------------------------------------------------- */
 .fuel-title {
   text-align: center;
   font-size: 1.2rem;
@@ -511,6 +514,7 @@ html, body {
   margin-bottom: 0.8rem;
 }
 
+/* Base product button styling */
 .product-btn {
   background-color: #d10c1e;
   color: #fff;
@@ -519,9 +523,8 @@ html, body {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  display: block;
-  margin: 0 auto;
-  margin-top: auto;
+  margin-top: auto; 
+  transition: background-color 0.3s ease;
 }
 
 .product-btn:hover {
@@ -533,6 +536,43 @@ html, body {
   font-size: 0.9rem;
   line-height: 1.4;
 }
+
+/* Container to hold both "Learn More" and "Select Product" side by side */
+.product-button-group {
+  display: flex;
+  justify-content: center; 
+  gap: 10px; 
+  margin-top: auto; /* so buttons end up near bottom if needed */
+}
+
+.learn-more-btn,
+.select-product-btn {
+  display: inline-block;
+  margin: 0; 
+}
+
+/* When user has selected a product, highlight it */
+.select-product-btn.selected-product {
+  background-color: #008000; /* example green */
+  color: #fff;
+}
+
+/* ----------------------------------------------------------------------- */
+/* Large "Finalize Selections" button at bottom of results */
+/* ----------------------------------------------------------------------- */
+.finalize-selections-container {
+  margin-top: 40px;    /* add blank space above the button */
+  margin-bottom: 60px; /* add extra space at page bottom */
+  text-align: center;  /* center the button horizontally */
+}
+
+/* Make it bigger/wider */
+.finalize-btn {
+  width: 280px;          /* bigger horizontal size */
+  font-size: 1rem;       /* bigger text */
+  padding: 12px 20px;    /* larger padding for prominence */
+}
+
 
 /* Full-width container under results section */
 .results-box {
