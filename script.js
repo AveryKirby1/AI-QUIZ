@@ -283,7 +283,12 @@ function isVowel(ch) {
 /****************************************************
  * DISPLAY FINAL RESULTS
  ****************************************************/
+/****************************************************
+ * DISPLAY FINAL RESULTS
+ ****************************************************/
 function displayFinalResults(tiedCats, sortedArray) {
+  let finalizeClicked = false; // local flag to prevent duplicate pushes
+
   const { name, article, description } = getCombinedNameAndDesc(tiedCats);
 
   // "... we think you are a/an"
@@ -308,7 +313,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     } else if (singleCat === "Planner") {
       catImage = "images/planner.png";
     }
-    // ... add more else if blocks for Realist, Connector, etc.
+    // Add more if statements for Realist, Connector, etc.
 
     if (catImage) {
       const imgEl = document.createElement("img");
@@ -438,7 +443,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     // Left: product image area
     const leftDiv = document.createElement("div");
     leftDiv.className = "product-left";
-
+    
     // Example logic to pick an image based on product name
     let imageSrc = "";
     const lowerName = prod.name.toLowerCase();
@@ -479,8 +484,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     const learnMoreBtn = document.createElement("button");
     learnMoreBtn.className = "product-btn learn-more-btn";
     learnMoreBtn.textContent = "Learn More";
-
-    // GTM event: learn more click
+    // GTM push
     learnMoreBtn.addEventListener("click", () => {
       dataLayer.push({
         event: "product_learn_more_click",
@@ -488,22 +492,20 @@ function displayFinalResults(tiedCats, sortedArray) {
       });
     });
 
-    // "Select Product" button (toggles checkmark on click)
+    // "Select Product" button
     const selectBtn = document.createElement("button");
     selectBtn.className = "product-btn select-product-btn";
     selectBtn.textContent = "Select Product";
-
     selectBtn.addEventListener("click", () => {
       if (selectBtn.classList.contains("selected-product")) {
         selectBtn.classList.remove("selected-product");
         selectBtn.textContent = "Select Product";
       } else {
         selectBtn.classList.add("selected-product");
-        selectBtn.textContent = "\u2713 Selected"; // Unicode checkmark
+        selectBtn.textContent = "\u2713 Selected"; // Checkmark
       }
     });
 
-    // Append buttons to group
     buttonGroup.appendChild(learnMoreBtn);
     buttonGroup.appendChild(selectBtn);
     middleDiv.appendChild(buttonGroup);
@@ -530,25 +532,31 @@ function displayFinalResults(tiedCats, sortedArray) {
   // Add a large "Finalize Selections" button below all product cards
   const finalizeContainer = document.createElement("div");
   finalizeContainer.className = "finalize-selections-container";
-
-  // Optional extra margin if you want more space
-  finalizeContainer.style.marginBottom = "120px"; 
+  finalizeContainer.style.marginBottom = "80px"; // optional extra space
 
   const finalizeBtn = document.createElement("button");
   finalizeBtn.id = "finalize-selections-btn";
   finalizeBtn.className = "product-btn finalize-btn";
   finalizeBtn.textContent = "Finalize Selections";
 
-  // GTM event: finalize selections
   finalizeBtn.addEventListener("click", () => {
+    // Check if user already finalized
+    if (finalizeClicked) return;
+    finalizeClicked = true;
+
+    // Gather selected products
     const selectedProducts = getSelectedProductNames();
+
+    // Push one time only
     dataLayer.push({
       event: "finalize_selections_click",
       products_selected: selectedProducts
     });
 
-    // Optional: navigate to an application page
-    // window.location.href = "/application.html";
+    // Optionally disable or hide the button so it's obviously "finalized"
+    finalizeBtn.disabled = true;
+    // finalizeBtn.textContent = "Finalized!";
+    // or finalizeBtn.style.display = "none";
   });
 
   finalizeContainer.appendChild(finalizeBtn);
