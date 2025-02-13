@@ -286,8 +286,12 @@ function isVowel(ch) {
 /****************************************************
  * DISPLAY FINAL RESULTS
  ****************************************************/
+/****************************************************
+ * DISPLAY FINAL RESULTS
+ ****************************************************/
 function displayFinalResults(tiedCats, sortedArray) {
-  let finalizeClicked = false; // local flag to prevent duplicate pushes
+  // Prevent multiple finalization pushes
+  let finalizeClicked = false;
 
   const { name, article, description } = getCombinedNameAndDesc(tiedCats);
 
@@ -313,7 +317,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     } else if (singleCat === "Planner") {
       catImage = "images/planner.png";
     }
-    // Add more if statements for Realist, Connector, etc.
+    // ... add more if blocks for Realist, Connector, etc.
 
     if (catImage) {
       const imgEl = document.createElement("img");
@@ -443,7 +447,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     // Left: product image area
     const leftDiv = document.createElement("div");
     leftDiv.className = "product-left";
-    
+
     // Example logic to pick an image based on product name
     let imageSrc = "";
     const lowerName = prod.name.toLowerCase();
@@ -484,7 +488,8 @@ function displayFinalResults(tiedCats, sortedArray) {
     const learnMoreBtn = document.createElement("button");
     learnMoreBtn.className = "product-btn learn-more-btn";
     learnMoreBtn.textContent = "Learn More";
-    // GTM push
+
+    // GTM event on "Learn More" click
     learnMoreBtn.addEventListener("click", () => {
       dataLayer.push({
         event: "product_learn_more_click",
@@ -492,20 +497,22 @@ function displayFinalResults(tiedCats, sortedArray) {
       });
     });
 
-    // "Select Product" button
+    // "Select Product" button (toggles checkmark on click)
     const selectBtn = document.createElement("button");
     selectBtn.className = "product-btn select-product-btn";
     selectBtn.textContent = "Select Product";
+
     selectBtn.addEventListener("click", () => {
       if (selectBtn.classList.contains("selected-product")) {
         selectBtn.classList.remove("selected-product");
         selectBtn.textContent = "Select Product";
       } else {
         selectBtn.classList.add("selected-product");
-        selectBtn.textContent = "\u2713 Selected"; // Checkmark
+        selectBtn.textContent = "\u2713 Selected"; // Unicode checkmark
       }
     });
 
+    // Append buttons to the group
     buttonGroup.appendChild(learnMoreBtn);
     buttonGroup.appendChild(selectBtn);
     middleDiv.appendChild(buttonGroup);
@@ -532,7 +539,9 @@ function displayFinalResults(tiedCats, sortedArray) {
   // Add a large "Finalize Selections" button below all product cards
   const finalizeContainer = document.createElement("div");
   finalizeContainer.className = "finalize-selections-container";
-  finalizeContainer.style.marginBottom = "80px"; // optional extra space
+
+  // Optional extra spacing
+  finalizeContainer.style.marginBottom = "80px";
 
   const finalizeBtn = document.createElement("button");
   finalizeBtn.id = "finalize-selections-btn";
@@ -540,28 +549,27 @@ function displayFinalResults(tiedCats, sortedArray) {
   finalizeBtn.textContent = "Finalize Selections";
 
   finalizeBtn.addEventListener("click", () => {
-    // Check if user already finalized
+    // Prevent multiple finalization
     if (finalizeClicked) return;
     finalizeClicked = true;
 
     // Gather selected products
     const selectedProducts = getSelectedProductNames();
 
-    // Push one time only
+    // GTM push
     dataLayer.push({
       event: "finalize_selections_click",
       products_selected: selectedProducts
     });
 
-    // Optionally disable or hide the button so it's obviously "finalized"
-    finalizeBtn.disabled = true;
-    // finalizeBtn.textContent = "Finalized!";
-    // or finalizeBtn.style.display = "none";
+    // Open Microsoft Forms in a new tab
+    window.open("https://forms.office.com/r/GTs5x6bBLG", "_blank");
   });
 
   finalizeContainer.appendChild(finalizeBtn);
   document.getElementById("results-section").appendChild(finalizeContainer);
 }
+
 
 
 /****************************************************
