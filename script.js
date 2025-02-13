@@ -289,10 +289,10 @@ function isVowel(ch) {
 /****************************************************
  * DISPLAY FINAL RESULTS
  ****************************************************/
+/****************************************************
+ * DISPLAY FINAL RESULTS
+ ****************************************************/
 function displayFinalResults(tiedCats, sortedArray) {
-  // Prevent multiple finalization pushes
-  let finalizeClicked = false;
-
   const { name, article, description } = getCombinedNameAndDesc(tiedCats);
 
   // "... we think you are a/an"
@@ -317,7 +317,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     } else if (singleCat === "Planner") {
       catImage = "images/planner.png";
     }
-    // ... add more if blocks for Realist, Connector, etc.
+    // ... add more else if for Realist, Connector, etc.
 
     if (catImage) {
       const imgEl = document.createElement("img");
@@ -430,7 +430,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     const card = document.createElement("div");
     card.className = "product-card";
 
-    // Store product name in a data attribute for easy retrieval
+    // Store product name
     card.dataset.productName = prod.name;
 
     // Header
@@ -444,11 +444,10 @@ function displayFinalResults(tiedCats, sortedArray) {
     const contentDiv = document.createElement("div");
     contentDiv.className = "product-content";
 
-    // Left: product image area
+    // Left: product image
     const leftDiv = document.createElement("div");
     leftDiv.className = "product-left";
 
-    // Example logic to pick an image based on product name
     let imageSrc = "";
     const lowerName = prod.name.toLowerCase();
     if (lowerName.includes("checking")) {
@@ -480,7 +479,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     pitchP.textContent = prod.pitch;
     middleDiv.appendChild(pitchP);
 
-    // Create a container for both buttons
+    // Buttons container
     const buttonGroup = document.createElement("div");
     buttonGroup.className = "product-button-group";
 
@@ -488,8 +487,6 @@ function displayFinalResults(tiedCats, sortedArray) {
     const learnMoreBtn = document.createElement("button");
     learnMoreBtn.className = "product-btn learn-more-btn";
     learnMoreBtn.textContent = "Learn More";
-
-    // GTM event on "Learn More" click
     learnMoreBtn.addEventListener("click", () => {
       dataLayer.push({
         event: "product_learn_more_click",
@@ -497,22 +494,20 @@ function displayFinalResults(tiedCats, sortedArray) {
       });
     });
 
-    // "Select Product" button (toggles checkmark on click)
+    // "Select Product" button
     const selectBtn = document.createElement("button");
     selectBtn.className = "product-btn select-product-btn";
     selectBtn.textContent = "Select Product";
-
     selectBtn.addEventListener("click", () => {
       if (selectBtn.classList.contains("selected-product")) {
         selectBtn.classList.remove("selected-product");
         selectBtn.textContent = "Select Product";
       } else {
         selectBtn.classList.add("selected-product");
-        selectBtn.textContent = "\u2713 Selected"; // Unicode checkmark
+        selectBtn.textContent = "\u2713 Selected";
       }
     });
 
-    // Append buttons to the group
     buttonGroup.appendChild(learnMoreBtn);
     buttonGroup.appendChild(selectBtn);
     middleDiv.appendChild(buttonGroup);
@@ -536,11 +531,9 @@ function displayFinalResults(tiedCats, sortedArray) {
     productContainer.appendChild(card);
   });
 
-  // Add a large "Finalize Selections" button below all product cards
+  // Finalize Selections button
   const finalizeContainer = document.createElement("div");
   finalizeContainer.className = "finalize-selections-container";
-
-  // Optional extra spacing
   finalizeContainer.style.marginBottom = "80px";
 
   const finalizeBtn = document.createElement("button");
@@ -549,20 +542,15 @@ function displayFinalResults(tiedCats, sortedArray) {
   finalizeBtn.textContent = "Finalize Selections";
 
   finalizeBtn.addEventListener("click", () => {
-    // Prevent multiple finalization
-    if (finalizeClicked) return;
-    finalizeClicked = true;
-
-    // Gather selected products
+    // Every click pushes an event & opens the form
     const selectedProducts = getSelectedProductNames();
 
-    // GTM push
     dataLayer.push({
       event: "finalize_selections_click",
       products_selected: selectedProducts
     });
 
-    // Open Microsoft Forms in a new tab
+    // Open Microsoft Forms in new tab
     window.open("https://forms.office.com/r/GTs5x6bBLG", "_blank");
   });
 
