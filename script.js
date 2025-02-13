@@ -274,6 +274,9 @@ function isVowel(ch) {
 /****************************************************
  * DISPLAY FINAL RESULTS
  ****************************************************/
+/****************************************************
+ * DISPLAY FINAL RESULTS
+ ****************************************************/
 function displayFinalResults(tiedCats, sortedArray) {
   const { name, article, description } = getCombinedNameAndDesc(tiedCats);
 
@@ -286,26 +289,20 @@ function displayFinalResults(tiedCats, sortedArray) {
   categoryNameEl.textContent = name;
   categoryNameEl.classList.add("red-text");
 
-  // [REMOVED dataLayer.push for quiz_completed from here!]
-
-  // ---------------------------------------------------
-  // The rest is unchanged: building the UI, chart, etc.
-  // ---------------------------------------------------
-
-  // Choose an image if single category
+  // Clear/replace the left-side image if single category
   const resultLeftEl = document.querySelector(".result-left");
-  resultLeftEl.innerHTML = ""; // clear any previous
-
+  resultLeftEl.innerHTML = "";
   if (tiedCats.length === 1) {
     const singleCat = tiedCats[0];
     let catImage = "";
 
+    // Example logic for cat images
     if (singleCat === "Adventurer") {
       catImage = "images/adventurer.png";
     } else if (singleCat === "Planner") {
       catImage = "images/planner.png";
     }
-    // OPTIONAL: add more else if blocks for Realist, Connector, etc.
+    // ... add more else if blocks for Realist, Connector, etc.
 
     if (catImage) {
       const imgEl = document.createElement("img");
@@ -318,7 +315,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     }
   }
 
-  // Gather summary
+  // Gather summary text from categoriesData or tieData
   let summaryText = "";
   if (tiedCats.length === 1) {
     const catKey = tiedCats[0];
@@ -338,7 +335,7 @@ function displayFinalResults(tiedCats, sortedArray) {
   `;
   document.getElementById("category-description").innerHTML = combinedText;
 
-  // Distribution chart
+  // Build or hide the distribution chart
   const distributionContainer = document.getElementById("distribution-container");
   const total = sortedArray.reduce((acc, [_, val]) => acc + val, 0) || 1;
   const topPct = Math.round((sortedArray[0][1] / total) * 100);
@@ -380,9 +377,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     excelList.appendChild(li);
   });
 
-  const watchoutList = document
-    .getElementById("watchout-box")
-    .querySelector("ul");
+  const watchoutList = document.getElementById("watchout-box").querySelector("ul");
   watchoutList.innerHTML = "";
   finalWeaknesses.forEach(w => {
     const li = document.createElement("li");
@@ -415,34 +410,33 @@ function displayFinalResults(tiedCats, sortedArray) {
   const productContainer = document.getElementById("product-recommendations");
   productContainer.innerHTML = "";
 
+  // Create each product card
   productsArray.forEach(prod => {
     const card = document.createElement("div");
     card.className = "product-card";
 
+    // Header
     const headerDiv = document.createElement("div");
     headerDiv.className = "product-header";
     const headerTitle = document.createElement("h5");
     headerTitle.textContent = prod.name;
     headerDiv.appendChild(headerTitle);
 
+    // Content
     const contentDiv = document.createElement("div");
     contentDiv.className = "product-content";
 
+    // Left: product image area
     const leftDiv = document.createElement("div");
     leftDiv.className = "product-left";
-
-    // Derive image from product name
+    // Derive image from product name (example logic)
     let imageSrc = "";
     const lowerName = prod.name.toLowerCase();
     if (lowerName.includes("checking")) {
       imageSrc = "images/checking.png";
     } else if (lowerName.includes("saver") || lowerName.includes("savings")) {
       imageSrc = "images/savings.png";
-    } else if (
-      lowerName.includes("credit card") ||
-      lowerName.includes("latitude") ||
-      lowerName.includes("rewards")
-    ) {
+    } else if (lowerName.includes("credit card") || lowerName.includes("latitude") || lowerName.includes("rewards")) {
       imageSrc = "images/creditcard.png";
     } else if (lowerName.includes("loan") || lowerName.includes("line of credit")) {
       imageSrc = "images/loans.png";
@@ -454,18 +448,45 @@ function displayFinalResults(tiedCats, sortedArray) {
       productImage.className = "product-image";
       leftDiv.appendChild(productImage);
     }
+    contentDiv.appendChild(leftDiv);
 
+    // Middle: pitch & buttons
     const middleDiv = document.createElement("div");
     middleDiv.className = "product-middle";
     const pitchP = document.createElement("p");
     pitchP.textContent = prod.pitch;
     middleDiv.appendChild(pitchP);
 
-    const button = document.createElement("button");
-    button.className = "product-btn";
-    button.textContent = "Learn More";
-    middleDiv.appendChild(button);
+    // Create a container for both buttons
+    const buttonGroup = document.createElement("div");
+    buttonGroup.className = "product-button-group";
 
+    // "Learn More" button
+    const learnMoreBtn = document.createElement("button");
+    learnMoreBtn.className = "product-btn learn-more-btn";
+    learnMoreBtn.textContent = "Learn More";
+
+    // "Select Product" button (toggles checkmark on click)
+    const selectBtn = document.createElement("button");
+    selectBtn.className = "product-btn select-product-btn";
+    selectBtn.textContent = "Select Product";
+
+    selectBtn.addEventListener("click", () => {
+      if (selectBtn.classList.contains("selected-product")) {
+        selectBtn.classList.remove("selected-product");
+        selectBtn.textContent = "Select Product";
+      } else {
+        selectBtn.classList.add("selected-product");
+        selectBtn.textContent = "\u2713 Selected"; // Unicode checkmark
+      }
+    });
+
+    // Append buttons to group
+    buttonGroup.appendChild(learnMoreBtn);
+    buttonGroup.appendChild(selectBtn);
+    middleDiv.appendChild(buttonGroup);
+
+    // Right: benefits list
     const rightDiv = document.createElement("div");
     rightDiv.className = "product-right";
     const benefitsUl = document.createElement("ul");
@@ -476,7 +497,6 @@ function displayFinalResults(tiedCats, sortedArray) {
     });
     rightDiv.appendChild(benefitsUl);
 
-    contentDiv.appendChild(leftDiv);
     contentDiv.appendChild(middleDiv);
     contentDiv.appendChild(rightDiv);
 
@@ -485,9 +505,19 @@ function displayFinalResults(tiedCats, sortedArray) {
 
     productContainer.appendChild(card);
   });
+
+  // Add a large "Finalize Selections" button below all product cards
+  const finalizeContainer = document.createElement("div");
+  finalizeContainer.className = "finalize-selections-container";
+
+  const finalizeBtn = document.createElement("button");
+  finalizeBtn.id = "finalize-selections-btn";
+  finalizeBtn.className = "product-btn finalize-btn";
+  finalizeBtn.textContent = "Finalize Selections";
+
+  finalizeContainer.appendChild(finalizeBtn);
+  document.getElementById("results-section").appendChild(finalizeContainer);
 }
-
-
 
 /****************************************************
  * BUILD DISTRIBUTION BARS
