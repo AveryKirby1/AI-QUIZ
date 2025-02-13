@@ -154,6 +154,9 @@ function saveCurrentAnswer() {
 /****************************************************
  * SHOW RESULTS
  ****************************************************/
+/****************************************************
+ * SHOW RESULTS
+ ****************************************************/
 function showResults() {
   saveCurrentAnswer();
   if (selectedAnswers[currentQuestionIndex].length === 0) {
@@ -161,6 +164,7 @@ function showResults() {
     return;
   }
 
+  // 1) Gather chosenEmotions for final category logic
   let chosenEmotions = [];
   for (let i = 0; i < questions.length; i++) {
     selectedAnswers[i].forEach(idx => {
@@ -168,15 +172,40 @@ function showResults() {
     });
   }
 
-  document.getElementById("quiz-section").style.display = "none";
-  document.getElementById("results-section").classList.remove("hidden");
-
+  // 2) Calculate final category (single or tie)
   const { sortedArray } = calculateCategoryScores(chosenEmotions);
   const topScore = sortedArray[0][1];
   const tiedCats = sortedArray
     .filter(([, score]) => score === topScore)
     .map(([cat]) => cat);
 
+  // 3) Fire an event per question capturing final picks
+  for (let i = 0; i < questions.length; i++) {
+    const chosenIndices = selectedAnswers[i];
+    // Convert them to the actual answer text
+    let chosenTexts = chosenIndices.map(idx => questions[i].answers[idx].text).join(", ");
+    // Push 'question_answered' event
+    dataLayer.push({
+      event: "question_answered",
+      question_number: i + 1,
+      question_text: questions[i].question, // optional
+      selected_answers: chosenTexts
+    });
+  }
+
+  // 4) Finally, push 'quiz_completed' event with final category
+  // (We'll remove the dataLayer push from displayFinalResults)
+  const { name } = getCombinedNameAndDesc(tiedCats); // we only need the 'name' field
+  dataLayer.push({
+    event: "quiz_completed",
+    final_category: name
+  });
+
+  // 5) Show the results section in the UI
+  document.getElementById("quiz-section").style.display = "none";
+  document.getElementById("results-section").classList.remove("hidden");
+
+  // 6) Call displayFinalResults to update the UI text, charts, etc.
   displayFinalResults(tiedCats, sortedArray);
 }
 
