@@ -277,6 +277,9 @@ function isVowel(ch) {
 /****************************************************
  * DISPLAY FINAL RESULTS
  ****************************************************/
+/****************************************************
+ * DISPLAY FINAL RESULTS
+ ****************************************************/
 function displayFinalResults(tiedCats, sortedArray) {
   const { name, article, description } = getCombinedNameAndDesc(tiedCats);
 
@@ -429,14 +432,19 @@ function displayFinalResults(tiedCats, sortedArray) {
     // Left: product image area
     const leftDiv = document.createElement("div");
     leftDiv.className = "product-left";
-    // Derive image from product name (example logic)
+
+    // Example logic to pick an image based on product name
     let imageSrc = "";
     const lowerName = prod.name.toLowerCase();
     if (lowerName.includes("checking")) {
       imageSrc = "images/checking.png";
     } else if (lowerName.includes("saver") || lowerName.includes("savings")) {
       imageSrc = "images/savings.png";
-    } else if (lowerName.includes("credit card") || lowerName.includes("latitude") || lowerName.includes("rewards")) {
+    } else if (
+      lowerName.includes("credit card") ||
+      lowerName.includes("latitude") ||
+      lowerName.includes("rewards")
+    ) {
       imageSrc = "images/creditcard.png";
     } else if (lowerName.includes("loan") || lowerName.includes("line of credit")) {
       imageSrc = "images/loans.png";
@@ -499,7 +507,6 @@ function displayFinalResults(tiedCats, sortedArray) {
 
     contentDiv.appendChild(middleDiv);
     contentDiv.appendChild(rightDiv);
-
     card.appendChild(headerDiv);
     card.appendChild(contentDiv);
 
@@ -510,6 +517,9 @@ function displayFinalResults(tiedCats, sortedArray) {
   const finalizeContainer = document.createElement("div");
   finalizeContainer.className = "finalize-selections-container";
 
+  // Increase bottom margin to add extra space at the bottom
+  finalizeContainer.style.marginBottom = "120px"; // Adjust as desired
+
   const finalizeBtn = document.createElement("button");
   finalizeBtn.id = "finalize-selections-btn";
   finalizeBtn.className = "product-btn finalize-btn";
@@ -518,6 +528,7 @@ function displayFinalResults(tiedCats, sortedArray) {
   finalizeContainer.appendChild(finalizeBtn);
   document.getElementById("results-section").appendChild(finalizeContainer);
 }
+
 
 /****************************************************
  * BUILD DISTRIBUTION BARS
