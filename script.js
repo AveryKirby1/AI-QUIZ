@@ -280,6 +280,9 @@ function isVowel(ch) {
 /****************************************************
  * DISPLAY FINAL RESULTS
  ****************************************************/
+/****************************************************
+ * DISPLAY FINAL RESULTS
+ ****************************************************/
 function displayFinalResults(tiedCats, sortedArray) {
   const { name, article, description } = getCombinedNameAndDesc(tiedCats);
 
@@ -418,6 +421,9 @@ function displayFinalResults(tiedCats, sortedArray) {
     const card = document.createElement("div");
     card.className = "product-card";
 
+    // Store product name in a data attribute for easy retrieval
+    card.dataset.productName = prod.name;
+
     // Header
     const headerDiv = document.createElement("div");
     headerDiv.className = "product-header";
@@ -474,6 +480,14 @@ function displayFinalResults(tiedCats, sortedArray) {
     learnMoreBtn.className = "product-btn learn-more-btn";
     learnMoreBtn.textContent = "Learn More";
 
+    // GTM event: learn more click
+    learnMoreBtn.addEventListener("click", () => {
+      dataLayer.push({
+        event: "product_learn_more_click",
+        product_name: prod.name
+      });
+    });
+
     // "Select Product" button (toggles checkmark on click)
     const selectBtn = document.createElement("button");
     selectBtn.className = "product-btn select-product-btn";
@@ -517,13 +531,25 @@ function displayFinalResults(tiedCats, sortedArray) {
   const finalizeContainer = document.createElement("div");
   finalizeContainer.className = "finalize-selections-container";
 
-  // Increase bottom margin to add extra space at the bottom
-  finalizeContainer.style.marginBottom = "120px"; // Adjust as desired
+  // Optional extra margin if you want more space
+  finalizeContainer.style.marginBottom = "120px"; 
 
   const finalizeBtn = document.createElement("button");
   finalizeBtn.id = "finalize-selections-btn";
   finalizeBtn.className = "product-btn finalize-btn";
   finalizeBtn.textContent = "Finalize Selections";
+
+  // GTM event: finalize selections
+  finalizeBtn.addEventListener("click", () => {
+    const selectedProducts = getSelectedProductNames();
+    dataLayer.push({
+      event: "finalize_selections_click",
+      products_selected: selectedProducts
+    });
+
+    // Optional: navigate to an application page
+    // window.location.href = "/application.html";
+  });
 
   finalizeContainer.appendChild(finalizeBtn);
   document.getElementById("results-section").appendChild(finalizeContainer);
@@ -804,3 +830,23 @@ function toggleResultsButtonDisabled(qIndex) {
   }
 }
 
+/**
+ * Gathers all product names that have been "Selected"
+ * by the user (the ones with the checkmark).
+ */
+function getSelectedProductNames() {
+  // Find all buttons that have the 'selected-product' class
+  const selectedButtons = document.querySelectorAll(".select-product-btn.selected-product");
+  const selectedNames = [];
+
+  selectedButtons.forEach(btn => {
+    // Move up the DOM to the parent .product-card
+    let cardEl = btn.closest(".product-card");
+    // The product-card has a data attribute for the product's name
+    if (cardEl && cardEl.dataset.productName) {
+      selectedNames.push(cardEl.dataset.productName);
+    }
+  });
+
+  return selectedNames;
+}
