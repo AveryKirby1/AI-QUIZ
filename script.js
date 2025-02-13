@@ -271,38 +271,27 @@ function isVowel(ch) {
 /****************************************************
  * DISPLAY FINAL RESULTS
  ****************************************************/
+/****************************************************
+ * DISPLAY FINAL RESULTS
+ ****************************************************/
 function displayFinalResults(tiedCats, sortedArray) {
-  // 1) Build a string of all chosen answers from "selectedAnswers"
-  let finalAnswersString = questions.map((qObj, i) => {
-    const chosenIndices = selectedAnswers[i];
-    if (chosenIndices.length === 0) {
-      return `Q${i+1}: (none)`;
-    } else {
-      // Convert each chosen index to the actual answer text
-      let chosenTexts = chosenIndices.map(idx => qObj.answers[idx].text);
-      return `Q${i+1}: ${chosenTexts.join(", ")}`;
-    }
-  }).join(" | ");
-
-  // 2) Use getCombinedNameAndDesc() to find final category (existing logic)
   const { name, article, description } = getCombinedNameAndDesc(tiedCats);
 
-  // 3) Update the DOM with final category text
+  // "... we think you are a/an"
   const introSecondLineEl = document.getElementById("intro-second-line");
   introSecondLineEl.textContent = `With your responses in mind, we think you are ${article}`;
 
+  // Category name (red)
   const categoryNameEl = document.getElementById("category-name");
   categoryNameEl.textContent = name;
   categoryNameEl.classList.add("red-text");
 
-  // 4) dataLayer push: final category + final answers
-  dataLayer.push({
-    event: 'quiz_completed',
-    final_category: name,
-    final_answers: finalAnswersString
-  });
+  // [REMOVED dataLayer.push for quiz_completed from here!]
 
-  // ------------- Existing code (unchanged) --------------
+  // ---------------------------------------------------
+  // The rest is unchanged: building the UI, chart, etc.
+  // ---------------------------------------------------
+
   // Choose an image if single category
   const resultLeftEl = document.querySelector(".result-left");
   resultLeftEl.innerHTML = ""; // clear any previous
@@ -342,7 +331,7 @@ function displayFinalResults(tiedCats, sortedArray) {
     }
   }
 
-  // Insert summary + description
+  // Insert summary (red) + description (black)
   const combinedText = `
     <p class="result-text red-text" style="font-size: 1rem;">${summaryText}</p>
     <p>${description}</p>
