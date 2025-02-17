@@ -157,6 +157,9 @@ function saveCurrentAnswer() {
 /****************************************************
  * SHOW RESULTS
  ****************************************************/
+/****************************************************
+ * SHOW RESULTS
+ ****************************************************/
 function showResults() {
   saveCurrentAnswer();
   if (selectedAnswers[currentQuestionIndex].length === 0) {
@@ -194,11 +197,18 @@ function showResults() {
   }
 
   // 4) Finally, push 'quiz_completed' event with final category
-  // (We'll remove the dataLayer push from displayFinalResults)
-  const { name } = getCombinedNameAndDesc(tiedCats); // we only need the 'name' field
+  //    PLUS second highest category if it exists
+  const { name } = getCombinedNameAndDesc(tiedCats); // top category name
+
+  let secondHighestCat = null;
+  if (sortedArray.length > 1) {
+    secondHighestCat = sortedArray[1][0]; // e.g. "Planner"
+  }
+
   dataLayer.push({
     event: "quiz_completed",
-    final_category: name
+    final_category: name,
+    second_highest_category: secondHighestCat
   });
 
   // 5) Show the results section in the UI
@@ -208,6 +218,7 @@ function showResults() {
   // 6) Call displayFinalResults to update the UI text, charts, etc.
   displayFinalResults(tiedCats, sortedArray);
 }
+
 
 /****************************************************
  * CALCULATE CATEGORY SCORES
