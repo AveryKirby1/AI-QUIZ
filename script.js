@@ -292,6 +292,9 @@ function isVowel(ch) {
 /****************************************************
  * DISPLAY FINAL RESULTS
  ****************************************************/
+/****************************************************
+ * DISPLAY FINAL RESULTS
+ ****************************************************/
 function displayFinalResults(tiedCats, sortedArray) {
   const { name, article, description } = getCombinedNameAndDesc(tiedCats);
 
